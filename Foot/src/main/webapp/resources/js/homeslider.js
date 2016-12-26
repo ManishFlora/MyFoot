@@ -1,0 +1,6 @@
+$(document).ready(function(){if(typeof(homeslider_speed)=='undefined'){homeslider_speed=500;}
+if(typeof(homeslider_pause)=='undefined'){homeslider_pause=3000;}
+if(typeof(homeslider_loop)=='undefined'){homeslider_loop=true;}
+if(typeof(homeslider_width)=='undefined'){homeslider_width=10000;}
+var tl=new TimelineMax();tl.from(".homeslider-description h2",0.2,{left:-100,autoAlpha:0}).from(".homeslider-description p img",0.2,{left:-100,autoAlpha:0}).from(".homeslider-description h3",0.2,{right:-100,autoAlpha:0}).from(".homeslider-description p.slider-descr",0.2,{right:-100,autoAlpha:0}).from(".homeslider-description button",0.1,{right:-100,autoAlpha:0});if(!!$.prototype.bxSlider){$('#homeslider').bxSlider({mode:'fade',useCSS:false,maxSlides:1,slideWidth:homeslider_width,infiniteLoop:homeslider_loop,hideControlOnEnd:true,pager:true,autoHover:true,autoControls:false,auto:homeslider_loop,speed:parseInt(homeslider_speed),pause:homeslider_pause,controls:false,startText:'',stopText:'',onSliderLoad:function(){tl.play()},onSlideBefore:function(){tl.restart()},onSlideAfter:function(){}});}
+$('.homeslider-description').click(function(){window.location.href=$(this).prev('a').prop('href');});});
