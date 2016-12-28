@@ -17,10 +17,7 @@ public class SubCategory
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int subcategory_Id;
-	@NotEmpty
 	private String subcategory_Description;
-	@NotEmpty
-	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
 	private String subcategory_Name;
 	
 	@ManyToOne

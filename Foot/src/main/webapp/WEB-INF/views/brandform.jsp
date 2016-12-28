@@ -11,13 +11,13 @@ function toggle()
 {
 	if(document.getElementById("buttonToggle").value == "Show List")
 	{
-		document.getElementById("brandTable").style.display = "block";
+// 		document.getElementById("brandTable").style.display = "block";
 		document.getElementById("brandTable").style.visibility = "visible";
 		document.getElementById("buttonToggle").value = "Hide List";
 	}
 	else
 	{
-		document.getElementById("brandTable").style.display = "none";
+// 		document.getElementById("brandTable").style.display = "none";
 		document.getElementById("brandTable").style.visibility = "hidden";
 		document.getElementById("buttonToggle").value = "Show List";
 	}
@@ -26,7 +26,7 @@ function toggle()
 <style>
 #brandTable
 {
-	display:none;
+	visibility:hidden;
 	max-width:600px;
 }
 </style>

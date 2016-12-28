@@ -16,18 +16,11 @@ public class BillingAddress
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int billingAddress_Id;
-	@NotEmpty
 	private String flat_Number;
-	@NotEmpty
 	private String street_Address;
-	@NotEmpty
 	private String city;
-	@NotEmpty
 	private String state;
-	@NotEmpty
 	private String country;
-	@NotEmpty
-	@Pattern(regexp="[0-9]+")
 	private String zip_Code;
 	
 	@OneToOne

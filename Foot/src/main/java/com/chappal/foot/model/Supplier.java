@@ -15,16 +15,9 @@ public class Supplier
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int supplier_Id;
-	@NotEmpty(message="Address Cannot be Null")
 	private String supplier_Address;
-	@NotEmpty(message="Name Cannot be Null")
-	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
 	private String supplier_Name;
-	@NotEmpty(message="Email Id Cannot be Null")
-	@Pattern(regexp=".+@.+\\..+", message="Invalid EmailID")
 	private String supplier_EmailId;
-	@NotEmpty(message="Phone Number Cannot be Null")
-	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
 	private String supplier_PhoneNumber;
 	
 	public int getSupplier_Id() {

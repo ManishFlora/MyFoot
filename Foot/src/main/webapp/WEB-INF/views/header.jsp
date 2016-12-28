@@ -23,7 +23,7 @@ catch(e)
 };
 ]]>
 </script>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,700italic,700,400italic,300&amp;subset=latin,greek-ext,greek,vietnamese,cyrillic-ext,latin-ext,cyrillic" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/global.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/contact-form.css" type="text/css" media="all"/>
@@ -32,6 +32,7 @@ catch(e)
 <link rel="stylesheet" href="resources/css/jquery.mCustomScrollbar.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/responsive-tables.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/slick.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/animate.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/uniform.default.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.fancybox.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/product_list.css" type="text/css" media="all"/>
@@ -305,7 +306,7 @@ var wishlistProductsIds = false;
 </div>
 <div id="header-login">
 <div class="current_toogle header_user_info">
-<a href="#">Sign in</a></div>
+<a href="registrationform">Sign in</a></div>
 </div> 
 <div id="languages-block-top" class="languages-block">
 <div>

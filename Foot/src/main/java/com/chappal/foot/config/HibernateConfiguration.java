@@ -12,6 +12,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.chappal.foot.model.Brand;
 import com.chappal.foot.model.Category;
@@ -30,7 +31,7 @@ import com.chappal.foot.model.UserRole;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan("com.chappal.foot")
-public class HibernateConfiguration 
+public class HibernateConfiguration extends WebMvcConfigurerAdapter
 {
 	@Bean(name = "dataSource")
     public DataSource dataSource() 

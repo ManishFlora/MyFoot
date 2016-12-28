@@ -13,9 +13,7 @@ public class User
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int user_Id;
-	@NotEmpty
 	private String user_Name;
-	@NotEmpty
 	private String user_Password;
 	private boolean status;
 	

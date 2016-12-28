@@ -15,10 +15,7 @@ public class Category
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int category_Id;
-	@NotEmpty
 	private String category_Description;
-	@NotEmpty
-	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
 	private String category_Name;
 	
 	public int getCategory_Id() {

@@ -25,15 +25,8 @@ public class Products
 	private int subcategory_Id;
 	private int supplier_Id;
 	private int brand_Id;
-	@NotEmpty(message="Products Description Cannot be Null")
 	private String products_Description;
-	
-	@NotEmpty(message="Name Cannot be Null")
-	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
 	private String products_Name;
-	
-	@NotEmpty(message="Name Cannot be Null")
-	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
 	private String products_Quantity;
 	
 	@NotEmpty(message="Name Cannot be Null")

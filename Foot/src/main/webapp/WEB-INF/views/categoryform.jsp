@@ -7,18 +7,26 @@ category.controller("categoryController",function($scope)
 		});
 </script>
 <script>
+$('#buttonToggle').on('click', function()
+		{
+	$('#categoryTable').addClass('animated bounce');
+		});
+</script>
+<script>
 function toggle()
 {
 if(document.getElementById("buttonToggle").value == "Show List")
 {
 document.getElementById("categoryTable").style.display = "block";
 document.getElementById("categoryTable").style.visibility = "visible";
+document.getElementById("searchTable").readOnly = false;
 document.getElementById("buttonToggle").value = "Hide List";
 }
 else
 {
 document.getElementById("categoryTable").style.display = "none";
 document.getElementById("categoryTable").style.visibility = "hidden";
+document.getElementById("searchTable").readOnly = true;
 document.getElementById("buttonToggle").value = "Show List";
 }
 }
@@ -30,14 +38,13 @@ display:none;
 max-width:635px;
 }
 </style>
-<div  ng-controller="categoryController" ng-app="category">
+<div ng-controller="categoryController" ng-app="category">
 <div id="columns" class="container">
 <div class="row">
 <div class="large-left col-sm-12">
 <div class="row">
 <div id="center_column" class="center_column col-xs-12 col-sm-12">
-<h1 class="page-heading bottom-indent">
-Category Form</h1>
+<h1 class="page-heading bottom-indent">Category Form</h1>
 <div class="contact-form-box" style="padding:23px 0 0 0;margin:0 0 30px 0;background:url('resources/images/contact-form.png') repeat-x white;-moz-box-shadow:rgba(0,0,0,0.17) 0 5px 13px;-webkit-box-shadow:rgba(0,0,0,0.17) 0 5px 13px;box-shadow:rgba(0,0,0,0.17) 0 5px 13px;">
 <form:form id="registrationForm" modelAttribute="category" action="addCategory">
 <fieldset style="padding:0 19px 21px 19px;background:url(resources/images/form-contact-shadow.png">
@@ -65,7 +72,7 @@ Category Form</h1>
 </div>
 <div class="col-xs-12 col-md-3">
 <label>Search</label>
-<input ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
+<input readonly="true" id="searchTable" ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
 </div>
 </div>
 <c:if test="${!empty category.category_Name}">
@@ -96,8 +103,8 @@ Add Category
 </div>
 </div>
 <div align="center">
-<div class = "table-responsive">
-<table class="table table-bordered" id="categoryTable">
+<div class = "table-responsive" id="categoryTable">
+<table class="table table-bordered">
 <tr>
 <th>
 <input class="btn btn-link" type="button" value="Category ID" ng-click="sortType = 'category_Id'; sortReverse = !sortReverse"/>

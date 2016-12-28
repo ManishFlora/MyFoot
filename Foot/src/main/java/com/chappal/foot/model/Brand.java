@@ -15,11 +15,9 @@ public class Brand
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int brand_Id;
-	@NotEmpty
 	private String brand_Description;
-	@NotEmpty
-	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
 	private String brand_Name;
+	
 	public int getBrand_Id() {
 		return brand_Id;
 	}
