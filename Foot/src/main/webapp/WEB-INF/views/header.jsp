@@ -305,9 +305,66 @@ var wishlistProductsIds = false;
 </div>
 </div>
 <div id="header-login">
-<div class="current_toogle header_user_info">
-<a href="registrationform">Sign in</a></div>
-</div> 
+<c:if test="${empty pageContext.request.userPrincipal}">
+<div class="nav-setting">
+<div class="btn-setting material-design-settings49"></div>
+<div class="block-setting"></div>
+</div>
+<div id="header-login">
+<div class="current_toogle header_user_info"><a href="#" onclick="return false;">Sign in</a></div>
+<ul id="header-login-content" class="toogle_content_box">
+<li>
+<div class="icon-close material-design-close47"></div>
+<h4>login</h4>
+<form id="header_login_form" method="post" action="perform_login">
+<div id="create_header_account_error" class="alert alert-danger" style="display:none;"></div>
+<div class="form_content clearfix">
+<div class="form-group">
+<input class="form-control" name="username" type="text" value=""/>
+</div>
+<div class="form-group">
+<span><input class="form-control" type="password" name="password" value=""/></span>
+</div>
+<p class="submit">
+<input type="submit" class="btn btn-default" value="Sign in">
+</p>
+<p>
+<a href="/Foot/registrationform" class="create btn btn-default">Create an account</a>
+</p>
+<p>
+<a href="#" class="forgot-password">Forgot your password?</a>
+</p>
+</div>
+</form>
+</li>
+</ul>
+</div>
+</c:if>
+<c:if test="${!empty pageContext.request.userPrincipal}">
+<div class="nav-setting">
+<div class="btn-setting material-design-settings49"></div>
+<div class="block-setting"></div>
+</div>
+<div id="header-login">
+<div class="current_toogle header_user_info"><a href="#" onclick="return false;">${pageContext.request.userPrincipal.name}</a></div>
+<ul id="header-login-content" class="toogle_content_box">
+<li>
+<div class="icon-close material-design-close47"></div>
+<form id="header_login_form" method="get">
+<div id="create_header_account_error" class="alert alert-danger" style="display:none;"></div>
+<div class="form_content clearfix">
+<p class="submit">
+<a href="/Foot/logout">
+<input type="button" class="btn btn-default" value="Sign Out">
+</a>
+</p>
+</div>
+</form>
+</li>
+</ul>
+</div>
+</c:if>
+</div>
 <div id="languages-block-top" class="languages-block">
 <div>
 <span>English</span>
@@ -374,7 +431,6 @@ $
 <li id="header_link_blog">
 <a href="#" title="blog">blog</a>
 </li>
- 
 </ul>
 </div>
  

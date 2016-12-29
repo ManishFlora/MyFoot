@@ -15,49 +15,49 @@
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="id">ID</label>
-<form:input path="user_Id" readonly="true" class="form-control" type="text" name="from" value=""/>
+<form:input path="userId" readonly="true" class="form-control" type="text" name="from" value=""/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>User Name</label>
-<form:input path="user_Name" class="form-control" type="text" value=""/>
-<form:errors path="user_Name"/>
+<form:input path="userName" class="form-control" type="text" value=""/>
+<form:errors path="userName"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label>Password</label>
-<form:input type="password" path="user_Password" class="form-control"/>
-<form:errors path="user_Password"/>
+<form:input type="password" path="userPassword" class="form-control"/>
+<form:errors path="userPassword"/>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label>First Name</label>
-<form:input path="first_Name" class="form-control" id="message" name="message"/>
-<form:errors path="first_Name"/>
+<form:input path="firstName" class="form-control" id="message" name="message"/>
+<form:errors path="firstName"/>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label>Last Name</label>
-<form:input path="last_Name" class="form-control" id="message" name="message"/>
-<form:errors path="last_Name"/>
+<form:input path="lastName" class="form-control" id="message" name="message"/>
+<form:errors path="lastName"/>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label>Email Id</label>
-<form:input path="email_Id" class="form-control" id="message" name="message"/>
-<form:errors path="email_Id"/>
+<form:input path="emailId" class="form-control" id="message" name="message"/>
+<form:errors path="emailId"/>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label>Contact Number</label>
-<form:input path="contact_Number" class="form-control" id="message" name="message"/>
-<form:errors path="contact_Number"/>
+<form:input path="contactNumber" class="form-control" id="message" name="message"/>
+<form:errors path="contactNumber"/>
 </div>
 </div>
 </div>
@@ -68,21 +68,21 @@
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="id">ID</label>
-<form:input path="billingAddress.billingAddress_Id" readonly="true" class="form-control" type="text" name="from" value=""/>
+<form:input path="billingAddress.billingAddressId" readonly="true" class="form-control" type="text" name="from" value=""/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Flat Number</label>
-<form:input path="billingAddress.flat_Number" class="form-control" type="text" value=""/>
-<form:errors path="billingAddress.flat_Number"/>
+<form:input path="billingAddress.flatNumber" class="form-control" type="text" value=""/>
+<form:errors path="billingAddress.flatNumber"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Street Address</label>
-<form:input path="billingAddress.street_Address" class="form-control" type="text" value=""/>
-<form:errors path="billingAddress.street_Address"/>
+<form:input path="billingAddress.streetAddress" class="form-control" type="text" value=""/>
+<form:errors path="billingAddress.streetAddress"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
@@ -109,8 +109,8 @@
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Pin Code</label>
-<form:input path="billingAddress.zip_Code" class="form-control" type="text" value=""/>
-<form:errors path="billingAddress.zip_Code"/>
+<form:input path="billingAddress.zipCode" class="form-control" type="text" value=""/>
+<form:errors path="billingAddress.zipCode"/>
 </p>
 </div>
 </div>
@@ -121,21 +121,21 @@
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="id">ID</label>
-<form:input path="shippingAddress.shippingAddress_Id" readonly="true" class="form-control" type="text" name="from" value=""/>
+<form:input path="shippingAddress.shippingAddressId" readonly="true" class="form-control" type="text" name="from" value=""/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Flat Number</label>
-<form:input path="shippingAddress.flat_Number" class="form-control" type="text" value=""/>
-<form:errors path="shippingAddress.flat_Number"/>
+<form:input path="shippingAddress.flatNumber" class="form-control" type="text" value=""/>
+<form:errors path="shippingAddress.flatNumber"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Street Address</label>
-<form:input path="shippingAddress.street_Address" class="form-control" type="text" value=""/>
-<form:errors path="shippingAddress.street_Address"/>
+<form:input path="shippingAddress.streetAddress" class="form-control" type="text" value=""/>
+<form:errors path="shippingAddress.streetAddress"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
@@ -162,8 +162,8 @@
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Pin Code</label>
-<form:input path="shippingAddress.zip_Code" class="form-control" type="text" value=""/>
-<form:errors path="shippingAddress.zip_Code"/>
+<form:input path="shippingAddress.zipCode" class="form-control" type="text" value=""/>
+<form:errors path="shippingAddress.zipCode"/>
 </p>
 </div>
 </div>

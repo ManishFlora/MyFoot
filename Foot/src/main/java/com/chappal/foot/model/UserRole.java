@@ -12,31 +12,31 @@ import com.chappal.foot.model.User;
 public class UserRole 
 {
 	@Id
-	private int user_Id;
-	private int role_Id;
+	private int userId;
+	private int roleId;
 	
 	@OneToOne
-	@JoinColumn(name="user_Id",nullable=false,insertable=false,updatable=false)
+	@JoinColumn(name="userId",nullable=false,insertable=false,updatable=false)
 	private User user;
 	
 	@OneToOne
-	@JoinColumn(name="role_Id",nullable=false,insertable=false,updatable=false)
+	@JoinColumn(name="roleId",nullable=false,insertable=false,updatable=false)
 	private Role role;
-	
-	public int getUser_Id() {
-		return user_Id;
+
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_Id(int user_Id) {
-		this.user_Id = user_Id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public int getRole_Id() {
-		return role_Id;
+	public int getRoleId() {
+		return roleId;
 	}
 
-	public void setRole_Id(int role_Id) {
-		this.role_Id = role_Id;
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
 	}
 
 	public User getUser() {
@@ -54,6 +54,6 @@ public class UserRole
 	public void setRole(Role role) {
 		this.role = role;
 	}
-
-
+	
+	
 }

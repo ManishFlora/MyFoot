@@ -70,27 +70,27 @@ public class ProductsController
 		}
 		else
 		{
-			Category category = categoryServices.retriveCategoryName(products.getCategory().getCategory_Name());
-			Supplier supplier = supplierServices.retriveSupplierName(products.getSupplier().getSupplier_Name());
-			SubCategory subcategory = subCategoryServices.retriveSubCategoryName(products.getSubcategory().getSubcategory_Name());
-			Brand brand = brandServices.retriveBrandName(products.getBrand().getBrand_Name());
+			Category category = categoryServices.retriveCategoryName(products.getCategory().getCategoryName());
+			Supplier supplier = supplierServices.retriveSupplierName(products.getSupplier().getSupplierName());
+			SubCategory subcategory = subCategoryServices.retriveSubCategoryName(products.getSubcategory().getSubCategoryName());
+			Brand brand = brandServices.retriveBrandName(products.getBrand().getBrandName());
 		
 			products.setCategory(category);
 			products.setBrand(brand);
 			products.setSubcategory(subcategory);
 			products.setSupplier(supplier);
 			
-			products.setCategory_Id(category.getCategory_Id());
-			products.setBrand_Id(brand.getBrand_Id());
-			products.setSubcategory_Id(subcategory.getSubcategory_Id());
-			products.setSupplier_Id(supplier.getSupplier_Id());
+			products.setCategoryId(category.getCategoryId());
+			products.setBrandId(brand.getBrandId());
+			products.setSubcategoryId(subcategory.getSubCategoryId());
+			products.setSupplierId(supplier.getSupplierId());
 			
 			productsServices.addProducts(products);
 		
 			String path = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\";
-			path = path + String.valueOf(products.getProducts_Id()) + ".jpg";
+			path = path + String.valueOf(products.getProductsId()) + ".jpg";
 			File file = new File(path);
-			MultipartFile multipartFile = products.getProducts_Image();
+			MultipartFile multipartFile = products.getProductsImage();
 			
 			if(!multipartFile.isEmpty())
 			{
@@ -116,21 +116,21 @@ public class ProductsController
 		}
 	}
 	
-	@RequestMapping("/editProducts-{products_Id}")
-	public String retriveProducts(@PathVariable("products_Id") int products_Id, Model model)
+	@RequestMapping("/editProducts-{productsId}")
+	public String retriveProducts(@PathVariable("productsId") int productsId, Model model)
 	{
 		model.addAttribute("categoryList", categoryServices.retriveCategory());
 		model.addAttribute("subCategoryList", subCategoryServices.retriveSubCategory());
 		model.addAttribute("brandList", brandServices.retriveBrand());
 		model.addAttribute("supplierList", supplierServices.retriveSupplier());
-		model.addAttribute("products", productsServices.retriveProducts(products_Id));
+		model.addAttribute("products", productsServices.retriveProducts(productsId));
 		return "/productsform";
 	}
 	
-	@RequestMapping("/deleteProducts-{products_Id}")
-	public String deleteCategory(@PathVariable("products_Id") int products_Id)
+	@RequestMapping("/deleteProducts-{productsId}")
+	public String deleteCategory(@PathVariable("productsId") int productsId)
 	{
-		productsServices.deleteProducts(products_Id);
+		productsServices.deleteProducts(productsId);
 		return "redirect:/productsform";
 	}
 }

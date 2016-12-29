@@ -41,7 +41,7 @@ public class SubCategoryDAOImplementation implements SubCategoryDAO
 	public void deleteSubCategory(int subCategory_Id) 
 	{
 		SubCategory subCategoryDelete = new SubCategory();
-		subCategoryDelete.setSubcategory_Id(subCategory_Id);
+		subCategoryDelete.setSubCategoryId(subCategory_Id);
 		sessionFactory.getCurrentSession().delete(subCategoryDelete);
 	}
 

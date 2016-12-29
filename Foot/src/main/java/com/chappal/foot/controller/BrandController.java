@@ -42,17 +42,17 @@ public class BrandController
 		}
 	}
 	
-	@RequestMapping("/editBrand-{brand_Id}")
-	public String retriveBrand(@PathVariable("brand_Id") int brand_Id, Model model)
+	@RequestMapping("/editBrand-{brandId}")
+	public String retriveBrand(@PathVariable("brandId") int brandId, Model model)
 	{
-		model.addAttribute("brand", brandServices.retriveBrand(brand_Id));
+		model.addAttribute("brand", brandServices.retriveBrand(brandId));
 		return "/brandform";
 	}
 	
-	@RequestMapping("/deleteBrand-{brand_Id}")
-	public String deletebrand(@PathVariable("brand_Id") int brand_Id)
+	@RequestMapping("/deleteBrand-{brandId}")
+	public String deletebrand(@PathVariable("brandId") int brandId)
 	{
-		brandServices.deleteBrand(brand_Id);
+		brandServices.deleteBrand(brandId);
 		return "redirect:/brandform";
 	}
 }

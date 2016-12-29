@@ -46,35 +46,35 @@ Supplier Form</h1>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="id">ID</label>
-<form:input path="supplier_Id" readonly="true" class="form-control" type="text" name="from" value=""/>
+<form:input path="supplierId" readonly="true" class="form-control" type="text" name="from" value=""/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="email">Name</label>
-<form:input path="supplier_Name" class="form-control" type="text" value=""/>
-<form:errors path="supplier_Name"/>
+<form:input path="supplierName" class="form-control" type="text" value=""/>
+<form:errors path="supplierName"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="email">Email ID</label>
-<form:input path="supplier_EmailId" class="form-control" type="text" value=""/>
-<form:errors path="supplier_EmailId"/>
+<form:input path="supplierEmailId" class="form-control" type="text" value=""/>
+<form:errors path="supplierEmailId"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="email">Phone Number</label>
-<form:input path="supplier_PhoneNumber" class="form-control" type="text" value=""/>
-<form:errors path="supplier_PhoneNumber"/>
+<form:input path="supplierPhoneNumber" class="form-control" type="text" value=""/>
+<form:errors path="supplierPhoneNumber"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label for="message">Address</label>
-<form:input path="supplier_Address" class="form-control" id="message" name="message"/>
-<form:errors path="supplier_Address"/>
+<form:input path="supplierAddress" class="form-control" id="message" name="message"/>
+<form:errors path="supplierAddress"/>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
@@ -82,7 +82,7 @@ Supplier Form</h1>
 <input ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
 </div>
 </div>
-<c:if test="${!empty supplier.supplier_Name}">
+<c:if test="${!empty supplier.supplierName}">
 <div class="submit">
 <button type="submit" class="btn btn-default btn-sm">
 <span>
@@ -91,7 +91,7 @@ Edit Supplier
 </button>
 </div>
 </c:if>
-<c:if test="${empty supplier.supplier_Name}">
+<c:if test="${empty supplier.supplierName}">
 <div class="submit">
 <button type="submit" class="btn btn-default btn-sm">
 <span>
@@ -114,21 +114,21 @@ Add Supplier
 <table class="table table-bordered" id ="supplierTable"> 
 <tr>
 <th>
-<input class="btn btn-link"  type="button" value="Supplier ID" ng-click="sortType = 'supplier_Id'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'supplier_Id' && !sortReverse"></span>
+<input class="btn btn-link"  type="button" value="Supplier ID" ng-click="sortType = 'supplierId'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'supplierId' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link" type="button" value="Supplier Name" ng-click="sortType = 'supplier_Name'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'supplier_Name' && !sortReverse"></span></th>
+<input class="btn btn-link" type="button" value="Supplier Name" ng-click="sortType = 'supplierName'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'supplierName' && !sortReverse"></span></th>
 <th>
-<input class="btn btn-link" type="button" value="Supplier Address" ng-click="sortType = 'supplier_Address'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'supplier_Address' && !sortReverse"></span></th>
+<input class="btn btn-link" type="button" value="Supplier Address" ng-click="sortType = 'supplierAddress'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'supplierAddress' && !sortReverse"></span></th>
 <th>
-<input class="btn btn-link" type="button" value="EmailId" ng-click="sortType = 'supplier_EmailId'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'supplier_EmailId' && !sortReverse"></span></th>
+<input class="btn btn-link" type="button" value="EmailId" ng-click="sortType = 'supplierEmailId'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'supplierEmailId' && !sortReverse"></span></th>
 <th>
-<input class="btn btn-link" type="button" value="PhoneNumber" ng-click="sortType = 'supplier_PhoneNumber'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'supplier_PhoneNumber' && !sortReverse"></span></th>
+<input class="btn btn-link" type="button" value="PhoneNumber" ng-click="sortType = 'supplierPhoneNumber'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'supplierPhoneNumber' && !sortReverse"></span></th>
 <th>
 <input class="btn btn-link" type="button" value="Edit Supplier"/>
 </th>
@@ -137,13 +137,13 @@ Add Supplier
 </th>
 </tr>
 <tr ng-repeat="slist in supplierJsonList | filter:test | orderBy:sortType:sortReverse">
-<td style="text-align: center;">{{slist.supplier_Id}}</td>
-<td style="text-align: center;">{{slist.supplier_Name}}</td>
-<td style="text-align: center;">{{slist.supplier_Address}}</td>
-<td style="text-align: center;">{{slist.supplier_EmailId}}</td>
-<td style="text-align: center;">{{slist.supplier_PhoneNumber}}</td>
-<td style="text-align: center;"><a href="editSupplier-{{slist.supplier_Id}}" class="btn btn-link">Edit</a></td>
-<td style="text-align: center;"><a href="deleteSupplier-{{slist.supplier_Id}}" class="btn btn-link">Delete</a></td>
+<td style="text-align: center;">{{slist.supplierId}}</td>
+<td style="text-align: center;">{{slist.supplierName}}</td>
+<td style="text-align: center;">{{slist.supplierAddress}}</td>
+<td style="text-align: center;">{{slist.supplierEmailId}}</td>
+<td style="text-align: center;">{{slist.supplierPhoneNumber}}</td>
+<td style="text-align: center;"><a href="editSupplier-{{slist.supplierId}}" class="btn btn-link">Edit</a></td>
+<td style="text-align: center;"><a href="deleteSupplier-{{slist.supplierId}}" class="btn btn-link">Delete</a></td>
 </tr>
 </table>
 </div>

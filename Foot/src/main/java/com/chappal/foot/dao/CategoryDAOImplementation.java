@@ -48,7 +48,7 @@ public class CategoryDAOImplementation implements CategoryDAO
 	public void deleteCategory(int category_Id) 
 	{
 		Category categoryDelete = new Category();
-		categoryDelete.setCategory_Id(category_Id);
+		categoryDelete.setCategoryId(category_Id);
 		sessionFactory.getCurrentSession().delete(categoryDelete);
 	}
 	

@@ -21,32 +21,33 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 	{
 		Session session = sessionFactory.getCurrentSession();
 		User user = new User();
-		user.setUser_Id(userDetail.getUser_Id());
+		user.setUserId(userDetail.getUserId());
 		user.setStatus(true);
-		user.setUser_Name(userDetail.getUser_Name());
-		user.setUser_Password(userDetail.getUser_Password());
+		user.setUserName(userDetail.getUserName());
+		user.setUserPassword(userDetail.getUserPassword());
 		
 		session.saveOrUpdate(user);
 		
 		Cart cart = new Cart();
-		cart.setCart_Id(user.getUser_Id());
-		cart.setUser_Id(user.getUser_Id());
+		cart.setCartId(user.getUserId());
+		cart.setUserId(user.getUserId());
 		
 		session.saveOrUpdate(cart);
 		
 		UserRole userRole = new UserRole();
-		userRole.setRole_Id(1);
-		userRole.setUser_Id(user.getUser_Id());
+		userRole.setRoleId(1);
+		userRole.setUserId(user.getUserId());
 		
 		session.saveOrUpdate(userRole);
+		
 		userDetail.getBillingAddress().setUserDetail(userDetail);
 		session.saveOrUpdate(userDetail.getBillingAddress());
 		
 		userDetail.getShippingAddress().setUserDetail(userDetail);
 		session.saveOrUpdate(userDetail.getShippingAddress());
 		
-		userDetail.setUser_Id(user.getUser_Id());
-		userDetail.setCart_Id(cart.getCart_Id());
+		userDetail.setUserId(user.getUserId());
+		userDetail.setCartId(cart.getCartId());
 		session.saveOrUpdate(userDetail);
 		
 		session.flush();

@@ -43,17 +43,17 @@ public class CategoryController
 		}
 	}
 	
-	@RequestMapping("/editCategory-{category_Id}")
-	public String retriveCategory(@PathVariable("category_Id") int category_Id, Model model)
+	@RequestMapping("/editCategory-{categoryId}")
+	public String retriveCategory(@PathVariable("categoryId") int categoryId, Model model)
 	{
-		model.addAttribute("category", categoryServices.retriveCategory(category_Id));
+		model.addAttribute("category", categoryServices.retriveCategory(categoryId));
 		return "/categoryform";
 	}
 	
-	@RequestMapping("/deleteCategory-{category_Id}")
-	public String deleteCategory(@PathVariable("category_Id") int category_Id)
+	@RequestMapping("/deleteCategory-{categoryId}")
+	public String deleteCategory(@PathVariable("categoryId") int categoryId)
 	{
-		categoryServices.deleteCategory(category_Id);
+		categoryServices.deleteCategory(categoryId);
 		return "redirect:/categoryform";
 	}
 }

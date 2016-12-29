@@ -45,31 +45,31 @@ Sub-Category Form</h1>
 <div class="clearfix">
 <div class="col-xs-12 col-md-3">
 <div class="form-group selector1">
-<form:label path="category.category_Name">Category</form:label>
-<form:select id="id_contact" class="form-control" name="id_contact" path="category.category_Name" itemValue="category_Name">
+<form:label path="category.categoryName">Category</form:label>
+<form:select id="id_contact" class="form-control" name="id_contact" path="category.categoryName" itemValue="category_Name">
 <form:option value="Choose Category"></form:option>
-<form:options items="${categoryList}" itemLabel="category_Name" itemValue="category_Name"/>
+<form:options items="${categoryList}" itemLabel="categoryName" itemValue="categoryName"/>
 </form:select>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="id">ID</label>
-<form:input path="subcategory_Id" readonly="true" class="form-control" type="text" name="from" value=""/>
+<form:input path="subCategoryId" readonly="true" class="form-control" type="text" name="from" value=""/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="email">Name</label>
-<form:input path="subcategory_Name" class="form-control" type="text" value=""/>
-<form:errors path="subcategory_Name"/>
+<form:input path="subCategoryName" class="form-control" type="text" value=""/>
+<form:errors path="subCategoryName"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label for="message">Description</label>
-<form:input path="subcategory_Description" class="form-control"/>
-<form:errors path="subcategory_Description"/>
+<form:input path="subCategoryDescription" class="form-control"/>
+<form:errors path="subCategoryDescription"/>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
@@ -77,7 +77,7 @@ Sub-Category Form</h1>
 <input ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
 </div>
 </div>
-<c:if test="${!empty subCategory.subcategory_Name}">
+<c:if test="${!empty subCategory.subCategoryName}">
 <div class="submit">
 <button type="submit" class="btn btn-default btn-sm">
 <span>
@@ -86,7 +86,7 @@ Edit Sub-Category
 </button>
 </div>
 </c:if>
-<c:if test="${empty subCategory.subcategory_Name}">
+<c:if test="${empty subCategory.subCategoryName}">
 <div class="submit">
 <button type="submit" class="btn btn-default btn-sm">
 <span>
@@ -109,19 +109,19 @@ Add Sub-Category
 <table class="table table-bordered" id="subCategoryTable">
 <tr>
 <th>
-<input class="btn btn-link"  type="button" value="Category ID" ng-click="sortType = 'category.category_Id'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'category_Id' && !sortReverse"></span>
+<input class="btn btn-link"  type="button" value="Category ID" ng-click="sortType = 'category.categoryId'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'categoryId' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link"  type="button" value="SubCategory ID" ng-click="sortType = 'subcategory_Id'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'subcategory_Id' && !sortReverse"></span>
+<input class="btn btn-link"  type="button" value="SubCategory ID" ng-click="sortType = 'subCategoryId'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'subcategoryId' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link" type="button" value="SubCategory Name" ng-click="sortType = 'subcategory_Name'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'subcategory_Name' && !sortReverse"></span></th>
+<input class="btn btn-link" type="button" value="SubCategory Name" ng-click="sortType = 'subCategoryName'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'subCategoryName' && !sortReverse"></span></th>
 <th>
-<input class="btn btn-link" type="button" value="SubCategory Description" ng-click="sortType = 'subcategory_Description'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'subcategory_Description' && !sortReverse"></span></th>
+<input class="btn btn-link" type="button" value="SubCategory Description" ng-click="sortType = 'subCategoryDescription'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'subCategoryDescription' && !sortReverse"></span></th>
 <th>
 <input class="btn btn-link" type="button" value="Edit SubCategory"/>
 </th>
@@ -130,12 +130,12 @@ Add Sub-Category
 </th>
 </tr>
 <tr ng-repeat="sclist in subCategoryJsonList | filter:test | orderBy:sortType:sortReverse">
-<td style="text-align: center;">{{sclist.category_Id}}</td>
-<td style="text-align: center;">{{sclist.subcategory_Id}}</td>
-<td style="text-align: center;">{{sclist.subcategory_Name}}</td>
-<td style="text-align: center;">{{sclist.subcategory_Description}}</td>
-<td style="text-align: center;"><a href="editSubCategory-{{sclist.subcategory_Id}}" class="btn btn-link">Edit</a></td>
-<td style="text-align: center;"><a href="deleteSubCategory-{{sclist.subcategory_Id}}" class="btn btn-link">Delete</a></td>
+<td style="text-align: center;">{{sclist.categoryId}}</td>
+<td style="text-align: center;">{{sclist.subcategoryId}}</td>
+<td style="text-align: center;">{{sclist.subcategoryName}}</td>
+<td style="text-align: center;">{{sclist.subcategoryDescription}}</td>
+<td style="text-align: center;"><a href="editSubCategory-{{sclist.subcategoryId}}" class="btn btn-link">Edit</a></td>
+<td style="text-align: center;"><a href="deleteSubCategory-{{sclist.subcategoryId}}" class="btn btn-link">Delete</a></td>
 </tr>
 </table>
 </div>

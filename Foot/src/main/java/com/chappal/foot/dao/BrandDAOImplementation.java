@@ -41,7 +41,7 @@ public class BrandDAOImplementation implements BrandDAO
 	public void deleteBrand(int brand_Id) 
 	{
 		Brand brandDelete = new Brand();
-		brandDelete.setBrand_Id(brand_Id);
+		brandDelete.setBrandId(brand_Id);
 		sessionFactory.getCurrentSession().delete(brandDelete);
 	}
 

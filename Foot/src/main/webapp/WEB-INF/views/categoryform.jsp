@@ -7,12 +7,6 @@ category.controller("categoryController",function($scope)
 		});
 </script>
 <script>
-$('#buttonToggle').on('click', function()
-		{
-	$('#categoryTable').addClass('animated bounce');
-		});
-</script>
-<script>
 function toggle()
 {
 if(document.getElementById("buttonToggle").value == "Show List")
@@ -53,21 +47,21 @@ max-width:635px;
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="id">ID</label>
-<form:input path="category_Id" readonly="true" class="form-control" type="text" name="from" value=""/>
+<form:input path="categoryId" readonly="true" class="form-control" type="text" name="from" value=""/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="email">Name</label>
-<form:input path="category_Name" class="form-control" type="text" value=""/>
-<form:errors path="category_Name"/>
+<form:input path="categoryName" class="form-control" type="text" value=""/>
+<form:errors path="categoryName"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label for="message">Description</label>
-<form:input path="category_Description" class="form-control" id="message" name="message"/>
-<form:errors path="category_Description"/>
+<form:input path="categoryDescription" class="form-control" id="message" name="message"/>
+<form:errors path="categoryDescription"/>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
@@ -75,7 +69,7 @@ max-width:635px;
 <input readonly="true" id="searchTable" ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
 </div>
 </div>
-<c:if test="${!empty category.category_Name}">
+<c:if test="${!empty category.categoryName}">
 <div class="submit">
 <button type="submit" class="btn btn-default btn-sm">
 <span>
@@ -84,7 +78,7 @@ Edit Category
 </button>
 </div>
 </c:if>
-<c:if test="${empty category.category_Name}">
+<c:if test="${empty category.categoryName}">
 <div class="submit">
 <button type="submit" class="btn btn-default btn-sm">
 <span>
@@ -107,16 +101,16 @@ Add Category
 <table class="table table-bordered">
 <tr>
 <th>
-<input class="btn btn-link" type="button" value="Category ID" ng-click="sortType = 'category_Id'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'category_Id' && !sortReverse"></span>
+<input class="btn btn-link" type="button" value="Category ID" ng-click="sortType = 'categoryId'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'categoryId' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link" type="button" value="Category Name" ng-click="sortType = 'category_Name'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'category_Name' && !sortReverse"></span>
+<input class="btn btn-link" type="button" value="Category Name" ng-click="sortType = 'categoryName'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'categoryName' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link" type="button" value="Category Description" ng-click="sortType = 'category_Description'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'category_Description' && !sortReverse"></span>
+<input class="btn btn-link" type="button" value="Category Description" ng-click="sortType = 'categoryDescription'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'categoryDescription' && !sortReverse"></span>
 </th>
 <th>
 <input class="btn btn-link" type="button" value="Edit Category"/>
@@ -126,11 +120,11 @@ Add Category
 </th>
 </tr>
 <tr ng-repeat="clist in categoryJsonList | filter:test | orderBy:sortType:sortReverse">
-<td style="text-align: center;">{{clist.category_Id}}</td>
-<td style="text-align: center;">{{clist.category_Name}}</td>
-<td style="text-align: center;">{{clist.category_Description}}</td>
-<td style="text-align: center;"><a href="editCategory-{{clist.category_Id}}" class="btn btn-link">Edit</a></td>
-<td style="text-align: center;"><a href="deleteCategory-{{clist.category_Id}}" class="btn btn-link">Delete</a></td>
+<td style="text-align: center;">{{clist.categoryId}}</td>
+<td style="text-align: center;">{{clist.categoryName}}</td>
+<td style="text-align: center;">{{clist.categoryDescription}}</td>
+<td style="text-align: center;"><a href="editCategory-{{clist.categoryId}}" class="btn btn-link">Edit</a></td>
+<td style="text-align: center;"><a href="deleteCategory-{{clist.categoryId}}" class="btn btn-link">Delete</a></td>
 </tr>
 </table>
 </div>

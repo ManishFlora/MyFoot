@@ -16,93 +16,93 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class UserDetail 
 {
 	@Id
-	private int user_Id;
-	private String user_Name;
-	private String user_Password;
-	private String first_Name;
-	private String last_Name;
-	private String email_Id;
-	private String contact_Number;
-	private int cart_Id;
+	private int userId;
+	private String userName;
+	private String userPassword;
+	private String firstName;
+	private String lastName;
+	private String emailId;
+	private String contactNumber;
+	private int cartId;
 
 	@OneToOne
-	@JoinColumn(name="user_Id", nullable=false, insertable=false,updatable=false)
+	@JoinColumn(name="userId", nullable=false, insertable=false,updatable=false)
 	private User user;
 
 	@OneToOne
-	@JoinColumn(name="cart_Id", nullable=false, insertable=false,updatable=false)
+	@JoinColumn(name="cartId", nullable=false, insertable=false,updatable=false)
 	private Cart cart;
 	
 	@OneToOne
-	@JoinColumn(name="billingAddress_Id")
+	@JoinColumn(name="billingAddressId")
 	private BillingAddress billingAddress;
 	
 	@OneToOne
-	@JoinColumn(name="shippingAddress_Id")
+	@JoinColumn(name="shippingAddressId")
 	private ShippingAddress shippingAddress;
 
-	public int getUser_Id() {
-		return user_Id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_Id(int user_Id) {
-		this.user_Id = user_Id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public String getUser_Name() {
-		return user_Name;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUser_Name(String user_Name) {
-		this.user_Name = user_Name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getUser_Password() {
-		return user_Password;
+	public String getUserPassword() {
+		return userPassword;
 	}
 
-	public void setUser_Password(String user_Password) {
-		this.user_Password = user_Password;
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
 	}
 
-	public String getFirst_Name() {
-		return first_Name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirst_Name(String first_Name) {
-		this.first_Name = first_Name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLast_Name() {
-		return last_Name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_Name(String last_Name) {
-		this.last_Name = last_Name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public String getEmail_Id() {
-		return email_Id;
+	public String getEmailId() {
+		return emailId;
 	}
 
-	public void setEmail_Id(String email_Id) {
-		this.email_Id = email_Id;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
-	public String getContact_Number() {
-		return contact_Number;
+	public String getContactNumber() {
+		return contactNumber;
 	}
 
-	public void setContact_Number(String contact_Number) {
-		this.contact_Number = contact_Number;
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 
-	public int getCart_Id() {
-		return cart_Id;
+	public int getCartId() {
+		return cartId;
 	}
 
-	public void setCart_Id(int cart_Id) {
-		this.cart_Id = cart_Id;
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
 	}
 
 	public User getUser() {
@@ -137,5 +137,5 @@ public class UserDetail
 		this.shippingAddress = shippingAddress;
 	}
 	
-		
+
 }

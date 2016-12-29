@@ -15,39 +15,39 @@ public class BillingAddress
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int billingAddress_Id;
-	private String flat_Number;
-	private String street_Address;
+	private int billingAddressId;
+	private String flatNumber;
+	private String streetAddress;
 	private String city;
 	private String state;
 	private String country;
-	private String zip_Code;
+	private String zipCode;
 	
 	@OneToOne
 	private UserDetail userDetail;
 
-	public int getBillingAddress_Id() {
-		return billingAddress_Id;
+	public int getBillingAddressId() {
+		return billingAddressId;
 	}
 
-	public void setBillingAddress_Id(int billingAddress_Id) {
-		this.billingAddress_Id = billingAddress_Id;
+	public void setBillingAddressId(int billingAddressId) {
+		this.billingAddressId = billingAddressId;
 	}
 
-	public String getFlat_Number() {
-		return flat_Number;
+	public String getFlatNumber() {
+		return flatNumber;
 	}
 
-	public void setFlat_Number(String flat_Number) {
-		this.flat_Number = flat_Number;
+	public void setFlatNumber(String flatNumber) {
+		this.flatNumber = flatNumber;
 	}
 
-	public String getStreet_Address() {
-		return street_Address;
+	public String getStreetAddress() {
+		return streetAddress;
 	}
 
-	public void setStreet_Address(String street_Address) {
-		this.street_Address = street_Address;
+	public void setStreetAddress(String streetAddress) {
+		this.streetAddress = streetAddress;
 	}
 
 	public String getCity() {
@@ -74,12 +74,12 @@ public class BillingAddress
 		this.country = country;
 	}
 
-	public String getZip_Code() {
-		return zip_Code;
+	public String getZipCode() {
+		return zipCode;
 	}
 
-	public void setZip_Code(String zip_Code) {
-		this.zip_Code = zip_Code;
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
 
 	public UserDetail getUserDetail() {
@@ -88,8 +88,5 @@ public class BillingAddress
 
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
-	}
-
-	
-	
+	}	
 }

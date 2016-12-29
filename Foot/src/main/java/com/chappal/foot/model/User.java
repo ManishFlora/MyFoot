@@ -12,28 +12,27 @@ public class User
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int user_Id;
-	private String user_Name;
-	private String user_Password;
+	private int userId;
+	private String userName;
+	private String userPassword;
 	private boolean status;
-	
-	public int getUser_Id() {
-		return user_Id;
+	public int getUserId() {
+		return userId;
 	}
-	public void setUser_Id(int user_Id) {
-		this.user_Id = user_Id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
-	public String getUser_Name() {
-		return user_Name;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUser_Name(String user_Name) {
-		this.user_Name = user_Name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public String getUser_Password() {
-		return user_Password;
+	public String getUserPassword() {
+		return userPassword;
 	}
-	public void setUser_Password(String user_Password) {
-		this.user_Password = user_Password;
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
 	}
 	public boolean isStatus() {
 		return status;
@@ -41,4 +40,5 @@ public class User
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	
 }

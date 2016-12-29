@@ -44,26 +44,26 @@ public class SubCategoryController
 		}
 		else
 		{
-			Category category = categoryServices.retriveCategoryName(subCategory.getCategory().getCategory_Name());
+			Category category = categoryServices.retriveCategoryName(subCategory.getCategory().getCategoryName());
 			subCategory.setCategory(category);
-			subCategory.setCategory_Id(category.getCategory_Id());
+			subCategory.setCategoryId(category.getCategoryId());
 			subCategoryServices.addSubCategory(subCategory);
 			return "redirect:/subcategoryform";
 		}
 	}
 	
-	@RequestMapping("/editSubCategory-{subcategory_Id}")
-	public String retriveCategory(@PathVariable("subcategory_Id") int subcategory_Id, Model model)
+	@RequestMapping("/editSubCategory-{subcategoryId}")
+	public String retriveCategory(@PathVariable("subcategoryId") int subcategoryId, Model model)
 	{
 		model.addAttribute("categoryList", categoryServices.retriveCategory());
-		model.addAttribute("subCategory", subCategoryServices.retriveSubCategory(subcategory_Id));
+		model.addAttribute("subCategory", subCategoryServices.retriveSubCategory(subcategoryId));
 		return "/subcategoryform";
 	}
 	
-	@RequestMapping("/deleteSubCategory-{subcategory_Id}")
-	public String deleteCategory(@PathVariable("subcategory_Id") int subcategory_Id)
+	@RequestMapping("/deleteSubCategory-{subcategoryId}")
+	public String deleteCategory(@PathVariable("subcategoryId") int subcategoryId)
 	{
-		subCategoryServices.deleteSubCategory(subcategory_Id);
+		subCategoryServices.deleteSubCategory(subcategoryId);
 		return "redirect:/subcategoryform";
 	}
 }

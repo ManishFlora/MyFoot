@@ -20,121 +20,128 @@ public class Products
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int products_Id;
-	private int category_Id;
-	private int subcategory_Id;
-	private int supplier_Id;
-	private int brand_Id;
-	private String products_Description;
-	private String products_Name;
-	private String products_Quantity;
+	private int productsId;
+	private int categoryId;
+	private int subcategoryId;
+	private int supplierId;
+	private int brandId;
+	private String productsDescription;
+	private String productsName;
+	private String productsQuantity;
 	
 	@NotEmpty(message="Name Cannot be Null")
 	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
-	private String products_Price;
+	private String productsPrice;
 	
 	@NotEmpty(message="Name Cannot be Null")
 	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
-	private String products_Discount;
+	private String productsDiscount;
 	
 	@Transient
-	private MultipartFile products_Image;
+	private MultipartFile productsImage;
 	
 	@ManyToOne
-	@JoinColumn(name="category_Id", nullable=false, updatable=false,insertable=false)
+	@JoinColumn(name="categoryId", nullable=false, updatable=false,insertable=false)
 	private Category category;
 	
 	@ManyToOne
-	@JoinColumn(name="subcategory_Id", nullable=false, updatable=false,insertable=false)
+	@JoinColumn(name="subcategoryId", nullable=false, updatable=false,insertable=false)
 	private SubCategory subcategory;
 	
 	@ManyToOne
-	@JoinColumn(name="supplier_Id", nullable=false, updatable=false,insertable=false)
+	@JoinColumn(name="supplierId", nullable=false, updatable=false,insertable=false)
 	private Supplier supplier;
 	
 	@ManyToOne
-	@JoinColumn(name="brand_Id", nullable=false, updatable=false,insertable=false)
+	@JoinColumn(name="brandId", nullable=false, updatable=false,insertable=false)
 	private Brand brand;
-	
-	public String getProducts_Quantity() {
-		return products_Quantity;
+
+	public int getProductsId() {
+		return productsId;
 	}
 
-	public void setProducts_Quantity(String products_Quantity) {
-		this.products_Quantity = products_Quantity;
+	public void setProductsId(int productsId) {
+		this.productsId = productsId;
 	}
 
-	public String getProducts_Price() {
-		return products_Price;
+	public int getCategoryId() {
+		return categoryId;
 	}
 
-	public void setProducts_Price(String products_Price) {
-		this.products_Price = products_Price;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
-	public String getProducts_Discount() {
-		return products_Discount;
+	public int getSubcategoryId() {
+		return subcategoryId;
 	}
 
-	public void setProducts_Discount(String products_Discount) {
-		this.products_Discount = products_Discount;
+	public void setSubcategoryId(int subcategoryId) {
+		this.subcategoryId = subcategoryId;
 	}
 
-
-	public int getProducts_Id() {
-		return products_Id;
+	public int getSupplierId() {
+		return supplierId;
 	}
 
-	public void setProducts_Id(int products_Id) {
-		this.products_Id = products_Id;
+	public void setSupplierId(int supplierId) {
+		this.supplierId = supplierId;
 	}
 
-	public int getCategory_Id() {
-		return category_Id;
+	public int getBrandId() {
+		return brandId;
 	}
 
-	public void setCategory_Id(int category_Id) {
-		this.category_Id = category_Id;
+	public void setBrandId(int brandId) {
+		this.brandId = brandId;
 	}
 
-	public int getSubcategory_Id() {
-		return subcategory_Id;
+	public String getProductsDescription() {
+		return productsDescription;
 	}
 
-	public void setSubcategory_Id(int subcategory_Id) {
-		this.subcategory_Id = subcategory_Id;
+	public void setProductsDescription(String productsDescription) {
+		this.productsDescription = productsDescription;
 	}
 
-	public int getSupplier_Id() {
-		return supplier_Id;
+	public String getProductsName() {
+		return productsName;
 	}
 
-	public void setSupplier_Id(int supplier_Id) {
-		this.supplier_Id = supplier_Id;
+	public void setProductsName(String productsName) {
+		this.productsName = productsName;
 	}
 
-	public int getBrand_Id() {
-		return brand_Id;
+	public String getProductsQuantity() {
+		return productsQuantity;
 	}
 
-	public void setBrand_Id(int brand_Id) {
-		this.brand_Id = brand_Id;
+	public void setProductsQuantity(String productsQuantity) {
+		this.productsQuantity = productsQuantity;
 	}
 
-	public String getProducts_Description() {
-		return products_Description;
+	public String getProductsPrice() {
+		return productsPrice;
 	}
 
-	public void setProducts_Description(String products_Description) {
-		this.products_Description = products_Description;
+	public void setProductsPrice(String productsPrice) {
+		this.productsPrice = productsPrice;
 	}
 
-	public String getProducts_Name() {
-		return products_Name;
+	public String getProductsDiscount() {
+		return productsDiscount;
 	}
 
-	public void setProducts_Name(String products_Name) {
-		this.products_Name = products_Name;
+	public void setProductsDiscount(String productsDiscount) {
+		this.productsDiscount = productsDiscount;
+	}
+
+	public MultipartFile getProductsImage() {
+		return productsImage;
+	}
+
+	public void setProductsImage(MultipartFile productsImage) {
+		this.productsImage = productsImage;
 	}
 
 	public Category getCategory() {
@@ -169,12 +176,5 @@ public class Products
 		this.brand = brand;
 	}
 	
-	public MultipartFile getProducts_Image() {
-		return products_Image;
-	}
-
-	public void setProducts_Image(MultipartFile products_Image) {
-		this.products_Image = products_Image;
-	}
-
+	
 }

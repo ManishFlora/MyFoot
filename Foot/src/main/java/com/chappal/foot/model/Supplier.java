@@ -14,40 +14,40 @@ public class Supplier
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int supplier_Id;
-	private String supplier_Address;
-	private String supplier_Name;
-	private String supplier_EmailId;
-	private String supplier_PhoneNumber;
+	private int supplierId;
+	private String supplierAddress;
+	private String supplierName;
+	private String supplierEmailId;
+	private String supplierPhoneNumber;
+	public int getSupplierId() {
+		return supplierId;
+	}
+	public void setSupplierId(int supplierId) {
+		this.supplierId = supplierId;
+	}
+	public String getSupplierAddress() {
+		return supplierAddress;
+	}
+	public void setSupplierAddress(String supplierAddress) {
+		this.supplierAddress = supplierAddress;
+	}
+	public String getSupplierName() {
+		return supplierName;
+	}
+	public void setSupplierName(String supplierName) {
+		this.supplierName = supplierName;
+	}
+	public String getSupplierEmailId() {
+		return supplierEmailId;
+	}
+	public void setSupplierEmailId(String supplierEmailId) {
+		this.supplierEmailId = supplierEmailId;
+	}
+	public String getSupplierPhoneNumber() {
+		return supplierPhoneNumber;
+	}
+	public void setSupplierPhoneNumber(String supplierPhoneNumber) {
+		this.supplierPhoneNumber = supplierPhoneNumber;
+	}
 	
-	public int getSupplier_Id() {
-		return supplier_Id;
-	}
-	public void setSupplier_Id(int supplier_Id) {
-		this.supplier_Id = supplier_Id;
-	}
-	public String getSupplier_Address() {
-		return supplier_Address;
-	}
-	public void setSupplier_Address(String supplier_Address) {
-		this.supplier_Address = supplier_Address;
-	}
-	public String getSupplier_Name() {
-		return supplier_Name;
-	}
-	public void setSupplier_Name(String supplier_Name) {
-		this.supplier_Name = supplier_Name;
-	}
-	public String getSupplier_EmailId() {
-		return supplier_EmailId;
-	}
-	public void setSupplier_EmailId(String supplier_EmailId) {
-		this.supplier_EmailId = supplier_EmailId;
-	}
-	public String getSupplier_PhoneNumber() {
-		return supplier_PhoneNumber;
-	}
-	public void setSupplier_PhoneNumber(String supplier_PhoneNumber) {
-		this.supplier_PhoneNumber = supplier_PhoneNumber;
-	}
 }

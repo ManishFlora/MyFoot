@@ -14,27 +14,26 @@ public class Brand
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int brand_Id;
-	private String brand_Description;
-	private String brand_Name;
-	
-	public int getBrand_Id() {
-		return brand_Id;
+	private int brandId;
+	private String brandDescription;
+	private String brandName;
+	public int getBrandId() {
+		return brandId;
 	}
-	public void setBrand_Id(int brand_Id) {
-		this.brand_Id = brand_Id;
+	public void setBrandId(int brandId) {
+		this.brandId = brandId;
 	}
-	public String getBrand_Description() {
-		return brand_Description;
+	public String getBrandDescription() {
+		return brandDescription;
 	}
-	public void setBrand_Description(String brand_Description) {
-		this.brand_Description = brand_Description;
+	public void setBrandDescription(String brandDescription) {
+		this.brandDescription = brandDescription;
 	}
-	public String getBrand_Name() {
-		return brand_Name;
+	public String getBrandName() {
+		return brandName;
 	}
-	public void setBrand_Name(String brand_Name) {
-		this.brand_Name = brand_Name;
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
 	}
-	
+		
 }

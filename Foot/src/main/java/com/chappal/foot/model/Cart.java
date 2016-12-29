@@ -9,27 +9,27 @@ import javax.persistence.OneToOne;
 public class Cart 
 {
 	@Id
-	private int cart_Id;
-	private int user_Id;
+	private int cartId;
+	private int userId;
 	
 	@OneToOne
-	@JoinColumn(name="user_Id",insertable=false,updatable=false,nullable=false)
+	@JoinColumn(name="userId",insertable=false,updatable=false,nullable=false)
 	private User user;
 
-	public int getCart_Id() {
-		return cart_Id;
+	public int getCartId() {
+		return cartId;
 	}
 
-	public void setCart_Id(int cart_Id) {
-		this.cart_Id = cart_Id;
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
 	}
 
-	public int getUser_Id() {
-		return user_Id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_Id(int user_Id) {
-		this.user_Id = user_Id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public User getUser() {
@@ -39,4 +39,5 @@ public class Cart
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
 }

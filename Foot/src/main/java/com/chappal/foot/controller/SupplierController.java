@@ -42,17 +42,17 @@ public class SupplierController
 		}
 	}
 	
-	@RequestMapping("/editSupplier-{supplier_Id}")
-	public String retriveSupplier(@PathVariable("supplier_Id") int supplier_Id, Model model)
+	@RequestMapping("/editSupplier-{supplierId}")
+	public String retriveSupplier(@PathVariable("supplierId") int supplierId, Model model)
 	{
-		model.addAttribute("supplier", supplierServices.retriveSupplier(supplier_Id));
+		model.addAttribute("supplier", supplierServices.retriveSupplier(supplierId));
 		return "/supplierform";
 	}
 	
-	@RequestMapping("/deleteSupplier-{supplier_Id}")
-	public String deleteSupplier(@PathVariable("supplier_Id") int supplier_Id)
+	@RequestMapping("/deleteSupplier-{supplierId}")
+	public String deleteSupplier(@PathVariable("supplierId") int supplierId)
 	{
-		supplierServices.deleteSupplier(supplier_Id);
+		supplierServices.deleteSupplier(supplierId);
 		return "redirect:/supplierform";
 	}
 }

@@ -46,77 +46,77 @@ Products Form</h1>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>ID</label>
-<form:input path="products_Id" readonly="true" class="form-control" type="text" name="from" value=""/>
+<form:input path="productsId" readonly="true" class="form-control" type="text" name="from" value=""/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Name</label>
-<form:input path="products_Name" class="form-control" type="text" value=""/>
-<form:errors path="products_Name"/>
+<form:input path="productsName" class="form-control" type="text" value=""/>
+<form:errors path="productsName"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Quantity</label>
-<form:input path="products_Quantity" class="form-control" type="text" value=""/>
-<form:errors path="products_Quantity"/>
+<form:input path="productsQuantity" class="form-control" type="text" value=""/>
+<form:errors path="productsQuantity"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Price</label>
-<form:input path="products_Price" class="form-control" type="text" value=""/>
-<form:errors path="products_Price"/>
+<form:input path="productsPrice" class="form-control" type="text" value=""/>
+<form:errors path="productsPrice"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Discount</label>
-<form:input path="products_Discount" class="form-control" type="text" value=""/>
-<form:errors path="products_Discount"/>
+<form:input path="productsDiscount" class="form-control" type="text" value=""/>
+<form:errors path="productsDiscount"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label>Description</label>
-<form:input path="products_Description" class="form-control" id="message" name="message"/>
-<form:errors path="products_Description"/>
+<form:input path="productsDescription" class="form-control" id="message" name="message"/>
+<form:errors path="productsDescription"/>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group selector1">
 <label>Category</label>
-<form:select id="id_contact" class="form-control" name="id_contact" path="category.category_Name" itemValue="category_Name">
+<form:select id="id_contact" class="form-control" name="id_contact" path="category.categoryName" itemValue="categoryName">
 <form:option value="Choose Category"></form:option>
-<form:options items="${categoryList}" itemLabel="category_Name" itemValue="category_Name"/>
+<form:options items="${categoryList}" itemLabel="categoryName" itemValue="categoryName"/>
 </form:select>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group selector1">
 <label>Sub-Category</label>
-<form:select id="id_contact" class="form-control" name="id_contact" path="subcategory.subcategory_Name" itemValue="subcategory_Name">
+<form:select id="id_contact" class="form-control" name="id_contact" path="subcategory.subCategoryName" itemValue="subCategoryName">
 <form:option value="Choose Sub-Category"></form:option>
-<form:options items="${subCategoryList}" itemLabel="subcategory_Name" itemValue="subcategory_Name"/>
+<form:options items="${subCategoryList}" itemLabel="subCategoryName" itemValue="subCategoryName"/>
 </form:select>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group selector1">
 <label>Brand</label>
-<form:select id="id_contact" class="form-control" name="id_contact" path="brand.brand_Name" itemValue="brand_Name">
+<form:select id="id_contact" class="form-control" name="id_contact" path="brand.brandName" itemValue="brandName">
 <form:option value="Choose Brand"></form:option>
-<form:options items="${brandList}" itemLabel="brand_Name" itemValue="brand_Name"/>
+<form:options items="${brandList}" itemLabel="brandName" itemValue="brandName"/>
 </form:select>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group selector1">
 <label>Supplier</label>
-<form:select id="id_contact" class="form-control" name="id_contact" path="supplier.supplier_Name" itemValue="supplier_Name">
+<form:select id="id_contact" class="form-control" name="id_contact" path="supplier.supplierName" itemValue="supplierName">
 <form:option value="Choose Supplier"></form:option>
-<form:options items="${supplierList}" itemLabel="supplier_Name" itemValue="supplier_Name"/>
+<form:options items="${supplierList}" itemLabel="supplierName" itemValue="supplierName"/>
 </form:select>
 </div>
 </div>
@@ -125,12 +125,12 @@ Products Form</h1>
 <input ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
 </div>
 <div class="uploader" id="uniform-fileUpload">
-<form:input path="products_Image" type="file" class="form-control"></form:input>
+<form:input path="productsImage" type="file" class="form-control"></form:input>
 <span class="filename" style="user-select: none;">No file selected</span>
 <span class="action"  style="user-select: none;">Choose...</span>
 </div>
 </div>
-<c:if test="${!empty products.products_Name}">
+<c:if test="${!empty products.productsName}">
 <div class="submit">
 <button type="submit" class="btn btn-default btn-sm">
 <span>
@@ -139,7 +139,7 @@ Edit Products
 </button>
 </div>
 </c:if>
-<c:if test="${empty products.products_Name}">
+<c:if test="${empty products.productsName}">
 <div class="submit">
 <button type="submit" class="btn btn-default btn-sm">
 <span>
@@ -162,8 +162,8 @@ Add Products
 <table class="table table-bordered" id="productsTable">
 <tr>
 <th>
-<input class="btn btn-link" type="button" value="Products ID" ng-click="sortType = 'products_Id'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'products_Id' && !sortReverse"></span>
+<input class="btn btn-link" type="button" value="Products ID" ng-click="sortType = 'productsId'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'productsId' && !sortReverse"></span>
 </th>
 <th>
 <input class="btn btn-link"  type="button" value="Category ID" ng-click="sortType = 'category.category_Id'; sortReverse = !sortReverse"/>
@@ -182,24 +182,24 @@ Add Products
 <span ng-show="sortType == 'brand_Id' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link"  type="button" value="Products Name" ng-click="sortType = 'products_Name'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'products_Name' && !sortReverse"></span>
+<input class="btn btn-link"  type="button" value="Products Name" ng-click="sortType = 'productsName'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'productsName' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link"  type="button" value="Products Description" ng-click="sortType = 'products_Description'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'products_Description' && !sortReverse"></span>
+<input class="btn btn-link"  type="button" value="Products Description" ng-click="sortType = 'productsDescription'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'productsDescription' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link"  type="button" value="Quantity" ng-click="sortType = 'products_Quantity'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'products_Quantity' && !sortReverse"></span>
+<input class="btn btn-link"  type="button" value="Quantity" ng-click="sortType = 'productsQuantity'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'productsQuantity' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link"  type="button" value="Price" ng-click="sortType = 'products_Price'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'products_Price' && !sortReverse"></span>
+<input class="btn btn-link"  type="button" value="Price" ng-click="sortType = 'productsPrice'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'productsPrice' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link"  type="button" value="Discount" ng-click="sortType = 'products_Discount'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'products_Discount' && !sortReverse"></span>
+<input class="btn btn-link"  type="button" value="Discount" ng-click="sortType = 'productsDiscount'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'productsDiscount' && !sortReverse"></span>
 </th>
 <th>
 <input class="btn btn-link" type="button" value="Edit Products"/>
@@ -212,19 +212,19 @@ Add Products
 </th> -->
 </tr>
 <tr ng-repeat="plist in productsJsonList | filter:test | orderBy:sortType:sortReverse">
-<td style="text-align: center;">{{plist.products_Id}}</td>
-<td style="text-align: center;">{{plist.category_Id}}</td>
-<td style="text-align: center;">{{plist.subcategory_Id}}</td>
-<td style="text-align: center;">{{plist.supplier_Id}}</td>
-<td style="text-align: center;">{{plist.brand_Id}}</td>
-<td style="text-align: center;">{{plist.products_Name}}</td>
-<td style="text-align: center;">{{plist.products_Description}}</td>
-<td style="text-align: center;">{{plist.products_Quantity}}</td>
-<td style="text-align: center;">{{plist.products_Price}}</td>
-<td style="text-align: center;">{{plist.products_Discount}}</td>
-<td style="text-align: center;"><a href="editProducts-{{plist.products_Id}}" class="btn btn-link">Edit</a></td>
-<td style="text-align: center;"><a href="deleteProducts-{{plist.products_Id}}" class="btn btn-link">Delete</a></td>
-<%-- <td><a href="addProductSpecification-${plist.products_Id}">Add</a></td> --%>
+<td style="text-align: center;">{{plist.productsId}}</td>
+<td style="text-align: center;">{{plist.categoryId}}</td>
+<td style="text-align: center;">{{plist.subcategoryId}}</td>
+<td style="text-align: center;">{{plist.supplierId}}</td>
+<td style="text-align: center;">{{plist.brandId}}</td>
+<td style="text-align: center;">{{plist.productsName}}</td>
+<td style="text-align: center;">{{plist.productsDescription}}</td>
+<td style="text-align: center;">{{plist.productsQuantity}}</td>
+<td style="text-align: center;">{{plist.productsPrice}}</td>
+<td style="text-align: center;">{{plist.productsDiscount}}</td>
+<td style="text-align: center;"><a href="editProducts-{{plist.productsId}}" class="btn btn-link">Edit</a></td>
+<td style="text-align: center;"><a href="deleteProducts-{{plist.productsId}}" class="btn btn-link">Delete</a></td>
+<%-- <td><a href="addProductSpecification-${plist.productsId}">Add</a></td> --%>
 </tr>
 </table>
 </div>

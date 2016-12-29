@@ -11,13 +11,13 @@ function toggle()
 {
 	if(document.getElementById("buttonToggle").value == "Show List")
 	{
-// 		document.getElementById("brandTable").style.display = "block";
+		document.getElementById("brandTable").style.display = "block";
 		document.getElementById("brandTable").style.visibility = "visible";
 		document.getElementById("buttonToggle").value = "Hide List";
 	}
 	else
 	{
-// 		document.getElementById("brandTable").style.display = "none";
+		document.getElementById("brandTable").style.display = "none";
 		document.getElementById("brandTable").style.visibility = "hidden";
 		document.getElementById("buttonToggle").value = "Show List";
 	}
@@ -26,7 +26,7 @@ function toggle()
 <style>
 #brandTable
 {
-	visibility:hidden;
+	display:none;
 	max-width:600px;
 }
 </style>
@@ -46,21 +46,21 @@ Brand Form</h1>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="id">ID</label>
-<form:input path="brand_Id" readonly="true" class="form-control" type="text" name="from" value=""/>
+<form:input path="brandId" readonly="true" class="form-control" type="text" name="from" value=""/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="email">Name</label>
-<form:input path="brand_Name" class="form-control" type="text" value=""/>
-<form:errors path="brand_Name"/>
+<form:input path="brandName" class="form-control" type="text" value=""/>
+<form:errors path="brandName"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label>Description</label>
-<form:input path="brand_Description" class="form-control"/>
-<form:errors path="brand_Description"/>
+<form:input path="brandDescription" class="form-control"/>
+<form:errors path="brandDescription"/>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
@@ -68,7 +68,7 @@ Brand Form</h1>
 <input ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
 </div>
 </div>
-<c:if test="${!empty brand.brand_Name}">
+<c:if test="${!empty brand.brandName}">
 <div class="submit">
 <button type="submit" class="btn btn-default btn-sm">
 <span>
@@ -77,7 +77,7 @@ Edit Brand
 </button>
 </div>
 </c:if>
-<c:if test="${empty brand.brand_Name}">
+<c:if test="${empty brand.brandName}">
 <button type="submit" class="btn btn-default btn-sm">
 <span>
 Add Brand
@@ -98,15 +98,15 @@ Add Brand
 <table class="table table-bordered" id="brandTable">
 <tr>
 <th>
-<input class="btn btn-link" type="button" value="Brand  ID" ng-click="sortType = 'brand_Id'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'brand_Id' && !sortReverse"></span>
+<input class="btn btn-link" type="button" value="Brand  ID" ng-click="sortType = 'brandId'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'brandId' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link" type="button" value="Brand Name" ng-click="sortType = 'brand_Name'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'brand_Name' && !sortReverse"></span></th>
+<input class="btn btn-link" type="button" value="Brand Name" ng-click="sortType = 'brandName'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'brandName' && !sortReverse"></span></th>
 <th>
-<input class="btn btn-link" type="button" value="Brand Description" ng-click="sortType = 'brand_Description'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'brand_Description' && !sortReverse"></span></th>
+<input class="btn btn-link" type="button" value="Brand Description" ng-click="sortType = 'brandDescription'; sortReverse = !sortReverse"/>
+<span ng-show="sortType == 'brandDescription' && !sortReverse"></span></th>
 <th>
 <input class="btn btn-link" type="button" value="Edit Brand"/>
 </th>
@@ -115,11 +115,11 @@ Add Brand
 </th>
 </tr>
 <tr ng-repeat="blist in brandJsonList | filter:test | orderBy:sortType:sortReverse">
-<td style="text-align: center;">{{blist.brand_Id}}</td>
-<td style="text-align: center;">{{blist.brand_Name}}</td>
-<td style="text-align: center;">{{blist.brand_Description}}</td>
-<td style="text-align: center;"><a href="editBrand-{{blist.brand_Id}}">Edit</a></td>
-<td style="text-align: center;"><a href="deleteBrand-{{blist.brand_Id}}">Delete</a></td>
+<td style="text-align: center;">{{blist.brandId}}</td>
+<td style="text-align: center;">{{blist.brandName}}</td>
+<td style="text-align: center;">{{blist.brandDescription}}</td>
+<td style="text-align: center;"><a href="editBrand-{{blist.brandId}}">Edit</a></td>
+<td style="text-align: center;"><a href="deleteBrand-{{blist.brandId}}">Delete</a></td>
 </tr>
 </table>
 </div>

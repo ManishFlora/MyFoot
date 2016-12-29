@@ -41,7 +41,7 @@ public class SupplierDAOImplementation implements SupplierDAO
 	public void deleteSupplier(int supplier_Id) 
 	{
 		Supplier supplierDelete = new Supplier();
-		supplierDelete.setSupplier_Id(supplier_Id);
+		supplierDelete.setSupplierId(supplier_Id);
 		sessionFactory.getCurrentSession().delete(supplierDelete);
 	}
 

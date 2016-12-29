@@ -16,46 +16,38 @@ public class SubCategory
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int subcategory_Id;
-	private String subcategory_Description;
-	private String subcategory_Name;
+	private int subCategoryId;
+	private String subCategoryDescription;
+	private String subCategoryName;
 	
 	@ManyToOne
-	@JoinColumn(name="category_Id", nullable=false, updatable=false,insertable=false)
+	@JoinColumn(name="categoryId", nullable=false, updatable=false,insertable=false)
 	private Category category;
 
-	private int category_Id;
-	
-	public int getSubcategory_Id() {
-		return subcategory_Id;
+	private int categoryId;
+
+	public int getSubCategoryId() {
+		return subCategoryId;
 	}
 
-	public void setSubcategory_Id(int subcategory_Id) {
-		this.subcategory_Id = subcategory_Id;
+	public void setSubCategoryId(int subcategoryId) {
+		this.subCategoryId = subcategoryId;
 	}
 
-	public int getCategory_Id() {
-		return category_Id;
+	public String getSubCategoryDescription() {
+		return subCategoryDescription;
 	}
 
-	public void setCategory_Id(int category_Id) {
-		this.category_Id = category_Id;
+	public void setSubCategoryDescription(String subcategoryDescription) {
+		this.subCategoryDescription = subcategoryDescription;
 	}
 
-	public String getSubcategory_Description() {
-		return subcategory_Description;
+	public String getSubCategoryName() {
+		return subCategoryName;
 	}
 
-	public void setSubcategory_Description(String subcategory_Description) {
-		this.subcategory_Description = subcategory_Description;
-	}
-
-	public String getSubcategory_Name() {
-		return subcategory_Name;
-	}
-
-	public void setSubcategory_Name(String subcategory_Name) {
-		this.subcategory_Name = subcategory_Name;
+	public void setSubCategoryName(String subcategoryName) {
+		this.subCategoryName = subcategoryName;
 	}
 
 	public Category getCategory() {
@@ -65,5 +57,13 @@ public class SubCategory
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+		
 }
