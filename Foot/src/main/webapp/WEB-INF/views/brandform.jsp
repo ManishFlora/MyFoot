@@ -1,35 +1,4 @@
 <%@include file="header.jsp" %>
-<script>
-var brand = angular.module("brand",[]);
-brand.controller("brandController",function($scope)
-		{
-	$scope.brandJsonList = ${brandJsonList};
-		});
-</script>
-<script>
-function toggle()
-{
-	if(document.getElementById("buttonToggle").value == "Show List")
-	{
-		document.getElementById("brandTable").style.display = "block";
-		document.getElementById("brandTable").style.visibility = "visible";
-		document.getElementById("buttonToggle").value = "Hide List";
-	}
-	else
-	{
-		document.getElementById("brandTable").style.display = "none";
-		document.getElementById("brandTable").style.visibility = "hidden";
-		document.getElementById("buttonToggle").value = "Show List";
-	}
-}
-</script>
-<style>
-#brandTable
-{
-	display:none;
-	max-width:600px;
-}
-</style>
 <div  ng-app="brand" ng-controller="brandController">
 <div id="columns" class="container">
 <div class="row">
@@ -53,19 +22,15 @@ Brand Form</h1>
 <p class="form-group">
 <label for="email">Name</label>
 <form:input path="brandName" class="form-control" type="text" value=""/>
-<form:errors path="brandName"/>
+<form:errors cssStyle="color: red;" path="brandName"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label>Description</label>
 <form:input path="brandDescription" class="form-control"/>
-<form:errors path="brandDescription"/>
+<form:errors cssStyle="color: red;" path="brandDescription"/>
 </div>
-</div>
-<div class="col-xs-12 col-md-3">
-<label>Search</label>
-<input ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
 </div>
 </div>
 <c:if test="${!empty brand.brandName}">
@@ -93,36 +58,73 @@ Add Brand
 </div>
 </div>
 </div>
-<div align="center">
-<div class="table-responsive">
-<table class="table table-bordered" id="brandTable">
+<div hidden="true" id="brandToggle">
+<div id="columns" class="container">
+<h1 class="page-heading bottom-indent">
+Brand Table</h1>
+<div class="row">
+<div class="row" align="right">
+<div class="col-xs-12 col-md-3">
+<input id="searchTable" ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
+</div>
+</div>
+<div class="row" id="brandTable" align="center">
+<div class="table-responsive" style="max-width: 550px; padding-top: 2%;">
+<table class="table table-bordered">
 <tr>
 <th>
-<input class="btn btn-link" type="button" value="Brand  ID" ng-click="sortType = 'brandId'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="Brand  ID" ng-click="sortType = 'brandId'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'brandId' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link" type="button" value="Brand Name" ng-click="sortType = 'brandName'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="Brand Name" ng-click="sortType = 'brandName'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'brandName' && !sortReverse"></span></th>
 <th>
-<input class="btn btn-link" type="button" value="Brand Description" ng-click="sortType = 'brandDescription'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="Brand Description" ng-click="sortType = 'brandDescription'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'brandDescription' && !sortReverse"></span></th>
 <th>
-<input class="btn btn-link" type="button" value="Edit Brand"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="Edit"/>
 </th>
 <th>
-<input class="btn btn-link" type="button" value="Delete Brand"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="Delete"/>
 </th>
 </tr>
 <tr ng-repeat="blist in brandJsonList | filter:test | orderBy:sortType:sortReverse">
 <td style="text-align: center;">{{blist.brandId}}</td>
 <td style="text-align: center;">{{blist.brandName}}</td>
 <td style="text-align: center;">{{blist.brandDescription}}</td>
-<td style="text-align: center;"><a href="editBrand-{{blist.brandId}}">Edit</a></td>
-<td style="text-align: center;"><a href="deleteBrand-{{blist.brandId}}">Delete</a></td>
+<td style="text-align: center;"><a href="editBrand-{{blist.brandId}}"class="fa fa-pencil"> Edit</a></td>
+<td style="text-align: center;"><a href="deleteBrand-{{blist.brandId}}"class="fa fa-trash-o"> Delete</a></td>
 </tr>
 </table>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<script>
+var brand = angular.module("brand",[]);
+brand.controller("brandController",function($scope)
+		{
+	$scope.brandJsonList = ${brandJsonList};
+		});
+</script>
+<script>
+function toggle()
+{
+	if(document.getElementById("buttonToggle").value == "Show List")
+	{
+		document.getElementById("brandToggle").style.display = "block";
+		document.getElementById("brandToggle").style.visibility = "visible";
+		document.getElementById("buttonToggle").value = "Hide List";
+	}
+	else
+	{
+		document.getElementById("brandToggle").style.display = "none";
+		document.getElementById("brandToggle").style.visibility = "hidden";
+		document.getElementById("buttonToggle").value = "Show List";
+	}
+}
+</script>
 <%@include file="footer.jsp" %>

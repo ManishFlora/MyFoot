@@ -1,6 +1,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE HTML>
 <html lang="en-us">
 <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
@@ -9,7 +10,6 @@
 <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=1.0"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <script type="text/javascript">
-<![CDATA[
 try
 {
 	if (!window.CloudFlare) 
@@ -21,10 +21,11 @@ try
 catch(e)
 {
 };
-]]>
 </script>
+<link rel="stylesheet" type="text/css" media="all" href="resources/fonts/material-design.ttf">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,700italic,700,400italic,300&amp;subset=latin,greek-ext,greek,vietnamese,cyrillic-ext,latin-ext,cyrillic" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/customfileinput.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/global.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/contact-form.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/highdpi.css" type="text/css" media="all"/>
@@ -33,7 +34,6 @@ catch(e)
 <link rel="stylesheet" href="resources/css/responsive-tables.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/slick.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/animate.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/css/uniform.default.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.fancybox.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/product_list.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blockcart.css" type="text/css" media="all"/>
@@ -90,7 +90,7 @@ catch(e)
 <script src="resources/js/10-bootstrap.min.js"></script>
 <script src="resources/js/14-device.min.js"></script>
 <script src="resources/js/15-jquery.total-storage.min.js"></script>
-<script src="resources/js/15-jquery.uniform-modified.js"></script>
+<script src="resources/js/custom-file-input.js"></script>
 <script src="resources/js/16-jquery.scrollmagic.min.js"></script>
 <script src="resources/js/17-jquery.scrollmagic.debug.js"></script>
 <script src="resources/js/18-TimelineMax.min.js"></script>
@@ -134,13 +134,11 @@ var FancyboxI18nPrev = 'Previous';
 var added_to_wishlist = 'The product was successfully added to your wishlist.';
 var ajax_allowed = true;
 var ajaxsearch = true;
-var baseDir = 'index.html';
-var baseUri = 'index-2.html';
 var blocking_popup = '1';
 var comparator_max_item = 2;
 var comparedProductsIds = [];
 var contentOnly = false;
-var currency = {"id":1,"name":"Dollar","iso_code":"USD","iso_code_num":"840","sign":"$","blank":"0","conversion_rate":"1.000000","deleted":"0","format":"1","decimals":"1","active":"1","prefix":"$ ","suffix":"","id_shop_list":null,"force_id":false};
+var currency = {"id":1,"name":"Rupees","iso_code":"INR","iso_code_num":"840","sign":"&#x20b9;","blank":"0","conversion_rate":"1.000000","deleted":"0","format":"1","decimals":"1","active":"1","prefix":"&#x20b9; ","suffix":"","id_shop_list":null,"force_id":false};
 var currencyBlank = 0;
 var currencyFormat = 1;
 var currencyRate = 1;
@@ -289,12 +287,12 @@ var wishlistProductsIds = false;
 
 <body id="index" class="index hide-left-column hide-right-column lang_en  one-column">
 <div id="page">
-<!-- <div id="page_preloader" class="loader"> -->
-<!-- <div class="preloader_img"> -->
-<!-- <img class="logo img-responsive" src="" width="200" height="40"/> -->
-<!-- <div class="img_end"></div> -->
-<!-- </div> -->
-<!-- </div> -->
+<div id="page_preloader" class="loader">
+<div class="preloader_img">
+<img class="logo img-responsive" src="" width="200" height="40"/>
+<div class="img_end"></div>
+</div>
+</div>
 <div class="header-container">
 <header id="header">
 <div class="nav clearfix">
@@ -320,10 +318,10 @@ var wishlistProductsIds = false;
 <div id="create_header_account_error" class="alert alert-danger" style="display:none;"></div>
 <div class="form_content clearfix">
 <div class="form-group">
-<input class="form-control" name="username" type="text" value=""/>
+<input class="form-control" placeholder="Username" name="username" type="text" value=""/>
 </div>
 <div class="form-group">
-<span><input class="form-control" type="password" name="password" value=""/></span>
+<span><input class="form-control" type="password" placeholder="Password" name="password" value=""/></span>
 </div>
 <p class="submit">
 <input type="submit" class="btn btn-default" value="Sign in">
@@ -346,7 +344,7 @@ var wishlistProductsIds = false;
 <div class="block-setting"></div>
 </div>
 <div id="header-login">
-<div class="current_toogle header_user_info"><a href="#" onclick="return false;">${pageContext.request.userPrincipal.name}</a></div>
+<div class="current_toogle header_user_info"><a href="#" onclick="return false;"><span class="fa fa-user"></span>  ${pageContext.request.userPrincipal.name}</a></div>
 <ul id="header-login-content" class="toogle_content_box">
 <li>
 <div class="icon-close material-design-close47"></div>
@@ -401,16 +399,21 @@ var wishlistProductsIds = false;
 <input type="hidden" name="id_currency" id="id_currency" value=""/>
 <input type="hidden" name="SubmitCurrency" value=""/>
 <span class="cur-label">Currency :</span>
-<strong>USD</strong>
+<strong>INR</strong>
 </div>
 <ul id="first-currencies" class="currencies_ul">
 <li class="selected">
-<a href="javascript:setCurrency(1);" rel="nofollow" title="Dollar (USD)">
+<a href="#" rel="nofollow" title="Rupees (INR)">
+&#x20b9;
+</a>
+</li>
+<li>
+<a href="#" rel="nofollow" title="Dollar (USD)">
 $
 </a>
 </li>
 <li>
-<a href="javascript:setCurrency(2);" rel="nofollow" title="Euro (EUR)">
+<a href="#" rel="nofollow" title="Euro (EUR)">
 &euro;
 </a>
 </li>
@@ -668,79 +671,88 @@ Proceed to checkout
 </div>
 </div>
 </li>
-<li class=" simple top-level-menu-li tmmegamenu_item it_58887333">
-<a class="it_58887333 top-level-menu-li-a tmmegamenu_item" href="#">Women</a>
-<ul class="is-simplemenu tmmegamenu_item first-level-menu it_58887333">
-<li class="category">
-<a href="#">Running</a>
-<ul>
-<li class="category">
-<a href="#">Neutral Cushioning</a>
-</li>
-<li class="category">
-<a href="#">Stability and Motion Control</a>
-</li>
-<li class="category">
-<a href="#">Trail Running</a>
-</li>
-<li class="category">
-<a href="#">Spikes and Competition</a>
-</li>
-<li class="category">
-<a href="#">Minimal</a>
-</li>
-<li class="category">
-<a href="#">Fitness Walking</a>
-</li>
-</ul>
-</li>
-<li class="category">
-<a href="#">Cycling</a>
-<ul>
-<li class="category">
-<a href="#">Road Shoes </a>
-</li>
-<li class="category">
-<a href="#">Mountain Shoes </a>
-</li>
-<li class="category">
-<a href="#">Indoor Cycling Shoes </a>
-</li>
-<li class="category">
-<a href="#">Offroad Shoes </a>
-</li>
-<li class="category">
-<a href="#">Pedal Cleats </a>
-</li>
-<li class="category">
-<a href="#">Tri Shoes </a>
-</li>
-</ul>
-</li>
-<li class="category">
-<a href="#">Basketball</a>
-<ul>
-<li class="category">
-<a href="#">Size 7</a>
-</li>
-<li class="category">
-<a href="#">Size 8</a>
-</li>
-<li class="category">
-<a href="#" title="Size 9">Size 9</a>
-</li>
-<li class="category">
-<a href="#">Size 9.5</a>
-</li>
-<li class="category">
-<a href="#">Size 10</a>
-</li>
-<li class="category">
-<a href="#">Size 11</a>
-</li>
+<li class=" top-level-menu-li tmmegamenu_item it_83622113">
+<a class="it_83622113 top-level-menu-li-a tmmegamenu_item" href="#">Women</a>
+<div class="is-megamenu tmmegamenu_item first-level-menu it_83622113">
+<div id="megamenu-row-1-1" class="megamenu-row row megamenu-row-1">
+<div id="column-1-1-1" class="megamenu-col megamenu-col-1-1 col-sm-3  menulist1 col_custom1">
+<ul class="content">
+<li class="html">
+<h3>list-menu</h3>
+<ul class="list-menu">
+<li><a href="#">NEW RELEASES</a></li>
+<li><a href="#">LAUNCH CALENDAR</a></li>
+<li><a href="#">SUMMER ESSENTIALS</a></li>
+<li><a href="#">NATIONAL FOOTBALL TEAMS</a></li>
+<li><a href="#">SALE</a></li>
 </ul>
 </li>
 </ul>
+</div>
+<div id="column-1-1-2" class="megamenu-col megamenu-col-1-2 col-sm-3  menulist2 col_custom2">
+<ul class="content">
+<li class="link-title custom-link">
+<a href="#">Categories</a>
+</li><li class="category">
+<a href="#" title="Gym Trainers">Gym Trainers</a>
+</li>
+<li class="category">
+<a href="#" title="Trail Walking">Trail Walking</a>
+</li>
+<li class="category">
+<a href="#" title="Men's Cross Training Shoes">Men's Cross Training Shoes</a>
+</li>
+<li class="category">
+<a href="#" title="Trail Running">Trail Running</a>
+</li>
+<li class="category">
+<a href="#" title="Fitness Walking">Fitness Walking</a>
+</li>
+<li class="category">
+<a href="#" title="Minimal">Minimal</a>
+</li>
+</ul>
+</div>
+<div id="column-1-1-3" class="megamenu-col megamenu-col-1-3 col-sm-3  menulist3 col_custom3">
+<ul class="content">
+<li class="link-title2 custom-link">
+<a href="#">Shop By Brand</a>
+</li><li class="supplier">
+<a href="#">Asics</a>
+</li>
+<li class="supplier">
+<a href="#">Brooks</a>
+</li>
+<li class="supplier">
+<a href="#">Adidas</a>
+</li>
+<li class="supplier">
+<a href="#">New Balance</a>
+</li>
+<li class="supplier">
+<a href="#">Nike</a>
+</li>
+<li class="supplier">
+<a href="#">Puma</a>
+</li>
+<li class="supplier">
+<a href="#">Reebok</a>
+</li>
+</ul></div><div id="column-1-1-4" class="megamenu-col megamenu-col-1-4 col-sm-3  colbanner col_custom4"><ul class="content">
+<a href="#">
+<li class="megamenu_banner">
+<img class="img-responsive" src="resources/images/18b2b9c689be30f26d15a310b1b3832fa3a9393e_banner-menu.jpg" alt="menu-banner"/>
+<div class="description">
+<h3>Semi-annual</h3>
+<h4>Sale</h4>
+<h5>over 1,000 styles added</h5>
+</div>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </li>
 <li class=" top-level-menu-li tmmegamenu_item it_21620313">
 <a class="it_21620313 top-level-menu-li-a tmmegamenu_item" href="#">Boys</a>
@@ -751,6 +763,8 @@ Proceed to checkout
 <li class=" top-level-menu-li tmmegamenu_item it_40327756">
 <a class="it_40327756 top-level-menu-li-a tmmegamenu_item" href="#">Sale</a>
 </li>
+<c:if test="${!empty pageContext.request.userPrincipal}">
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 <li class=" simple top-level-menu-li tmmegamenu_item it_58887333">
 <a class="it_58887333 top-level-menu-li-a tmmegamenu_item" href="#">Forms</a>
 <ul class="is-simplemenu tmmegamenu_item first-level-menu it_58887333">
@@ -769,6 +783,8 @@ Proceed to checkout
 <li>
 <a href="productsform">ProductsForm</a>
 </li>
+</sec:authorize>
+</c:if>
 </ul>
 </div>
 </div>

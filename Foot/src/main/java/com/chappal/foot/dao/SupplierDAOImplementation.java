@@ -30,26 +30,26 @@ public class SupplierDAOImplementation implements SupplierDAO
 		return supplierList;
 	}
 
-	public Supplier retriveSupplier(int supplier_Id) 
+	public Supplier retriveSupplier(int supplierId) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Supplier> supplierList = session.createQuery("from Supplier where supplier_Id = " + supplier_Id).getResultList();
+		List<Supplier> supplierList = session.createQuery("from Supplier where supplierId = " + supplierId).getResultList();
 		return supplierList.get(0);
 	}
 
-	public void deleteSupplier(int supplier_Id) 
+	public void deleteSupplier(int supplierId) 
 	{
 		Supplier supplierDelete = new Supplier();
-		supplierDelete.setSupplierId(supplier_Id);
+		supplierDelete.setSupplierId(supplierId);
 		sessionFactory.getCurrentSession().delete(supplierDelete);
 	}
 
-	public Supplier retriveSupplierName(String supplier_Name) 
+	public Supplier retriveSupplierName(String supplierName) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Supplier> supplierList = session.createQuery("from Supplier where supplier_Name = " + "'" + supplier_Name + "'").getResultList();
+		List<Supplier> supplierList = session.createQuery("from Supplier where supplierName = " + "'" + supplierName + "'").getResultList();
 		return supplierList.get(0);
 	}
 	

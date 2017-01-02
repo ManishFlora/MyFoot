@@ -29,19 +29,19 @@ public class CategoryDAOImplementation implements CategoryDAO
 		return categoryList;
 	}
 
-	public Category retriveCategory(int category_Id) 
+	public Category retriveCategory(int categoryId) 
 	{	
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Category> categoryList = session.createQuery("from Category where category_Id = " + category_Id).getResultList();
+		List<Category> categoryList = session.createQuery("from Category where categoryId = " + categoryId).getResultList();
 		return categoryList.get(0);
 	}
 	
-	public Category retriveCategoryName(String category_Name) 
+	public Category retriveCategoryName(String categoryName) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List <Category> categoryList = session.createQuery("from Category where category_Name = " + "'" + category_Name + "'").getResultList();
+		List <Category> categoryList = session.createQuery("from Category where categoryName = " + "'" + categoryName + "'").getResultList();
 		return categoryList.get(0);
 	}
 	

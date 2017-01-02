@@ -25,19 +25,19 @@ public class SubCategoryServices
 		return subCategoryDAOImplementation.retriveSubCategory();
 	}
 
-	public SubCategory retriveSubCategory(int subCategory_Id) 
+	public SubCategory retriveSubCategory(int subCategoryId) 
 	{
-		return subCategoryDAOImplementation.retriveSubCategory(subCategory_Id);
+		return subCategoryDAOImplementation.retriveSubCategory(subCategoryId);
 	}
 
-	public void deleteSubCategory(int subCategory_Id) 
+	public void deleteSubCategory(int subCategoryId) 
 	{
-		subCategoryDAOImplementation.deleteSubCategory(subCategory_Id);
+		subCategoryDAOImplementation.deleteSubCategory(subCategoryId);
 	}
 	
-	public SubCategory retriveSubCategoryName(String subCategory_Name)
+	public SubCategory retriveSubCategoryName(String subCategoryName)
 	{
-		return subCategoryDAOImplementation.retriveSubCategoryName(subCategory_Name);
+		return subCategoryDAOImplementation.retriveSubCategoryName(subCategoryName);
 	}
 	
 	public String retriveJsonSubCategory()

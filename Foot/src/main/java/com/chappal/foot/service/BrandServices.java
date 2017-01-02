@@ -24,17 +24,17 @@ public class BrandServices
 	{
 		return brandDAOImplementation.retriveBrand();
 	}
-	public Brand retriveBrand(int brand_Id)
+	public Brand retriveBrand(int brandId)
 	{
-		return brandDAOImplementation.retriveBrand(brand_Id);
+		return brandDAOImplementation.retriveBrand(brandId);
 	}
-	public void deleteBrand(int brand_Id) 
+	public void deleteBrand(int brandId) 
 	{
-		brandDAOImplementation.deleteBrand(brand_Id);
+		brandDAOImplementation.deleteBrand(brandId);
 	}
-	public Brand retriveBrandName(String brand_Name)
+	public Brand retriveBrandName(String brandName)
 	{
-		return brandDAOImplementation.retriveBrandName(brand_Name);
+		return brandDAOImplementation.retriveBrandName(brandName);
 	}
 	
 	public String retriveJsonBrand() 

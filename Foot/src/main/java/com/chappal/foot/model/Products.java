@@ -15,6 +15,8 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class Products 
 {
@@ -25,17 +27,19 @@ public class Products
 	private int subcategoryId;
 	private int supplierId;
 	private int brandId;
+	@NotEmpty(message="Field is Required")
+	@Expose
 	private String productsDescription;
+	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
+	@Expose
 	private String productsName;
-	private String productsQuantity;
-	
-	@NotEmpty(message="Name Cannot be Null")
-	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
-	private String productsPrice;
-	
-	@NotEmpty(message="Name Cannot be Null")
-	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
-	private String productsDiscount;
+	@NotEmpty(message="Field is Required")
+	@Expose
+	private int productsQuantity;
+	@Expose
+	private int productsPrice;
+	@Expose
+	private double productsDiscount;
 	
 	@Transient
 	private MultipartFile productsImage;
@@ -112,27 +116,27 @@ public class Products
 		this.productsName = productsName;
 	}
 
-	public String getProductsQuantity() {
+	public int getProductsQuantity() {
 		return productsQuantity;
 	}
 
-	public void setProductsQuantity(String productsQuantity) {
+	public void setProductsQuantity(int productsQuantity) {
 		this.productsQuantity = productsQuantity;
 	}
 
-	public String getProductsPrice() {
+	public int getProductsPrice() {
 		return productsPrice;
 	}
 
-	public void setProductsPrice(String productsPrice) {
+	public void setProductsPrice(int productsPrice) {
 		this.productsPrice = productsPrice;
 	}
 
-	public String getProductsDiscount() {
+	public double getProductsDiscount() {
 		return productsDiscount;
 	}
 
-	public void setProductsDiscount(String productsDiscount) {
+	public void setProductsDiscount(double productsDiscount) {
 		this.productsDiscount = productsDiscount;
 	}
 
@@ -175,6 +179,5 @@ public class Products
 	public void setBrand(Brand brand) {
 		this.brand = brand;
 	}
-	
 	
 }

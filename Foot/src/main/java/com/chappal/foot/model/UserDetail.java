@@ -12,16 +12,30 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class UserDetail 
 {
 	@Id
 	private int userId;
+	@NotEmpty(message="Field is Required")
+	@Expose
 	private String userName;
+	@Pattern(regexp="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$", message="Invalid Password Pattern")
+	@Expose
 	private String userPassword;
+	@Pattern(regexp="[a-zA-Z]+", message="Invalid Name Format")
+	@Expose
 	private String firstName;
+	@NotEmpty(message="Field is Required")
+	@Expose
 	private String lastName;
+	@Pattern(regexp=".+@.+\\..+", message="Invalid EmailID")
+	@Expose
 	private String emailId;
+	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
+	@Expose
 	private String contactNumber;
 	private int cartId;
 

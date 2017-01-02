@@ -24,17 +24,17 @@ public class CategoryServices
 	{
 		return categoryDAOImplementation.retriveCategory();
 	}
-	public Category retriveCategory(int category_Id)
+	public Category retriveCategory(int categoryId)
 	{
-		return categoryDAOImplementation.retriveCategory(category_Id);
+		return categoryDAOImplementation.retriveCategory(categoryId);
 	}
-	public void deleteCategory(int category_Id) 
+	public void deleteCategory(int categoryId) 
 	{
-		categoryDAOImplementation.deleteCategory(category_Id);
+		categoryDAOImplementation.deleteCategory(categoryId);
 	}
-	public Category retriveCategoryName(String category_Name)
+	public Category retriveCategoryName(String categoryName)
 	{
-		return categoryDAOImplementation.retriveCategoryName(category_Name);
+		return categoryDAOImplementation.retriveCategoryName(categoryName);
 	}
 	public String retriveJsonCategory()
 	{

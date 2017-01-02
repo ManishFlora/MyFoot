@@ -28,18 +28,18 @@ public class ProductsDAOImplementation implements ProductsDAO
 		return productsList;
 	}
 
-	public Products retriveProducts(int products_Id) 
+	public Products retriveProducts(int productsId) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Products> productsList = session.createQuery("from Products where products_Id = " + products_Id).getResultList();
+		List<Products> productsList = session.createQuery("from Products where productsId = " + productsId).getResultList();
 		return productsList.get(0);
 	}
 
-	public void deleteProducts(int products_Id) 
+	public void deleteProducts(int productsId) 
 	{
 		Products productDelete = new Products();
-		productDelete.setProductsId(products_Id);
+		productDelete.setProductsId(productsId);
 		sessionFactory.getCurrentSession().delete(productDelete);
 	}
 

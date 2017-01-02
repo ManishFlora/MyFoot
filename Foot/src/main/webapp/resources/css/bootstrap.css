@@ -3040,7 +3040,7 @@ fieldset[disabled] .btn {
           box-shadow: none;
   opacity: .65;
 }
-.btn-default {
+.btn-default {	
   color: #333;
   background-color: #fff;
   border-color: #ccc;

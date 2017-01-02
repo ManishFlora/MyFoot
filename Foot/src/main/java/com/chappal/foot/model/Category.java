@@ -9,14 +9,21 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class Category 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int categoryId;
+	@NotEmpty(message="Field is Required")
+	@Expose
 	private String categoryDescription;
+	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
+	@Expose
 	private String categoryName;
+	
 	public int getCategoryId() {
 		return categoryId;
 	}

@@ -26,9 +26,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 	protected void configure(HttpSecurity httpSecurity) throws Exception
 	{
 		httpSecurity.authorizeRequests()
-		//.antMatchers("/").access("hasRole('USER_ROLE')")
+		.antMatchers("/categoryform","/subcategoryform","/brandform","/productsform","/supplierform").access("hasRole('ROLE_ADMIN')")
 		.anyRequest().permitAll()
 		.and()
-		.formLogin().loginPage("/").failureUrl("/?error").usernameParameter("username").passwordParameter("password").loginProcessingUrl("/perform_login").defaultSuccessUrl("/").and().csrf().disable();
+		.formLogin().loginPage("/").failureUrl("/?error").usernameParameter("username").passwordParameter("password").loginProcessingUrl("/perform_login").defaultSuccessUrl("/").and().exceptionHandling().accessDeniedPage("/403").and().csrf().disable();
 	}
 }

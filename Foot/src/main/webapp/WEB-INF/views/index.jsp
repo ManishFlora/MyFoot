@@ -192,7 +192,7 @@ View All Brands
 </a>
 <a class="price-percent" href="#"><span class="price-percent-reduction">-20%</span></a>
 </div>
-<a class="quick-view" href="#" data-href="#">
+<a class="quick-view" href="#">
 <span>Quick view</span>
 </a>
 </div>

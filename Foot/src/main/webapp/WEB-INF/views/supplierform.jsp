@@ -1,35 +1,4 @@
 <%@include file="header.jsp" %>
-<script>
-var supplier = angular.module("supplier",[]);
-supplier.controller("supplierController",function($scope)
-		{
-	$scope.supplierJsonList = ${supplierJsonList};
-		});
-</script>
-<script>
-function toggle()
-{
-	if(document.getElementById("buttonToggle").value == "Show List")
-	{
-		document.getElementById("supplierTable").style.display = "block";
-		document.getElementById("supplierTable").style.visibility = "visible";
-		document.getElementById("buttonToggle").value = "Hide List";
-	}
-	else
-	{
-		document.getElementById("supplierTable").style.display = "none";
-		document.getElementById("supplierTable").style.visibility = "hidden";
-		document.getElementById("buttonToggle").value = "Show List";
-	}
-}
-</script>
-<style>
-#supplierTable
-{
-	display:none;
-	max-width:800px;
-}
-</style>
 <div ng-app="supplier" ng-controller="supplierController">
 <div id="columns" class="container">
 <div class="row">
@@ -53,33 +22,29 @@ Supplier Form</h1>
 <p class="form-group">
 <label for="email">Name</label>
 <form:input path="supplierName" class="form-control" type="text" value=""/>
-<form:errors path="supplierName"/>
+<form:errors path="supplierName" cssStyle="color: red;"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="email">Email ID</label>
 <form:input path="supplierEmailId" class="form-control" type="text" value=""/>
-<form:errors path="supplierEmailId"/>
+<form:errors path="supplierEmailId" cssStyle="color: red;"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label for="email">Phone Number</label>
 <form:input path="supplierPhoneNumber" class="form-control" type="text" value=""/>
-<form:errors path="supplierPhoneNumber"/>
+<form:errors path="supplierPhoneNumber" cssStyle="color: red;"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label for="message">Address</label>
 <form:input path="supplierAddress" class="form-control" id="message" name="message"/>
-<form:errors path="supplierAddress"/>
+<form:errors path="supplierAddress" cssStyle="color: red;"/>
 </div>
-</div>
-<div class="col-xs-12 col-md-3">
-<label>Search</label>
-<input ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
 </div>
 </div>
 <c:if test="${!empty supplier.supplierName}">
@@ -109,31 +74,41 @@ Add Supplier
 </div>
 </div>
 </div>
-<div align="center">
-<div class="table-responsive">
-<table class="table table-bordered" id ="supplierTable"> 
+<div hidden="true" id="supplierToggle">
+<div id="columns" class="container">
+<h1 class="page-heading bottom-indent">
+Supplier Table</h1>
+<div class="row">
+<div class="row" align="right">
+<div class="col-xs-12 col-md-3">
+<input id="searchTable" ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
+</div>
+</div>
+<div class="row" id="supplierTable" align="center">
+<div class="table-responsive" style="max-width: 750px; padding-top: 2%;">
+<table class="table table-bordered"> 
 <tr>
 <th>
-<input class="btn btn-link"  type="button" value="Supplier ID" ng-click="sortType = 'supplierId'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link"  type="button" value="Supplier ID" ng-click="sortType = 'supplierId'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'supplierId' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link" type="button" value="Supplier Name" ng-click="sortType = 'supplierName'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="Supplier Name" ng-click="sortType = 'supplierName'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'supplierName' && !sortReverse"></span></th>
 <th>
-<input class="btn btn-link" type="button" value="Supplier Address" ng-click="sortType = 'supplierAddress'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="Supplier Address" ng-click="sortType = 'supplierAddress'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'supplierAddress' && !sortReverse"></span></th>
 <th>
-<input class="btn btn-link" type="button" value="EmailId" ng-click="sortType = 'supplierEmailId'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="EmailId" ng-click="sortType = 'supplierEmailId'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'supplierEmailId' && !sortReverse"></span></th>
 <th>
-<input class="btn btn-link" type="button" value="PhoneNumber" ng-click="sortType = 'supplierPhoneNumber'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="PhoneNumber" ng-click="sortType = 'supplierPhoneNumber'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'supplierPhoneNumber' && !sortReverse"></span></th>
 <th>
-<input class="btn btn-link" type="button" value="Edit Supplier"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="Edit"/>
 </th>
 <th>
-<input class="btn btn-link" type="button" value="Delete Supplier"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="Delete"/>
 </th>
 </tr>
 <tr ng-repeat="slist in supplierJsonList | filter:test | orderBy:sortType:sortReverse">
@@ -142,11 +117,38 @@ Add Supplier
 <td style="text-align: center;">{{slist.supplierAddress}}</td>
 <td style="text-align: center;">{{slist.supplierEmailId}}</td>
 <td style="text-align: center;">{{slist.supplierPhoneNumber}}</td>
-<td style="text-align: center;"><a href="editSupplier-{{slist.supplierId}}" class="btn btn-link">Edit</a></td>
-<td style="text-align: center;"><a href="deleteSupplier-{{slist.supplierId}}" class="btn btn-link">Delete</a></td>
+<td style="text-align: center;"><a href="editSupplier-{{slist.supplierId}}" class="fa fa-pencil"> Edit</a></td>
+<td style="text-align: center;"><a href="deleteSupplier-{{slist.supplierId}}" class="fa fa-trash-o"> Delete</a></td>
 </tr>
 </table>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<script>
+var supplier = angular.module("supplier",[]);
+supplier.controller("supplierController",function($scope)
+		{
+	$scope.supplierJsonList = ${supplierJsonList};
+		});
+</script>
+<script>
+function toggle()
+{
+	if(document.getElementById("buttonToggle").value == "Show List")
+	{
+		document.getElementById("supplierToggle").style.display = "block";
+		document.getElementById("supplierToggle").style.visibility = "visible";
+		document.getElementById("buttonToggle").value = "Hide List";
+	}
+	else
+	{
+		document.getElementById("supplierToggle").style.display = "none";
+		document.getElementById("supplierToggle").style.visibility = "hidden";
+		document.getElementById("buttonToggle").value = "Show List";
+	}
+}
+</script>
 <%@include file="footer.jsp" %>

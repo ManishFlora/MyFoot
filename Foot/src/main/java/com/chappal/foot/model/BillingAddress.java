@@ -10,16 +10,28 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class BillingAddress 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int billingAddressId;
+	@NotEmpty(message="Field is Required")
+	@Expose
 	private String flatNumber;
+	@NotEmpty(message="Field is Required")
+	@Expose
 	private String streetAddress;
+	@NotEmpty(message="Field is Required")
+	@Expose
 	private String city;
+	@NotEmpty(message="Field is Required")
+	@Expose
 	private String state;
+	@NotEmpty(message="Field is Required")
+	@Expose
 	private String country;
 	private String zipCode;
 	

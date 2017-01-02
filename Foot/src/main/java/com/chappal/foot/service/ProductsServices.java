@@ -24,13 +24,13 @@ public class ProductsServices
 	{
 		return productsDAOImplementation.retriveProducts();
 	}
-	public Products retriveProducts(int products_Id)
+	public Products retriveProducts(int productsId)
 	{
-		return productsDAOImplementation.retriveProducts(products_Id);
+		return productsDAOImplementation.retriveProducts(productsId);
 	}
-	public void deleteProducts(int products_Id)
+	public void deleteProducts(int productsId)
 	{
-		productsDAOImplementation.deleteProducts(products_Id);
+		productsDAOImplementation.deleteProducts(productsId);
 	}
 	
 	public String retriveJsonProducts() 

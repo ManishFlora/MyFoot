@@ -1,35 +1,4 @@
 <%@include file="header.jsp" %>
-<script>
-var products = angular.module("products",[]);
-products.controller("productsController",function($scope)
-		{
-	$scope.productsJsonList = ${productsJsonList};
-		});
-</script>
-<script>
-function toggle()
-{
-	if(document.getElementById("buttonToggle").value == "Show List")
-	{
-		document.getElementById("productsTable").style.display = "block";
-		document.getElementById("productsTable").style.visibility = "visible";
-		document.getElementById("buttonToggle").value = "Hide List";
-	}
-	else
-	{
-		document.getElementById("productsTable").style.display = "none";
-		document.getElementById("productsTable").style.visibility = "hidden";
-		document.getElementById("buttonToggle").value = "Show List";
-	}
-}
-</script>
-<style>
-#productsTable
-{
-	display:none;
-	max-width:1315px;
-}
-</style>
 <div ng-app="products" ng-controller="productsController">
 <div id="columns" class="container">
 <div class="row">
@@ -53,35 +22,35 @@ Products Form</h1>
 <p class="form-group">
 <label>Name</label>
 <form:input path="productsName" class="form-control" type="text" value=""/>
-<form:errors path="productsName"/>
+<form:errors cssStyle="color: red;" path="productsName"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Quantity</label>
 <form:input path="productsQuantity" class="form-control" type="text" value=""/>
-<form:errors path="productsQuantity"/>
+<form:errors cssStyle="color: red;" path="productsQuantity"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Price</label>
 <form:input path="productsPrice" class="form-control" type="text" value=""/>
-<form:errors path="productsPrice"/>
+<form:errors path="productsPrice" cssStyle="color: red;"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>Discount</label>
 <form:input path="productsDiscount" class="form-control" type="text" value=""/>
-<form:errors path="productsDiscount"/>
+<form:errors path="productsDiscount" cssStyle="color: red;"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label>Description</label>
 <form:input path="productsDescription" class="form-control" id="message" name="message"/>
-<form:errors path="productsDescription"/>
+<form:errors path="productsDescription" cssStyle="color: red;"/>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
@@ -121,13 +90,10 @@ Products Form</h1>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
-<label>Search</label>
-<input ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
-</div>
-<div class="uploader" id="uniform-fileUpload">
+<p class="form-group">
+<label>Photo</label>
 <form:input path="productsImage" type="file" class="form-control"></form:input>
-<span class="filename" style="user-select: none;">No file selected</span>
-<span class="action"  style="user-select: none;">Choose...</span>
+</p>
 </div>
 </div>
 <c:if test="${!empty products.productsName}">
@@ -157,55 +123,53 @@ Add Products
 </div>
 </div>
 </div>
-<div align="center">
-<div class="table-responsive">
-<table class="table table-bordered" id="productsTable">
+<div hidden="true" id="productsToggle">
+<div id="columns" class="container">
+<h1 class="page-heading bottom-indent">
+Products Table</h1>
+<div class="row">
+<div class="row" align="right">
+<div class="col-xs-12 col-md-3">
+<input id="searchTable" ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
+</div>
+</div>
+<div class="row" id="productsTable" align="center">
+<div class="table-responsive" style="max-width: 1100px; padding-top: 2%;">
+<table class="table table-bordered">
 <tr>
 <th>
-<input class="btn btn-link" type="button" value="Products ID" ng-click="sortType = 'productsId'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="Products ID" ng-click="sortType = 'productsId'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'productsId' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link"  type="button" value="Category ID" ng-click="sortType = 'category.category_Id'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'category_Id' && !sortReverse"></span>
-</th>
-<th>
-<input class="btn btn-link"  type="button" value="SubCategory ID" ng-click="sortType = 'subcategory.subcategory_Id'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link"  type="button" value="SubCategory ID" ng-click="sortType = 'subcategory.subcategory_Id'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'subcategory_Id' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link"  type="button" value="Supplier ID" ng-click="sortType = 'supplier.supplier_Id'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'supplier_Id' && !sortReverse"></span>
-</th>
-<th>
-<input class="btn btn-link"  type="button" value="Brand ID" ng-click="sortType = 'brand.brand_Id'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'brand_Id' && !sortReverse"></span>
-</th>
-<th>
-<input class="btn btn-link"  type="button" value="Products Name" ng-click="sortType = 'productsName'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link"  type="button" value="Products Name" ng-click="sortType = 'productsName'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'productsName' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link"  type="button" value="Products Description" ng-click="sortType = 'productsDescription'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link"  type="button" value="Products Description" ng-click="sortType = 'productsDescription'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'productsDescription' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link"  type="button" value="Quantity" ng-click="sortType = 'productsQuantity'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link"  type="button" value="Quantity" ng-click="sortType = 'productsQuantity'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'productsQuantity' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link"  type="button" value="Price" ng-click="sortType = 'productsPrice'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link"  type="button" value="Price" ng-click="sortType = 'productsPrice'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'productsPrice' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link"  type="button" value="Discount" ng-click="sortType = 'productsDiscount'; sortReverse = !sortReverse"/>
+<input style="text-align: center;" class="btn btn-link"  type="button" value="Discount" ng-click="sortType = 'productsDiscount'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'productsDiscount' && !sortReverse"></span>
 </th>
 <th>
-<input class="btn btn-link" type="button" value="Edit Products"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="Edit"/>
 </th>
 <th>
-<input class="btn btn-link" type="button" value="Delete Products"/>
+<input style="text-align: center;" class="btn btn-link" type="button" value="Delete"/>
 </th>
 <!-- <th>
 <input class="btn btn-link" type="button" value="Add Specification"/>
@@ -213,21 +177,45 @@ Add Products
 </tr>
 <tr ng-repeat="plist in productsJsonList | filter:test | orderBy:sortType:sortReverse">
 <td style="text-align: center;">{{plist.productsId}}</td>
-<td style="text-align: center;">{{plist.categoryId}}</td>
 <td style="text-align: center;">{{plist.subcategoryId}}</td>
-<td style="text-align: center;">{{plist.supplierId}}</td>
-<td style="text-align: center;">{{plist.brandId}}</td>
 <td style="text-align: center;">{{plist.productsName}}</td>
 <td style="text-align: center;">{{plist.productsDescription}}</td>
 <td style="text-align: center;">{{plist.productsQuantity}}</td>
 <td style="text-align: center;">{{plist.productsPrice}}</td>
 <td style="text-align: center;">{{plist.productsDiscount}}</td>
-<td style="text-align: center;"><a href="editProducts-{{plist.productsId}}" class="btn btn-link">Edit</a></td>
-<td style="text-align: center;"><a href="deleteProducts-{{plist.productsId}}" class="btn btn-link">Delete</a></td>
+<td style="text-align: center;"><a href="editProducts-{{plist.productsId}}" class="fa fa-pencil"> Edit</a></td>
+<td style="text-align: center;"><a href="deleteProducts-{{plist.productsId}}" class="fa fa-trash-o"> Delete</a></td>
 <%-- <td><a href="addProductSpecification-${plist.productsId}">Add</a></td> --%>
 </tr>
 </table>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<script>
+var products = angular.module("products",[]);
+products.controller("productsController",function($scope)
+		{
+	$scope.productsJsonList = ${productsJsonList};
+		});
+</script>
+<script>
+function toggle()
+{
+	if(document.getElementById("buttonToggle").value == "Show List")
+	{
+		document.getElementById("productsToggle").style.display = "block";
+		document.getElementById("productsToggle").style.visibility = "visible";
+		document.getElementById("buttonToggle").value = "Hide List";
+	}
+	else
+	{
+		document.getElementById("productsToggle").style.display = "none";
+		document.getElementById("productsToggle").style.visibility = "hidden";
+		document.getElementById("buttonToggle").value = "Show List";
+	}
+}
+</script>
 <%@include file="footer.jsp"%>

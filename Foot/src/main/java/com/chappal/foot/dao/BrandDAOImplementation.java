@@ -30,26 +30,26 @@ public class BrandDAOImplementation implements BrandDAO
 		return brandList;
 	}
 
-	public Brand retriveBrand(int brand_Id) 
+	public Brand retriveBrand(int brandId) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Brand> brandList = session.createQuery("from Brand where brand_Id = " + brand_Id).getResultList();
+		List<Brand> brandList = session.createQuery("from Brand where brandId = " + brandId).getResultList();
 		return brandList.get(0);
 	}
 
-	public void deleteBrand(int brand_Id) 
+	public void deleteBrand(int brandId) 
 	{
 		Brand brandDelete = new Brand();
-		brandDelete.setBrandId(brand_Id);
+		brandDelete.setBrandId(brandId);
 		sessionFactory.getCurrentSession().delete(brandDelete);
 	}
 
-	public Brand retriveBrandName(String brand_Name) 
+	public Brand retriveBrandName(String brandName) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List <Brand> brandList = session.createQuery("from Brand where brand_Name = " + "'" + brand_Name + "'").getResultList();
+		List <Brand> brandList = session.createQuery("from Brand where brandName = " + "'" + brandName + "'").getResultList();
 		return brandList.get(0);
 	}
 	

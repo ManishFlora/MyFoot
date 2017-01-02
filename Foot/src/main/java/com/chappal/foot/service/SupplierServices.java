@@ -25,19 +25,19 @@ public class SupplierServices
 		return supplierDAOImplementation.retriveSupplier();
 	}
 
-	public Supplier retriveSupplier(int supplier_Id) 
+	public Supplier retriveSupplier(int supplierId) 
 	{
-		return supplierDAOImplementation.retriveSupplier(supplier_Id);
+		return supplierDAOImplementation.retriveSupplier(supplierId);
 	}
 
-	public void deleteSupplier(int supplier_Id) 
+	public void deleteSupplier(int supplierId) 
 	{
-		supplierDAOImplementation.deleteSupplier(supplier_Id);
+		supplierDAOImplementation.deleteSupplier(supplierId);
 	}
 	
-	public Supplier retriveSupplierName(String supplier_Name)
+	public Supplier retriveSupplierName(String supplierName)
 	{
-		return supplierDAOImplementation.retriveSupplierName(supplier_Name);
+		return supplierDAOImplementation.retriveSupplierName(supplierName);
 	}
 	public String retriveJsonSupplier()
 	{

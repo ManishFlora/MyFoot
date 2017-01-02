@@ -9,16 +9,27 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class Supplier 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int supplierId;
+	@NotEmpty(message="Field is Required")
+	@Expose
 	private String supplierAddress;
+	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
+	@Expose
 	private String supplierName;
+	@Pattern(regexp=".+@.+\\..+", message="Invalid EmailID")
+	@Expose
 	private String supplierEmailId;
+	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
+	@Expose
 	private String supplierPhoneNumber;
+	
 	public int getSupplierId() {
 		return supplierId;
 	}

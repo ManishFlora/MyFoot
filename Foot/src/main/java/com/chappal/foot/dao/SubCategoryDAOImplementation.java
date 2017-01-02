@@ -30,26 +30,26 @@ public class SubCategoryDAOImplementation implements SubCategoryDAO
 		return subCategoryList;
 	}
 
-	public SubCategory retriveSubCategory(int subCategory_Id) 
+	public SubCategory retriveSubCategory(int subCategoryId) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<SubCategory> subCategoryList = session.createQuery("from SubCategory where subcategory_Id = " + subCategory_Id).getResultList();
+		List<SubCategory> subCategoryList = session.createQuery("from SubCategory where subcategoryId = " + subCategoryId).getResultList();
 		return subCategoryList.get(0);
 	}
 	
-	public void deleteSubCategory(int subCategory_Id) 
+	public void deleteSubCategory(int subCategoryId) 
 	{
 		SubCategory subCategoryDelete = new SubCategory();
-		subCategoryDelete.setSubCategoryId(subCategory_Id);
+		subCategoryDelete.setSubCategoryId(subCategoryId);
 		sessionFactory.getCurrentSession().delete(subCategoryDelete);
 	}
 
-	public SubCategory retriveSubCategoryName(String subCategory_Name) 
+	public SubCategory retriveSubCategoryName(String subCategoryName) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<SubCategory> subCategoryList = session.createQuery("from SubCategory where subcategory_Name = "+ "'" + subCategory_Name + "'").getResultList();
+		List<SubCategory> subCategoryList = session.createQuery("from SubCategory where subcategoryName = "+ "'" + subCategoryName + "'").getResultList();
 		return subCategoryList.get(0);
 	}
 	
