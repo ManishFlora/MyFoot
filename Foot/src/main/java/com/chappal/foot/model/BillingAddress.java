@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -21,7 +22,7 @@ public class BillingAddress
 	@NotEmpty(message="Field is Required")
 	@Expose
 	private String flatNumber;
-	@NotEmpty(message="Field is Required")
+	@Size(min = 15,message="Minimum 15 Characters Required")
 	@Expose
 	private String streetAddress;
 	@NotEmpty(message="Field is Required")
@@ -33,6 +34,8 @@ public class BillingAddress
 	@NotEmpty(message="Field is Required")
 	@Expose
 	private String country;
+	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
+	@Expose
 	private String zipCode;
 	
 	@OneToOne

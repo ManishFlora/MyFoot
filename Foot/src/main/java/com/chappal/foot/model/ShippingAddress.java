@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -20,7 +21,7 @@ public class ShippingAddress
 	@NotEmpty(message="Field is Required")
 	@Expose
 	private String flatNumber;
-	@NotEmpty(message="Field is Required")
+	@Size(min = 15,message="Minimum 15 Characters Required")
 	@Expose
 	private String streetAddress;
 	@NotEmpty(message="Field is Required")
@@ -32,7 +33,7 @@ public class ShippingAddress
 	@NotEmpty(message="Field is Required")
 	@Expose
 	private String country;
-	@NotEmpty(message="Field is Required")
+	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
 	@Expose
 	private String zipCode;
 	

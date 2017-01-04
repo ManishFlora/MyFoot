@@ -37,20 +37,24 @@ public class UserDetail
 	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
 	@Expose
 	private String contactNumber;
+	@Expose
 	private int cartId;
 
 	@OneToOne
 	@JoinColumn(name="userId", nullable=false, insertable=false,updatable=false)
 	private User user;
 
+	@Expose
 	@OneToOne
 	@JoinColumn(name="cartId", nullable=false, insertable=false,updatable=false)
 	private Cart cart;
 	
+	@Expose
 	@OneToOne
 	@JoinColumn(name="billingAddressId")
 	private BillingAddress billingAddress;
 	
+	@Expose
 	@OneToOne
 	@JoinColumn(name="shippingAddressId")
 	private ShippingAddress shippingAddress;

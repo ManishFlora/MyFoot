@@ -1,15 +1,18 @@
 package com.chappal.foot.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Min;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotEmpty;
 
 import com.google.gson.annotations.Expose;
 
@@ -19,19 +22,19 @@ public class SubCategory
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int subCategoryId;
-	@NotEmpty(message="Field is Required")
+	@Size(min = 15,message="Minimum 15 Characters Required")
 	@Expose
 	private String subCategoryDescription;
-	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
+	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9_ ]+", message="Invalid Name Format")
 	@Expose
 	private String subCategoryName;
 	
 	@ManyToOne
 	@JoinColumn(name="categoryId", nullable=false, updatable=false,insertable=false)
 	private Category category;
-
+	
 	private int categoryId;
-
+	
 	public int getSubCategoryId() {
 		return subCategoryId;
 	}

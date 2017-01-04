@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.chappal.foot.model.Category;
 import com.chappal.foot.model.SubCategory;
+import com.chappal.foot.service.BrandServices;
 import com.chappal.foot.service.CategoryServices;
 import com.chappal.foot.service.SubCategoryServices;
 
@@ -19,9 +20,11 @@ import com.chappal.foot.service.SubCategoryServices;
 public class SubCategoryController 
 {
 	@Autowired
-	CategoryServices categoryServices;
+	private CategoryServices categoryServices;
 	@Autowired
 	SubCategoryServices subCategoryServices;
+	@Autowired
+	BrandServices brandServices;
 	
 	@RequestMapping("/subcategoryform")
 	public String subCategory(Model model)
@@ -30,6 +33,7 @@ public class SubCategoryController
 		model.addAttribute("category", new Category());
 		model.addAttribute("subCategoryJsonList", subCategoryServices.retriveJsonSubCategory());
 		model.addAttribute("categoryList", categoryServices.retriveCategory());
+		model.addAttribute("brandList", brandServices.retriveBrand());
 		return "/subcategoryform";
 	}
 	
@@ -52,18 +56,18 @@ public class SubCategoryController
 		}
 	}
 	
-	@RequestMapping("/editSubCategory-{subcategoryId}")
-	public String retriveCategory(@PathVariable("subcategoryId") int subcategoryId, Model model)
+	@RequestMapping("/editSubCategory-{subCategoryId}")
+	public String retriveCategory(@PathVariable("subCategoryId") int subCategoryId, Model model)
 	{
 		model.addAttribute("categoryList", categoryServices.retriveCategory());
-		model.addAttribute("subCategory", subCategoryServices.retriveSubCategory(subcategoryId));
+		model.addAttribute("subCategory", subCategoryServices.retriveSubCategory(subCategoryId));
 		return "/subcategoryform";
 	}
 	
-	@RequestMapping("/deleteSubCategory-{subcategoryId}")
-	public String deleteCategory(@PathVariable("subcategoryId") int subcategoryId)
+	@RequestMapping("/deleteSubCategory-{subCategoryId}")
+	public String deleteCategory(@PathVariable("subCategoryId") int subCategoryId)
 	{
-		subCategoryServices.deleteSubCategory(subcategoryId);
+		subCategoryServices.deleteSubCategory(subCategoryId);
 		return "redirect:/subcategoryform";
 	}
 }

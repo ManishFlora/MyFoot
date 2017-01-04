@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.chappal.foot.model.Supplier;
+import com.chappal.foot.service.BrandServices;
 import com.chappal.foot.service.SupplierServices;
 
 @Controller
@@ -18,12 +19,15 @@ public class SupplierController
 {
 	@Autowired
 	SupplierServices supplierServices;
+	@Autowired
+	BrandServices brandServices;
 	
 	@RequestMapping("/supplierform")
 	public String supplier(Model model)
 	{
 		model.addAttribute("supplier", new Supplier());
 		model.addAttribute("supplierJsonList", supplierServices.retriveJsonSupplier());
+		model.addAttribute("brandList", brandServices.retriveBrand());
 		return "/supplierform";
 	}
 	

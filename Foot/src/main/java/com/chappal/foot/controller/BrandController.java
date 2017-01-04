@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.chappal.foot.model.Brand;
+import com.chappal.foot.model.Category;
 import com.chappal.foot.service.BrandServices;
+import com.chappal.foot.service.CategoryServices;
 
 @Controller
 public class BrandController 
@@ -19,11 +21,17 @@ public class BrandController
 	@Autowired
 	BrandServices brandServices;
 	
+	@Autowired
+	private CategoryServices categoryServices;
+	
 	@RequestMapping("/brandform")
 	public String brand(Model model)
 	{
 		model.addAttribute("brand", new Brand());
+		model.addAttribute("category", new Category());
 		model.addAttribute("brandJsonList", brandServices.retriveJsonBrand());
+		model.addAttribute("brandList", brandServices.retriveBrand());
+		model.addAttribute("categoryList", categoryServices.retriveCategory());
 		return "/brandform";
 	}
 	

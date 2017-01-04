@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.chappal.foot.daointerface.BrandDAO;
 import com.chappal.foot.model.Brand;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Repository
 public class BrandDAOImplementation implements BrandDAO
@@ -58,7 +59,7 @@ public class BrandDAOImplementation implements BrandDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Brand> brandList = session.createQuery("from Brand").getResultList();
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String json = gson.toJson(brandList);
 		return json;
 	}

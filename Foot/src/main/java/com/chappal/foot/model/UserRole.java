@@ -7,14 +7,17 @@ import javax.persistence.OneToOne;
 
 import com.chappal.foot.model.Role;
 import com.chappal.foot.model.User;
+import com.google.gson.annotations.Expose;
 
 @Entity
 public class UserRole 
 {
 	@Id
 	private int userId;
+	@Expose
 	private int roleId;
 	
+	@Expose
 	@OneToOne
 	@JoinColumn(name="userId",nullable=false,insertable=false,updatable=false)
 	private User user;

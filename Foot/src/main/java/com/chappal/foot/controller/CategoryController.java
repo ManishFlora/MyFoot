@@ -11,20 +11,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.chappal.foot.model.Category;
+import com.chappal.foot.service.BrandServices;
 import com.chappal.foot.service.CategoryServices;
 
 @Controller
 public class CategoryController 
 {
 	@Autowired
-	CategoryServices categoryServices;
+	private CategoryServices categoryServices;
+	@Autowired
+	private BrandServices brandServices;
 	
 	@RequestMapping("/categoryform")
 	public String category(Model model)
 	{
 		model.addAttribute("category", new Category());
-//		model.addAttribute("categoryList", categoryServices.retriveCategory());
+		model.addAttribute("categoryList", categoryServices.retriveCategory());
 		model.addAttribute("categoryJsonList", categoryServices.retriveJsonCategory());
+		model.addAttribute("brandList", brandServices.retriveBrand());
 		return "/categoryform";
 	}
 	
@@ -33,7 +37,7 @@ public class CategoryController
 	{
 		if(result.hasErrors())
 		{
-			model.addAttribute("categoryJsonList", categoryServices.retriveJsonCategory());
+			model.addAttribute("categoryJsonList", this.categoryServices.retriveJsonCategory());
 			return "/categoryform";
 		}
 		else
@@ -46,7 +50,7 @@ public class CategoryController
 	@RequestMapping("/editCategory-{categoryId}")
 	public String retriveCategory(@PathVariable("categoryId") int categoryId, Model model)
 	{
-		model.addAttribute("category", categoryServices.retriveCategory(categoryId));
+		model.addAttribute("category", this.categoryServices.retriveCategory(categoryId));
 		return "/categoryform";
 	}
 	

@@ -30,6 +30,9 @@ catch(e)
 <link rel="stylesheet" href="resources/css/contact-form.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/highdpi.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.bxslider.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/addresses.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/blocklayered.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/authentication.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.mCustomScrollbar.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/responsive-tables.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/slick.css" type="text/css" media="all"/>
@@ -37,6 +40,7 @@ catch(e)
 <link rel="stylesheet" href="resources/css/jquery.fancybox.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/product_list.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blockcart.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/scenes.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.bxslider1.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blockcategories.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blockcurrencies.css" type="text/css" media="all"/>
@@ -44,22 +48,23 @@ catch(e)
 <link rel="stylesheet" href="resources/css/blockcontact.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blocknewsletter.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blocktags.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/category.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blockviewed.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/homeslider.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/homefeatured.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/hooks.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/print.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/productcomments.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blockpermanentlinks.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/smartblogstyle.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/smartbloglatestnews.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/smartblogtags.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/front.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/css/front1.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/tmnewsletter.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/css/front3.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/tmsearch.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blockwishlist.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/tmmegamenu.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/cms.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/tmmediaparallax.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/hooks1.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/tmmanufacturerblock.css" type="text/css" media="all"/>
@@ -69,17 +74,20 @@ catch(e)
 <link rel="stylesheet" href="resources/css/themeconfiglink.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/tmolarkchat.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/video-js.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/csstmproductvideos.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/tmproductvideos.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.autocomplete.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/rd-parallax.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/video-js1.css" type="text/css" media="all"/>
-
+<link rel="stylesheet" href="resources/css/product.css" type="text/css" media="all"/>
+<link re="stylesheet" href="resources/css/contact-form.css" type="text/css" media="all"/
+>
 <script src="resources/js/angular.min.js"></script>
 <script src="resources/js/contact-form.js"></script>
 <script src="resources/js/jquery-1.11.0.min.js"></script>
 <script src="resources/js/jquery-migrate-1.2.1.min.js"></script>
 <script src="resources/js/jquery.easing.js"></script>
 <script src="resources/js/tools.js"></script>
+<script src="resources/js/cms.js"></script>
 <script src="resources/js/jquery.scrollTo.js"></script>
 <script src="resources/js/jquery.serialScroll.js"></script>
 <script src="resources/js/jquery.bxslider.js"></script>
@@ -287,12 +295,12 @@ var wishlistProductsIds = false;
 
 <body id="index" class="index hide-left-column hide-right-column lang_en  one-column">
 <div id="page">
-<div id="page_preloader" class="loader">
-<div class="preloader_img">
-<img class="logo img-responsive" src="" width="200" height="40"/>
-<div class="img_end"></div>
-</div>
-</div>
+<!-- <div id="page_preloader" class="loader"> -->
+<!-- <div class="preloader_img"> -->
+<!-- <img class="logo img-responsive" src="" width="200" height="40"/> -->
+<!-- <div class="img_end"></div> -->
+<!-- </div> -->
+<!-- </div> -->
 <div class="header-container">
 <header id="header">
 <div class="nav clearfix">
@@ -428,8 +436,8 @@ $
 <li id="header_link_contact">
 <a href="#" title="contact">contact</a>
 </li>
-<li id="header_link_sitemap">
-<a href="#" title="sitemap">sitemap</a>
+<li>
+<a href="#" title="sitemap">about us</a>
 </li>
 <li id="header_link_blog">
 <a href="#" title="blog">blog</a>
@@ -588,8 +596,10 @@ Proceed to checkout
 <div class="menu-title menu-title-icon material-design-show5"></div>
 <div class="tmmegamenu_title">Menu<span class="menu-close material-design-clear5 "></span></div>
 <ul class="menu clearfix top-level-menu tmmegamenu_item">
+<c:forEach items = "${categoryList}" var="category">
 <li class=" top-level-menu-li tmmegamenu_item it_83622113">
-<a class="it_83622113 top-level-menu-li-a tmmegamenu_item" href="#">Men</a>
+<a class="it_83622113 top-level-menu-li-a tmmegamenu_item" href="#">${category.categoryName}</a>
+<span class="item-angle"></span>
 <div class="is-megamenu tmmegamenu_item first-level-menu it_83622113">
 <div id="megamenu-row-1-1" class="megamenu-row row megamenu-row-1">
 <div id="column-1-1-1" class="megamenu-col megamenu-col-1-1 col-sm-3  menulist1 col_custom1">
@@ -600,7 +610,7 @@ Proceed to checkout
 <li><a href="#">NEW RELEASES</a></li>
 <li><a href="#">LAUNCH CALENDAR</a></li>
 <li><a href="#">SUMMER ESSENTIALS</a></li>
-<li><a href="#">NATIONAL FOOTBALL TEAMS</a></li>
+<li><a href="#">NATIONAL SPORTS TEAMS</a></li>
 <li><a href="#">SALE</a></li>
 </ul>
 </li>
@@ -610,52 +620,28 @@ Proceed to checkout
 <ul class="content">
 <li class="link-title custom-link">
 <a href="#">Categories</a>
-</li><li class="category">
-<a href="#" title="Gym Trainers">Gym Trainers</a>
 </li>
+<c:forEach items = "${category.subCategory}" var="subCategory">
 <li class="category">
-<a href="#" title="Trail Walking">Trail Walking</a>
+<a href="#">${subCategory.subCategoryName}</a>
 </li>
-<li class="category">
-<a href="#" title="Men's Cross Training Shoes">Men's Cross Training Shoes</a>
-</li>
-<li class="category">
-<a href="#" title="Trail Running">Trail Running</a>
-</li>
-<li class="category">
-<a href="#" title="Fitness Walking">Fitness Walking</a>
-</li>
-<li class="category">
-<a href="#" title="Minimal">Minimal</a>
-</li>
+</c:forEach>
 </ul>
 </div>
 <div id="column-1-1-3" class="megamenu-col megamenu-col-1-3 col-sm-3  menulist3 col_custom3">
 <ul class="content">
 <li class="link-title2 custom-link">
 <a href="#">Shop By Brand</a>
-</li><li class="supplier">
-<a href="#">Asics</a>
 </li>
-<li class="supplier">
-<a href="#">Brooks</a>
+<c:forEach items = "${brandList}" var="brand">
+<li>
+<a href="#">${brand.brandName}</a>
 </li>
-<li class="supplier">
-<a href="#">Adidas</a>
-</li>
-<li class="supplier">
-<a href="#">New Balance</a>
-</li>
-<li class="supplier">
-<a href="#">Nike</a>
-</li>
-<li class="supplier">
-<a href="#">Puma</a>
-</li>
-<li class="supplier">
-<a href="#">Reebok</a>
-</li>
-</ul></div><div id="column-1-1-4" class="megamenu-col megamenu-col-1-4 col-sm-3  colbanner col_custom4"><ul class="content">
+</c:forEach>
+</ul>
+</div>
+<div id="column-1-1-4" class="megamenu-col megamenu-col-1-4 col-sm-3  colbanner col_custom4">
+<ul class="content">
 <a href="#">
 <li class="megamenu_banner">
 <img class="img-responsive" src="resources/images/18b2b9c689be30f26d15a310b1b3832fa3a9393e_banner-menu.jpg" alt="menu-banner"/>
@@ -664,102 +650,13 @@ Proceed to checkout
 <h4>Sale</h4>
 <h5>over 1,000 styles added</h5>
 </div>
+</li>
 </a>
-</li>
 </ul>
 </div>
 </div>
 </div>
-</li>
-<li class=" top-level-menu-li tmmegamenu_item it_83622113">
-<a class="it_83622113 top-level-menu-li-a tmmegamenu_item" href="#">Women</a>
-<div class="is-megamenu tmmegamenu_item first-level-menu it_83622113">
-<div id="megamenu-row-1-1" class="megamenu-row row megamenu-row-1">
-<div id="column-1-1-1" class="megamenu-col megamenu-col-1-1 col-sm-3  menulist1 col_custom1">
-<ul class="content">
-<li class="html">
-<h3>list-menu</h3>
-<ul class="list-menu">
-<li><a href="#">NEW RELEASES</a></li>
-<li><a href="#">LAUNCH CALENDAR</a></li>
-<li><a href="#">SUMMER ESSENTIALS</a></li>
-<li><a href="#">NATIONAL FOOTBALL TEAMS</a></li>
-<li><a href="#">SALE</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div id="column-1-1-2" class="megamenu-col megamenu-col-1-2 col-sm-3  menulist2 col_custom2">
-<ul class="content">
-<li class="link-title custom-link">
-<a href="#">Categories</a>
-</li><li class="category">
-<a href="#" title="Gym Trainers">Gym Trainers</a>
-</li>
-<li class="category">
-<a href="#" title="Trail Walking">Trail Walking</a>
-</li>
-<li class="category">
-<a href="#" title="Men's Cross Training Shoes">Men's Cross Training Shoes</a>
-</li>
-<li class="category">
-<a href="#" title="Trail Running">Trail Running</a>
-</li>
-<li class="category">
-<a href="#" title="Fitness Walking">Fitness Walking</a>
-</li>
-<li class="category">
-<a href="#" title="Minimal">Minimal</a>
-</li>
-</ul>
-</div>
-<div id="column-1-1-3" class="megamenu-col megamenu-col-1-3 col-sm-3  menulist3 col_custom3">
-<ul class="content">
-<li class="link-title2 custom-link">
-<a href="#">Shop By Brand</a>
-</li><li class="supplier">
-<a href="#">Asics</a>
-</li>
-<li class="supplier">
-<a href="#">Brooks</a>
-</li>
-<li class="supplier">
-<a href="#">Adidas</a>
-</li>
-<li class="supplier">
-<a href="#">New Balance</a>
-</li>
-<li class="supplier">
-<a href="#">Nike</a>
-</li>
-<li class="supplier">
-<a href="#">Puma</a>
-</li>
-<li class="supplier">
-<a href="#">Reebok</a>
-</li>
-</ul></div><div id="column-1-1-4" class="megamenu-col megamenu-col-1-4 col-sm-3  colbanner col_custom4"><ul class="content">
-<a href="#">
-<li class="megamenu_banner">
-<img class="img-responsive" src="resources/images/18b2b9c689be30f26d15a310b1b3832fa3a9393e_banner-menu.jpg" alt="menu-banner"/>
-<div class="description">
-<h3>Semi-annual</h3>
-<h4>Sale</h4>
-<h5>over 1,000 styles added</h5>
-</div>
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-<li class=" top-level-menu-li tmmegamenu_item it_21620313">
-<a class="it_21620313 top-level-menu-li-a tmmegamenu_item" href="#">Boys</a>
-</li>
-<li class=" top-level-menu-li tmmegamenu_item it_30522548">
-<a class="it_30522548 top-level-menu-li-a tmmegamenu_item" href="#">Girls</a>
-</li>
+</c:forEach>
 <li class=" top-level-menu-li tmmegamenu_item it_40327756">
 <a class="it_40327756 top-level-menu-li-a tmmegamenu_item" href="#">Sale</a>
 </li>
@@ -783,6 +680,7 @@ Proceed to checkout
 <li>
 <a href="productsform">ProductsForm</a>
 </li>
+</ul>
 </sec:authorize>
 </c:if>
 </ul>

@@ -106,11 +106,11 @@ Sub-Category Table</h1>
 </tr>
 <tr ng-repeat="sclist in subCategoryJsonList | filter:test | orderBy:sortType:sortReverse">
 <td style="text-align: center;">{{sclist.categoryId}}</td>
-<td style="text-align: center;">{{sclist.subcategoryId}}</td>
-<td style="text-align: center;">{{sclist.subcategoryName}}</td>
-<td style="text-align: center;">{{sclist.subcategoryDescription}}</td>
-<td style="text-align: center;"><a href="editSubCategory-{{sclist.subcategoryId}}" class="fa fa-pencil"> Edit</a></td>
-<td style="text-align: center;"><a href="deleteSubCategory-{{sclist.subcategoryId}}" class="fa fa-trash-o"> Delete</a></td>
+<td style="text-align: center;">{{sclist.subCategoryId}}</td>
+<td style="text-align: center;">{{sclist.subCategoryName}}</td>
+<td style="text-align: center;">{{sclist.subCategoryDescription}}</td>
+<td style="text-align: center;"><a href="editSubCategory-{{sclist.subCategoryId}}" class="fa fa-pencil"> Edit</a></td>
+<td style="text-align: center;"><a href="deleteSubCategory-{{sclist.subCategoryId}}" class="fa fa-trash-o"> Delete</a></td>
 </tr>
 </table>
 </div>

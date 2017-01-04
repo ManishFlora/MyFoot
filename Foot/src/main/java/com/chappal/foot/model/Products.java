@@ -11,6 +11,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,7 +28,7 @@ public class Products
 	private int subcategoryId;
 	private int supplierId;
 	private int brandId;
-	@NotEmpty(message="Field is Required")
+	@Size(min = 15,message="Minimum 15 Characters Required")
 	@Expose
 	private String productsDescription;
 	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
@@ -41,6 +42,7 @@ public class Products
 	@Expose
 	private double productsDiscount;
 	
+	@Expose
 	@Transient
 	private MultipartFile productsImage;
 	

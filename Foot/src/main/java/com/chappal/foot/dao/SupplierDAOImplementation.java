@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.chappal.foot.daointerface.SupplierDAO;
 import com.chappal.foot.model.Supplier;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Repository
 public class SupplierDAOImplementation implements SupplierDAO
@@ -58,7 +59,7 @@ public class SupplierDAOImplementation implements SupplierDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Supplier> supplierList = session.createQuery("from Supplier").getResultList();
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String jsonList = gson.toJson(supplierList);
 		return jsonList;
 	}

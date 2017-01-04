@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.chappal.foot.daointerface.ProductsDAO;
 import com.chappal.foot.model.Products;
-import com.google.gson.Gson;;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;;
 
 @Repository
 public class ProductsDAOImplementation implements ProductsDAO
@@ -48,7 +49,7 @@ public class ProductsDAOImplementation implements ProductsDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Products> productsList = session.createQuery("from Products").getResultList();
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String json = gson.toJson(productsList);
 		return json;
 	}

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.chappal.foot.daointerface.SubCategoryDAO;
 import com.chappal.foot.model.SubCategory;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Repository
 public class SubCategoryDAOImplementation implements SubCategoryDAO
@@ -58,7 +59,7 @@ public class SubCategoryDAOImplementation implements SubCategoryDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<SubCategory> subCategoryList = session.createQuery("from SubCategory").getResultList();
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String json = gson.toJson(subCategoryList);
 		return json;
 	}

@@ -2349,12 +2349,11 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   font-size: 42px; }
 
 .btn-default {
-	width:auto;
   color: white;
   background: #f54f29;
   font: bold 15px/18px "Roboto Condensed", sans-serif;
   border: none;
-    padding: 27px 32px 28px;
+  padding: 27px 32px 28px;
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
   border-radius: 50px;
@@ -3950,7 +3949,7 @@ header .row-top {
   padding: 0;
   position: relative; }
   .footer-container #footer {
-    background: url(resources/images/img-parallax2.jpg) no-repeat fixed 0 0 #30353c;
+    background: url(../img/img-parallax2.jpg) no-repeat fixed 0 0 #30353c;
     background-size: cover; }
     @media (max-width: 767px) {
       .footer-container #footer {
