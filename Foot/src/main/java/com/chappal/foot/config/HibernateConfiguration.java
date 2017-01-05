@@ -87,4 +87,11 @@ public class HibernateConfiguration extends WebMvcConfigurerAdapter
 //        sessionBuilder.addAnnotatedClass(ProductSpecification.class);
         return sessionBuilder.buildSessionFactory();
     }
+    
+    @Autowired
+    @Bean(name="registartionHandler")
+    public RegistrationHandler registrationHandler()
+    {
+    	return new RegistrationHandler();
+    }
 }

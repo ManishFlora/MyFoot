@@ -16,7 +16,6 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.chappal.foot.controller")
-
 public class AppConfig extends WebMvcConfigurerAdapter
 {
 	@Bean

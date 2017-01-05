@@ -26,13 +26,24 @@ public class FootController
 		return "/index";
 	}
 	@RequestMapping("/403")
-	public String error403()
+	public String error403(Model model)
 	{
+		model.addAttribute("categoryList", categoryServices.retriveCategory());
+		model.addAttribute("brandList", brandServices.retriveBrand());
 		return "/403";
 	}
 	@RequestMapping("/aboutus")
-	public String aboutus()
+	public String aboutus(Model model)
 	{
+		model.addAttribute("categoryList", categoryServices.retriveCategory());
+		model.addAttribute("brandList", brandServices.retriveBrand());
 		return "/aboutus";
+	}
+	@RequestMapping("/contact")
+	public String contact(Model model)
+	{
+		model.addAttribute("categoryList", categoryServices.retriveCategory());
+		model.addAttribute("brandList", brandServices.retriveBrand());
+		return "/contact";
 	}
 }

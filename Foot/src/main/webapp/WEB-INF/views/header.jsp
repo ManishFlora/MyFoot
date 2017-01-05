@@ -79,8 +79,7 @@ catch(e)
 <link rel="stylesheet" href="resources/css/rd-parallax.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/video-js1.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/product.css" type="text/css" media="all"/>
-<link re="stylesheet" href="resources/css/contact-form.css" type="text/css" media="all"/
->
+
 <script src="resources/js/angular.min.js"></script>
 <script src="resources/js/contact-form.js"></script>
 <script src="resources/js/jquery-1.11.0.min.js"></script>
@@ -434,10 +433,10 @@ $
 <ul id="header_links">
 <li id="header_link_home"><a href="/Foot/" class="header_links_home">home</a></li>
 <li id="header_link_contact">
-<a href="#" title="contact">contact</a>
+<a href="/Foot/contact" title="contact">contact</a>
 </li>
 <li>
-<a href="#" title="sitemap">about us</a>
+<a href="/Foot/aboutus" >about us</a>
 </li>
 <li id="header_link_blog">
 <a href="#" title="blog">blog</a>
@@ -599,7 +598,6 @@ Proceed to checkout
 <c:forEach items = "${categoryList}" var="category">
 <li class=" top-level-menu-li tmmegamenu_item it_83622113">
 <a class="it_83622113 top-level-menu-li-a tmmegamenu_item" href="#">${category.categoryName}</a>
-<span class="item-angle"></span>
 <div class="is-megamenu tmmegamenu_item first-level-menu it_83622113">
 <div id="megamenu-row-1-1" class="megamenu-row row megamenu-row-1">
 <div id="column-1-1-1" class="megamenu-col megamenu-col-1-1 col-sm-3  menulist1 col_custom1">

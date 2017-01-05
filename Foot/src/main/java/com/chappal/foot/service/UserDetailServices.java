@@ -18,4 +18,8 @@ public class UserDetailServices
 	{
 		userDetailDAOImplementation.addUserDetail(userDetail);
 	}
+	public int checkUser(String userName)
+	{
+		return userDetailDAOImplementation.checkUser(userName);
+	}
 }

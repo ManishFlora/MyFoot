@@ -14,7 +14,9 @@
 Home
 </a>
 </li>
-<li class="last">About us</li>
+<li class="last">
+About us
+</li>
 </ul>
 </div>
  
@@ -71,7 +73,7 @@ Home
 </div>
 <h1 style="text-align:center;">Testimonials</h1>
 <div class="bx-wrapper" style="max-width: 1200px; margin: 0px auto;"><div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 331px;"><ul id="testimonials" style="width: 615%; position: relative; left: -1170px;"><li class="material-design-ico icon material-design-google125 bx-clone" style="float: left; list-style: none; position: relative; width: 1170px;">
-<p>Having the distressing experience with some online shops before decided to say ‘’THANK YOU” to all personnel of this store. You are not only friendly, but deliver really good products in the shortest possible terms. In a word, I am absolutely happy with my purchase and the service. Everything was perfect!</p>
+<p>Having the distressing experience with some online shops before decided to say "THANK YOU" to all personnel of this store. You are not only friendly, but deliver really good products in the shortest possible terms. In a word, I am absolutely happy with my purchase and the service. Everything was perfect!</p>
 <h3>EDNA BARTON</h3>
 </li><li class="material-design-ico icon material-design-google125" style="float: left; list-style: none; position: relative; width: 1170px;">
 <p>Guys, you rock! Made a purchase at your store recently. The order has been shipped and delivered on time. The quality is superb! The price is quite reasonable. Told all my friends about your excellent service and the variety of choice. I think I’ll be your loyal customer in future as well. I wish your store many more years of prosperity.</p>

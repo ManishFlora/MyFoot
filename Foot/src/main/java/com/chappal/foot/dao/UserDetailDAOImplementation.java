@@ -1,5 +1,7 @@
 package com.chappal.foot.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,4 +55,12 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 		session.flush();
 	}
 
+	public int checkUser(String userName) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<UserDetail> userList = session.createQuery("from UserDetail where userName = '" + userName + "'").getResultList();
+		int count = userList.size();
+		return count;
+	}
 }

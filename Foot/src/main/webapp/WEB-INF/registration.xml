@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+<var name="userDetail" class="com.chappal.foot.model.UserDetail"/>
+
+<on-start>
+<evaluate expression="registartionHandler.initFlow()" result="flowScope.userDetail"/>
+</on-start>
+
+<view-state id="start" view="registrationdetail" model="userDetail">
+<transition on="submit" to="validateUser"/>
+</view-state>
+
+<action-state id="validateUser">
+<evaluate expression="registrationHandler.validateUser(userDetail,messageContext)"/>
+<transition on="success" to="checkUser"/>
+<transition on="failure" to="start"/>
+</action-state>
+
+<action-state id="checkUser">
+<evaluate expression="registrationHandler.checkUser(userDetail,messageContext)"/>
+<transition on="success" to=""/>
+<transition on="failure" to="start"/>
+</action-state>
+
+</flow>
