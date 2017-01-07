@@ -20,8 +20,8 @@ import com.google.gson.annotations.Expose;
 public class SubCategory 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int subCategoryId;
+	@Expose
+	private String subCategoryId;
 	@Size(min = 15,message="Minimum 15 Characters Required")
 	@Expose
 	private String subCategoryDescription;
@@ -33,13 +33,14 @@ public class SubCategory
 	@JoinColumn(name="categoryId", nullable=false, updatable=false,insertable=false)
 	private Category category;
 	
-	private int categoryId;
+	@Expose
+	private String categoryId;
 	
-	public int getSubCategoryId() {
+	public String getSubCategoryId() {
 		return subCategoryId;
 	}
 
-	public void setSubCategoryId(int subcategoryId) {
+	public void setSubCategoryId(String subcategoryId) {
 		this.subCategoryId = subcategoryId;
 	}
 
@@ -67,11 +68,11 @@ public class SubCategory
 		this.category = category;
 	}
 
-	public int getCategoryId() {
+	public String getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
 		

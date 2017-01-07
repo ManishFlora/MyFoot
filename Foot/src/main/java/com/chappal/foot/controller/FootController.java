@@ -17,7 +17,7 @@ public class FootController
 	@Autowired
 	BrandServices brandServices;
 	
-	@RequestMapping("/")
+	@RequestMapping(value={"/","/home"})
 	public String index(Model model)
 	{
 		model.addAttribute("category", new Category());

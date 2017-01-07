@@ -3,7 +3,11 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
 <var name="userDetail" class="com.chappal.foot.model.UserDetail"/>
+<var name="billingAddress" class="com.chappal.foot.model.BillingAddress"/>
+<var name="shippingAddress" class="com.chappal.foot.model.ShippingAddress"/>
+<var name="supplier" class="com.chappal.foot.model.Supplier"/>
 
 <on-start>
 <evaluate expression="registartionHandler.initFlow()" result="flowScope.userDetail"/>
@@ -11,6 +15,7 @@
 
 <view-state id="start" view="registrationdetail" model="userDetail">
 <transition on="submit" to="validateUser"/>
+<transition on="cancel" to="cancel"/>
 </view-state>
 
 <action-state id="validateUser">
@@ -21,8 +26,89 @@
 
 <action-state id="checkUser">
 <evaluate expression="registrationHandler.checkUser(userDetail,messageContext)"/>
-<transition on="success" to=""/>
-<transition on="failure" to="start"/>
+<transition on="success" to="confirmUser"/>
+<transition on="failure" to="validateUser"/>
 </action-state>
+
+<view-state id="confirmUser" view="confirmuser" model="userDetail">
+<transition on="confirm" to="billingAddress"/>
+<transition on="submit" to="supplierAddress"/>
+<transition on="edit" to="start"/>
+<transition on="cancel" to="cancel"/>
+</view-state>
+
+<view-state id="supplierAddress" view="supplierAddress" model="supplier">
+<transition on="submit" to="validateSupplier"/>
+<transition on="cancel" to="cancel"/>
+</view-state>
+
+<action-state id="validateSupplier">
+<evaluate expression="registrationHandler.validateSupplier(supplier,messageContext)"/>
+<transition on="success" to="addSupplier"/>
+<transition on="failure" to="supplierAddress"/>
+</action-state>
+
+<action-state id="addSupplier">
+<evaluate expression="registrationHandler.addSupplierData(supplier)"/>
+<transition to="saveSupplier"/>
+</action-state>
+
+<action-state id="saveSupplier">
+<evaluate expression="registrationHandler.saveSupplier(supplier,userDetail)"/>
+<transition on="success" to="actionSupplier" />
+</action-state>
+
+<action-state id="actionSupplier">
+<evaluate expression="supplierServices.addRegSupplier(userDetail)" result="flowScope.userDetail"></evaluate>
+<transition on="success" to="toHome" />
+</action-state>
+		
+<view-state id="billingAddress" view="billingAddress" model="billingAddress">
+<transition on="submit" to="confirmBillingAddress"/>
+<transition on="cancel" to="cancel"/>
+</view-state>
+
+<view-state id="confirmBillingAddress" view="confirmbillingaddress" model="billingAddress">
+<transition on="submit" to="addBillingAddress"/>
+<transition on="edit" to="billingAddress"/>
+<transition on="cancel" to="cancel"/>
+</view-state>
+
+<action-state id="addBillingAddress">
+<evaluate expression="registrationHandler.addBillingAddress(billingAddress)"/>
+<transition to="shippingAddress"/>
+</action-state>
+
+<view-state id="shippingAddress" view="shippingAddress" model="shippingAddress">
+<transition on="submit" to="confirmShippingAddress"/>
+<transition on="cancel" to="cancel"/>
+</view-state>
+
+<view-state id="confirmShippingAddress" view="confirmshippingaddress" model="shippingAddress">
+<transition on="submit" to="addShippingAddress"/>
+<transition on="edit" to="shippingAddress"/>
+<transition on="cancel" to="cancel"/>
+</view-state>
+
+<action-state id="addShippingAddress">
+<evaluate expression="registrationHandler.addShippingAddress(shippingAddress)"/>
+<transition on="success" to="addUserData"/>
+<transition on="failure" to="shippingAddress"/>
+</action-state>
+
+<action-state id="addUserData">
+<evaluate expression="registrationHandler.addUserData(userDetail,shippingAddress,billingAddress)"/>
+<transition on="success" to="actionUser"/>
+<transition on="failure" to="shippingAddress"/>
+</action-state>
+
+<action-state id="actionUser">
+<evaluate expression="userDetailServices.addUserRegDetail(userDetail)" result="flowScope.userDetail"></evaluate>
+<transition on="success" to="toHome" />
+</action-state>
+
+<end-state id="index" view="index"/>
+<end-state id="toHome" view="externalRedirect:contextRelative:/" />
+<end-state id="cancel" view="externalRedirect:contextRelative:/" />
 
 </flow>

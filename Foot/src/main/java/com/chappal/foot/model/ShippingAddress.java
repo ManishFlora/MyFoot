@@ -1,5 +1,7 @@
 package com.chappal.foot.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,27 +15,26 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.google.gson.annotations.Expose;
 
 @Entity
-public class ShippingAddress 
+public class ShippingAddress implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
+	@Expose
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int shippingAddressId;
-	@NotEmpty(message="Field is Required")
 	@Expose
 	private String flatNumber;
-	@Size(min = 15,message="Minimum 15 Characters Required")
 	@Expose
 	private String streetAddress;
-	@NotEmpty(message="Field is Required")
 	@Expose
 	private String city;
-	@NotEmpty(message="Field is Required")
 	@Expose
 	private String state;
-	@NotEmpty(message="Field is Required")
 	@Expose
 	private String country;
-	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
 	@Expose
 	private String zipCode;
 	

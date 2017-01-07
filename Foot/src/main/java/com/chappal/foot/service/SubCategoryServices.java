@@ -25,12 +25,12 @@ public class SubCategoryServices
 		return subCategoryDAOImplementation.retriveSubCategory();
 	}
 
-	public SubCategory retriveSubCategory(int subCategoryId) 
+	public SubCategory retriveSubCategory(String subCategoryId) 
 	{
 		return subCategoryDAOImplementation.retriveSubCategory(subCategoryId);
 	}
 
-	public void deleteSubCategory(int subCategoryId) 
+	public void deleteSubCategory(String subCategoryId) 
 	{
 		subCategoryDAOImplementation.deleteSubCategory(subCategoryId);
 	}
@@ -43,5 +43,10 @@ public class SubCategoryServices
 	public String retriveJsonSubCategory()
 	{
 		return subCategoryDAOImplementation.retriveJsonSubCategory();
+	}
+	
+	public String generateId()
+	{
+		return subCategoryDAOImplementation.generateId();
 	}
 }

@@ -6,4 +6,6 @@ public interface UserDetailDAO
 {
 	public void addUserDetail(UserDetail userDetail);
 	public int checkUser(String userName);
+	public int checkEmail(String emailId);
+	public void addUserRegDetail(UserDetail userDetail);
 }

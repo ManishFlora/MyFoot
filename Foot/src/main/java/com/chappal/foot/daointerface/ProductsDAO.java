@@ -8,6 +8,8 @@ public interface ProductsDAO
 {
 	public void addProducts(Products products);
 	public List<Products> retriveProducts();
-	public Products retriveProducts(int products_Id);
-	public void deleteProducts(int products_Id);
+	public Products retriveProducts(String products_Id);
+	public void deleteProducts(String products_Id);
+	public int retriveCount();
+	public String generateId();
 }

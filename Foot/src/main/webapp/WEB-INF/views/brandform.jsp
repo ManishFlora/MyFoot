@@ -65,17 +65,13 @@ Brand Table</h1>
 <div class="row">
 <div class="row" align="right">
 <div class="col-xs-12 col-md-3">
-<input id="searchTable" ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
+<input id="searchTable" ng-model="test" type="text" placeholder="SEARCH TABLE" class="form-control"/>
 </div>
 </div>
 <div class="row" id="brandTable" align="center">
 <div class="table-responsive" style="max-width: 550px; padding-top: 2%;">
 <table class="table table-bordered">
 <tr>
-<th>
-<input style="text-align: center;" class="btn btn-link" type="button" value="Brand  ID" ng-click="sortType = 'brandId'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'brandId' && !sortReverse"></span>
-</th>
 <th>
 <input style="text-align: center;" class="btn btn-link" type="button" value="Brand Name" ng-click="sortType = 'brandName'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'brandName' && !sortReverse"></span></th>
@@ -90,7 +86,6 @@ Brand Table</h1>
 </th>
 </tr>
 <tr ng-repeat="blist in brandJsonList | filter:test | orderBy:sortType:sortReverse">
-<td style="text-align: center;">{{blist.brandId}}</td>
 <td style="text-align: center;">{{blist.brandName}}</td>
 <td style="text-align: center;">{{blist.brandDescription}}</td>
 <td style="text-align: center;"><a href="editBrand-{{blist.brandId}}"class="fa fa-pencil"> Edit</a></td>

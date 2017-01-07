@@ -22,4 +22,12 @@ public class UserDetailServices
 	{
 		return userDetailDAOImplementation.checkUser(userName);
 	}
+	public int checkEmail(String emailId)
+	{
+		return userDetailDAOImplementation.checkEmail(emailId);
+	}
+	public void addUserRegDetail(UserDetail userDetail)
+	{
+		userDetailDAOImplementation.addUserRegDetail(userDetail);
+	}
 }

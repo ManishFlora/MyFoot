@@ -41,20 +41,21 @@ public class SupplierController
 		}
 		else
 		{
+			supplier.setSupplierId(supplierServices.generateId());
 			supplierServices.addSupplier(supplier);
 			return "redirect:/supplierform";
 		}
 	}
 	
 	@RequestMapping("/editSupplier-{supplierId}")
-	public String retriveSupplier(@PathVariable("supplierId") int supplierId, Model model)
+	public String retriveSupplier(@PathVariable("supplierId") String supplierId, Model model)
 	{
 		model.addAttribute("supplier", supplierServices.retriveSupplier(supplierId));
 		return "/supplierform";
 	}
 	
 	@RequestMapping("/deleteSupplier-{supplierId}")
-	public String deleteSupplier(@PathVariable("supplierId") int supplierId)
+	public String deleteSupplier(@PathVariable("supplierId") String supplierId)
 	{
 		supplierServices.deleteSupplier(supplierId);
 		return "redirect:/supplierform";

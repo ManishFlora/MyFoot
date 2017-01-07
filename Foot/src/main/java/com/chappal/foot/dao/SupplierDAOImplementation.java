@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.chappal.foot.daointerface.SupplierDAO;
+import com.chappal.foot.model.Cart;
 import com.chappal.foot.model.Supplier;
+import com.chappal.foot.model.User;
+import com.chappal.foot.model.UserDetail;
+import com.chappal.foot.model.UserRole;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -31,15 +35,15 @@ public class SupplierDAOImplementation implements SupplierDAO
 		return supplierList;
 	}
 
-	public Supplier retriveSupplier(int supplierId) 
+	public Supplier retriveSupplier(String supplierId) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Supplier> supplierList = session.createQuery("from Supplier where supplierId = " + supplierId).getResultList();
+		List<Supplier> supplierList = session.createQuery("from Supplier where supplierId = '" + supplierId + "'").getResultList();
 		return supplierList.get(0);
 	}
 
-	public void deleteSupplier(int supplierId) 
+	public void deleteSupplier(String supplierId) 
 	{
 		Supplier supplierDelete = new Supplier();
 		supplierDelete.setSupplierId(supplierId);
@@ -62,5 +66,71 @@ public class SupplierDAOImplementation implements SupplierDAO
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String jsonList = gson.toJson(supplierList);
 		return jsonList;
+	}
+	
+	public int retriveCount() 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Supplier> brandList = session.createQuery("from Supplier").getResultList();
+		int count = brandList.size();
+		return count;
+	}
+	
+	public String generateId()
+	{
+		String id;
+		int count = retriveCount() + 1;
+		if(count < 10)
+		{
+			id = "S0000" + count;
+		}
+		else if(count < 100)
+		{
+			id = "S000" + count;
+		}
+		else if(count < 1000)
+		{
+			id = "S00" + count;
+		}
+		else if(count < 10000)
+		{
+			id = "S0" + count;
+		}
+		else
+		{
+			id = "S" + count;
+		}
+		return id;
+	}
+
+	public void addRegSupplier(UserDetail userDetail) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		User user = new User();
+		user.setUserId(userDetail.getUserId());
+		user.setStatus(true);
+		user.setUserName(userDetail.getUserName());
+		user.setUserPassword(userDetail.getUserPassword());
+		
+		session.saveOrUpdate(user);
+		
+		Cart cart = new Cart();
+		cart.setCartId(user.getUserId());
+		cart.setUserId(user.getUserId());
+		
+		session.saveOrUpdate(cart);
+		
+		UserRole userRole = new UserRole();
+		userRole.setRoleId(2);
+		userRole.setUserId(user.getUserId());
+		
+		session.saveOrUpdate(userRole);
+		
+		userDetail.setUserId(user.getUserId());
+		userDetail.setCartId(cart.getCartId());
+		
+		session.saveOrUpdate(userDetail);		
+		session.flush();
 	}
 }

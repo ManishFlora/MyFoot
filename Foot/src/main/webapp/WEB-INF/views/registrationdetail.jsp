@@ -16,11 +16,13 @@
 <form:input path="userId" readonly="true" class="form-control" type="hidden" name="from" value=""/>
 </p>
 </div>
+</div>
+<div class="clearfix">
 <div class="col-xs-12 col-md-3">
 <p class="form-group">
 <label>User Name</label>
 <form:input path="userName" class="form-control" type="text" value=""/>
-<form:errors cssClass="error" cssStyle="color: red;" path="userName"/>
+<form:errors cssStyle="color: red;" path="userName"/>
 </p>
 </div>
 <div class="col-xs-12 col-md-3">
@@ -44,6 +46,8 @@
 <form:errors cssStyle="color: red;" path="lastName"/>
 </div>
 </div>
+</div>
+<div class="clearfix">
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label>Email Id</label>
@@ -59,12 +63,14 @@
 </div>
 </div>
 </div>
+<div class="clearfix">
 <div class="submit">
 <button type="submit" class="btn btn-default btn-sm" name="_eventId_submit">
 <span>
 Register
 </span>
 </button>
+</div>
 </div>
 </div>
 </fieldset>

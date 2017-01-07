@@ -24,11 +24,11 @@ public class BrandServices
 	{
 		return brandDAOImplementation.retriveBrand();
 	}
-	public Brand retriveBrand(int brandId)
+	public Brand retriveBrand(String brandId)
 	{
 		return brandDAOImplementation.retriveBrand(brandId);
 	}
-	public void deleteBrand(int brandId) 
+	public void deleteBrand(String brandId) 
 	{
 		brandDAOImplementation.deleteBrand(brandId);
 	}
@@ -40,5 +40,10 @@ public class BrandServices
 	public String retriveJsonBrand() 
 	{
 		return brandDAOImplementation.retriveJsonBrand();
+	}
+
+	public String generateId()
+	{
+		return brandDAOImplementation.generateId();
 	}
 }

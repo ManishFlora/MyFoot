@@ -89,11 +89,8 @@ Products Form</h1>
 </form:select>
 </div>
 </div>
-<div class="col-xs-12 col-md-3">
-<p class="form-group">
-<label>Photo</label>
-<form:input path="productsImage" type="file" class="form-control"></form:input>
-</p>
+<div class="uploader" id="uniform-fileUpload">
+<form:input path="productsImage" id="fileUpload" type="file" class="form-control"></form:input>
 </div>
 </div>
 <c:if test="${!empty products.productsName}">
@@ -171,9 +168,9 @@ Products Table</h1>
 <th>
 <input style="text-align: center;" class="btn btn-link" type="button" value="Delete"/>
 </th>
-<!-- <th>
-<input class="btn btn-link" type="button" value="Add Specification"/>
-</th> -->
+<th>
+<input class="btn btn-link" type="button" value="Add Info"/>
+</th>
 </tr>
 <tr ng-repeat="plist in productsJsonList | filter:test | orderBy:sortType:sortReverse">
 <td style="text-align: center;">{{plist.productsId}}</td>
@@ -185,7 +182,7 @@ Products Table</h1>
 <td style="text-align: center;">{{plist.productsDiscount}}</td>
 <td style="text-align: center;"><a href="editProducts-{{plist.productsId}}" class="fa fa-pencil"> Edit</a></td>
 <td style="text-align: center;"><a href="deleteProducts-{{plist.productsId}}" class="fa fa-trash-o"> Delete</a></td>
-<%-- <td><a href="addProductSpecification-${plist.productsId}">Add</a></td> --%>
+<td style="text-align: center;"><a href="productInfo-{{plist.productsId}}" class="fa fa-plus">Add</a></td>
 </tr>
 </table>
 </div>

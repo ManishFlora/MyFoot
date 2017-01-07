@@ -45,20 +45,21 @@ public class BrandController
 		}
 		else
 		{
+			brand.setBrandId(brandServices.generateId());
 			brandServices.addBrand(brand);
 			return "redirect:/brandform";
 		}
 	}
 	
 	@RequestMapping("/editBrand-{brandId}")
-	public String retriveBrand(@PathVariable("brandId") int brandId, Model model)
+	public String retriveBrand(@PathVariable("brandId") String brandId, Model model)
 	{
 		model.addAttribute("brand", brandServices.retriveBrand(brandId));
 		return "/brandform";
 	}
 	
 	@RequestMapping("/deleteBrand-{brandId}")
-	public String deletebrand(@PathVariable("brandId") int brandId)
+	public String deletebrand(@PathVariable("brandId") String brandId)
 	{
 		brandServices.deleteBrand(brandId);
 		return "redirect:/brandform";

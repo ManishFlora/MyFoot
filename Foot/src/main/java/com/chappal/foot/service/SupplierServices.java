@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.chappal.foot.dao.SupplierDAOImplementation;
-import com.chappal.foot.model.Supplier;;
+import com.chappal.foot.model.Supplier;
+import com.chappal.foot.model.UserDetail;;
 
 @Transactional
 @Service
@@ -25,12 +26,12 @@ public class SupplierServices
 		return supplierDAOImplementation.retriveSupplier();
 	}
 
-	public Supplier retriveSupplier(int supplierId) 
+	public Supplier retriveSupplier(String supplierId) 
 	{
 		return supplierDAOImplementation.retriveSupplier(supplierId);
 	}
 
-	public void deleteSupplier(int supplierId) 
+	public void deleteSupplier(String supplierId) 
 	{
 		supplierDAOImplementation.deleteSupplier(supplierId);
 	}
@@ -42,5 +43,13 @@ public class SupplierServices
 	public String retriveJsonSupplier()
 	{
 		return supplierDAOImplementation.retriveJsonSupplier();
+	}
+	public String generateId()
+	{
+		return supplierDAOImplementation.generateId();
+	}
+	public void addRegSupplier(UserDetail userDetail)
+	{
+		supplierDAOImplementation.addRegSupplier(userDetail);
 	}
 }

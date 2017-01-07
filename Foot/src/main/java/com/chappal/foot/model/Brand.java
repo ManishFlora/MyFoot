@@ -18,8 +18,8 @@ import com.google.gson.annotations.Expose;
 public class Brand 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int brandId;
+	@Expose
+	private String brandId;
 	@Size(min = 15,message="Minimum 15 Characters Required")
 	@Expose
 	private String brandDescription;
@@ -27,10 +27,10 @@ public class Brand
 	@Expose
 	private String brandName;
 	
-	public int getBrandId() {
+	public String getBrandId() {
 		return brandId;
 	}
-	public void setBrandId(int brandId) {
+	public void setBrandId(String brandId) {
 		this.brandId = brandId;
 	}
 	public String getBrandDescription() {

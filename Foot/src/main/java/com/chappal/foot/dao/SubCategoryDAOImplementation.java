@@ -31,15 +31,15 @@ public class SubCategoryDAOImplementation implements SubCategoryDAO
 		return subCategoryList;
 	}
 
-	public SubCategory retriveSubCategory(int subCategoryId) 
+	public SubCategory retriveSubCategory(String subCategoryId) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<SubCategory> subCategoryList = session.createQuery("from SubCategory where subcategoryId = " + subCategoryId).getResultList();
+		List<SubCategory> subCategoryList = session.createQuery("from SubCategory where subcategoryId = '" + subCategoryId + "'").getResultList();
 		return subCategoryList.get(0);
 	}
 	
-	public void deleteSubCategory(int subCategoryId) 
+	public void deleteSubCategory(String subCategoryId) 
 	{
 		SubCategory subCategoryDelete = new SubCategory();
 		subCategoryDelete.setSubCategoryId(subCategoryId);
@@ -62,5 +62,41 @@ public class SubCategoryDAOImplementation implements SubCategoryDAO
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String json = gson.toJson(subCategoryList);
 		return json;
+	}
+	
+	public int retriveCount() 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<SubCategory> brandList = session.createQuery("from SubCategory").getResultList();
+		int count = brandList.size();
+		return count;
+	}
+	
+	public String generateId()
+	{
+		String id;
+		int count = retriveCount() + 1;
+		if(count < 10)
+		{
+			id = "SC0000" + count;
+		}
+		else if(count < 100)
+		{
+			id = "SC000" + count;
+		}
+		else if(count < 1000)
+		{
+			id = "SC00" + count;
+		}
+		else if(count < 10000)
+		{
+			id = "SC0" + count;
+		}
+		else
+		{
+			id = "SC" + count;
+		}
+		return id;
 	}
 }

@@ -31,15 +31,15 @@ public class BrandDAOImplementation implements BrandDAO
 		return brandList;
 	}
 
-	public Brand retriveBrand(int brandId) 
+	public Brand retriveBrand(String brandId) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Brand> brandList = session.createQuery("from Brand where brandId = " + brandId).getResultList();
+		List<Brand> brandList = session.createQuery("from Brand where brandId = '" + brandId + "'").getResultList();
 		return brandList.get(0);
 	}
 
-	public void deleteBrand(int brandId) 
+	public void deleteBrand(String brandId) 
 	{
 		Brand brandDelete = new Brand();
 		brandDelete.setBrandId(brandId);
@@ -62,5 +62,41 @@ public class BrandDAOImplementation implements BrandDAO
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String json = gson.toJson(brandList);
 		return json;
+	}
+
+	public int retriveCount() 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Brand> brandList = session.createQuery("from Brand").getResultList();
+		int count = brandList.size();
+		return count;
+	}
+	
+	public String generateId()
+	{
+		String id;
+		int count = retriveCount() + 1;
+		if(count < 10)
+		{
+			id = "B0000" + count;
+		}
+		else if(count < 100)
+		{
+			id = "B000" + count;
+		}
+		else if(count < 1000)
+		{
+			id = "B00" + count;
+		}
+		else if(count < 10000)
+		{
+			id = "B0" + count;
+		}
+		else
+		{
+			id = "B" + count;
+		}
+		return id;
 	}
 }

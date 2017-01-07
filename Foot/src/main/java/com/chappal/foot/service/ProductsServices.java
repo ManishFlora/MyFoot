@@ -24,11 +24,11 @@ public class ProductsServices
 	{
 		return productsDAOImplementation.retriveProducts();
 	}
-	public Products retriveProducts(int productsId)
+	public Products retriveProducts(String productsId)
 	{
 		return productsDAOImplementation.retriveProducts(productsId);
 	}
-	public void deleteProducts(int productsId)
+	public void deleteProducts(String productsId)
 	{
 		productsDAOImplementation.deleteProducts(productsId);
 	}
@@ -36,5 +36,10 @@ public class ProductsServices
 	public String retriveJsonProducts() 
 	{
 		return productsDAOImplementation.retriveJsonProducts();
+	}
+	
+	public String generateId()
+	{
+		return productsDAOImplementation.generateId();
 	}
 }

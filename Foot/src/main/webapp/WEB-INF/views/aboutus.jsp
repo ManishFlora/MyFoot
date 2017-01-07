@@ -57,16 +57,16 @@ About us
 </ul></div>
 <h1 style="text-align:center;">Our team</h1>
 <div class="border_bottom2">
-<ul class="row list-4"><li class="col-xs-3"><img src="" alt="" height="269" width="270"><h3>MANISH FLORA</h3>
+<ul class="row list-4"><li class="col-xs-3"><img src="resources/images/photo.jpg" alt="" height="269" width="270"><h3>MANISH FLORA</h3>
 <p>Senior salesman with 15 years of experience. He knows everything about the products he offers.</p>
 </li>
-<li class="col-xs-3"><img src="" alt="" height="269" width="270"><h3>KUMAR MANTHENA</h3>
+<li class="col-xs-3"><img src="resources/images/photo.jpg" alt="" height="269" width="270"><h3>KUMAR MANTHENA</h3>
 <p>Mega positive shop assistant always ready to help you make the right choice and charm you with a smile.</p>
 </li>
-<li class="col-xs-3"><img src="" alt="" height="269" width="270"><h3>TEJAS PAWAR</h3>
+<li class="col-xs-3"><img src="resources/images/photo.jpg" alt="" height="269" width="270"><h3>TEJAS PAWAR</h3>
 <p>Wholesale manager. Contact him if you want to buy a batch of the products offered at our store.</p>
 </li>
-<li class="col-xs-3"><img src="" alt="" height="269" width="270"><h3>EJAZ SUNSARA</h3>
+<li class="col-xs-3"><img src="resources/images/photo.jpg" alt="" height="269" width="270"><h3>EJAZ SUNSARA</h3>
 <p>Quality control manager. His mission is to check the products we ship and settle quality issues if any.</p>
 </li>
 </ul>

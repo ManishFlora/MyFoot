@@ -29,15 +29,15 @@ public class ProductsDAOImplementation implements ProductsDAO
 		return productsList;
 	}
 
-	public Products retriveProducts(int productsId) 
+	public Products retriveProducts(String productsId) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Products> productsList = session.createQuery("from Products where productsId = " + productsId).getResultList();
+		List<Products> productsList = session.createQuery("from Products where productsId = '" + productsId + "'").getResultList();
 		return productsList.get(0);
 	}
 
-	public void deleteProducts(int productsId) 
+	public void deleteProducts(String productsId) 
 	{
 		Products productDelete = new Products();
 		productDelete.setProductsId(productsId);
@@ -52,5 +52,41 @@ public class ProductsDAOImplementation implements ProductsDAO
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String json = gson.toJson(productsList);
 		return json;
+	}
+	
+	public int retriveCount() 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Products> brandList = session.createQuery("from Products").getResultList();
+		int count = brandList.size();
+		return count;
+	}
+	
+	public String generateId()
+	{
+		String id;
+		int count = retriveCount() + 1;
+		if(count < 10)
+		{
+			id = "PR0000" + count;
+		}
+		else if(count < 100)
+		{
+			id = "PR000" + count;
+		}
+		else if(count < 1000)
+		{
+			id = "PR00" + count;
+		}
+		else if(count < 10000)
+		{
+			id = "PR0" + count;
+		}
+		else
+		{
+			id = "PR" + count;
+		}
+		return id;
 	}
 }

@@ -22,25 +22,26 @@ import com.google.gson.annotations.Expose;
 public class Products 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int productsId;
-	private int categoryId;
-	private int subcategoryId;
-	private int supplierId;
-	private int brandId;
-	@Size(min = 15,message="Minimum 15 Characters Required")
 	@Expose
-	private String productsDescription;
-	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
-	@Expose
-	private String productsName;
-	@NotEmpty(message="Field is Required")
+	private String productsId;
+	private String categoryId;
+	private String subcategoryId;
+	private String supplierId;
+	private String brandId;
+	
 	@Expose
 	private int productsQuantity;
 	@Expose
 	private int productsPrice;
 	@Expose
 	private double productsDiscount;
+	@Size(min = 15,message="Minimum 15 Characters Required")
+	@Expose
+	private String productsDescription;
+	
+	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
+	@Expose
+	private String productsName;
 	
 	@Expose
 	@Transient
@@ -62,60 +63,44 @@ public class Products
 	@JoinColumn(name="brandId", nullable=false, updatable=false,insertable=false)
 	private Brand brand;
 
-	public int getProductsId() {
+	public String getProductsId() {
 		return productsId;
 	}
 
-	public void setProductsId(int productsId) {
+	public void setProductsId(String productsId) {
 		this.productsId = productsId;
 	}
 
-	public int getCategoryId() {
+	public String getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
 
-	public int getSubcategoryId() {
+	public String getSubcategoryId() {
 		return subcategoryId;
 	}
 
-	public void setSubcategoryId(int subcategoryId) {
+	public void setSubcategoryId(String subcategoryId) {
 		this.subcategoryId = subcategoryId;
 	}
 
-	public int getSupplierId() {
+	public String getSupplierId() {
 		return supplierId;
 	}
 
-	public void setSupplierId(int supplierId) {
+	public void setSupplierId(String supplierId) {
 		this.supplierId = supplierId;
 	}
 
-	public int getBrandId() {
+	public String getBrandId() {
 		return brandId;
 	}
 
-	public void setBrandId(int brandId) {
+	public void setBrandId(String brandId) {
 		this.brandId = brandId;
-	}
-
-	public String getProductsDescription() {
-		return productsDescription;
-	}
-
-	public void setProductsDescription(String productsDescription) {
-		this.productsDescription = productsDescription;
-	}
-
-	public String getProductsName() {
-		return productsName;
-	}
-
-	public void setProductsName(String productsName) {
-		this.productsName = productsName;
 	}
 
 	public int getProductsQuantity() {
@@ -140,6 +125,22 @@ public class Products
 
 	public void setProductsDiscount(double productsDiscount) {
 		this.productsDiscount = productsDiscount;
+	}
+
+	public String getProductsDescription() {
+		return productsDescription;
+	}
+
+	public void setProductsDescription(String productsDescription) {
+		this.productsDescription = productsDescription;
+	}
+
+	public String getProductsName() {
+		return productsName;
+	}
+
+	public void setProductsName(String productsName) {
+		this.productsName = productsName;
 	}
 
 	public MultipartFile getProductsImage() {

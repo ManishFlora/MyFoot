@@ -51,8 +51,6 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 		userDetail.setUserId(user.getUserId());
 		userDetail.setCartId(cart.getCartId());
 		session.saveOrUpdate(userDetail);
-		
-		session.flush();
 	}
 
 	public int checkUser(String userName) 
@@ -62,5 +60,47 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 		List<UserDetail> userList = session.createQuery("from UserDetail where userName = '" + userName + "'").getResultList();
 		int count = userList.size();
 		return count;
+	}
+	
+	public int checkEmail(String emailId)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<UserDetail> userList = session.createQuery("from UserDetail where emailId = '" + emailId + "'").getResultList();
+		int count = userList.size();
+		return count;
+	}
+	
+	public void addUserRegDetail(UserDetail userDetail)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		User user = new User();
+		user.setUserId(userDetail.getUserId());
+		user.setStatus(true);
+		user.setUserName(userDetail.getUserName());
+		user.setUserPassword(userDetail.getUserPassword());
+		
+		session.saveOrUpdate(user);
+		
+		Cart cart = new Cart();
+		cart.setCartId(user.getUserId());
+		cart.setUserId(user.getUserId());
+		
+		session.saveOrUpdate(cart);
+		
+		UserRole userRole = new UserRole();
+		userRole.setRoleId(1);
+		userRole.setUserId(user.getUserId());
+		
+		session.saveOrUpdate(userRole);
+		
+		userDetail.setUserId(user.getUserId());
+		userDetail.setCartId(cart.getCartId());
+		
+		session.saveOrUpdate(userDetail.getBillingAddress());
+		session.saveOrUpdate(userDetail.getShippingAddress());
+
+		session.saveOrUpdate(userDetail);		
+		session.flush();
 	}
 }

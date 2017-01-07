@@ -64,6 +64,6 @@ public class UserDetailController
 		{
 			new SecurityContextLogoutHandler().logout(request, response, authentication);
 		}
-		return "redirect:/";
+		return "redirect:/home";
 	}
 }

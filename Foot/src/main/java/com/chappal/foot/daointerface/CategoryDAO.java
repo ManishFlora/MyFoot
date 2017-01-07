@@ -8,7 +8,9 @@ public interface CategoryDAO
 {
 	public void addCategory(Category category);
 	public List<Category> retriveCategory();
-	public Category retriveCategory(int category_Id);
-	public void deleteCategory(int category_Id);
+	public Category retriveCategory(String category_Id);
+	public void deleteCategory(String category_Id);
 	public Category retriveCategoryName(String category_Name);
+	public int retriveCount();
+	public String generateId();
 }

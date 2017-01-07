@@ -24,11 +24,11 @@ public class CategoryServices
 	{
 		return categoryDAOImplementation.retriveCategory();
 	}
-	public Category retriveCategory(int categoryId)
+	public Category retriveCategory(String categoryId)
 	{
 		return categoryDAOImplementation.retriveCategory(categoryId);
 	}
-	public void deleteCategory(int categoryId) 
+	public void deleteCategory(String categoryId) 
 	{
 		categoryDAOImplementation.deleteCategory(categoryId);
 	}
@@ -39,5 +39,9 @@ public class CategoryServices
 	public String retriveJsonCategory()
 	{
 		return categoryDAOImplementation.retriveJsonCategory();
+	}
+	public String generateId()
+	{
+		return categoryDAOImplementation.generateId();
 	}
 }

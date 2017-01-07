@@ -17,12 +17,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.chappal.foot.model.Brand;
 import com.chappal.foot.model.Category;
+import com.chappal.foot.model.ProductSpecification;
 import com.chappal.foot.model.Products;
 import com.chappal.foot.model.SubCategory;
 import com.chappal.foot.model.Supplier;
 import com.chappal.foot.service.BrandServices;
 import com.chappal.foot.service.CategoryServices;
 import com.chappal.foot.service.ProductsServices;
+import com.chappal.foot.service.ProductsSpecificationServices;
 import com.chappal.foot.service.SubCategoryServices;
 import com.chappal.foot.service.SupplierServices;
 
@@ -39,6 +41,8 @@ public class ProductsController
 	BrandServices brandServices;
 	@Autowired
 	ProductsServices productsServices;
+	@Autowired
+	ProductsSpecificationServices productsSpecificationServices;
 	
 	@RequestMapping("/productsform")
 	public String products(Model model)
@@ -84,7 +88,7 @@ public class ProductsController
 			products.setBrandId(brand.getBrandId());
 			products.setSubcategoryId(subcategory.getSubCategoryId());
 			products.setSupplierId(supplier.getSupplierId());
-			
+			products.setProductsId(productsServices.generateId());
 			productsServices.addProducts(products);
 		
 			String path = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\";
@@ -117,7 +121,7 @@ public class ProductsController
 	}
 	
 	@RequestMapping("/editProducts-{productsId}")
-	public String retriveProducts(@PathVariable("productsId") int productsId, Model model)
+	public String retriveProducts(@PathVariable("productsId") String productsId, Model model)
 	{
 		model.addAttribute("categoryList", categoryServices.retriveCategory());
 		model.addAttribute("subCategoryList", subCategoryServices.retriveSubCategory());
@@ -128,9 +132,26 @@ public class ProductsController
 	}
 	
 	@RequestMapping("/deleteProducts-{productsId}")
-	public String deleteCategory(@PathVariable("productsId") int productsId)
+	public String deleteCategory(@PathVariable("productsId") String productsId)
 	{
 		productsServices.deleteProducts(productsId);
+		return "redirect:/productsform";
+	}
+	
+	@RequestMapping("/productInfo-{productsId}")
+	public String productInfo(Model model,@PathVariable("productsId") String productsId,@ModelAttribute("productSpecification") ProductSpecification productSpecification)
+	{
+		productsServices.retriveProducts(productsId);
+		productSpecification.setProductsId(productsId);
+		model.addAttribute("productsInfo", productSpecification);
+		return "/productsspecificationform";
+	}
+	
+	@RequestMapping("/addSpecification")
+	public String addSpecification(Model model,@ModelAttribute("productSpecification") ProductSpecification productSpecification)
+	{
+//		productSpecification.setProductsId(productsId);
+		this.productsSpecificationServices.addProductSpecification(productSpecification);
 		return "redirect:/productsform";
 	}
 }

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Pattern;
 
@@ -24,23 +25,18 @@ public class UserDetail implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
+	@Expose
 	private int userId;
-	@NotEmpty(message="Field is Required")
 	@Expose
 	private String userName;
-	@Pattern(regexp="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$", message="Invalid Password Pattern")
 	@Expose
 	private String userPassword;
-	@Pattern(regexp="[a-zA-Z]+", message="Invalid Name Format")
 	@Expose
 	private String firstName;
-	@NotEmpty(message="Field is Required")
 	@Expose
 	private String lastName;
-	@Pattern(regexp=".+@.+\\..+", message="Invalid EmailID")
 	@Expose
 	private String emailId;
-	@Pattern(regexp="[0-9]+", message="Invalid Number Format")
 	@Expose
 	private String contactNumber;
 	@Expose
@@ -50,20 +46,29 @@ public class UserDetail implements Serializable
 	@JoinColumn(name="userId", nullable=false, insertable=false,updatable=false)
 	private User user;
 
-	@Expose
 	@OneToOne
 	@JoinColumn(name="cartId", nullable=false, insertable=false,updatable=false)
 	private Cart cart;
 	
-	@Expose
 	@OneToOne
 	@JoinColumn(name="billingAddressId")
 	private BillingAddress billingAddress;
 	
-	@Expose
 	@OneToOne
 	@JoinColumn(name="shippingAddressId")
 	private ShippingAddress shippingAddress;
+
+	@OneToOne
+	@JoinColumn(name="supplierId")
+	private Supplier supplier;
+	
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
 
 	public int getUserId() {
 		return userId;

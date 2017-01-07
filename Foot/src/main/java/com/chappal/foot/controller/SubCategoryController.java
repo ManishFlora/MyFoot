@@ -51,13 +51,14 @@ public class SubCategoryController
 			Category category = categoryServices.retriveCategoryName(subCategory.getCategory().getCategoryName());
 			subCategory.setCategory(category);
 			subCategory.setCategoryId(category.getCategoryId());
+			subCategory.setSubCategoryId(subCategoryServices.generateId());
 			subCategoryServices.addSubCategory(subCategory);
 			return "redirect:/subcategoryform";
 		}
 	}
 	
 	@RequestMapping("/editSubCategory-{subCategoryId}")
-	public String retriveCategory(@PathVariable("subCategoryId") int subCategoryId, Model model)
+	public String retriveCategory(@PathVariable("subCategoryId") String subCategoryId, Model model)
 	{
 		model.addAttribute("categoryList", categoryServices.retriveCategory());
 		model.addAttribute("subCategory", subCategoryServices.retriveSubCategory(subCategoryId));
@@ -65,7 +66,7 @@ public class SubCategoryController
 	}
 	
 	@RequestMapping("/deleteSubCategory-{subCategoryId}")
-	public String deleteCategory(@PathVariable("subCategoryId") int subCategoryId)
+	public String deleteCategory(@PathVariable("subCategoryId") String subCategoryId)
 	{
 		subCategoryServices.deleteSubCategory(subCategoryId);
 		return "redirect:/subcategoryform";

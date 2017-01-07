@@ -66,17 +66,13 @@ Category Table</h1>
 <div class="row">
 <div class="row" align="right">
 <div class="col-xs-12 col-md-3">
-<input id="searchTable" ng-model="test" type="text" placeholder="Search Table" class="form-control"/>
+<input id="searchTable" ng-model="test" type="text" placeholder="SEARCH TABLE" class="form-control"/>
 </div>
 </div>
 <div class="row" id="categoryTable" align="center">
 <div class="table-responsive" style="max-width: 550px; padding-top: 2%;">
 <table class="table table-bordered">
 <tr>
-<th>
-<input style="text-align: center;" class="btn btn-link" type="button" value="Category ID" ng-click="sortType = 'categoryId'; sortReverse = !sortReverse"/>
-<span ng-show="sortType == 'categoryId' && !sortReverse"></span>
-</th>
 <th>
 <input style="text-align: center;" class="btn btn-link" type="button" value="Category Name" ng-click="sortType = 'categoryName'; sortReverse = !sortReverse"/>
 <span ng-show="sortType == 'categoryName' && !sortReverse"></span>
@@ -93,7 +89,6 @@ Category Table</h1>
 </th>
 </tr>
 <tr ng-repeat="clist in categoryJsonList | filter:test | orderBy:sortType:sortReverse">
-<td style="text-align: center;">{{clist.categoryId}}</td>
 <td style="text-align: center;">{{clist.categoryName}}</td>
 <td style="text-align: center;">{{clist.categoryDescription}}</td>
 <td style="text-align: center;"><a href="editCategory-{{clist.categoryId}}" class="fa fa-pencil"> Edit</a></td>

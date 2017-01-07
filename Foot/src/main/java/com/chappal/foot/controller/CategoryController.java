@@ -42,20 +42,21 @@ public class CategoryController
 		}
 		else
 		{
+			category.setCategoryId(categoryServices.generateId());
 			categoryServices.addCategory(category);
 			return "redirect:/categoryform";
 		}
 	}
 	
 	@RequestMapping("/editCategory-{categoryId}")
-	public String retriveCategory(@PathVariable("categoryId") int categoryId, Model model)
+	public String retriveCategory(Model model, @PathVariable("categoryId") String categoryId)
 	{
 		model.addAttribute("category", this.categoryServices.retriveCategory(categoryId));
 		return "/categoryform";
 	}
 	
 	@RequestMapping("/deleteCategory-{categoryId}")
-	public String deleteCategory(@PathVariable("categoryId") int categoryId)
+	public String deleteCategory(@PathVariable("categoryId") String categoryId)
 	{
 		categoryServices.deleteCategory(categoryId);
 		return "redirect:/categoryform";

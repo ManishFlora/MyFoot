@@ -18,8 +18,8 @@ import com.google.gson.annotations.Expose;
 public class Category 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int categoryId;
+	@Expose
+	private String categoryId;
 	@Size(min = 15,message="Minimum 15 Characters Required")
 	@Expose
 	private String categoryDescription;
@@ -39,10 +39,10 @@ public class Category
 		this.subCategory = subCategory;
 	}
 
-	public int getCategoryId() {
+	public String getCategoryId() {
 		return categoryId;
 	}
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
 	public String getCategoryDescription() {

@@ -8,7 +8,9 @@ public interface SubCategoryDAO
 {
 	public void addSubCategory(SubCategory subCategory);
 	public List<SubCategory> retriveSubCategory();
-	public SubCategory retriveSubCategory(int subCategory_Id);
-	public void deleteSubCategory(int subCategory_Id);
+	public SubCategory retriveSubCategory(String subCategory_Id);
+	public void deleteSubCategory(String subCategory_Id);
 	public SubCategory retriveSubCategoryName(String subCategory_Name);
+	public int retriveCount();
+	public String generateId();
 }

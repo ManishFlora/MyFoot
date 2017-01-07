@@ -1,98 +1,117 @@
 package com.chappal.foot.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.annotations.Expose;
 
 @Entity
 public class ProductSpecification 
 {
 	@Id
-	private int products_Id;
-	private String color;
-	private String design;
-	private String last;
-	private String upper;
-	private boolean linning;
-	private boolean sole;
-	private boolean heel;
-	private int size;
-
+	@Expose
+	private String productsId;
+	@Expose
+	private String productColor;
+	@Expose
+	private String productDesign;
+	@Expose
+	private String productLast;
+	@Expose
+	private String productUpper;
+	@Expose
+	private String productLinning;
+	@Expose
+	private String productSole;
+	@Expose
+	private String productHeel;
+	@Expose
+	private int productSize;
+	
 	@OneToOne
-	@JoinColumn(nullable=false,updatable=false,insertable=false, name="products_Id")
+	@JoinColumn(nullable=false,updatable=false,insertable=false, name="productsId")
 	private Products products;
+	
+	@Transient
+	private List<MultipartFile> productImages;
 
-	public int getProducts_Id() {
-		return products_Id;
+	public String getProductsId() {
+		return productsId;
 	}
 
-	public void setProducts_Id(int products_Id) {
-		this.products_Id = products_Id;
+	public void setProductsId(String productsId) {
+		this.productsId = productsId;
 	}
 
-	public String getColor() {
-		return color;
+	public String getProductColor() {
+		return productColor;
 	}
 
-	public void setColor(String color) {
-		this.color = color;
+	public void setProductColor(String productColor) {
+		this.productColor = productColor;
 	}
 
-	public String getDesign() {
-		return design;
+	public String getProductDesign() {
+		return productDesign;
 	}
 
-	public void setDesign(String design) {
-		this.design = design;
+	public void setProductDesign(String productDesign) {
+		this.productDesign = productDesign;
 	}
 
-	public String getLast() {
-		return last;
+	public String getProductLast() {
+		return productLast;
 	}
 
-	public void setLast(String last) {
-		this.last = last;
+	public void setProductLast(String productLast) {
+		this.productLast = productLast;
 	}
 
-	public String getUpper() {
-		return upper;
+	public String getProductUpper() {
+		return productUpper;
 	}
 
-	public void setUpper(String upper) {
-		this.upper = upper;
+	public void setProductUpper(String productUpper) {
+		this.productUpper = productUpper;
 	}
 
-	public boolean isLinning() {
-		return linning;
+	public String getProductLinning() {
+		return productLinning;
 	}
 
-	public void setLinning(boolean linning) {
-		this.linning = linning;
+	public void setProductLinning(String productLinning) {
+		this.productLinning = productLinning;
 	}
 
-	public boolean isSole() {
-		return sole;
+	public String getProductSole() {
+		return productSole;
 	}
 
-	public void setSole(boolean sole) {
-		this.sole = sole;
+	public void setProductSole(String productSole) {
+		this.productSole = productSole;
 	}
 
-	public boolean isHeel() {
-		return heel;
+	public String getProductHeel() {
+		return productHeel;
 	}
 
-	public void setHeel(boolean heel) {
-		this.heel = heel;
+	public void setProductHeel(String productHeel) {
+		this.productHeel = productHeel;
 	}
 
-	public int getSize() {
-		return size;
+	public int getProductSize() {
+		return productSize;
 	}
 
-	public void setSize(int size) {
-		this.size = size;
+	public void setProductSize(int productSize) {
+		this.productSize = productSize;
 	}
 
 	public Products getProducts() {
@@ -101,6 +120,14 @@ public class ProductSpecification
 
 	public void setProducts(Products products) {
 		this.products = products;
+	}
+
+	public List<MultipartFile> getProductImages() {
+		return productImages;
+	}
+
+	public void setProductImages(List<MultipartFile> productImages) {
+		this.productImages = productImages;
 	}
 	
 	
