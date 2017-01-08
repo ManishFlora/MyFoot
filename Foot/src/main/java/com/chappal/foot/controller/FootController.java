@@ -46,4 +46,10 @@ public class FootController
 		model.addAttribute("brandList", brandServices.retriveBrand());
 		return "/contact";
 	}
+	
+	@RequestMapping("/viewproduct")
+	public String viewProduct()
+	{
+		return "/viewproduct";
+	}
 }

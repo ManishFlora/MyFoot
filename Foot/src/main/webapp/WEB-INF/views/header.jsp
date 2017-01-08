@@ -26,6 +26,7 @@ catch(e)
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,700italic,700,400italic,300&amp;subset=latin,greek-ext,greek,vietnamese,cyrillic-ext,latin-ext,cyrillic" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/customfileinput.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/jquery.fancybox.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/global.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/contact-form.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/highdpi.css" type="text/css" media="all"/>
@@ -77,12 +78,18 @@ catch(e)
 <link rel="stylesheet" href="resources/css/tmproductvideos.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.autocomplete.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/rd-parallax.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/stores.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/socialsharing.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/video-js1.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/jquery.jqzoom.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/product.css" type="text/css" media="all"/>
 
 <script src="resources/js/angular.min.js"></script>
 <script src="resources/js/contact-form.js"></script>
+<script src="resources/js/sendtoafriend.js"></script>
+<script src="resources/js/productscategory.js"></script>
 <script src="resources/js/jquery-1.11.0.min.js"></script>
+<script src="resources/js/jquery.jqzoom.js"></script>
 <script src="resources/js/jquery-migrate-1.2.1.min.js"></script>
 <script src="resources/js/jquery.easing.js"></script>
 <script src="resources/js/tools.js"></script>
@@ -138,9 +145,17 @@ var CUSTOMIZE_TEXTFIELD = 1;
 var FancyboxI18nClose = 'Close';
 var FancyboxI18nNext = 'Next';
 var FancyboxI18nPrev = 'Previous';
+var PS_CATALOG_MODE = false;
 var added_to_wishlist = 'The product was successfully added to your wishlist.';
 var ajax_allowed = true;
 var ajaxsearch = true;
+var allowBuyWhenOutOfStock = false;
+var attribute_anchor_separator = '-';
+var attributesCombinations = [{"id_attribute":"5","id_attribute_group":"3","attribute":"grey","group":"color"},{"id_attribute":"27","id_attribute_group":"4","attribute":"6_us","group":"size"},{"id_attribute":"31","id_attribute_group":"5","attribute":"suede","group":"material"},{"id_attribute":"11","id_attribute_group":"3","attribute":"black","group":"color"},{"id_attribute":"32","id_attribute_group":"5","attribute":"leather","group":"material"},{"id_attribute":"33","id_attribute_group":"5","attribute":"fabric","group":"material"},{"id_attribute":"28","id_attribute_group":"4","attribute":"7_us","group":"size"},{"id_attribute":"29","id_attribute_group":"4","attribute":"8_us","group":"size"}];
+var availableLaterValue = '';
+var availableNowValue = '';
+var baseDir = 'index.jsp';
+var baseUri = '';
 var blocking_popup = '1';
 var comparator_max_item = 2;
 var comparedProductsIds = [];
@@ -152,6 +167,8 @@ var currencyRate = 1;
 var currencySign = '$';
 var customizationIdMessage = 'Customization #';
 var delete_txt = 'Delete';
+var default_eco_tax = 0;
+var displayDiscountPrice = null;
 var displayList = false;
 var freeProductTranslation = 'Free!';
 var freeShippingTranslation = 'Free shipping!';
@@ -311,10 +328,6 @@ var wishlistProductsIds = false;
 </div>
 <div id="header-login">
 <c:if test="${empty pageContext.request.userPrincipal}">
-<div class="nav-setting">
-<div class="btn-setting material-design-settings49"></div>
-<div class="block-setting"></div>
-</div>
 <div id="header-login">
 <div class="current_toogle header_user_info"><a href="#" onclick="return false;">Sign in</a></div>
 <ul id="header-login-content" class="toogle_content_box">
@@ -346,30 +359,44 @@ var wishlistProductsIds = false;
 </div>
 </c:if>
 <c:if test="${!empty pageContext.request.userPrincipal}">
-<div class="nav-setting">
-<div class="btn-setting material-design-settings49"></div>
-<div class="block-setting"></div>
-</div>
 <div id="header-login">
 <div class="current_toogle header_user_info"><a href="#" onclick="return false;"><span class="fa fa-user"></span>  ${pageContext.request.userPrincipal.name}</a></div>
-<ul id="header-login-content" class="toogle_content_box">
+<ul id="header-login-content" class="toogle_content_box" style="display: none;">
+          <li class="login">
+ <ul>
 <li>
-<div class="icon-close material-design-close47"></div>
-<form id="header_login_form" method="get">
-<div id="create_header_account_error" class="alert alert-danger" style="display:none;"></div>
-<div class="form_content clearfix">
-<p class="submit">
-<a href="/Foot/logout">
-<input type="button" class="btn btn-default" value="Sign Out">
+<a href="#" title="My orders" rel="nofollow">My orders</a>
+</li>
+<li>
+<a href="#" title="My returns" rel="nofollow">My merchandise returns</a>
+</li>
+<li>
+<a href="#" title="My credit slips" rel="nofollow">My credit slips</a>
+</li>
+<li>
+<a href="#" title="My addresses" rel="nofollow">My addresses</a>
+</li>
+<li>
+<a href="#" title="Manage my personal information" rel="nofollow">My personal info</a>
+</li>
+<li class="lnk_wishlist">
+<a href="#" title="My wishlists">
+<i class="fa fa-heart"></i>
+<span>My wishlists</span>
+</a>
+</li>
+</ul>
+<p class="logout">
+<a class="btn btn-default btn-sm" href="/Foot/logout" title="Sign out" rel="nofollow">                    	
+Sign out
 </a>
 </p>
-</div>
-</form>
 </li>
 </ul>
 </div>
 </c:if>
 </div>
+
 <div id="languages-block-top" class="languages-block">
 <div>
 <span>English</span>
@@ -591,6 +618,7 @@ Proceed to checkout
 </button>
 </form>
 </div>
+
 <div class="top_menu top-level tmmegamenu_item">
 <div class="menu-title menu-title-icon material-design-show5"></div>
 <div class="tmmegamenu_title">Menu<span class="menu-close material-design-clear5 "></span></div>
