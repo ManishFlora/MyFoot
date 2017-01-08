@@ -40,6 +40,7 @@ catch(e)
 <link rel="stylesheet" href="resources/css/animate.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.fancybox.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/product_list.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/tmrelatedproducts.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blockcart.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/scenes.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.bxslider1.css" type="text/css" media="all"/>
@@ -89,11 +90,13 @@ catch(e)
 <script src="resources/js/sendtoafriend.js"></script>
 <script src="resources/js/productscategory.js"></script>
 <script src="resources/js/jquery-1.11.0.min.js"></script>
+<script src="resources/js/crossselling.js"></script>
 <script src="resources/js/jquery.jqzoom.js"></script>
 <script src="resources/js/jquery-migrate-1.2.1.min.js"></script>
 <script src="resources/js/jquery.easing.js"></script>
 <script src="resources/js/tools.js"></script>
 <script src="resources/js/cms.js"></script>
+<script src="resources/js/jquery.idTabs.js.js"></script>
 <script src="resources/js/jquery.scrollTo.js"></script>
 <script src="resources/js/jquery.serialScroll.js"></script>
 <script src="resources/js/jquery.bxslider.js"></script>
@@ -101,6 +104,7 @@ catch(e)
 <script src="resources/js/validate.js"></script>
 <script src="resources/js/jquery.autocomplete.js"></script>
 <script src="resources/js/global.js"></script>
+<script src="resources/js/productcomments.js"></script>
 <script src="resources/js/10-bootstrap.min.js"></script>
 <script src="resources/js/14-device.min.js"></script>
 <script src="resources/js/15-jquery.total-storage.min.js"></script>
@@ -114,6 +118,7 @@ catch(e)
 <script src="resources/js/23-jquery.mousewheel.min.js"></script>
 <script src="resources/js/24-jquery.simplr.smoothscroll.min.js"></script>
 <script src="resources/js/breakpoints.js"></script>
+<script src="resources/js/jquery.rating.pack.js"></script>
 <script src="resources/js/jquery.mCustomScrollbar.js"></script>
 <script src="resources/js/slick.js"></script>
 <script src="resources/js/products-comparison.js"></script>
@@ -126,6 +131,7 @@ catch(e)
 <script src="resources/js/tmsearch.js"></script>
 <script src="resources/js/ajax-wishlist.js"></script>
 <script src="resources/js/tmmegamenu.js"></script>
+<script src="resources/js/product.js"></script>
 <script src="resources/js/index.js"></script>
 <script src="resources/js/jquery.rd-parallax.min.js"></script>
 <script src="resources/js/jquery.youtubebackground.js"></script>
@@ -133,13 +139,16 @@ catch(e)
 <script src="resources/js/tmmediaparallax.js"></script>
 <script src="resources/js/tmmosaicproducts.js"></script>
 <script src="resources/js/video1.js"></script>
+<script src="resources/js/jquery.textareaCounter.plugin.js"></script>
 <script src="resources/js/tmmegalayout.js"></script>
 <script src="resources/js/themeconfiglink.js"></script>
 <script src="resources/js/hoverIntent.js"></script>
 <script src="resources/js/superfish.js"></script>
 <script src="resources/js/front3.js"></script>
+<script src="resources/js/tmrelatedproducts.js"></script>
 <script src="resources/js/front.js"></script>
 <script src="resources/js/video.js"></script>
+
 <script type="text/javascript">
 var CUSTOMIZE_TEXTFIELD = 1;
 var FancyboxI18nClose = 'Close';
@@ -150,12 +159,11 @@ var added_to_wishlist = 'The product was successfully added to your wishlist.';
 var ajax_allowed = true;
 var ajaxsearch = true;
 var allowBuyWhenOutOfStock = false;
-var attribute_anchor_separator = '-';
-var attributesCombinations = [{"id_attribute":"5","id_attribute_group":"3","attribute":"grey","group":"color"},{"id_attribute":"27","id_attribute_group":"4","attribute":"6_us","group":"size"},{"id_attribute":"31","id_attribute_group":"5","attribute":"suede","group":"material"},{"id_attribute":"11","id_attribute_group":"3","attribute":"black","group":"color"},{"id_attribute":"32","id_attribute_group":"5","attribute":"leather","group":"material"},{"id_attribute":"33","id_attribute_group":"5","attribute":"fabric","group":"material"},{"id_attribute":"28","id_attribute_group":"4","attribute":"7_us","group":"size"},{"id_attribute":"29","id_attribute_group":"4","attribute":"8_us","group":"size"}];
 var availableLaterValue = '';
 var availableNowValue = '';
 var baseDir = 'index.jsp';
 var baseUri = '';
+var jqZoomEnabled = true;
 var blocking_popup = '1';
 var comparator_max_item = 2;
 var comparedProductsIds = [];
@@ -164,7 +172,7 @@ var currency = {"id":1,"name":"Rupees","iso_code":"INR","iso_code_num":"840","si
 var currencyBlank = 0;
 var currencyFormat = 1;
 var currencyRate = 1;
-var currencySign = '$';
+var currencySign = '&#x20b9;';
 var customizationIdMessage = 'Customization #';
 var delete_txt = 'Delete';
 var default_eco_tax = 0;
@@ -377,12 +385,11 @@ var wishlistProductsIds = false;
 <a href="#" title="My addresses" rel="nofollow">My addresses</a>
 </li>
 <li>
-<a href="#" title="Manage my personal information" rel="nofollow">My personal info</a>
+<a href="#" title="Manage my personal information" rel="nofollow"><span class="fa fa-user">	My personal info</span></a>
 </li>
 <li class="lnk_wishlist">
 <a href="#" title="My wishlists">
-<i class="fa fa-heart"></i>
-<span>My wishlists</span>
+<span class="fa fa-heart">	My wishlists</span>
 </a>
 </li>
 </ul>
