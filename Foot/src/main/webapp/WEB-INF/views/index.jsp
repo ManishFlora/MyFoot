@@ -123,7 +123,7 @@ View All Brands
 </a>
 </div>
 <script type="text/javascript">
-    var m_display_caroucel = 0;
+var m_display_caroucel = 0;
 </script>
 </div>
 </div>

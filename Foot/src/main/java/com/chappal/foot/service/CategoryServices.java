@@ -20,6 +20,10 @@ public class CategoryServices
 	{
 		categoryDAOImplementation.addCategory(category);
 	}
+	public void updateCategory(Category category)
+	{
+		categoryDAOImplementation.updateCategory(category);
+	}
 	public List<Category> retriveCategory() 
 	{
 		return categoryDAOImplementation.retriveCategory();
@@ -43,5 +47,9 @@ public class CategoryServices
 	public String generateId()
 	{
 		return categoryDAOImplementation.generateId();
+	}
+	public int retriveCount(String categoryId)
+	{
+		return categoryDAOImplementation.retriveCount(categoryId);
 	}
 }

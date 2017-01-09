@@ -19,21 +19,29 @@ public class ProductSpecification
 	@Expose
 	private String productsId;
 	@Expose
-	private String productColor;
+	private String color;
 	@Expose
-	private String productDesign;
+	private String size;
 	@Expose
-	private String productLast;
+	private String material;
 	@Expose
-	private String productUpper;
+	private String style;
 	@Expose
-	private String productLinning;
+	private String supportSystem;
 	@Expose
-	private String productSole;
+	private String weight;
 	@Expose
-	private String productHeel;
+	private String dimensions;
 	@Expose
-	private int productSize;
+	private String waranty;
+	@Expose
+	private String detail;
+	@Expose
+	private String shoeWidth;
+	@Expose
+	private String season;
+	@Expose
+	private String sole;
 	
 	@OneToOne
 	@JoinColumn(nullable=false,updatable=false,insertable=false, name="productsId")
@@ -50,68 +58,100 @@ public class ProductSpecification
 		this.productsId = productsId;
 	}
 
-	public String getProductColor() {
-		return productColor;
+	public String getColor() {
+		return color;
 	}
 
-	public void setProductColor(String productColor) {
-		this.productColor = productColor;
+	public void setColor(String color) {
+		this.color = color;
 	}
 
-	public String getProductDesign() {
-		return productDesign;
+	public String getSize() {
+		return size;
 	}
 
-	public void setProductDesign(String productDesign) {
-		this.productDesign = productDesign;
+	public void setSize(String size) {
+		this.size = size;
 	}
 
-	public String getProductLast() {
-		return productLast;
+	public String getMaterial() {
+		return material;
 	}
 
-	public void setProductLast(String productLast) {
-		this.productLast = productLast;
+	public void setMaterial(String material) {
+		this.material = material;
 	}
 
-	public String getProductUpper() {
-		return productUpper;
+	public String getStyle() {
+		return style;
 	}
 
-	public void setProductUpper(String productUpper) {
-		this.productUpper = productUpper;
+	public void setStyle(String style) {
+		this.style = style;
 	}
 
-	public String getProductLinning() {
-		return productLinning;
+	public String getSupportSystem() {
+		return supportSystem;
 	}
 
-	public void setProductLinning(String productLinning) {
-		this.productLinning = productLinning;
+	public void setSupportSystem(String supportSystem) {
+		this.supportSystem = supportSystem;
 	}
 
-	public String getProductSole() {
-		return productSole;
+	public String getWeight() {
+		return weight;
 	}
 
-	public void setProductSole(String productSole) {
-		this.productSole = productSole;
+	public void setWeight(String weight) {
+		this.weight = weight;
 	}
 
-	public String getProductHeel() {
-		return productHeel;
+	public String getDimensions() {
+		return dimensions;
 	}
 
-	public void setProductHeel(String productHeel) {
-		this.productHeel = productHeel;
+	public void setDimensions(String dimensions) {
+		this.dimensions = dimensions;
 	}
 
-	public int getProductSize() {
-		return productSize;
+	public String getWaranty() {
+		return waranty;
 	}
 
-	public void setProductSize(int productSize) {
-		this.productSize = productSize;
+	public void setWaranty(String waranty) {
+		this.waranty = waranty;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+
+	public String getShoeWidth() {
+		return shoeWidth;
+	}
+
+	public void setShoeWidth(String shoeWidth) {
+		this.shoeWidth = shoeWidth;
+	}
+
+	public String getSeason() {
+		return season;
+	}
+
+	public void setSeason(String season) {
+		this.season = season;
+	}
+
+	public String getSole() {
+		return sole;
+	}
+
+	public void setSole(String sole) {
+		this.sole = sole;
 	}
 
 	public Products getProducts() {

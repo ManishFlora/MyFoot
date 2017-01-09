@@ -7,6 +7,7 @@ import com.chappal.foot.model.Category;
 public interface CategoryDAO 
 {
 	public void addCategory(Category category);
+	public void updateCategory(Category category);
 	public List<Category> retriveCategory();
 	public Category retriveCategory(String category_Id);
 	public void deleteCategory(String category_Id);

@@ -358,7 +358,7 @@ var wishlistProductsIds = false;
 <a href="/Foot/registrationform" class="create btn btn-default">Create an account</a>
 </p>
 <p>
-<a href="#" class="forgot-password">Forgot your password?</a>
+<a href="/Foot/forget" class="forgot-password">Forgot your password?</a>
 </p>
 </div>
 </form>
@@ -370,22 +370,16 @@ var wishlistProductsIds = false;
 <div id="header-login">
 <div class="current_toogle header_user_info"><a href="#" onclick="return false;"><span class="fa fa-user"></span>  ${pageContext.request.userPrincipal.name}</a></div>
 <ul id="header-login-content" class="toogle_content_box" style="display: none;">
-          <li class="login">
- <ul>
+<li class="login">
+<ul>
 <li>
-<a href="#" title="My orders" rel="nofollow">My orders</a>
+<a href="#" title="My orders" rel="nofollow"><span class="fa fa-shopping-cart">	My orders</span></a>
 </li>
 <li>
-<a href="#" title="My returns" rel="nofollow">My merchandise returns</a>
+<a href="#" title="My addresses" rel="nofollow"><span class="fa fa-home">	My addresses</span></a>
 </li>
 <li>
-<a href="#" title="My credit slips" rel="nofollow">My credit slips</a>
-</li>
-<li>
-<a href="#" title="My addresses" rel="nofollow">My addresses</a>
-</li>
-<li>
-<a href="#" title="Manage my personal information" rel="nofollow"><span class="fa fa-user">	My personal info</span></a>
+<a href="/Foot/profile" title="Manage my personal information" rel="nofollow"><span class="fa fa-user">	My personal info</span></a>
 </li>
 <li class="lnk_wishlist">
 <a href="#" title="My wishlists">

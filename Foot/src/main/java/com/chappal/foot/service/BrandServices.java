@@ -20,6 +20,10 @@ public class BrandServices
 	{
 		brandDAOImplementation.addBrand(brand);
 	}
+	public void updateBrand(Brand brand)
+	{
+		brandDAOImplementation.updateBrand(brand);
+	}
 	public List<Brand> retriveBrand() 
 	{
 		return brandDAOImplementation.retriveBrand();
@@ -45,5 +49,9 @@ public class BrandServices
 	public String generateId()
 	{
 		return brandDAOImplementation.generateId();
+	}
+	public int retriveCount(String brandId)
+	{
+		return brandDAOImplementation.retriveCount(brandId);
 	}
 }

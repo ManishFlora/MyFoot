@@ -3,6 +3,7 @@ package com.chappal.foot.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.chappal.foot.model.Brand;
 import com.chappal.foot.model.Category;
+import com.chappal.foot.model.ListProducts;
 import com.chappal.foot.model.ProductSpecification;
 import com.chappal.foot.model.Products;
 import com.chappal.foot.model.SubCategory;
@@ -27,6 +29,8 @@ import com.chappal.foot.service.ProductsServices;
 import com.chappal.foot.service.ProductsSpecificationServices;
 import com.chappal.foot.service.SubCategoryServices;
 import com.chappal.foot.service.SupplierServices;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Controller
 public class ProductsController 
@@ -61,7 +65,7 @@ public class ProductsController
 		return "/productsform";
 	}
 	@RequestMapping("/addproducts")
-	public String addProducts(Model model,@Valid @ModelAttribute("products") Products products,BindingResult result)
+	public String addProducts(Model model,@Valid @ModelAttribute("products") Products products,BindingResult result,String productsId)
 	{
 		if(result.hasErrors())
 		{
@@ -88,10 +92,18 @@ public class ProductsController
 			products.setBrandId(brand.getBrandId());
 			products.setSubcategoryId(subcategory.getSubCategoryId());
 			products.setSupplierId(supplier.getSupplierId());
-			products.setProductsId(productsServices.generateId());
-			productsServices.addProducts(products);
-		
-			String path = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\";
+			productsId = products.getProductsId();
+			int count = productsServices.retriveCount(productsId);
+			if(count == 1)
+			{
+				productsServices.updateProducts(products);
+			}
+			else
+			{
+				products.setProductsId(productsServices.generateId());
+				productsServices.addProducts(products);
+			}
+			String path = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\products\\";
 			path = path + String.valueOf(products.getProductsId()) + ".jpg";
 			File file = new File(path);
 			MultipartFile multipartFile = products.getProductsImage();
@@ -150,8 +162,16 @@ public class ProductsController
 	@RequestMapping("/addSpecification")
 	public String addSpecification(Model model,@ModelAttribute("productSpecification") ProductSpecification productSpecification)
 	{
-//		productSpecification.setProductsId(productsId);
 		this.productsSpecificationServices.addProductSpecification(productSpecification);
 		return "redirect:/productsform";
+	}
+	
+	@RequestMapping("/viewproduct-{productsId}")
+	public String viewProduct(Model model,@PathVariable("productsId") String productsId)
+	{
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String json = gson.toJson(productsServices.retriveListProducts(productsId));
+		model.addAttribute("listView", json);
+		return "/viewproduct";
 	}
 }

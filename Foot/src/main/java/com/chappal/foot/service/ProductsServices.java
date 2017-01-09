@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.chappal.foot.dao.ProductsDAOImplementation;
+import com.chappal.foot.model.ListProducts;
 import com.chappal.foot.model.Products;
 
 @Service
@@ -19,6 +20,10 @@ public class ProductsServices
 	public void addProducts(Products products)
 	{
 		productsDAOImplementation.addProducts(products);
+	}
+	public void updateProducts(Products products)
+	{
+		productsDAOImplementation.updateProducts(products);
 	}
 	public List<Products> retriveProducts()
 	{
@@ -41,5 +46,13 @@ public class ProductsServices
 	public String generateId()
 	{
 		return productsDAOImplementation.generateId();
+	}
+	public ListProducts retriveListProducts(String productsId)
+	{
+		return productsDAOImplementation.retriveListProducts(productsId);
+	}
+	public int retriveCount(String productsId)
+	{
+		return productsDAOImplementation.retriveCount(productsId);
 	}
 }

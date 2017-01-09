@@ -33,7 +33,7 @@ public class CategoryController
 	}
 	
 	@RequestMapping("/addCategory")
-	public String addCategory(Model model,@Valid @ModelAttribute("category") Category category , BindingResult result)
+	public String addCategory(Model model,@Valid @ModelAttribute("category") Category category , BindingResult result, String categoryId)
 	{
 		if(result.hasErrors())
 		{
@@ -42,8 +42,17 @@ public class CategoryController
 		}
 		else
 		{
-			category.setCategoryId(categoryServices.generateId());
-			categoryServices.addCategory(category);
+			categoryId = category.getCategoryId();
+			int count = categoryServices.retriveCount(categoryId);
+			if(count == 1)
+			{
+				categoryServices.updateCategory(category);
+			}
+			else
+			{
+				category.setCategoryId(categoryServices.generateId());
+				categoryServices.addCategory(category);
+			}
 			return "redirect:/categoryform";
 		}
 	}

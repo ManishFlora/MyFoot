@@ -73,6 +73,15 @@ public class BrandDAOImplementation implements BrandDAO
 		return count;
 	}
 	
+	public int retriveCount(String brandId) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Brand> brandList = session.createQuery("from Brand where brandId = '" + brandId + "'").getResultList();
+		int count = brandList.size();
+		return count;
+	}
+	
 	public String generateId()
 	{
 		String id;
@@ -98,5 +107,10 @@ public class BrandDAOImplementation implements BrandDAO
 			id = "B" + count;
 		}
 		return id;
+	}
+
+	public void updateBrand(Brand brand) 
+	{
+		sessionFactory.getCurrentSession().update(brand);
 	}
 }

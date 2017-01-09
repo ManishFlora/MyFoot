@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.chappal.foot.daointerface.ProductsDAO;
+import com.chappal.foot.model.ListProducts;
 import com.chappal.foot.model.Products;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;;
@@ -18,9 +19,14 @@ public class ProductsDAOImplementation implements ProductsDAO
 	SessionFactory sessionFactory;
 	public void addProducts(Products products) 
 	{	
-		sessionFactory.getCurrentSession().saveOrUpdate(products);
+			sessionFactory.getCurrentSession().save(products);
 	}
-
+	
+	public void updateProducts(Products products) 
+	{	
+			sessionFactory.getCurrentSession().update(products);
+	}
+	
 	public List<Products> retriveProducts() 
 	{
 		Session session = sessionFactory.getCurrentSession();
@@ -58,8 +64,8 @@ public class ProductsDAOImplementation implements ProductsDAO
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Products> brandList = session.createQuery("from Products").getResultList();
-		int count = brandList.size();
+		List<Products> productList = session.createQuery("from Products").getResultList();
+		int count = productList.size();
 		return count;
 	}
 	
@@ -89,4 +95,22 @@ public class ProductsDAOImplementation implements ProductsDAO
 		}
 		return id;
 	}
+
+	public ListProducts retriveListProducts(String productsId) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<ListProducts> listProducts = session.createQuery("from ListProducts where productsId = '" + productsId + "'").getResultList();
+		return listProducts.get(0);
+	}
+	
+	public int retriveCount(String productsId) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Products> productList = session.createQuery("from Products where productsId = '" + productsId + "'").getResultList();
+		int count = productList.size();
+		return count;
+	}
+	
 }

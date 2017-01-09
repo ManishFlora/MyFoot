@@ -19,7 +19,10 @@ public class SubCategoryServices
 	{
 		subCategoryDAOImplementation.addSubCategory(subCategory);
 	}
-
+	public void updateSubcategory(SubCategory subCategory)
+	{
+		subCategoryDAOImplementation.updateSubCategory(subCategory);
+	}
 	public List<SubCategory> retriveSubCategory() 
 	{
 		return subCategoryDAOImplementation.retriveSubCategory();
@@ -48,5 +51,10 @@ public class SubCategoryServices
 	public String generateId()
 	{
 		return subCategoryDAOImplementation.generateId();
+	}
+	
+	public int retriveCount(String subCategoryId)
+	{
+		return subCategoryDAOImplementation.retriveCount(subCategoryId);
 	}
 }

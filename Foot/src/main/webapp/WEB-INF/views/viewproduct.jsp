@@ -1,4 +1,5 @@
 <%@include file="header.jsp" %>
+<div ng-app="products" ng-controller="productsController">
 <div id="product" class="product product-13 product-reebok-one-cushion category-2 category-home hide-left-column hide-right-column lang_en  one-column">
 <div class="columns-container">
 <div class="wrapper it_MSYCVDAWVRSQ topcolumn-preset1">
@@ -17,7 +18,7 @@
 Home
 </a>
 </li>
-<li class="last">Reebok ONE Cushion</li>
+<li class="last">{{listView.productsName}}</li>
 </ul>
 </div>
  
@@ -48,7 +49,7 @@ Send to a friend
 <img src="resources/images/159-medium_default.jpg" alt="Reebok ONE Cushion">
 <div class="product_desc">
 <p class="product_name">
-<strong>Reebok ONE Cushion</strong>
+<strong>{{listView.productsId}}</strong>
 </p>
 <p>Keds and sneakers became an inevitable part of our life. Either you have a quick pace of your life or a slow relaxed rhythm, there is nothing better than stepping in your favorite sneakers and heading off to... to wherever.</p>
 </div>
@@ -177,7 +178,7 @@ Display all pictures
 <div class="product-info-line">
 <p id="product_reference">
 <label>Reference: </label>
-<span class="editable" itemprop="sku" content="00106">00106</span>
+<span class="editable" itemprop="sku">{{listView.productsId}}</span>
 </p>
  
 <p id="availability_statut" style="display: none;">
@@ -190,7 +191,7 @@ Display all pictures
 </p>
  
 <p id="pQuantityAvailable">
-<span id="quantityAvailable">98</span>
+<span id="quantityAvailable">{{listView.productsQuantity}}</span>
 <span style="display: none;" id="quantityAvailableTxt">Item</span>
 <span id="quantityAvailableTxtMultiple">Items</span>
 </p>
@@ -207,12 +208,11 @@ Display all pictures
 <div class="product-brand pull-left">
 <img src="resources/images/12-tm_medium_default.jpg" alt="">
 </div>
-<h1 itemprop="name">Reebok ONE Cushion</h1>
-<div class="product-manufacture">Reebok</div>
+<h1 itemprop="name">{{listView.productsName}}</h1>
+<div class="product-manufacture">{{listView.brandName}}</div>
 </div>
  
 <form id="buy_block" method="post">
- 
 <p class="hidden">
 <input type="hidden" name="token" value="0a9f6300ab69c9db1344dae91e1ba312">
 <input type="hidden" name="id_product" value="13" id="product_page_product_id">
@@ -224,7 +224,7 @@ Display all pictures
  
 <div class="all-price-info">
 <p class="our_price_display">
-<span id="our_price_display" itemprop="price" content="40">&#8377;1400</span>
+<span id="our_price_display" itemprop="price" content="40">&#8377;{{listView.productsPrice}}</span>
 </p>
 <p id="old_price" class="hidden" style="display: none;"><span id="old_price_display" style="display: none;">
 <span class="price"></span></span>
@@ -258,7 +258,7 @@ Read reviews (<span itemprop="reviewCount">1</span>)
 </div>
 </div>  
 <div id="short_description_block">
-<div id="short_description_content" class="rte align_justify" itemprop="description"><p>Keds and sneakers became an inevitable part of our life. Either you have a quick pace of your life or a slow relaxed rhythm, there is nothing better than stepping in your favorite sneakers and heading off to... to wherever.</p></div>
+<div id="short_description_content" class="rte align_justify" itemprop="description"><p>{{listView.productsDescription}}</p></div>
 </div>  
 <div class="product_attributes clearfix">
  
@@ -269,7 +269,7 @@ Read reviews (<span itemprop="reviewCount">1</span>)
 <div class="attribute_list">
 <ul id="color_to_pick_list" class="clearfix">
 <li class="selected">
-<a href="#" id="color_5" name="Grey" class="color_pick selected" style="background:#AAB2BD;" title="Grey">
+<a href="#" id="color_5" name="Grey" class="color_pick selected" style="background:grey" title="Grey">
 </a>
 </li>
 <li>
@@ -316,11 +316,11 @@ Read reviews (<span itemprop="reviewCount">1</span>)
 </fieldset>
 </div>  
 <script type="text/javascript">   
-                    $(window).load(function(){
-                      $('#attributes .selector').parent().parent().addClass('select-label');
-                    })
-                  </script>
- 
+$(window).load(function()
+{
+	$('#attributes .selector').parent().parent().addClass('select-label');
+})
+</script>
 <p id="quantity_wanted_p">
 <label for="quantity_wanted">Quantity</label>
 <input type="text" min="1" name="qty" id="quantity_wanted" class="text" value="1">
@@ -395,43 +395,43 @@ The minimum purchase order quantity for the product is
 <table class="table-data-sheet">
 <tr class="odd">
 <td>Style</td>
-<td>Low Top</td>
+<td style="text-transform: capitalize;">{{listView.style}}</td>
 </tr>
 <tr class="even">
 <td>Support System</td>
-<td>Dynamic DuoMax</td>
+<td style="text-transform: capitalize;">{{listView.supportSystem}}</td>
 </tr>
 <tr class="odd">
 <td>Shipping</td>
-<td>Free shipping</td>
+<td style="text-transform: capitalize;">Free shipping</td>
 </tr>
 <tr class="even">
 <td>Weight</td>
-<td>2.5 pounds</td>
+<td style="text-transform: capitalize;">{{listView.weight}}</td>
 </tr>
 <tr class="odd">
 <td>Dimensions</td>
-<td>11 x 4 x 7 inches</td>
+<td style="text-transform: capitalize;">{{listView.dimensions}}</td>
 </tr>
 <tr class="even">
 <td>Warranty</td>
-<td>1 year</td>
+<td style="text-transform: capitalize;">{{listView.waranty}}</td>
 </tr>
 <tr class="odd">
 <td>Detail &amp; Care</td>
-<td>Dry clean</td>
+<td style="text-transform: capitalize;">{{listView.detail}}</td>
 </tr>
 <tr class="even">
 <td>Shoe Width</td>
-<td>4A</td>
+<td>{{listView.shoeWidth}}</td>
 </tr>
 <tr class="odd">
 <td>Season</td>
-<td>Autumn-Winter</td>
+<td style="text-transform: capitalize;">{{listView.season}}</td>
 </tr>
 <tr class="even">
 <td>Sole</td>
-<td>Synthetic</td>
+<td style="text-transform: capitalize;">{{listView.sole}}</td>
 </tr>
 </table>
 </div>
@@ -585,4 +585,12 @@ $(document).ready(function(){
 </div>
 </div>
 </div>
+</div>
+<script>
+var products = angular.module("products",[]);
+products.controller("productsController",function($scope)
+		{
+	$scope.listView = ${listView};
+		});
+</script>
 <%@include file="footer.jsp" %>

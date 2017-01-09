@@ -73,6 +73,15 @@ public class SubCategoryDAOImplementation implements SubCategoryDAO
 		return count;
 	}
 	
+	public int retriveCount(String subCategoryId) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<SubCategory> subcategoryList = session.createQuery("from SubCategory where subCategoryId = '" + subCategoryId + "'").getResultList();
+		int count = subcategoryList.size();
+		return count;
+	}
+	
 	public String generateId()
 	{
 		String id;
@@ -98,5 +107,10 @@ public class SubCategoryDAOImplementation implements SubCategoryDAO
 			id = "SC" + count;
 		}
 		return id;
+	}
+
+	public void updateSubCategory(SubCategory subCategory) 
+	{
+		sessionFactory.getCurrentSession().update(subCategory);
 	}
 }

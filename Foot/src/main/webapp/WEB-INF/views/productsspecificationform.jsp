@@ -21,49 +21,73 @@ Specification Form</h1>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label>Color</label>
-<form:input path="productColor" class="form-control" type="text" value=""/>
-</div>
-</div>
-<div class="col-xs-12 col-md-3">
-<div class="form-group">
-<label>Design</label>
-<form:input path="productDesign" class="form-control" type="text" value=""/>
-</div>
-</div>
-<div class="col-xs-12 col-md-3">
-<div class="form-group">
-<label>Last</label>
-<form:input path="productLast" class="form-control" type="text" value=""/>
-</div>
-</div>
-<div class="col-xs-12 col-md-3">
-<div class="form-group">
-<label>Sole</label>
-<form:input path="productSole" class="form-control" type="text" value=""/>
-</div>
-</div>
-<div class="col-xs-12 col-md-3">
-<div class="form-group">
-<label>Upper</label>
-<form:input path="productUpper" class="form-control" type="text" value=""/>
-</div>
-</div>
-<div class="col-xs-12 col-md-3">
-<div class="form-group">
-<label>Linning</label>
-<form:input path="productLinning" class="form-control" type="text" value=""/>
-</div>
-</div>
-<div class="col-xs-12 col-md-3">
-<div class="form-group">
-<label>Heel</label>
-<form:input path="productHeel" class="form-control" type="text" value=""/>
+<form:input path="color" class="form-control" type="text" value=""/>
 </div>
 </div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label>Size</label>
-<form:input path="productSize" class="form-control" type="text" value=""/>
+<form:input path="size" class="form-control" type="text" value=""/>
+</div>
+</div>
+<div class="col-xs-12 col-md-3">
+<div class="form-group">
+<label>Material</label>
+<form:input path="material" class="form-control" type="text" value=""/>
+</div>
+</div>
+<div class="col-xs-12 col-md-3">
+<div class="form-group">
+<label>Style</label>
+<form:input path="style" class="form-control" type="text" value=""/>
+</div>
+</div>
+<div class="col-xs-12 col-md-3">
+<div class="form-group">
+<label>Support-System</label>
+<form:input path="supportSystem" class="form-control" type="text" value=""/>
+</div>
+</div>
+<div class="col-xs-12 col-md-3">
+<div class="form-group">
+<label>Weight</label>
+<form:input path="weight" class="form-control" type="text" value=""/>
+</div>
+</div>
+<div class="col-xs-12 col-md-3">
+<div class="form-group">
+<label>Dimensions</label>
+<form:input path="dimensions" class="form-control" type="text" value=""/>
+</div>
+</div>
+<div class="col-xs-12 col-md-3">
+<div class="form-group">
+<label>Waranty</label>
+<form:input path="waranty" class="form-control" type="text" value=""/>
+</div>
+</div>
+<div class="col-xs-12 col-md-3">
+<div class="form-group">
+<label>Detail</label>
+<form:input path="detail" class="form-control" type="text" value=""/>
+</div>
+</div>
+<div class="col-xs-12 col-md-3">
+<div class="form-group">
+<label>Shoe Width</label>
+<form:input path="shoeWidth" class="form-control" type="text" value=""/>
+</div>
+</div>
+<div class="col-xs-12 col-md-3">
+<div class="form-group">
+<label>Season</label>
+<form:input path="season" class="form-control" type="text" value=""/>
+</div>
+</div>
+<div class="col-xs-12 col-md-3">
+<div class="form-group">
+<label>Sole</label>
+<form:input path="sole" class="form-control" type="text" value=""/>
 </div>
 </div>
 </div>

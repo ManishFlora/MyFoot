@@ -7,6 +7,7 @@ import com.chappal.foot.model.SubCategory;
 public interface SubCategoryDAO 
 {
 	public void addSubCategory(SubCategory subCategory);
+	public void updateSubCategory(SubCategory subCategory);
 	public List<SubCategory> retriveSubCategory();
 	public SubCategory retriveSubCategory(String subCategory_Id);
 	public void deleteSubCategory(String subCategory_Id);

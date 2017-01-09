@@ -8,6 +8,7 @@ import com.chappal.foot.model.UserDetail;
 public interface SupplierDAO 
 {
 	public void addSupplier(Supplier supplier);
+	public void updateSupplier(Supplier supplier);
 	public List<Supplier> retriveSupplier();
 	public Supplier retriveSupplier(String supplier_Id);
 	public void deleteSupplier(String supplier_Id);

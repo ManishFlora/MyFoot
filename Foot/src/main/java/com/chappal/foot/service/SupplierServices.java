@@ -20,7 +20,10 @@ public class SupplierServices
 	{
 		supplierDAOImplementation.addSupplier(supplier);
 	}
-
+	public void updateSupplier(Supplier supplier)
+	{
+		supplierDAOImplementation.updateSupplier(supplier);
+	}
 	public List<Supplier> retriveSupplier() 
 	{
 		return supplierDAOImplementation.retriveSupplier();
@@ -51,5 +54,9 @@ public class SupplierServices
 	public void addRegSupplier(UserDetail userDetail)
 	{
 		supplierDAOImplementation.addRegSupplier(userDetail);
+	}
+	public int retriveCount(String supplierId)
+	{
+		return supplierDAOImplementation.retriveCount(supplierId);
 	}
 }

@@ -72,8 +72,17 @@ public class SupplierDAOImplementation implements SupplierDAO
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Supplier> brandList = session.createQuery("from Supplier").getResultList();
-		int count = brandList.size();
+		List<Supplier> supplierList = session.createQuery("from Supplier").getResultList();
+		int count = supplierList.size();
+		return count;
+	}
+	
+	public int retriveCount(String supplierId) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Supplier> supplierList = session.createQuery("from Supplier where supplierId = '" + supplierId + "'").getResultList();
+		int count = supplierList.size();
 		return count;
 	}
 	
@@ -132,5 +141,10 @@ public class SupplierDAOImplementation implements SupplierDAO
 		
 		session.saveOrUpdate(userDetail);		
 		session.flush();
+	}
+
+	public void updateSupplier(Supplier supplier) 
+	{
+		sessionFactory.getCurrentSession().update(supplier);
 	}
 }

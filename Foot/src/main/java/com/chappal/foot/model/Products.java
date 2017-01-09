@@ -39,7 +39,7 @@ public class Products
 	@Expose
 	private String productsDescription;
 	
-	@Pattern(regexp="[a-zA-Z]{1}+[a-zA-Z0-9]+", message="Invalid Name Format")
+	@Pattern(regexp="[a-zA-Z_ ]{1}+[a-zA-Z0-9_ ]+", message="Invalid Name Format")
 	@Expose
 	private String productsName;
 	

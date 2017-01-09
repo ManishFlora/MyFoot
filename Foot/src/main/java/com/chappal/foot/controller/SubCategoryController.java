@@ -38,7 +38,7 @@ public class SubCategoryController
 	}
 	
 	@RequestMapping("/addsubcategory")
-	public String addSubCategory(Model model, @Valid @ModelAttribute("subCategory") SubCategory subCategory, BindingResult result)
+	public String addSubCategory(Model model, @Valid @ModelAttribute("subCategory") SubCategory subCategory, BindingResult result, String subCategoryId)
 	{
 		if(result.hasErrors())
 		{
@@ -51,8 +51,17 @@ public class SubCategoryController
 			Category category = categoryServices.retriveCategoryName(subCategory.getCategory().getCategoryName());
 			subCategory.setCategory(category);
 			subCategory.setCategoryId(category.getCategoryId());
-			subCategory.setSubCategoryId(subCategoryServices.generateId());
-			subCategoryServices.addSubCategory(subCategory);
+			subCategoryId = subCategory.getSubCategoryId();
+			int count = subCategoryServices.retriveCount(subCategoryId);
+			if(count == 1)
+			{
+				subCategoryServices.updateSubcategory(subCategory);
+			}
+			else
+			{
+				subCategory.setSubCategoryId(subCategoryServices.generateId());
+				subCategoryServices.addSubCategory(subCategory);
+			}
 			return "redirect:/subcategoryform";
 		}
 	}

@@ -73,6 +73,15 @@ public class CategoryDAOImplementation implements CategoryDAO
 		return count;
 	}
 	
+	public int retriveCount(String categoryId)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Category> categoryList = session.createQuery("from Category where categoryId = '" + categoryId + "'").getResultList();
+		int count = categoryList.size();
+		return count;
+	}
+	
 	public String generateId()
 	{
 		String id;
@@ -98,5 +107,10 @@ public class CategoryDAOImplementation implements CategoryDAO
 			id = "C" + count;
 		}
 		return id;
+	}
+
+	public void updateCategory(Category category) 
+	{
+		sessionFactory.getCurrentSession().update(category);
 	}
 }

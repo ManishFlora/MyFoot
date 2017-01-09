@@ -36,7 +36,7 @@ public class BrandController
 	}
 	
 	@RequestMapping("/addBrand")
-	public String addBrand(Model model,@Valid @ModelAttribute("brand") Brand brand , BindingResult result)
+	public String addBrand(Model model,@Valid @ModelAttribute("brand") Brand brand , BindingResult result, String brandId)
 	{
 		if(result.hasErrors())
 		{
@@ -45,8 +45,17 @@ public class BrandController
 		}
 		else
 		{
-			brand.setBrandId(brandServices.generateId());
-			brandServices.addBrand(brand);
+			brandId = brand.getBrandId();
+			int count = brandServices.retriveCount(brandId);
+			if(count == 1)
+			{
+				brandServices.updateBrand(brand);
+			}
+			else
+			{
+				brand.setBrandId(brandServices.generateId());
+				brandServices.addBrand(brand);
+			}
 			return "redirect:/brandform";
 		}
 	}

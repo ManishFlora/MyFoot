@@ -29,6 +29,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 		.antMatchers("/categoryform","/subcategoryform","/brandform","/productsform","/supplierform").access("hasRole('ROLE_ADMIN')")
 		.anyRequest().permitAll()
 		.and()
-		.formLogin().loginPage("/").failureUrl("/?error").usernameParameter("username").passwordParameter("password").loginProcessingUrl("/perform_login").defaultSuccessUrl("/").and().logout().logoutSuccessUrl("/").and().exceptionHandling().accessDeniedPage("/403").and().csrf().disable();
+		.formLogin().loginPage("/login").failureUrl("/?error").usernameParameter("username").passwordParameter("password").loginProcessingUrl("/perform_login").defaultSuccessUrl("/").and().logout().logoutSuccessUrl("/").and().exceptionHandling().accessDeniedPage("/403").and().csrf().disable();
 	}
 }

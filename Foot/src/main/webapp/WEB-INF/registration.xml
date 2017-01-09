@@ -26,8 +26,14 @@
 
 <action-state id="checkUser">
 <evaluate expression="registrationHandler.checkUser(userDetail,messageContext)"/>
+<transition on="success" to="checkEmail"/>
+<transition on="failure" to="start"/>
+</action-state>
+
+<action-state id="checkEmail">
+<evaluate expression="registrationHandler.checkEmail(userDetail,messageContext)"/>
 <transition on="success" to="confirmUser"/>
-<transition on="failure" to="validateUser"/>
+<transition on="failure" to="start"/>
 </action-state>
 
 <view-state id="confirmUser" view="confirmuser" model="userDetail">

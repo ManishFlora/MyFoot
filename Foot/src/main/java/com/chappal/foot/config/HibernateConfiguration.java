@@ -16,6 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.chappal.foot.model.Brand;
 import com.chappal.foot.model.Category;
+import com.chappal.foot.model.ListProducts;
 import com.chappal.foot.model.ProductSpecification;
 import com.chappal.foot.model.Products;
 import com.chappal.foot.model.SubCategory;
@@ -23,6 +24,8 @@ import com.chappal.foot.model.Supplier;
 import com.chappal.foot.model.User;
 import com.chappal.foot.model.Role;
 import com.chappal.foot.model.ShippingAddress;
+import com.chappal.foot.handler.RegistrationHandler;
+import com.chappal.foot.handler.UserHandler;
 import com.chappal.foot.model.BillingAddress;
 import com.chappal.foot.model.Cart;
 import com.chappal.foot.model.UserDetail;
@@ -85,6 +88,7 @@ public class HibernateConfiguration extends WebMvcConfigurerAdapter
         sessionBuilder.addAnnotatedClass(Cart.class);
         sessionBuilder.addAnnotatedClass(Role.class);
         sessionBuilder.addAnnotatedClass(ProductSpecification.class);
+        sessionBuilder.addAnnotatedClass(ListProducts.class);
         return sessionBuilder.buildSessionFactory();
     }
     
@@ -94,6 +98,14 @@ public class HibernateConfiguration extends WebMvcConfigurerAdapter
     {
     	return new RegistrationHandler();
     }
+    
+    @Autowired
+    @Bean(name="userHandler")
+    public UserHandler userHandler()
+    {
+    	return new UserHandler();
+    }
+ 
     
     @Autowired
     @Bean(name="billingAddress")

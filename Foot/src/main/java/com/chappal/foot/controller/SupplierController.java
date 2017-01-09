@@ -32,7 +32,7 @@ public class SupplierController
 	}
 	
 	@RequestMapping("/addSupplier")
-	public String addSupplier(Model model, @Valid @ModelAttribute("supplier") Supplier supplier, BindingResult result)
+	public String addSupplier(Model model, @Valid @ModelAttribute("supplier") Supplier supplier, BindingResult result,String supplierId)
 	{
 		if(result.hasErrors())
 		{
@@ -41,8 +41,17 @@ public class SupplierController
 		}
 		else
 		{
-			supplier.setSupplierId(supplierServices.generateId());
-			supplierServices.addSupplier(supplier);
+			supplierId = supplier.getSupplierId();
+			int count = supplierServices.retriveCount(supplierId);
+			if(count == 1)
+			{
+				supplierServices.updateSupplier(supplier);
+			}
+			else
+			{
+				supplier.setSupplierId(supplierServices.generateId());
+				supplierServices.addSupplier(supplier);
+			}
 			return "redirect:/supplierform";
 		}
 	}

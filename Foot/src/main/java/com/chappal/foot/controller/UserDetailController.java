@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.chappal.foot.model.BillingAddress;
 import com.chappal.foot.model.ShippingAddress;
+import com.chappal.foot.model.User;
 import com.chappal.foot.model.UserDetail;
 import com.chappal.foot.service.UserDetailServices;
 
@@ -51,10 +52,10 @@ public class UserDetailController
 			return "redirect:/registrationform";
 		}
 	}
-	@RequestMapping("/loginform")
-	public String loginform()
+	@RequestMapping("/login")
+	public String login()
 	{
-		return "/loginform";
+		return "/login";
 	}
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request,HttpServletResponse response)
