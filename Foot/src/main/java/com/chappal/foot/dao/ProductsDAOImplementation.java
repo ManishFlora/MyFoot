@@ -19,12 +19,13 @@ public class ProductsDAOImplementation implements ProductsDAO
 	SessionFactory sessionFactory;
 	public void addProducts(Products products) 
 	{	
-			sessionFactory.getCurrentSession().save(products);
+		products.setDiscountedPrice((products.getProductsPrice() * products.getProductsDiscount())/100);
+		sessionFactory.getCurrentSession().save(products);
 	}
 	
 	public void updateProducts(Products products) 
 	{	
-			sessionFactory.getCurrentSession().update(products);
+		sessionFactory.getCurrentSession().update(products);
 	}
 	
 	public List<Products> retriveProducts() 
@@ -40,7 +41,14 @@ public class ProductsDAOImplementation implements ProductsDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Products> productsList = session.createQuery("from Products where productsId = '" + productsId + "'").getResultList();
-		return productsList.get(0);
+		if(productsList != null && !productsList.isEmpty())
+		{
+			return productsList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	public void deleteProducts(String productsId) 
@@ -101,7 +109,14 @@ public class ProductsDAOImplementation implements ProductsDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<ListProducts> listProducts = session.createQuery("from ListProducts where productsId = '" + productsId + "'").getResultList();
-		return listProducts.get(0);
+		if(listProducts != null && !listProducts.isEmpty())
+		{
+			return listProducts.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	public int retriveCount(String productsId) 
@@ -111,6 +126,26 @@ public class ProductsDAOImplementation implements ProductsDAO
 		List<Products> productList = session.createQuery("from Products where productsId = '" + productsId + "'").getResultList();
 		int count = productList.size();
 		return count;
+	}
+
+	public String retriveListProducts() 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<ListProducts> listProducts = session.createQuery("from ListProducts").getResultList();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String json = gson.toJson(listProducts);
+		return json;
+	}
+	
+	public String retriveLatestListProducts() 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<ListProducts> listProducts = session.createQuery("from ListProducts order by productsId desc").getResultList();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String json = gson.toJson(listProducts);
+		return json;
 	}
 	
 }

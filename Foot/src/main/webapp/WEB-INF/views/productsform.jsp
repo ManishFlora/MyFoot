@@ -90,7 +90,7 @@ Products Form</h1>
 </div>
 </div>
 <div class="uploader" id="uniform-fileUpload">
-<form:input path="productsImage" id="fileUpload" type="file" class="form-control"></form:input>
+<input name="fileUpload" type="file" multiple="multiple" class="form-control"/>
 </div>
 </div>
 <c:if test="${!empty products.productsName}">

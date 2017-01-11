@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.chappal.foot.model.Brand;
@@ -52,7 +53,7 @@ public class ProductsController
 	public String products(Model model)
 	{
 		model.addAttribute("products", new Products());
-		model.addAttribute("subcategory", new SubCategory());
+		model.addAttribute("subcategor/y", new SubCategory());
 		model.addAttribute("category", new Category());
 		model.addAttribute("brand", new Brand());
 		model.addAttribute("supplier", new Supplier());
@@ -65,7 +66,7 @@ public class ProductsController
 		return "/productsform";
 	}
 	@RequestMapping("/addproducts")
-	public String addProducts(Model model,@Valid @ModelAttribute("products") Products products,BindingResult result,String productsId)
+	public String addProducts(Model model,@Valid @ModelAttribute("products") Products products,BindingResult result,String productsId,@RequestParam("fileUpload") List<MultipartFile> productImage)
 	{
 		if(result.hasErrors())
 		{
@@ -103,26 +104,34 @@ public class ProductsController
 				products.setProductsId(productsServices.generateId());
 				productsServices.addProducts(products);
 			}
-			String path = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\products\\";
-			path = path + String.valueOf(products.getProductsId()) + ".jpg";
-			File file = new File(path);
-			MultipartFile multipartFile = products.getProductsImage();
+			List<MultipartFile> files = productImage;
 			
-			if(!multipartFile.isEmpty())
+			if(!files.isEmpty())
 			{
-				try 
+				for(int i = 0;i<=files.size();i++)
 				{
-					byte[] bytes;
-					bytes = multipartFile.getBytes();
-					FileOutputStream fos = new FileOutputStream(file);
-					BufferedOutputStream bos = new BufferedOutputStream(fos);
-					bos.write(bytes);
-					bos.close();
+					try 
+					{
+						MultipartFile multipartFile = files.get(i);
+						String path = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\products\\";
+						path = path + String.valueOf(products.getProductsId()) + "(" + (i + 1) + ")" + ".jpg";
+						File file = new File(path);
+						if(file.exists())
+						{
+							file.delete();
+						}
+						byte[] bytes;
+						bytes = multipartFile.getBytes();
+						FileOutputStream fos = new FileOutputStream(file);
+						BufferedOutputStream bos = new BufferedOutputStream(fos);
+						bos.write(bytes);
+						bos.close();
+					}
+					catch (Exception e) 
+					{
+						e.printStackTrace();
+					}
 				} 
-				catch (Exception e) 
-				{
-					e.printStackTrace();
-				}
 			}
 			else
 			{
@@ -160,9 +169,42 @@ public class ProductsController
 	}
 	
 	@RequestMapping("/addSpecification")
-	public String addSpecification(Model model,@ModelAttribute("productSpecification") ProductSpecification productSpecification)
+	public String addSpecification(Model model,@ModelAttribute("productSpecification") ProductSpecification productSpecification,@RequestParam("fileUpload") List<MultipartFile> productImage)
 	{
 		this.productsSpecificationServices.addProductSpecification(productSpecification);
+		List<MultipartFile> files = productImage;
+		
+		if(!files.isEmpty())
+		{
+			for(int i = 0;i<files.size();i++)
+			{
+				try 
+				{
+					MultipartFile multipartFile = files.get(i);
+					String path = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\view\\";
+					path = path + String.valueOf(productSpecification.getProductsId()) + "(" + (i + 1) + ")" + ".jpg";
+					File file = new File(path);
+					if(file.exists())
+					{
+						file.delete();
+					}
+					byte[] bytes;
+					bytes = multipartFile.getBytes();
+					FileOutputStream fos = new FileOutputStream(file);
+					BufferedOutputStream bos = new BufferedOutputStream(fos);
+					bos.write(bytes);
+					bos.close();
+				}
+				catch (Exception e) 
+				{
+					e.printStackTrace();
+				}
+			} 
+		}
+		else
+		{
+			System.out.println("Sorry You are Dumped.");
+		}
 		return "redirect:/productsform";
 	}
 	

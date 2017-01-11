@@ -1,6 +1,6 @@
 <%@include file="header.jsp" %>
 <div ng-app="products" ng-controller="productsController">
-<div id="product" class="product product-13 product-reebok-one-cushion category-2 category-home hide-left-column hide-right-column lang_en  one-column">
+<div id="product">
 <div class="columns-container">
 <div class="wrapper it_MSYCVDAWVRSQ topcolumn-preset1">
 <div class="row it_BPFSWOXAMUFW ">
@@ -18,7 +18,22 @@
 Home
 </a>
 </li>
-<li class="last">{{listView.productsName}}</li>
+<li class="crumb-1">
+<a href="#" title="Return to Home" rel="nofollow">
+{{listView.categoryName}}
+</a>
+</li>
+<li class="crumb-1">
+<a href="#" title="Return to Home" rel="nofollow">
+{{listView.subCategoryName}}
+</a>
+</li>
+<li class="crumb-1">
+<a href="#" title="Return to Home" rel="nofollow">
+{{listView.brandName}}
+</a>
+</li>
+<li class="crumb-4 last">{{listView.productsName}}</li>
 </ul>
 </div>
  
@@ -46,7 +61,7 @@ Home
 <h2 class="page-subheading">
 Send to a friend
 </h2>
-<img src="resources/images/159-medium_default.jpg" alt="Reebok ONE Cushion">
+<img src="resources/images/view/{{listView.productsId}}(0).jpg" alt="Reebok ONE Cushion">
 <div class="product_desc">
 <p class="product_name">
 <strong>{{listView.productsId}}</strong>
@@ -104,19 +119,7 @@ Cancel
 </div>
 <span id="view_full_size">
 <a class="jqzoom" title="Reebok ONE Cushion" rel="gal1" href="#" style="outline-style: none; text-decoration: none;">
-<div class="zoomPad">
-<img src="resources/images/159-tm_large_default.jpg" title="Reebok ONE Cushion" alt="Reebok ONE Cushion">
-<div class="zoomPup" style="top: 0px; left: 0px; width: 324px; height: 324px; position: absolute; display: none; border-width: 1px;"></div>
-<div class="zoomWindow" style="position: absolute; display: none; z-index: 5001; cursor: default; left: 0px; top: 0px;">
-<div class="zoomWrapper" style="width: 570px; border-width: 1px; cursor: crosshair;">
-<div class="zoomWrapperTitle" style="width: 100%; position: absolute; display: none;"></div>
-<div class="zoomWrapperImage" style="width: 100%; height: 570px;">
-<img style="position: absolute; border: 0px; display: block; left: -5000px; top: 0px;" src="resources/images/159-tm_thickbox_default.jpg">
-</div>
-</div>
-</div>
-<div class="zoomPreload" style="top: 261px; left: 261px; position: absolute; visibility: hidden;">Loading zoom</div>
-</div>
+<img src="resources/images/view/{{listView.productsId}}(1).jpg" title="Reebok ONE Cushion" alt="Reebok ONE Cushion">
 </a>
 </span>
 </div>  
@@ -125,28 +128,18 @@ Cancel
 <div id="thumbs_list">
 <ul id="thumbs_list_frame" style="width: 971px;">
 <li id="thumbnail_159" style="width: 170px;">
-<a href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: 'resources/images/159-tm_large_default.jpg',largeimage: 'resources/images/159-tm_thickbox_default.jpg'}" title="Reebok ONE Cushion">
-<img class="img-responsive" id="thumb_159" src="resources/images/159-tm_thickbox_default.jpg" alt="Reebok ONE Cushion" title="Reebok ONE Cushion" height="80" width="80" itemprop="image">
+<a href="javascript:void(0);" title="Reebok ONE Cushion">
+<img class="img-responsive" id="thumb_159" src="resources/images/view/{{listView.productsId}}(2).jpg" alt="Reebok ONE Cushion" title="Reebok ONE Cushion" height="80" width="80" itemprop="image">
 </a>
 </li>
 <li id="thumbnail_160" style="width: 170px;">
-<a href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: 'resources/images/160-tm_large_default.jpg',largeimage: 'resources/images/160-tm_thickbox_default.jpg'}" title="Reebok ONE Cushion">
-<img class="img-responsive" id="thumb_160" src="resources/images/160-tm_thickbox_default.jpg" alt="Reebok ONE Cushion" title="Reebok ONE Cushion" height="80" width="80" itemprop="image">
+<a href="javascript:void(0);" title="Reebok ONE Cushion">
+<img class="img-responsive" id="thumb_160" src="resources/images/view/{{listView.productsId}}(3).jpg" alt="Reebok ONE Cushion" title="Reebok ONE Cushion" height="80" width="80" itemprop="image">
 </a>
 </li>
 <li id="thumbnail_161" style="width: 170px;">
-<a href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: 'resources/images/161-tm_large_default.jpg',largeimage: 'resources/images/161-tm_thickbox_default.jpg'}" title="Reebok ONE Cushion">
-<img class="img-responsive" id="thumb_161" src="resources/images/161-tm_thickbox_default.jpg" alt="Reebok ONE Cushion" title="Reebok ONE Cushion" height="80" width="80" itemprop="image">
-</a>
-</li>
-<li id="thumbnail_281" style="width: 170px;">
-<a href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: 'resources/images/281-tm_large_default.jpg',largeimage: 'resources/images/281-tm_thickbox_default.jpg'}" title="Reebok ONE Cushion">
-<img class="img-responsive" id="thumb_281" src="resources/images/281-tm_thickbox_default.jpg" alt="Reebok ONE Cushion" title="Reebok ONE Cushion" height="80" width="80" itemprop="image">
-</a>
-</li>
-<li id="thumbnail_282" class="last" style="width: 170px;">
-<a href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: 'resources/images/282-tm_large_default.jpg',largeimage: 'resources/images/282-tm_thickbox_default.jpg'}" title="Reebok ONE Cushion">
-<img class="img-responsive" id="thumb_282" src="resources/images/282-tm_thickbox_default.jpg" alt="Reebok ONE Cushion" title="Reebok ONE Cushion" height="80" width="80" itemprop="image">
+<a href="javascript:void(0);" title="Reebok ONE Cushion">
+<img class="img-responsive" id="thumb_161" src="resources/images/view/{{listView.productsId}}(4).jpg" alt="Reebok ONE Cushion" title="Reebok ONE Cushion" height="80" width="80">
 </a>
 </li>
 </ul>
@@ -162,16 +155,6 @@ Display all pictures
 </a>
 </span>
 </p>
-<div id="product-nav">
-<ul>
-<li>
-<a href="#" class="active">0</a>
-</li>
-<li>
-<a href="#">1</a>
-</li>
-</ul>
-</div>
 </div>
  
 <div class="pb-right-column col-sm-6 col-md-6 col-lg-6">
@@ -206,7 +189,7 @@ Display all pictures
 </div>
 <div class="title-brand-block clearfix">
 <div class="product-brand pull-left">
-<img src="resources/images/12-tm_medium_default.jpg" alt="">
+<img src="resources/images/brand/{{listView.brandId}}.jpg" alt="">
 </div>
 <h1 itemprop="name">{{listView.productsName}}</h1>
 <div class="product-manufacture">{{listView.brandName}}</div>
@@ -224,15 +207,15 @@ Display all pictures
  
 <div class="all-price-info">
 <p class="our_price_display">
-<span id="our_price_display" itemprop="price" content="40">&#8377;{{listView.productsPrice}}</span>
+<span id="our_price_display" itemprop="price" content="40">&#x20b9;{{listView.productsPrice - ((listView.productsPrice * listView.productsDiscount) / 100)}}</span>
 </p>
-<p id="old_price" class="hidden" style="display: none;"><span id="old_price_display" style="display: none;">
-<span class="price"></span></span>
+<p id="old_price"  ng-if="listView.productsDiscount !=0">
+<span id="old_price_display">
+<span class="price">&#8377;{{listView.productsPrice}}</span></span>
 </p>
-<p id="reduction_percent" style="display:none;"><span id="reduction_percent_display"></span></p>
-<p id="reduction_amount" style="display:none"><span id="reduction_amount_display"></span></p>
+<p id="reduction_percent"  ng-if="listView.productsDiscount !=0">-{{listView.productsDiscount}}%<span id="reduction_percent_display"></span></p>
+<p id="reduction_amount" style="display:none">-{{listView.productsDiscount}}%<span id="reduction_amount_display"></span></p>
 </div>
- 
 <div class="clear"></div>
 <div id="product_comments_block_extra" class="no-print">
 <div class="comments_note clearfix">
@@ -268,12 +251,14 @@ Read reviews (<span itemprop="reviewCount">1</span>)
 <label class="attribute_label">Color&nbsp;</label>
 <div class="attribute_list">
 <ul id="color_to_pick_list" class="clearfix">
-<li class="selected">
-<a href="#" id="color_5" name="Grey" class="color_pick selected" style="background:grey" title="Grey">
+<li id="colorChange" class="selected">
+<a id="color_11" class="color_pick" style="background:{{split(listView.color,0)}}" title="{{split(listView.color,0)}}">
+<input onclick="changeClass();" name="color" type="radio" value="{{split(listView.color,0)}}"/>
 </a>
 </li>
-<li>
-<a href="#" id="color_11" name="Black" class="color_pick" style="background:#434A54;" title="Black">
+<li id="colorChange" class="">
+<a id="color_11" class="color_pick" style="background:{{split(listView.color,1)}}" title="{{split(listView.color,1)}}">
+<input name="color" onclick="changeClass();" type="radio" value="{{split(listView.color,1)}}"/>
 </a>
 </li>
 </ul>
@@ -285,12 +270,12 @@ Read reviews (<span itemprop="reviewCount">1</span>)
 <div class="attribute_list">
 <div class="selector" id="uniform-group_4" style="width: 87px;">
 <select name="group_4" id="group_4" class="form-control attribute_select no-print">
-<option value="27" selected="selected" title="6">6</option>
-<option value="28" title="7">7</option>
-<option value="29" title="8">8</option>
-<option value="29" title="9">9</option>
-<option value="29" title="9.5">9.5</option>
-<option value="29" title="10">10</option>
+<option value="27" selected="selected" title="6">{{split(listView.size,0)}}</option>
+<option value="28" title="7">{{split(listView.size,1)}}</option>
+<option value="29" title="8">{{split(listView.size,2)}}</option>
+<option value="29" title="9">{{split(listView.size,3)}}</option>
+<option value="29" title="9.5">{{split(listView.size,4)}}</option>
+<option value="29" title="10">{{split(listView.size,5)}}</option>
 </select>
 </div>
 </div>  
@@ -301,15 +286,15 @@ Read reviews (<span itemprop="reviewCount">1</span>)
 <ul>
 <li>
 <input type="radio" class="attribute_radio" name="group_5" value="31" checked="checked">
-<label>Suede</label>
+<label>{{split(listView.material,0)}}</label>
 </li>
 <li>
 <input type="radio" class="attribute_radio" name="group_5" value="32">
-<label>Leather</label>
+<label>{{split(listView.material,1)}}</label>
 </li>
 <li>
 <input type="radio" class="attribute_radio" name="group_5" value="33">
-<label>Fabric</label>
+<label>{{split(listView.material,2)}}</label>
 </li>
 </ul>
 </div>  
@@ -591,6 +576,24 @@ var products = angular.module("products",[]);
 products.controller("productsController",function($scope)
 		{
 	$scope.listView = ${listView};
+	$scope.split = function(string,data)
+	{
+		var array = string.split(',');
+		return array[data];
+	}
 		});
+</script>
+<<script type="text/javascript">
+function changeClass()
+{
+	if(document.getElementById("colorChange").className == "")
+	{
+		document.getElementById("colorChange").className == "selected";
+	}
+	else
+	{
+		document.getElementById("colorChange").className == "";
+	}
+}
 </script>
 <%@include file="footer.jsp" %>

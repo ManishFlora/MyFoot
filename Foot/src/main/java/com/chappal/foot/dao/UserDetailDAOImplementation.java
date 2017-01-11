@@ -134,7 +134,14 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<UserDetail> userList = session.createQuery("from UserDetail where userName = '" + userName + "'").getResultList();
-		return userList.get(0);
+		if(!userList.isEmpty() && userList != null)
+		{
+			return userList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	public ShippingAddress retriveSAddressById(int userId) 
@@ -142,7 +149,14 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<ShippingAddress> addressList = session.createQuery("from ShippingAddress where userDetail_userId = " + userId).getResultList();
-		return addressList.get(0);
+		if(!addressList.isEmpty() && addressList != null)
+		{
+			return addressList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	public BillingAddress retriveBAddressById(int userId) 
@@ -150,6 +164,13 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<BillingAddress> addressList = session.createQuery("from BillingAddress where userDetail_userId = " + userId).getResultList();
-		return addressList.get(0);
+		if(!addressList.isEmpty() && addressList != null)
+		{
+			return addressList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 }

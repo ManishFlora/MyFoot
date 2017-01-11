@@ -15,4 +15,5 @@ public interface ProductsDAO
 	public int retriveCount();
 	public String generateId();
 	public ListProducts retriveListProducts(String productsId);
+	public String retriveListProducts();
 }

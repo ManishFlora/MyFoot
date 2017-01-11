@@ -35,8 +35,15 @@ public class CategoryDAOImplementation implements CategoryDAO
 	{	
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Category> categoryList = session.createQuery("from Category where categoryId = ' " + categoryId + "'").getResultList();
-		return categoryList.get(0);
+		List<Category> categoryList = session.createQuery("from Category where categoryId = '" + categoryId + "'").getResultList();
+		if(categoryList != null && !categoryList.isEmpty())
+		{
+			return categoryList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	public Category retriveCategoryName(String categoryName) 
@@ -44,7 +51,14 @@ public class CategoryDAOImplementation implements CategoryDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List <Category> categoryList = session.createQuery("from Category where categoryName = " + "'" + categoryName + "'").getResultList();
-		return categoryList.get(0);
+		if(categoryList != null && !categoryList.isEmpty())
+		{
+			return categoryList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	public void deleteCategory(String category_Id) 

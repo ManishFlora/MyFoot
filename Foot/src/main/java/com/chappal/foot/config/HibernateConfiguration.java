@@ -28,6 +28,7 @@ import com.chappal.foot.handler.RegistrationHandler;
 import com.chappal.foot.handler.UserHandler;
 import com.chappal.foot.model.BillingAddress;
 import com.chappal.foot.model.Cart;
+import com.chappal.foot.model.CartItems;
 import com.chappal.foot.model.UserDetail;
 import com.chappal.foot.model.UserRole;
 
@@ -89,6 +90,7 @@ public class HibernateConfiguration extends WebMvcConfigurerAdapter
         sessionBuilder.addAnnotatedClass(Role.class);
         sessionBuilder.addAnnotatedClass(ProductSpecification.class);
         sessionBuilder.addAnnotatedClass(ListProducts.class);
+        sessionBuilder.addAnnotatedClass(CartItems.class);
         return sessionBuilder.buildSessionFactory();
     }
     

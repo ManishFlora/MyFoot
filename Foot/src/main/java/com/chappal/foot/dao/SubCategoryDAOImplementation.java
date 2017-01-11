@@ -36,7 +36,14 @@ public class SubCategoryDAOImplementation implements SubCategoryDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<SubCategory> subCategoryList = session.createQuery("from SubCategory where subcategoryId = '" + subCategoryId + "'").getResultList();
-		return subCategoryList.get(0);
+		if(subCategoryList!=null && !subCategoryList.isEmpty())
+		{
+			return subCategoryList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	public void deleteSubCategory(String subCategoryId) 
@@ -51,7 +58,14 @@ public class SubCategoryDAOImplementation implements SubCategoryDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<SubCategory> subCategoryList = session.createQuery("from SubCategory where subcategoryName = "+ "'" + subCategoryName + "'").getResultList();
-		return subCategoryList.get(0);
+		if(subCategoryList!=null && !subCategoryList.isEmpty())
+		{
+			return subCategoryList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	public String retriveJsonSubCategory()

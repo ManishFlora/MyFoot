@@ -11,6 +11,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.annotations.Expose;
 
@@ -20,13 +21,21 @@ public class Brand
 	@Id
 	@Expose
 	private String brandId;
-	@Size(min = 15,message="Minimum 15 Characters Required")
 	@Expose
 	private String brandDescription;
-	@Pattern(regexp="[a-zA-Z_ ]{1}+[a-zA-Z0-9_ ]+", message="Invalid Name Format")
 	@Expose
 	private String brandName;
+	@Transient
+	@Expose
+	private MultipartFile brandImage;
 	
+	
+	public MultipartFile getBrandImage() {
+		return brandImage;
+	}
+	public void setBrandImage(MultipartFile brandImage) {
+		this.brandImage = brandImage;
+	}
 	public String getBrandId() {
 		return brandId;
 	}

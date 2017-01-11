@@ -20,7 +20,7 @@ public class BrandDAOImplementation implements BrandDAO
 	
 	public void addBrand(Brand brand) 
 	{
-		sessionFactory.getCurrentSession().saveOrUpdate(brand);
+		sessionFactory.getCurrentSession().save(brand);
 	}
 
 	public List<Brand> retriveBrand() 
@@ -36,7 +36,14 @@ public class BrandDAOImplementation implements BrandDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Brand> brandList = session.createQuery("from Brand where brandId = '" + brandId + "'").getResultList();
-		return brandList.get(0);
+		if(!brandList.isEmpty() && brandList != null)
+		{
+			return brandList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	public void deleteBrand(String brandId) 
@@ -51,7 +58,14 @@ public class BrandDAOImplementation implements BrandDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List <Brand> brandList = session.createQuery("from Brand where brandName = " + "'" + brandName + "'").getResultList();
-		return brandList.get(0);
+		if(!brandList.isEmpty() && brandList != null)
+		{
+			return brandList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	public String retriveJsonBrand() 

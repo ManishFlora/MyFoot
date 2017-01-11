@@ -52,7 +52,6 @@ Supplier Form</h1>
 Add Supplier
 </span>
 </button>
-<input type="button" onclick="toggle();" id="buttonToggle" class="btn btn-default btn-sm" value="Show List">
 </div>
 </fieldset>
 </form:form>

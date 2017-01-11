@@ -1,6 +1,6 @@
 CREATE OR REPLACE VIEW LISTPRODUCTS
 AS
-SELECT P.productsId, P.brandId , P.categoryId , P.productsDescription , P.productsDiscount, P.productsName , P.productsPrice , P.productsQuantity , P.subCategoryId, P.supplierId , PS.color , PS.detail , PS.dimensions, PS.material, PS.season, PS.shoeWidth, PS.size, PS.sole,PS.style,PS.supportSystem,PS.waranty,PS.weight, B.brandName , C.categoryName, SC.subCategoryName, S.supplierName
+SELECT P.productsId, P.brandId , P.categoryId , P.productsDescription , P.productsDiscount, P.productsName , P.productsPrice , P.productsQuantity , P.subCategoryId, P.supplierId , PS.color , PS.detail , PS.dimensions, PS.material, PS.season, PS.shoeWidth, PS.size, PS.sole,PS.style,PS.supportSystem,PS.waranty,PS.weight, B.brandName , C.categoryName, SC.subCategoryName, S.supplierName, P.discountedPrice
 FROM PRODUCTS P, PRODUCTSPECIFICATION PS, BRAND B , CATEGORY C, SUBCATEGORY SC, SUPPLIER S
 WHERE P.productsId = PS.productsId
 AND P.brandId = B.brandId 

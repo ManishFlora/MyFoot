@@ -8,7 +8,7 @@
 <h1 class="page-heading bottom-indent">
 Brand Form</h1>
 <div class="contact-form-box" style="padding:23px 0 0 0;margin:0 0 30px 0;background:url('resources/images/contact-form.png') repeat-x white;-moz-box-shadow:rgba(0,0,0,0.17) 0 5px 13px;-webkit-box-shadow:rgba(0,0,0,0.17) 0 5px 13px;box-shadow:rgba(0,0,0,0.17) 0 5px 13px;">
-<form:form id="registrationForm" modelAttribute="brand" action="addBrand">
+<form:form id="registrationForm" modelAttribute="brand" action="addBrand" enctype="multipart/form-data">
 <fieldset style="padding:0 19px 21px 19px;background:url('resources/images/form-contact-shadow.png') ">
 <h3 class="page-subheading">Add New Brand</h3>
 <div class="clearfix">
@@ -30,6 +30,12 @@ Brand Form</h1>
 <label>Description</label>
 <form:input path="brandDescription" class="form-control"/>
 <form:errors cssStyle="color: red;" path="brandDescription"/>
+</div>
+</div>
+<div class="form-group">
+<label for="fileUpload">Attach File</label>
+<div class="uploader" id="uniform-fileUpload">
+<form:input path="brandImage" type="file" name="fileUpload" id="fileUpload" class="form-control"/>
 </div>
 </div>
 </div>

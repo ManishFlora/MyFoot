@@ -55,4 +55,12 @@ public class ProductsServices
 	{
 		return productsDAOImplementation.retriveCount(productsId);
 	}
+	public String retriveListProducts()
+	{
+		return productsDAOImplementation.retriveListProducts();
+	}
+	public String retriveLatestListProducts()
+	{
+		return productsDAOImplementation.retriveLatestListProducts();
+	}
 }

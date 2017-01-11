@@ -12,8 +12,16 @@ public class ListProducts
 	@Id
 	@Expose
 	private String productsId;
+	public double getDiscountedPrice() {
+		return discountedPrice;
+	}
+	public void setDiscountedPrice(double discountedPrice) {
+		this.discountedPrice = discountedPrice;
+	}
 	@Expose
 	private String brandId;
+	@Expose
+	private double discountedPrice;
 	@Expose
 	private String categoryId;
 	@Expose

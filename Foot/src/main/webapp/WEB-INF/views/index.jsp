@@ -175,22 +175,23 @@ var m_display_caroucel = 0;
 </ul>
 </div>
 </div>
-<div class="module ">
+<div ng-app="productList" ng-controller="productListController">
+<div class="module">
 <h3 class="home-tabs-title">Popular products</h3>
 <ul id="homefeatured" class="product_list grid row homefeatured tab-pane">
-<li class="ajax_block_product col-xs-6 col-sm-6 col-md-4 first-in-line first-item-of-tablet-line first-item-of-mobile-line">
+<li class="ajax_block_product col-xs-6 col-sm-6 col-md-4 first-in-line first-item-of-tablet-line first-item-of-mobile-line" ng-repeat="viewList in listProducts">
 <div class="product-container">
 <div class="left-block">
 <div class="product-image-container">
-<a class="product_img_link" href="indexeb84.html?id_product=9&amp;controller=product&amp;id_lang=1" title="Reebok Aspire Green" itemprop="url">
-<img class="replace-2x img-responsive" src="resources/images/147-tm_home_default.jpg" alt="Reebok Aspire Green" title="Reebok Aspire Green" itemprop="image"/>
-<img class="img-responsive hover-image" src="resources/images/148-home_default.jpg" alt="Reebok Aspire Green" title="Reebok Aspire Green"/>
+<a class="product_img_link" href="/Foot/viewproduct-{{viewList.productsId}}" title="Reebok Aspire Green" itemprop="url">
+<img class="replace-2x img-responsive" src="resources/images/products/{{viewList.productsId}}(1).jpg" alt="{{viewList.productsName}}" title="Reebok Aspire Green" itemprop="image"/>
+<img class="img-responsive hover-image" src="resources/images/products/{{viewList.productsId}}(2).jpg" alt="{{viewList.productsName}}" title="Reebok Aspire Green"/>
 </a>
 <div class="labels">
 <a class="sale-box" href="#">
 <span class="sale-label">Sale!</span>
 </a>
-<a class="price-percent" href="#"><span class="price-percent-reduction">-20%</span></a>
+<a class="price-percent" href="#"><span class="price-percent-reduction">-{{viewList.productsDiscount}}%</span></a>
 </div>
 <a class="quick-view" href="#">
 <span>Quick view</span>
@@ -213,432 +214,185 @@ var m_display_caroucel = 0;
 <span class="nb-comments"><span itemprop="reviewCount">1</span> Review(s)</span>
 </div>
 </div>
+<div ng-if="viewList.productsQuantity ==0">
 <span class="availability">
 <span class="label-danger">
 Out of stock
 </span>
 </span>
+</div>
+<div ng-if="viewList.productsQuantity !=0">
+<span class="availability">
+<span class=" label-success">
+In Stock
+</span>
+</span>
+</div>
 <h5 itemprop="name">
 <a class="product-name" href="#" itemprop="url">
-<span class="list-name">Reebok Aspire Green</span>
-<span class="grid-name">Reebok Aspire Green</span>
+<span class="list-name">{{viewList.productsName}}</span>
+<span class="grid-name">{{viewList.productsName}}</span>
 </a>
-<span class="product-manufacture">Reebok</span>
+<span class="product-manufacture">{{viewList.brandName}}</span>
 </h5>
 <p class="product-desc" itemprop="description">
-<span class="list-desc">Keds and sneakers became an inevitable part of our life. Either you have a quick pace of your life or a slow relaxed rhythm, there is nothing better than stepping in your favorite sneakers and heading off to… to wherever.</span>
-<span class="grid-desc">Keds and sneakers became an...</span>
+<span class="list-desc">{{viewList.productsDescription}}</span>
 </p>
 <div class="content_price">
+<div ng-if="viewList.productsDiscount != 0">
 <span class="price product-price product-price-new">
-&#x20b9;480.00 </span>
+&#x20b9;{{viewList.productsPrice - ((viewList.productsPrice * viewList.productsDiscount) / 100)}}
+</span>
 <span class="old-price product-price">
-&#x20b9;600.00
+&#x20b9;{{viewList.productsPrice}}
 </span>
 </div>
-<div class="button-container clearfix">
-<span class="ajax_add_to_cart_button btn btn-sm btn-default disabled">
-<span>Add to cart</span>
-</span>
-<a itemprop="url" class="lnk_view btn btn-sm btn-default" href="#" title="View">
-<span>More</span>
-</a>
-<div class="functional-buttons clearfix">
-<div class="wishlist">
-<a class="addToWishlist wishlistProd_9" href="#" data-id-product="9" title='Add to Wishlist' onclick="WishlistCart('wishlist_block_list', 'add', '9', false, 1); return false;"></a>
-</div>
-<div class="compare">
-<a class="add_to_compare" href="#" data-id-product="9"></a>
-</div>
-</div>
-</div>
-<div class="product-flags">
-</div>
-</div>
-</div> 
-</li>
-<li class="ajax_block_product col-xs-6 col-sm-6 col-md-4 last-item-of-tablet-line last-item-of-mobile-line">
-<div class="product-container">
-<div class="left-block">
-<div class="product-image-container">
-<a class="product_img_link" href="#" itemprop="url">
-<img class="replace-2x img-responsive" src="resources/images/150-tm_home_default.jpg" alt="Reebok Aspire" title="Reebok Aspire" itemprop="image"/>
-<img class="img-responsive hover-image" src="resources/images/151-home_default.jpg" alt="Reebok Aspire" title="Reebok Aspire"/>
-</a>
-<div class="labels">
-<a class="sale-box" href="#">
-<span class="sale-label">Sale!</span>
-</a>
-<a class="price-percent" href="#"><span class="price-percent-reduction">-20%</span></a>
-</div>
-<a class="quick-view" href="#" data-href="#">
-<span>Quick view</span>
-</a>
-</div>
-</div>
-<div class="right-block">
-<div class="hook-reviews">
-<div class="comments_note" itemprop="aggregateRating">
-<div class="star_content clearfix">
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star"></div>
-<div class="star"></div>
-<meta itemprop="worstRating" content="0"/>
-<meta itemprop="ratingValue" content="3"/>
-<meta itemprop="bestRating" content="5"/>
-</div>
-<span class="nb-comments"><span itemprop="reviewCount">1</span> Review(s)</span>
-</div>
-</div>
-<span class="availability">
-<span class=" label-success">
-In Stock </span>
-</span>
-<h5 itemprop="name">
-<a class="product-name" href="#" itemprop="url">
-<span class="list-name">New Balance W520V2</span>
-<span class="grid-name">New Balance W520V2</span>
-</a>
-<span class="product-manufacture">New Balance</span>
-</h5>
-<p class="product-desc" itemprop="description">
-<span class="list-desc">Keds and sneakers became an inevitable part of our life. Either you have a quick pace of your life or a slow relaxed rhythm, there is nothing better than stepping in your favorite sneakers and heading off to… to wherever.</span>
-<span class="grid-desc">Keds and sneakers became an...</span>
-</p>
-<div class="content_price">
+<div ng-if="viewList.productsDiscount == 0">
 <span class="price product-price product-price-new">
-&#x20b9;600.00 </span>
-<span class="old-price product-price">
-&#x20b9;750.00
-</span>
+&#x20b9;{{viewList.productsPrice}}</span>
+</div>
+</div>
 </div>
 <div class="button-container clearfix">
-<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="#" rel="nofollow" data-id-product-attribute="736" data-id-product="10" data-minimal_quantity="1">
+<div ng-if="viewList.productsQuantity !=0">
+<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="/Foot/buyNow-{{viewList.productsId}}?userId=1">
 <span>Add to cart</span>
 </a>
-<a itemprop="url" class="lnk_view btn btn-sm btn-default" href="#" title="View">
+</div>
+<a itemprop="url" class="lnk_view btn btn-sm btn-default" href="/Foot/viewproduct-{{viewList.productsId}}" title="View">
 <span>More</span>
 </a>
 <div class="functional-buttons clearfix">
 <div class="wishlist">
-<a class="addToWishlist wishlistProd_10" href="#" data-id-product="10" title='Add to Wishlist' onclick="WishlistCart('wishlist_block_list', 'add', '10', false, 1); return false;"></a>
+<a class="addToWishlist" href="#" title='Add to Wishlist'></a>
 </div>
 <div class="compare">
-<a class="add_to_compare" href="#" data-id-product="10" title="Add to Compare"></a>
+<a class="add_to_compare" href="#"></a>
 </div>
 </div>
 </div>
 <div class="product-flags">
 </div>
 </div>
-</div> 
-</li>
-<li class="ajax_block_product col-xs-6 col-sm-6 col-md-4 last-in-line first-item-of-tablet-line first-item-of-mobile-line">
-<div class="product-container">
-<div class="left-block">
-<div class="product-image-container">
-<a class="product_img_link" href="#" itemprop="url">
-<img class="replace-2x img-responsive" src="resources/images/153-tm_home_default.jpg" alt="Reebok Graphic Pop" title="Reebok Graphic Pop" itemprop="image"/>
-<img class="img-responsive hover-image" src="resources/images/154-home_default.jpg" alt="Reebok Graphic Pop" title="Reebok Graphic Pop"/>
-</a>
-<div class="labels">
-<a class="sale-box" href="#">
-<span class="sale-label">Sale!</span>
-</a>
-<a class="price-percent" href="#"><span class="price-percent-reduction">-20%</span></a>
-</div>
-<a class="quick-view" href="#" data-href="#">
-<span>Quick view</span>
-</a>
-</div>
-</div>
-<div class="right-block">
-<div class="hook-reviews">
-<div class="comments_note" itemprop="aggregateRating">
-<div class="star_content clearfix">
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<meta itemprop="worstRating" content="0"/>
-<meta itemprop="ratingValue" content="5"/>
-<meta itemprop="bestRating" content="5"/>
-</div>
-<span class="nb-comments"><span itemprop="reviewCount">1</span> Review(s)</span>
-</div>
-</div>
-<span class="availability">
-<span class=" label-success">
-In Stock </span>
-</span>
-<h5 itemprop="name">
-<a class="product-name" href="#" itemprop="url">
-<span class="list-name">Reebok Graphic Pop</span>
-<span class="grid-name">Reebok Graphic Pop</span>
-</a>
-<span class="product-manufacture">Reebok</span>
-</h5>
-<p class="product-desc" itemprop="description">
-<span class="list-desc">Keds and sneakers became an inevitable part of our life. Either you have a quick pace of your life or a slow relaxed rhythm, there is nothing better than stepping in your favorite sneakers and heading off to… to wherever.</span>
-<span class="grid-desc">Keds and sneakers became an...</span>
-</p>
-<div class="content_price">
-<span class="price product-price product-price-new">
-&#x20b9;560.00 </span>
-<span class="old-price product-price">
-&#x20b9;700.00
-</span>
-</div>
-<div class="button-container clearfix">
-<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="#" rel="nofollow" data-id-product-attribute="768" data-id-product="11" data-minimal_quantity="1">
-<span>Add to cart</span>
-</a>
-<a itemprop="url" class="lnk_view btn btn-sm btn-default" href="#">
-<span>More</span>
-</a>
-<div class="functional-buttons clearfix">
-<div class="wishlist">
-<a class="addToWishlist wishlistProd_11" href="#" data-id-product="11" title='Add to Wishlist' onclick="WishlistCart('wishlist_block_list', 'add', '11', false, 1); return false;"></a>
-</div>
-<div class="compare">
-<a class="add_to_compare" href="#" data-id-product="11" title="Add to Compare"></a>
-</div>
-</div>
-</div>
-<div class="product-flags">
-</div>
-</div>
-</div> 
-</li>
-<li class="ajax_block_product col-xs-6 col-sm-6 col-md-4 first-in-line last-line last-item-of-tablet-line last-item-of-mobile-line">
-<div class="product-container" itemscope>
-<div class="left-block">
-<div class="product-image-container">
-<a class="product_img_link" href="#" itemprop="url">
-<img class="replace-2x img-responsive" src="resources/images/156-tm_home_default.jpg" alt="Reebok Classic Leather Split" title="Reebok Classic Leather Split" itemprop="image"/>
-<img class="img-responsive hover-image" src="resources/images/157-home_default.jpg" alt="Reebok Classic Leather Split" title="Reebok Classic Leather Split"/>
-</a>
-<div class="labels">
-<a class="sale-box" href="#">
-<span class="sale-label">Sale!</span>
-</a>
-</div>
-<a class="quick-view" href="#" data-href="#">
-<span>Quick view</span>
-</a>
-</div>
-</div>
-<div class="right-block">
-<div class="hook-reviews">
-<div class="comments_note" itemprop="aggregateRating" itemscope>
-<div class="star_content clearfix">
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star"></div>
-<meta itemprop="worstRating" content="0"/>
-<meta itemprop="ratingValue" content="4"/>
-<meta itemprop="bestRating" content="5"/>
-</div>
-<span class="nb-comments"><span itemprop="reviewCount">1</span> Review(s)</span>
-</div>
-</div>
-<span class="availability">
-<span class=" label-success">
-In Stock </span>
-</span>
-<h5 itemprop="name">
-<a class="product-name" href="#" itemprop="url">
-<span class="list-name">Reebok Classic Leather Split</span>
-<span class="grid-name">Reebok Classic Leather Split</span>
-</a>
-<span class="product-manufacture">Reebok</span>
-</h5>
-<p class="product-desc" itemprop="description">
-<span class="list-desc">Keds and sneakers became an inevitable part of our life. Either you have a quick pace of your life or a slow relaxed rhythm, there is nothing better than stepping in your favorite sneakers and heading off to… to wherever.</span>
-<span class="grid-desc">Keds and sneakers became an...</span>
-</p>
-<div class="content_price">
-<span class="price product-price">
-&#x20b9;500.00 </span>
-</div>
-<div class="button-container clearfix">
-<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="#" rel="nofollow" data-id-product-attribute="812" data-id-product="12" data-minimal_quantity="1">
-<span>Add to cart</span>
-</a>
-<a itemprop="url" class="lnk_view btn btn-sm btn-default" href="#">
-<span>More</span>
-</a>
-<div class="functional-buttons clearfix">
-<div class="wishlist">
-<a class="addToWishlist wishlistProd_12" href="#" data-id-product="12" title='Add to Wishlist' onclick="WishlistCart('wishlist_block_list', 'add', '12', false, 1); return false;"></a>
-</div>
-<div class="compare">
-<a class="add_to_compare" href="#" data-id-product="12"></a>
-</div>
-</div>
-</div>
-<div class="product-flags">
-</div>
-</div>
-</div> 
-</li>
-<li class="ajax_block_product col-xs-6 col-sm-6 col-md-4 last-line first-item-of-tablet-line first-item-of-mobile-line last-mobile-line">
-<div class="product-container" itemscope>
-<div class="left-block">
-<div class="product-image-container">
-<a class="product_img_link" href="#" itemprop="url">
-<img class="replace-2x img-responsive" src="resources/images/159-tm_home_default.jpg" alt="Reebok ONE Cushion" title="Reebok ONE Cushion" itemprop="image"/>
-<img class="img-responsive hover-image" src="resources/images/160-home_default.jpg" alt="Reebok ONE Cushion" title="Reebok ONE Cushion"/>
-</a>
-<div class="labels">
-<a class="sale-box" href="#">
-<span class="sale-label">Sale!</span>
-</a>
-</div>
-<a class="quick-view" href="#" data-href="#">
-<span>Quick view</span>
-</a>
-</div>
-</div>
-<div class="right-block">
-<div class="hook-reviews">
-<div class="comments_note" itemprop="aggregateRating" itemscope>
-<div class="star_content clearfix">
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star"></div>
-<meta itemprop="worstRating" content="0"/>
-<meta itemprop="ratingValue" content="4"/>
-<meta itemprop="bestRating" content="5"/>
-</div>
-<span class="nb-comments"><span itemprop="reviewCount">1</span> Review(s)</span>
-</div>
-</div>
-<span class="availability">
-<span class=" label-success">
-In Stock </span>
-</span>
-<h5 itemprop="name">
-<a class="product-name" href="#" itemprop="url">
-<span class="list-name">Reebok ONE Cushion</span>
-<span class="grid-name">Reebok ONE Cushion</span>
-</a>
-<span class="product-manufacture">Reebok</span>
-</h5>
-<p class="product-desc" itemprop="description">
-<span class="list-desc">Keds and sneakers became an inevitable part of our life. Either you have a quick pace of your life or a slow relaxed rhythm, there is nothing better than stepping in your favorite sneakers and heading off to… to wherever.</span>
-<span class="grid-desc">Keds and sneakers became an...</span>
-</p>
-<div class="content_price">
-<span class="price product-price">
-&#x20b9;400.00 </span>
-</div>
-<div class="button-container clearfix">
-<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="#" rel="nofollow" title="Add to cart" data-id-product-attribute="844" data-id-product="13" data-minimal_quantity="1">
-<span>Add to cart</span>
-</a>
-<a itemprop="url" class="lnk_view btn btn-sm btn-default" href="#">
-<span>More</span>
-</a>
-<div class="functional-buttons clearfix">
-<div class="wishlist">
-<a class="addToWishlist wishlistProd_13" href="#" data-id-product="13" onclick="WishlistCart('wishlist_block_list', 'add', '13', false, 1); return false;"></a>
-</div>
-<div class="compare">
-<a class="add_to_compare" href="#" data-id-product="13"></a>
-</div>
-</div>
-</div>
-<div class="product-flags">
-</div>
-</div>
-</div> 
-</li>
-<li class="ajax_block_product col-xs-6 col-sm-6 col-md-4 last-in-line last-line last-item-of-tablet-line last-item-of-mobile-line last-mobile-line">
-<div class="product-container" itemscope>
-<div class="left-block">
-<div class="product-image-container">
-<a class="product_img_link" href="#" itemprop="url">
-<img class="replace-2x img-responsive" src="resources/images/162-tm_home_default.jpg" alt="Reebok ONE Cushion 2.0 Citylite" title="Reebok ONE Cushion 2.0 Citylite" itemprop="image"/>
-<img class="img-responsive hover-image" src="resources/images/163-home_default.jpg" alt="Reebok ONE Cushion 2.0 Citylite" title="Reebok ONE Cushion 2.0 Citylite"/>
-</a>
-<div class="labels">
-<a class="sale-box" href="#">
-<span class="sale-label">Sale!</span>
-</a>
-</div>
-<a class="quick-view" href="#" data-href="#">
-<span>Quick view</span>
-</a>
-</div>
-</div>
-<div class="right-block">
-<div class="hook-reviews">
-<div class="comments_note" itemprop="aggregateRating" itemscope>
-<div class="star_content clearfix">
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star"></div>
-<div class="star"></div>
-<meta itemprop="worstRating" content="0"/>
-<meta itemprop="ratingValue" content="3"/>
-<meta itemprop="bestRating" content="5"/>
-</div>
-<span class="nb-comments"><span itemprop="reviewCount">1</span> Review(s)</span>
-</div>
-</div>
-<span class="availability">
-<span class=" label-success">
-In Stock </span>
-</span>
-<h5 itemprop="name">
-<a class="product-name" href="#" itemprop="url">
-<span class="list-name">Reebok ONE Cushion 2.0 Citylite</span>
-<span class="grid-name">Reebok ONE Cushion 2.0 Citylite</span>
-</a>
-<span class="product-manufacture">Reebok</span>
-</h5>
-<p class="product-desc" itemprop="description">
-<span class="list-desc">Keds and sneakers became an inevitable part of our life. Either you have a quick pace of your life or a slow relaxed rhythm, there is nothing better than stepping in your favorite sneakers and heading off to… to wherever.</span>
-<span class="grid-desc">Keds and sneakers became an...</span>
-</p>
-<div class="content_price">
-<span class="price product-price">
-&#x20b9;900.00 </span>
-</div>
-<div class="button-container clearfix">
-<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="#" data-id-product-attribute="870" data-id-product="14" data-minimal_quantity="1">
-<span>Add to cart</span>
-</a>
-<a itemprop="url" class="lnk_view btn btn-sm btn-default" href="#">
-<span>More</span>
-</a>
-<div class="functional-buttons clearfix">
-<div class="wishlist">
-<a class="addToWishlist wishlistProd_14" href="#" data-id-product="14" title='Add to Wishlist' onclick="WishlistCart('wishlist_block_list', 'add', '14', false, 1); return false;"></a>
-</div>
-<div class="compare">
-<a class="add_to_compare" href="#" data-id-product="14"></a>
-</div>
-</div>
-</div>
-<div class="product-flags">
-</div>
-</div>
-</div> 
 </li>
 </ul>
 </div>
+<div ng-controller="latestController">
+<div class="module">
+<h3 class="home-tabs-title">Latest products</h3>
+<ul id="homefeatured" class="product_list grid row homefeatured tab-pane">
+<li class="ajax_block_product col-xs-6 col-sm-6 col-md-4 first-in-line first-item-of-tablet-line first-item-of-mobile-line" ng-repeat="viewLatestList in listLatest">
+<div class="product-container">
+<div class="left-block">
+<div class="product-image-container">
+<a class="product_img_link" href="/Foot/viewproduct-{{viewLatestList.productsId}}" title="Reebok Aspire Green" itemprop="url">
+<img class="replace-2x img-responsive" src="resources/images/products/{{viewLatestList.productsId}}(1).jpg" alt="{{viewLatestlist.productsName}}" title="{{viewLatestlist.productsName}}" itemprop="image"/>
+<img class="img-responsive hover-image" src="resources/images/products/{{viewLatestList.productsId}}(2).jpg" alt="{{viewLatestlist.productsName}}" title="{{viewLatestlist.productsName}}"/>
+</a>
+<div class="labels">
+<a class="sale-box" href="#">
+<span class="sale-label">Sale!</span>
+</a>
+<a class="price-percent" href="#"><span class="price-percent-reduction">-{{viewLatestList.productsDiscount}}%</span></a>
+</div>
+<a class="quick-view" href="#">
+<span>Quick view</span>
+</a>
+</div>
+</div>
+<div class="right-block">
+<div class="hook-reviews">
+<div class="comments_note" itemprop="aggregateRating">
+<div class="star_content clearfix">
+<div class="star star_on"></div>
+<div class="star star_on"></div>
+<div class="star star_on"></div>
+<div class="star star_on"></div>
+<div class="star"></div>
+<meta itemprop="worstRating" content="0"/>
+<meta itemprop="ratingValue" content="4"/>
+<meta itemprop="bestRating" content="5"/>
+</div>
+<span class="nb-comments"><span itemprop="reviewCount">1</span> Review(s)</span>
+</div>
+</div>
+<div ng-if="viewLatestList.productsQuantity ==0">
+<span class="availability">
+<span class="label-danger">
+Out of stock
+</span>
+</span>
+</div>
+<div ng-if="viewLatestList.productsQuantity !=0">
+<span class="availability">
+<span class=" label-success">
+In Stock
+</span>
+</span>
+</div>
+<h5 itemprop="name">
+<a class="product-name" href="#" itemprop="url">
+<span class="list-name">{{viewLatestList.productsName}}</span>
+<span class="grid-name">{{viewLatestList.productsName}}</span>
+</a>
+<span class="product-manufacture">{{viewLatestList.brandName}}</span>
+</h5>
+<p class="product-desc" itemprop="description">
+<span class="list-desc">{{viewLatestList.productsDescription}}</span>
+</p>
+<div class="content_price">
+<div ng-if="viewLatestList.productsDiscount != 0">
+<span class="price product-price product-price-new">
+&#x20b9;{{viewLatestList.productsPrice - ((viewLatestList.productsPrice * viewLatestList.productsDiscount) / 100)}}
+</span>
+<span class="old-price product-price">
+&#x20b9;{{viewLatestList.productsPrice}}
+</span>
+</div>
+<div ng-if="viewLatestList.productsDiscount == 0">
+<span class="price product-price product-price-new">
+&#x20b9;{{viewLatestList.productsPrice}}</span>
 </div>
 </div>
 </div>
+<div class="button-container clearfix">
+<div ng-if="viewLatestList.productsQuantity !=0">
+<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="/Foot/buyNow-{{viewLatestList.productsId}}?userId=1">
+<span>Add to cart</span>
+</a>
+</div>
+<a class="lnk_view btn btn-sm btn-default" href="/Foot/viewproduct-{{viewLatestList.productsId}}" title="View">
+<span>More</span>
+</a>
+<div class="functional-buttons clearfix">
+<div class="wishlist">
+<a class="addToWishlist" href="#" title='Add to Wishlist'></a>
+</div>
+<div class="compare">
+<a class="add_to_compare" href="#"></a>
+</div>
+</div>
+</div>
+<div class="product-flags">
+</div>
+</div>
+</li>
+</ul>
 </div> 
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var productList = angular.module("productList",[]);
+productList.controller("productListController",function($scope)
+		{
+	$scope.listProducts = ${listProducts};
+		})
+.controller("latestController",function($scope)
+		{
+	$scope.listLatest = ${listLatest};
+		});
+</script>
 <%@include file="footer.jsp" %>

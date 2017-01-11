@@ -40,7 +40,14 @@ public class SupplierDAOImplementation implements SupplierDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Supplier> supplierList = session.createQuery("from Supplier where supplierId = '" + supplierId + "'").getResultList();
-		return supplierList.get(0);
+		if(supplierList != null && !supplierList.isEmpty())
+		{
+			return supplierList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	public void deleteSupplier(String supplierId) 
@@ -55,7 +62,14 @@ public class SupplierDAOImplementation implements SupplierDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Supplier> supplierList = session.createQuery("from Supplier where supplierName = " + "'" + supplierName + "'").getResultList();
-		return supplierList.get(0);
+		if(!supplierList.isEmpty() && supplierList != null)
+		{
+			return supplierList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	public String retriveJsonSupplier() 

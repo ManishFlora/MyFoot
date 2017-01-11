@@ -90,6 +90,9 @@ Specification Form</h1>
 <form:input path="sole" class="form-control" type="text" value=""/>
 </div>
 </div>
+<div class="uploader" id="uniform-fileUpload">
+<input name="fileUpload" type="file" multiple="multiple" class="form-control"/>
+</div>
 </div>
 <div class="submit">
 <button type="submit" class="btn btn-default btn-sm">

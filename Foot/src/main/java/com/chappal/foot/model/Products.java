@@ -1,6 +1,8 @@
 package com.chappal.foot.model;
 
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,11 +26,24 @@ public class Products
 	@Id
 	@Expose
 	private String productsId;
+	public double getDiscountedPrice() {
+		return discountedPrice;
+	}
+
+	public void setDiscountedPrice(double discountedPrice) {
+		this.discountedPrice = discountedPrice;
+	}
+
+	@Expose
 	private String categoryId;
+	@Expose
 	private String subcategoryId;
+	@Expose
 	private String supplierId;
+	@Expose
 	private String brandId;
-	
+	@Expose
+	private double discountedPrice;
 	@Expose
 	private int productsQuantity;
 	@Expose
@@ -43,9 +58,8 @@ public class Products
 	@Expose
 	private String productsName;
 	
-	@Expose
 	@Transient
-	private MultipartFile productsImage;
+	private List<MultipartFile> productImages;
 	
 	@ManyToOne
 	@JoinColumn(name="categoryId", nullable=false, updatable=false,insertable=false)
@@ -142,13 +156,13 @@ public class Products
 	public void setProductsName(String productsName) {
 		this.productsName = productsName;
 	}
-
-	public MultipartFile getProductsImage() {
-		return productsImage;
+	
+	public List<MultipartFile> getProductImages() {
+		return productImages;
 	}
 
-	public void setProductsImage(MultipartFile productsImage) {
-		this.productsImage = productsImage;
+	public void setProductImages(List<MultipartFile> productImages) {
+		this.productImages = productImages;
 	}
 
 	public Category getCategory() {

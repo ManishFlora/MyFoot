@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.chappal.foot.model.BillingAddress;
 import com.chappal.foot.model.Category;
+import com.chappal.foot.model.Products;
 import com.chappal.foot.model.ShippingAddress;
 import com.chappal.foot.model.UserDetail;
 import com.chappal.foot.service.BrandServices;
@@ -39,6 +40,8 @@ public class FootController
 		model.addAttribute("categoryList", categoryServices.retriveCategory());
 		model.addAttribute("brandList", brandServices.retriveBrand());
 		model.addAttribute("productList",productsServices.retriveProducts());
+		model.addAttribute("listProducts",productsServices.retriveListProducts());
+		model.addAttribute("listLatest", productsServices.retriveLatestListProducts());
 		return "/index";
 	}
 	@RequestMapping("/403")
@@ -61,6 +64,11 @@ public class FootController
 		model.addAttribute("categoryList", categoryServices.retriveCategory());
 		model.addAttribute("brandList", brandServices.retriveBrand());
 		return "/contact";
+	}
+	@RequestMapping("/orderStatus-{userId}")
+	public String orderStatus()
+	{
+		return "/orderhistory";
 	}
 	@RequestMapping("/profile")
 	public String profile(Model model,String userName,@ModelAttribute("userDetail") UserDetail userDetail)

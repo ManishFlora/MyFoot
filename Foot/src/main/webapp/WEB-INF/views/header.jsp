@@ -319,12 +319,12 @@ var wishlistProductsIds = false;
 
 <body id="index" class="index hide-left-column hide-right-column lang_en  one-column">
 <div id="page">
-<!-- <div id="page_preloader" class="loader"> -->
-<!-- <div class="preloader_img"> -->
-<!-- <img class="logo img-responsive" src="" width="200" height="40"/> -->
-<!-- <div class="img_end"></div> -->
-<!-- </div> -->
-<!-- </div> -->
+<div id="page_preloader" class="loader">
+<div class="preloader_img">
+<img class="logo img-responsive" src="" width="200" height="40"/>
+<div class="img_end"></div>
+</div>
+</div>
 <div class="header-container">
 <header id="header">
 <div class="nav clearfix">
