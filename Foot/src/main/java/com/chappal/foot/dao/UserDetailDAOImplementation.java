@@ -32,29 +32,29 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 		user.setUserName(userDetail.getUserName());
 		user.setUserPassword(userDetail.getUserPassword());
 		
-		session.save(user);
+		session.saveOrUpdate(user);
 		
 		Cart cart = new Cart();
 		cart.setCartId(user.getUserId());
 		cart.setUserId(user.getUserId());
 		
-		session.save(cart);
+		session.saveOrUpdate(cart);
 		
 		UserRole userRole = new UserRole();
 		userRole.setRoleId(1);
 		userRole.setUserId(user.getUserId());
 		
-		session.save(userRole);
+		session.saveOrUpdate(userRole);
 		
 		userDetail.getBillingAddress().setUserDetail(userDetail);
-		session.save(userDetail.getBillingAddress());
+		session.saveOrUpdate(userDetail.getBillingAddress());
 		
 		userDetail.getShippingAddress().setUserDetail(userDetail);
-		session.save(userDetail.getShippingAddress());
+		session.saveOrUpdate(userDetail.getShippingAddress());
 		
 		userDetail.setUserId(user.getUserId());
 		userDetail.setCartId(cart.getCartId());
-		session.save(userDetail);
+		session.saveOrUpdate(userDetail);
 	}
 
 	public int checkUser(String userName) 
@@ -84,27 +84,27 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 		user.setUserName(userDetail.getUserName());
 		user.setUserPassword(userDetail.getUserPassword());
 		
-		session.save(user);
+		session.saveOrUpdate(user);
 		
 		Cart cart = new Cart();
 		cart.setCartId(user.getUserId());
 		cart.setUserId(user.getUserId());
 		
-		session.save(cart);
+		session.saveOrUpdate(cart);
 		
 		UserRole userRole = new UserRole();
 		userRole.setRoleId(1);
 		userRole.setUserId(user.getUserId());
 		
-		session.save(userRole);
+		session.saveOrUpdate(userRole);
 		
 		userDetail.setUserId(user.getUserId());
 		userDetail.setCartId(cart.getCartId());
 		
-		session.save(userDetail.getBillingAddress());
-		session.save(userDetail.getShippingAddress());
+		session.saveOrUpdate(userDetail.getBillingAddress());
+		session.saveOrUpdate(userDetail.getShippingAddress());
 
-		session.save(userDetail);		
+		session.saveOrUpdate(userDetail);		
 		session.flush();
 	}
 
@@ -172,5 +172,23 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 		{
 			return null;
 		}
+	}
+	
+	public void addShippingAddress(ShippingAddress shippingAddress)
+	{
+		sessionFactory.getCurrentSession().saveOrUpdate(shippingAddress);
+	}
+	
+	public  void addBillingAddress(BillingAddress billingAddress)
+	{
+		sessionFactory.getCurrentSession().saveOrUpdate(billingAddress);
+	}
+	
+	public UserDetail retriveUserDeatilsById(int userId)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<UserDetail> userList = session.createQuery("from UserDetail where userId = " + userId).getResultList();
+		return userList.get(0);
 	}
 }

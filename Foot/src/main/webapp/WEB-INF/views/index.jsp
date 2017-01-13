@@ -357,13 +357,18 @@ In Stock
 </div>
 <div class="button-container clearfix">
 <div ng-if="viewLatestList.productsQuantity !=0">
-<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="/Foot/buyNow-{{viewLatestList.productsId}}?userId=1">
+<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="#">
 <span>Add to cart</span>
 </a>
 </div>
 <a class="lnk_view btn btn-sm btn-default" href="/Foot/viewproduct-{{viewLatestList.productsId}}" title="View">
 <span>More</span>
 </a>
+<div ng-if="viewLatestList.productsQuantity !=0">
+<a class="btn btn-sm btn-default" href="/Foot/buyNow-{{viewLatestList.productsId}}?userId=1" title="Buy Now">
+<span class="fa fa-shopping-cart"></span>
+</a>
+</div>
 <div class="functional-buttons clearfix">
 <div class="wishlist">
 <a class="addToWishlist" href="#" title='Add to Wishlist'></a>

@@ -33,7 +33,9 @@ public class WebFlowConfig extends AbstractFlowConfiguration
 				.setFlowBuilderServices(flowBuilderServices())
 				.setBasePath("/WEB-INF")
 				.addFlowLocation("/registration.xml","reg")
-				.addFlowLocation("/forgetpassword.xml", "forget").build();
+				.addFlowLocation("/forgetpassword.xml", "forget")
+				.addFlowLocation("/cart-flow.xml", "cart")
+				.build();
 	}
 
 	@Bean

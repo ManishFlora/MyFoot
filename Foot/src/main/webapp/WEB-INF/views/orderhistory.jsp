@@ -75,12 +75,12 @@
                               -
                           </td>
             <td class="history_detail footable-last-column">
-              <a class="btn btn-default btn-sm icon-right" href="javascript:showOrder(1, 10, 'http://ld-prestashop.template-help.com/prestashop_61157/index.php?controller=order-detail&amp;id_order=10');" title="Details">
+              <a class="btn btn-default btn-sm icon-right" href="#" title="Details">
                 <span>
                   Details
                 </span>
               </a>
-                              <a class="link-button" href="http://ld-prestashop.template-help.com/prestashop_61157/index.php?controller=order&amp;submitReorder=&amp;id_order=10" title="Reorder">
+                              <a class="link-button" href="#" title="Reorder">
                                                 <i class="fa fa-refresh"></i>Reorder
                               </a>
             </td>
@@ -88,11 +88,11 @@
               </tbody>
     </table>
     <div id="block-order-detail" class="unvisible" style="display: block;"><div class="box box-small clearfix">
-          <form id="submitReorder" action="http://ld-prestashop.template-help.com/prestashop_61157/index.php?controller=order" method="post" class="submit">
+          <form id="submitReorder" action="#" method="post" class="submit">
         <input type="hidden" value="10" name="id_order">
         <input type="hidden" value="" name="submitReorder">
 
-        <a href="#" onclick="$(this).closest('form').submit(); return false;" class="btn btn-default btn-md icon-right pull-right"><span>Reorder</span></a>
+        <a href="#" onclick="#" class="btn btn-default btn-md icon-right pull-right"><span>Reorder</span></a>
       </form>
         <p class="dark">
       <strong>Order Reference EOZYMMHUP - placed on 01/11/2017</strong>
@@ -150,7 +150,7 @@
     </div>
   </div>
   
-  <form action="http://ld-prestashop.template-help.com/prestashop_61157/index.php?controller=order-follow" method="post">  <div id="order-detail-content" class="table_block table-responsive">
+  <form action="#" method="post">  <div id="order-detail-content" class="table_block table-responsive">
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -249,7 +249,7 @@
         </tr>
               </tbody>
     </table>
-                    <form action="http://ld-prestashop.template-help.com/prestashop_61157/index.php?controller=order-detail" method="post" class="std" id="sendOrderMessage">
+                    <form action="#" method="post" class="std" id="sendOrderMessage">
       <h3 class="page-heading bottom-indent">Add a message</h3>
       <p>If you would like to add a comment about your order, please write it in the field below.</p>
       <p class="form-group">
@@ -273,14 +273,14 @@
 
 <ul class="footer_links clearfix">
   <li>
-    <a class="btn btn-default btn-sm icon-left" href="http://ld-prestashop.template-help.com/prestashop_61157/index.php?controller=my-account" title="Back to Your Account">
+    <a class="btn btn-default btn-sm icon-left" href="#" title="Back to Your Account">
       <span>
         Back to Your Account
       </span>
     </a>
   </li>
   <li>
-    <a class="btn btn-default btn-sm icon-left" href="http://ld-prestashop.template-help.com/prestashop_61157/" title="Home">
+    <a class="btn btn-default btn-sm icon-left" href="#" title="Home">
       <span>
         Home
       </span>

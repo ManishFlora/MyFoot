@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -148,4 +149,8 @@ public class ProductsDAOImplementation implements ProductsDAO
 		return json;
 	}
 	
+	public void updateProductsQuantity(String productsId)
+	{
+		sessionFactory.getCurrentSession().createQuery("Update Products set productsQuantity = productsQuantity - 1 where productsId = '" + productsId + "'").executeUpdate();
+	}
 }

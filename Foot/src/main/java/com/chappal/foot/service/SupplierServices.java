@@ -59,4 +59,8 @@ public class SupplierServices
 	{
 		return supplierDAOImplementation.retriveCount(supplierId);
 	}
+	public Supplier retriveSupplierByUserId(int userId)
+	{
+		return supplierDAOImplementation.retriveSupplierByUserId(userId);
+	}
 }

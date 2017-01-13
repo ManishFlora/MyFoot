@@ -1,5 +1,7 @@
 package com.chappal.foot.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -10,8 +12,12 @@ import com.chappal.foot.model.User;
 import com.google.gson.annotations.Expose;
 
 @Entity
-public class UserRole 
+public class UserRole implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private int userId;
 	@Expose

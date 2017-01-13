@@ -1,4 +1,14 @@
 <%@include file="header.jsp" %>
+<div class="breadcrumb clearfix">
+<ul class="container">
+<li class="home">
+<a class="home" href="/Foot/" title="Return to Home">
+Home
+</a>
+</li>
+<li class="last">Category Page</li>
+</ul>
+</div>
 <div ng-controller="categoryController" ng-app="category">
 <div id="columns" class="container">
 <div class="row">
@@ -95,6 +105,7 @@ Category Table</h1>
 <td style="text-align: center;"><a href="deleteCategory-{{clist.categoryId}}" class="fa fa-trash-o"> Delete</a></td>
 </tr>
 </table>
+</div>
 </div>
 </div>
 </div>

@@ -56,4 +56,13 @@ public class CartItemsDAOImplementation implements CartItemsDAO
 		}
 		return id;
 	}
+	
+	public List<CartItems> cartItemsList(int userId)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<CartItems> cartList = session.createQuery("from CartItems where userId = " + userId).getResultList();
+		return cartList;
+	}
+	
 }

@@ -1,4 +1,14 @@
 <%@include file="header.jsp" %>
+<div class="breadcrumb clearfix">
+<ul class="container">
+<li class="home">
+<a class="home" href="/Foot/" title="Return to Home">
+Home
+</a>
+</li>
+<li class="last">Brand Page</li>
+</ul>
+</div>
 <div  ng-app="brand" ng-controller="brandController">
 <div id="columns" class="container">
 <div class="row">

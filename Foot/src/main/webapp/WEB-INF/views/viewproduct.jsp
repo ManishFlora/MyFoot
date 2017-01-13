@@ -251,14 +251,19 @@ Read reviews (<span itemprop="reviewCount">1</span>)
 <label class="attribute_label">Color&nbsp;</label>
 <div class="attribute_list">
 <ul id="color_to_pick_list" class="clearfix">
-<li id="colorChange" class="selected">
-<a id="color_11" class="color_pick" style="background:{{split(listView.color,0)}}" title="{{split(listView.color,0)}}">
-<input onclick="changeClass();" name="color" type="radio" value="{{split(listView.color,0)}}"/>
+<li class="selected">
+<a id="color_11" href="" class="color_pick" style="background:{{split(listView.color,0)}}" title="{{split(listView.color,0)}}">
+<input name="color" type="radio" value="{{split(listView.color,0)}}"/>
 </a>
 </li>
 <li id="colorChange" class="">
 <a id="color_11" class="color_pick" style="background:{{split(listView.color,1)}}" title="{{split(listView.color,1)}}">
-<input name="color" onclick="changeClass();" type="radio" value="{{split(listView.color,1)}}"/>
+<input name="color" type="radio" value="{{split(listView.color,1)}}"/>
+</a>
+</li>
+<li id="colorChange" class="" ng-if="{{split(listView.color,2)}} != null">
+<a id="color_11" class="color_pick" style="background:{{split(listView.color,2)}}" title="{{split(listView.color,2)}}">
+<input name="color" type="radio" value="{{split(listView.color,2)}}"/>
 </a>
 </li>
 </ul>
@@ -584,16 +589,10 @@ products.controller("productsController",function($scope)
 		});
 </script>
 <<script type="text/javascript">
-function changeClass()
-{
-	if(document.getElementById("colorChange").className == "")
-	{
-		document.getElementById("colorChange").className == "selected";
-	}
-	else
-	{
-		document.getElementById("colorChange").className == "";
-	}
-}
+$(".clearfix li").on("click", "a", function(){
+	  event.preventDefault();
+	  $(this).parent().removeClass("active");
+	  $(this).addClass("active");
+	});
 </script>
 <%@include file="footer.jsp" %>

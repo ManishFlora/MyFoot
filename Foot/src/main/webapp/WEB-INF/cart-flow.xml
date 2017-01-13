@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+<var name="buyNow" class="com.chappal.foot.model.BuyNow"/>
+<var name="shippingAddress" class="com.chappal.foot.model.ShippingAddress"/>
+<var name="billingAddress" class="com.chappal.foot.model.BillingAddress"/>
+
+<on-start>
+<evaluate expression="cartHandler.initFlow()" result="flowScope.buyNow"/>
+</on-start>
+
+<action-state id="checkout">
+<evaluate expression="userDetailServices.retriveSAddressById(externalContext.sessionMap.userId)" result="flowScope.shippingAddress"/>
+<transition to="start"/>
+</action-state>
+
+<view-state id="start" view="confirmDetail" model="shippingAddress">
+<transition on="submit" to="billingAddress"/>
+<transition on="edit" to="editShippingAddress"/>
+</view-state>
+
+<view-state id="editShippingAddress" view="shippingAddressCart" model="shippingAddress">
+<transition on="submit" to="addShipping"/>
+</view-state>
+
+<action-state id="addShipping">
+<evaluate expression="userDetailServices.addShippingAddress(shippingAddress)"/>
+<transition to="start"/>
+</action-state>
+
+<action-state id="billingAddress">
+<evaluate expression="userDetailServices.retriveBAddressById(externalContext.sessionMap.userId)" result="flowScope.billingAddress"/>
+<transition to="confirm"/>
+</action-state>
+
+<view-state id="confirm" view="confirmDetail-2" model="billingAddress">
+<transition on="submit" to="payment"/>
+<transition on="edit" to="editBillingAddress"/>
+</view-state>
+
+<view-state id="editBillingAddress" view="billingAddressCart" model="billingAddress">
+<transition on="submit" to="addBilling"/>
+</view-state>
+
+<action-state id="addBilling">
+<evaluate expression="userDetailServices.addBillingAddress(billingAddress)"/>
+<transition to="confirm"/>
+</action-state>
+
+<view-state id="payment" view="payment">
+</view-state>
+</flow>

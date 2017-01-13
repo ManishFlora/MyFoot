@@ -8,6 +8,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,6 +32,7 @@ import com.chappal.foot.service.ProductsServices;
 import com.chappal.foot.service.ProductsSpecificationServices;
 import com.chappal.foot.service.SubCategoryServices;
 import com.chappal.foot.service.SupplierServices;
+import com.chappal.foot.service.UserDetailServices;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -48,12 +51,13 @@ public class ProductsController
 	ProductsServices productsServices;
 	@Autowired
 	ProductsSpecificationServices productsSpecificationServices;
-	
+	@Autowired
+	UserDetailServices userDetailServices;
 	@RequestMapping("/productsform")
 	public String products(Model model)
 	{
 		model.addAttribute("products", new Products());
-		model.addAttribute("subcategor/y", new SubCategory());
+		model.addAttribute("subcategory", new SubCategory());
 		model.addAttribute("category", new Category());
 		model.addAttribute("brand", new Brand());
 		model.addAttribute("supplier", new Supplier());
@@ -216,4 +220,96 @@ public class ProductsController
 		model.addAttribute("listView", json);
 		return "/viewproduct";
 	}
+	@RequestMapping("/productssupplierform")
+	public String productsSupplier(Model model)
+	{
+		model.addAttribute("products", new Products());
+		model.addAttribute("subcategory", new SubCategory());
+		model.addAttribute("category", new Category());
+		model.addAttribute("brand", new Brand());
+		
+		model.addAttribute("subCategoryList", subCategoryServices.retriveSubCategory());
+		model.addAttribute("brandList", brandServices.retriveBrand());
+		model.addAttribute("productsJsonList", productsServices.retriveJsonProducts());
+		model.addAttribute("categoryList", categoryServices.retriveCategory());
+		return "/productssupplierform";
+	}
+	@RequestMapping("/addproductsSupplier")
+	public String addproductsSupplier(Model model,@Valid @ModelAttribute("products") Products products,BindingResult result,String productsId,@RequestParam("fileUpload") List<MultipartFile> productImage)
+	{
+		if(result.hasErrors())
+		{
+			model.addAttribute("subCategoryList", subCategoryServices.retriveSubCategory());
+			model.addAttribute("brandList", brandServices.retriveBrand());
+			model.addAttribute("supplierList", supplierServices.retriveSupplier());
+			model.addAttribute("productsJsonList", productsServices.retriveJsonProducts());
+			model.addAttribute("categoryList", categoryServices.retriveCategory());
+			return "/productssupplierform";
+		}
+		else
+		{
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			String userName = authentication.getName();
+			int userId = userDetailServices.retriveUserByName(userName).getUserId();
+			Category category = categoryServices.retriveCategoryName(products.getCategory().getCategoryName());
+			Supplier supplier = supplierServices.retriveSupplierByUserId(userId);
+			SubCategory subcategory = subCategoryServices.retriveSubCategoryName(products.getSubcategory().getSubCategoryName());
+			Brand brand = brandServices.retriveBrandName(products.getBrand().getBrandName());
+		
+			products.setCategory(category);
+			products.setBrand(brand);
+			products.setSubcategory(subcategory);
+			products.setSupplier(supplier);
+			
+			products.setCategoryId(category.getCategoryId());
+			products.setBrandId(brand.getBrandId());
+			products.setSubcategoryId(subcategory.getSubCategoryId());
+			products.setSupplierId(supplier.getSupplierId());
+			productsId = products.getProductsId();
+			int count = productsServices.retriveCount(productsId);
+			if(count == 1)
+			{
+				productsServices.updateProducts(products);
+			}
+			else
+			{
+				products.setProductsId(productsServices.generateId());
+				productsServices.addProducts(products);
+			}
+			List<MultipartFile> files = productImage;
+			
+			if(!files.isEmpty())
+			{
+				for(int i = 0;i<=files.size();i++)
+				{
+					try 
+					{
+						MultipartFile multipartFile = files.get(i);
+						String path = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\products\\";
+						path = path + String.valueOf(products.getProductsId()) + "(" + (i + 1) + ")" + ".jpg";
+						File file = new File(path);
+						if(file.exists())
+						{
+							file.delete();
+						}
+						byte[] bytes;
+						bytes = multipartFile.getBytes();
+						FileOutputStream fos = new FileOutputStream(file);
+						BufferedOutputStream bos = new BufferedOutputStream(fos);
+						bos.write(bytes);
+						bos.close();
+					}
+					catch (Exception e) 
+					{
+						e.printStackTrace();
+					}
+				} 
+			}
+			else
+			{
+				System.out.println("Sorry You are Dumped.");
+			}
+			return "redirect:/productssupplierform";
+	}
+}
 }

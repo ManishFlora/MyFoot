@@ -124,6 +124,7 @@ Home
 <div class="module "></div>
 <div class="module "></div></div></div></div>
 </div>
+</div>
 <script type="text/javascript">
 angular.module('user',[]).controller('userController',function($scope)
 {

@@ -1,5 +1,6 @@
 package com.chappal.foot.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,8 +13,12 @@ import javax.persistence.ManyToOne;
 import com.google.gson.annotations.Expose;
 
 @Entity
-public class CartItems 
+public class CartItems implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Expose
 	private String cartItemsId;

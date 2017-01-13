@@ -63,4 +63,8 @@ public class ProductsServices
 	{
 		return productsDAOImplementation.retriveLatestListProducts();
 	}
+	public void updateProductsQuantity(String productsId)
+	{
+		productsDAOImplementation.updateProductsQuantity(productsId);
+	}
 }

@@ -236,6 +236,7 @@ public class RegistrationHandler
 		userDetail.setSupplier(supplier);
 		this.supplier.setUserDetail(userDetail);
 		supplier.setSupplierId(supplierServices.generateId());
+		supplier.setUserDetail(userDetail);
 		supplierServices.addSupplier(supplier);
 	}
 }

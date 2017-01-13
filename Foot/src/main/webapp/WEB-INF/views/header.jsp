@@ -128,7 +128,6 @@ catch(e)
 <script src="resources/js/homeslider.js"></script>
 <script src="resources/js/tmnewsletter.js"></script>
 <script src="resources/js/front2.js"></script>
-<script src="resources/js/tmsearch.js"></script>
 <script src="resources/js/ajax-wishlist.js"></script>
 <script src="resources/js/tmmegamenu.js"></script>
 <script src="resources/js/product.js"></script>
@@ -370,6 +369,7 @@ var wishlistProductsIds = false;
 <div id="header-login">
 <div class="current_toogle header_user_info"><a href="#" onclick="return false;"><span class="fa fa-user"></span>  ${pageContext.request.userPrincipal.name}</a></div>
 <ul id="header-login-content" class="toogle_content_box" style="display: none;">
+<sec:authorize access="hasRole('ROLE_USER')">
 <li class="login">
 <ul>
 <li>
@@ -387,12 +387,38 @@ var wishlistProductsIds = false;
 </a>
 </li>
 </ul>
+</li>
+</sec:authorize>
+<sec:authorize access="hasRole('ROLE_SUPPLIER')">
+<li class="login">
+<ul>
+<li>
+<a href="#" title="My orders" rel="nofollow"><span class="fa fa-shopping-cart">	My orders</span></a>
+</li>
+<li>
+<a href="#" title="My addresses" rel="nofollow"><span class="fa fa-home">	My addresses</span></a>
+</li>
+<li>
+<a href="/Foot/profile" title="Manage my personal information" rel="nofollow"><span class="fa fa-user">	My personal info</span></a>
+</li>
+<li class="lnk_wishlist">
+<a href="#" title="My wishlists">
+<span class="fa fa-heart">	My wishlists</span>
+</a>
+</li>
+<li class="lnk_wishlist">
+<a href="/Foot/productssupplierform" title="My wishlists">
+<span class="fa fa-plus">	Add Products</span>
+</a>
+</li>
+</ul>
+</li>
+</sec:authorize>
 <p class="logout">
 <a class="btn btn-default btn-sm" href="/Foot/logout" title="Sign out" rel="nofollow">                    	
 Sign out
 </a>
 </p>
-</li>
 </ul>
 </div>
 </c:if>
@@ -606,12 +632,12 @@ Proceed to checkout
 <div class="layer_cart_overlay"></div>
  
 <div id="tmsearch" class="clearfix">
-<form id="tmsearchbox" method="get" action="#">
+<form id="tmsearchbox" method="get" action="allproducts?search={{searchkeyword}}">
 <input type="hidden" name="controller" value="search"/>
 <input type="hidden" name="orderby" value="position"/>
 <input type="hidden" name="orderway" value="desc"/>
 <div class="tm_search_query_wrapper">
-<input class="tm_search_query form-control" type="text" id="tm_search_query" name="search_query" placeholder="Search" value=""/>
+<input class="form-control" type="text" id="tm_search_query" placeholder="Search" value="" ng-model="searchkeyword" onkeypress="enterfunction(event)"/>
 </div>
 <div class="visible_btn" style="display: block;"></div>
 <button type="submit" name="tm_submit_search" class="btn btn-default button-search fa fa-search">
@@ -715,3 +741,40 @@ Proceed to checkout
 </div>
 </header>
 </div>
+<script>
+	function filterredirect()
+	{
+		window.location.href = "allproducts?search="+document.getElementById('tm_search_query').value;
+	};  
+	function enterfunction(e)
+	{
+	if(e.keyCode==13)
+	{
+		window.location.href = "allproducts?search="+document.getElementById('tm_search_query').value;
+	}
+};
+$(document).ready(function() 
+		{
+	$('.tm_search_query').autocomplete(
+			{
+				serviceUrl: '${pageContext.request.contextPath}/getSearchTag',
+				paramName: "subCategoryName",
+				delimiter: ",",
+				transformResult: function(response)
+				{
+					return 
+					{
+						suggestions: $.map($.parseJSON(response), function(item) 
+								{
+							return 
+							{ 
+								value: item.subCategoryName,
+								data: item.subCategoryId 
+							};
+								}
+						})
+					};
+				}
+			});
+	});
+</script>

@@ -25,23 +25,6 @@ Home
 <span id="summary_products_quantity">1 product</span>
 </span>
 </h1>
-<ul class="step clearfix" id="order_step">
-<li class="step_current  first">
-<span><em>01.</em> Summary</span>
-</li>
-<li class="step_todo second">
-<span><em>02.</em> Sign in</span>
-</li>
-<li class="step_todo third">
-<span><em>03.</em> Address</span>
-</li>
-<li class="step_todo four">
-<span><em>04.</em> Shipping</span>
-</li>
-<li id="step_end" class="step_todo last">
-<span><em>05.</em> Payment</span>
-</li>
-</ul>
 <p id="emptyCartWarning" class="alert alert-warning unvisible">Your shopping cart is empty.</p>
 <div class="cart_last_product">
 <div class="cart_last_product_header">
@@ -177,7 +160,7 @@ In Stock
 </div>
 <div id="HOOK_SHOPPING_CART"></div>
 <p class="cart_navigation clearfix">
-<a href="#" class="btn btn-default standard-checkout btn-md icon-right" title="Proceed to checkout" style="">
+<a href="/Foot/checkout?userId=${sessionScope.userId}" class="btn btn-default standard-checkout btn-md icon-right" title="Proceed to checkout" style="">
 <span>
 Proceed to checkout
 </span>
@@ -201,4 +184,6 @@ Proceed to checkout
 <div class="module "></div>
 <div class="module "></div></div></div></div>
 </div>
+<script>
+</script>
 <%@include file="footer.jsp" %>

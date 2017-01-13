@@ -2,11 +2,12 @@
 <div class="breadcrumb clearfix">
 <ul class="container">
 <li class="home">
-<a class="home" href="/Foot/" title="Return to Home">
-Home
-</a>
+<a class="home" href="/Foot/" title="Return to Home"> Home </a>
 </li>
-<li class="last">Registration</li>
+<li class="crumb-1">
+<a href="#" title="Summary" rel="nofollow">Summary</a>
+</li>
+<li class="last">Billing Addresses</li>
 </ul>
 </div>
 <div id="columns" class="container">
@@ -14,7 +15,7 @@ Home
 <div class="large-left col-sm-12">
 <div class="row">
 <div id="center_column" class="center_column col-xs-12 col-sm-12">
-<h1 class="page-heading bottom-indent">Registration Form</h1>
+<h1 class="page-heading bottom-indent">Address Form</h1>
 <div class="contact-form-box" style="padding:23px 0 0 0;margin:0 0 30px 0;background:url('resources/images/contact-form.png') repeat-x white;-moz-box-shadow:rgba(0,0,0,0.17) 0 5px 13px;-webkit-box-shadow:rgba(0,0,0,0.17) 0 5px 13px;box-shadow:rgba(0,0,0,0.17) 0 5px 13px;">
 <form:form modelAttribute="billingAddress">
 <div id="billingAddressForm">

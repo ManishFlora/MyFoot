@@ -1,8 +1,5 @@
 package com.chappal.foot.service;
 
-import java.util.List;
-
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,5 +52,17 @@ public class UserDetailServices
 	public BillingAddress retriveBAddressById(int userId) 
 	{
 		return userDetailDAOImplementation.retriveBAddressById(userId);
+	}
+	public void addShippingAddress(ShippingAddress shippingAddress)
+	{
+		userDetailDAOImplementation.addShippingAddress(shippingAddress);
+	}
+	public  void addBillingAddress(BillingAddress billingAddress)
+	{
+		userDetailDAOImplementation.addBillingAddress(billingAddress);
+	}
+	public UserDetail retriveUserDeatilsById(int userId)
+	{
+		return userDetailDAOImplementation.retriveUserDeatilsById(userId);
 	}
 }

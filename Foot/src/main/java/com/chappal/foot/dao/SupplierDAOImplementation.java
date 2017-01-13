@@ -161,4 +161,19 @@ public class SupplierDAOImplementation implements SupplierDAO
 	{
 		sessionFactory.getCurrentSession().update(supplier);
 	}
+	
+	public Supplier retriveSupplierByUserId(int userId) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Supplier> supplierList = session.createQuery("from Supplier where UserDetail_userId = " + userId).getResultList();
+		if(!supplierList.isEmpty() && supplierList != null)
+		{
+			return supplierList.get(0);
+		}
+		else
+		{
+			return null;
+		}
+	}
 }
