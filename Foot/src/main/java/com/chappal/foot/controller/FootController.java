@@ -1,5 +1,8 @@
 package com.chappal.foot.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -7,16 +10,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.chappal.foot.model.BillingAddress;
 import com.chappal.foot.model.Category;
 import com.chappal.foot.model.Products;
 import com.chappal.foot.model.ShippingAddress;
+import com.chappal.foot.model.SubCategory;
 import com.chappal.foot.model.UserDetail;
 import com.chappal.foot.service.BrandServices;
 import com.chappal.foot.service.CategoryServices;
 import com.chappal.foot.service.ProductsServices;
+import com.chappal.foot.service.SubCategoryServices;
 import com.chappal.foot.service.UserDetailServices;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -32,7 +40,8 @@ public class FootController
 	ProductsServices productsServices;
 	@Autowired
 	UserDetailServices userDetailServices;
-	
+	@Autowired
+	SubCategoryServices subCategoryServices;
 	@RequestMapping(value={"/","/home"})
 	public String index(Model model)
 	{
@@ -86,5 +95,31 @@ public class FootController
 		String shippingJson = gson.toJson(shippingAddress);
 		model.addAttribute("shippingAddressList", shippingJson);
 		return "/personalinfo";
+	}
+	@RequestMapping("/allproducts")
+	public String allproducts()
+	{
+		return "/allproducts";
+	}
+	@RequestMapping(value="/getSearchTag", method=RequestMethod.GET)
+	public @ResponseBody String getTags(@RequestParam("subCategoryName") String subCategoryName)
+	{
+		return simulateSearchResult(subCategoryName);
+	}
+	
+	private String simulateSearchResult(String subCategoryName) 
+	{
+		List<SubCategory> result = new ArrayList<SubCategory>();
+		List<SubCategory> data = subCategoryServices.retriveSubCategory();
+		for (SubCategory subCategory : data) 
+		{
+			if (subCategory.getSubCategoryName().contains(subCategoryName)) 
+			{
+				result.add(subCategory);
+			}
+		}
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String json=gson.toJson(result);
+		return json;
 	}
 }
