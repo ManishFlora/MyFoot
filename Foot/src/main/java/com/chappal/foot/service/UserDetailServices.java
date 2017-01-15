@@ -44,12 +44,12 @@ public class UserDetailServices
 	{
 		return userDetailDAOImplementation.retriveUserByName(userName);
 	}
-	public ShippingAddress retriveSAddressById(int userId) 
+	public ShippingAddress retriveSAddressById(String userId) 
 	{
 		return userDetailDAOImplementation.retriveSAddressById(userId);
 	}
 
-	public BillingAddress retriveBAddressById(int userId) 
+	public BillingAddress retriveBAddressById(String userId) 
 	{
 		return userDetailDAOImplementation.retriveBAddressById(userId);
 	}
@@ -64,5 +64,9 @@ public class UserDetailServices
 	public UserDetail retriveUserDeatilsById(int userId)
 	{
 		return userDetailDAOImplementation.retriveUserDeatilsById(userId);
+	}
+	public String generatedId()
+	{
+		return userDetailDAOImplementation.generatedId();
 	}
 }

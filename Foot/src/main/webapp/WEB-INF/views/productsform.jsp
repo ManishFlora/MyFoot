@@ -100,6 +100,7 @@ Products Form</h1>
 </div>
 </div>
 <div class="uploader" id="uniform-fileUpload">
+<label>Photos</label>
 <input name="fileUpload" type="file" multiple="multiple" class="form-control"/>
 </div>
 </div>

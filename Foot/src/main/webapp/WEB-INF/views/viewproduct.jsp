@@ -244,31 +244,27 @@ Read reviews (<span itemprop="reviewCount">1</span>)
 <div id="short_description_content" class="rte align_justify" itemprop="description"><p>{{listView.productsDescription}}</p></div>
 </div>  
 <div class="product_attributes clearfix">
- 
+<div ng-if="listView.productsQuantity != 0">
 <div id="attributes">
 <div class="clearfix"></div>
 <fieldset class="attribute_fieldset clearfix">
 <label class="attribute_label">Color&nbsp;</label>
 <div class="attribute_list">
-<ul id="color_to_pick_list" class="clearfix">
-<li class="selected">
-<a id="color_11" href="" class="color_pick" style="background:{{split(listView.color,0)}}" title="{{split(listView.color,0)}}">
-<input name="color" type="radio" value="{{split(listView.color,0)}}"/>
-</a>
+<ul>
+<li>
+<input type="radio" class="attribute_radio" name="group_4" value="31" checked="checked">
+<label>{{split(listView.color,0)}}</label>
 </li>
-<li id="colorChange" class="">
-<a id="color_11" class="color_pick" style="background:{{split(listView.color,1)}}" title="{{split(listView.color,1)}}">
-<input name="color" type="radio" value="{{split(listView.color,1)}}"/>
-</a>
+<li>
+<input type="radio" class="attribute_radio" name="group_4" value="32">
+<label>{{split(listView.color,1)}}</label>
 </li>
-<li id="colorChange" class="" ng-if="{{split(listView.color,2)}} != null">
-<a id="color_11" class="color_pick" style="background:{{split(listView.color,2)}}" title="{{split(listView.color,2)}}">
-<input name="color" type="radio" value="{{split(listView.color,2)}}"/>
-</a>
+<li ng-if="split(listView.color,2) != null">
+<input type="radio" class="attribute_radio" name="group_4" value="33">
+<label>{{split(listView.color,2)}}</label>
 </li>
 </ul>
-<input type="hidden" class="color_pick_hidden" name="group_3" value="5">
-</div>  
+</div> 
 </fieldset>
 <fieldset class="attribute_fieldset clearfix select-label">
 <label class="attribute_label" for="group_4">Size&nbsp;</label>
@@ -314,16 +310,16 @@ $(window).load(function()
 <p id="quantity_wanted_p">
 <label for="quantity_wanted">Quantity</label>
 <input type="text" min="1" name="qty" id="quantity_wanted" class="text" value="1">
-<a href="#" data-field-qty="qty" class="btn btn-default button-minus product_quantity_down">
+<button onclick="decrease()" class="btn btn-default button-minus product_quantity_down">
 <span>
 <i class="material-design-horizontal39"></i>
 </span>
-</a>
-<a href="#" data-field-qty="qty" class="btn btn-default button-plus product_quantity_up">
+</button>
+<button onclick="increase()" class="btn btn-default button-plus product_quantity_up">
 <span>
 <i class="material-design-add186"></i>
 </span>
-</a>
+</button>
 <span class="clearfix"></span>
 </p>
 <div class="box-btn-cosial clearfix">
@@ -333,6 +329,7 @@ $(window).load(function()
 <span>Add to cart</span>
 </button>
 </p>
+</div>
 </div>
 <p class="socialsharing_product no-print">
 <button data-type="facebook" type="button" class="btn btn-facebook social-sharing">
@@ -449,13 +446,14 @@ The minimum purchase order quantity for the product is
 <div class="comment_details col-sm-9">
 <h6 class="title_block">Guys, you rock!</h6>
 <p>I love your store! There is the largest selection of products of the exceptional quality and the lowest prices like in no other store. My family appreciated my purchase, I have no words to describe how pleased I am...Thanks a lot to your store, to your team and the delivery in time!!! Go on your great business, stay the best!</p>
-<ul class="clearfix">                                                                      <li>
+<ul class="clearfix"  style="display:block;" id="disable">
+<li>
 <div class="useful-text">Was this comment useful to you?</div>
 <div class="useful-buttons">
-<button class="usefulness_btn btn btn-primary btn-xs btn-default">
+<button onclick="disable()" class="usefulness_btn btn btn-primary btn-xs btn-default">
 <span>Yes</span>
 </button>
-<button class="usefulness_btn btn btn-default btn-xs btn-xs btn-default">
+<button onclick="disable()" class="usefulness_btn btn btn-default btn-xs btn-xs btn-default">
 <span>No</span>
 </button>
 </div>
@@ -472,101 +470,15 @@ Report abuse
 </div> 
 </section>
 </div>  
-
-<div style="display: none;">
-<div id="new_comment_form">
-<form id="id_new_comment_form" action="#">
-<h2 class="page-subheading">
-Write a review
-</h2>
-<div class="row">
-<div class="product clearfix col-xs-12 col-sm-6">
-<img src="resources/images/159-medium_default.jpg" alt="Reebok ONE Cushion">
-<div class="product_desc">
-<p class="product_name">
-<strong>Reebok ONE Cushion</strong>
-</p>
-<p>Keds and sneakers became an inevitable part of our life. Either you have a quick pace of your life or a slow relaxed rhythm, there is nothing better than stepping in your favorite sneakers and heading off to… to wherever.</p>
 </div>
 </div>
-<div class="new_comment_form_content col-xs-12 col-sm-6">
-<div id="new_comment_form_error" class="error alert alert-danger" style="display: none; padding: 15px 25px">
-<ul></ul>
-</div>
-<ul id="criterions_list">
-<li>
-<label>Quality:</label>
-<div class="star_content">
-<input type="hidden" name="criterion[1]" value="3"><div class="cancel"><a title="Cancel Rating"></a></div><div class="star star_on"><a title="1">1</a></div>
-<div class="star star_on"><a title="2">2</a></div>
-<div class="star star_on"><a title="3">3</a></div>
-<div class="star"><a title="4">4</a></div>
-<div class="star"><a title="5">5</a></div>
-</div>
-<div class="clearfix"></div>
-</li>
-</ul>
-<label for="comment_title">
-Title: <sup class="required">*</sup>
-</label>
-<input id="comment_title" class="form-control" name="title" type="text" value="">
-<label for="content">
-Comment: <sup class="required">*</sup>
-</label>
-<textarea id="content" class="form-control" name="content"></textarea>
-<div id="new_comment_form_footer">
-<input id="id_product_comment_send" class="form-control" name="id_product" type="hidden" value="13">
-<p class="fl required"><sup>*</sup> Required fields</p>
-<p class="fr">
-<button id="submitNewMessage" name="submitMessage" type="submit" class="btn btn-default btn-sm">
-<span>Submit</span>
-</button>&nbsp;
-or&nbsp;
-<a class="closefb" href="#" title="Cancel">
-Cancel
-</a>
-</p>
-<div class="clearfix"></div>
-</div>  
 </div>
 </div>
-</form> 
 </div>
 </div>
-</div> 
 </div>
 </div>
-</div> 
-<script type="text/javascript">
-$(document).ready(function(){
-  $(window).load(function(){
-  t = $('.tab-content > .tab-pane');
-  
-        
-    var el = $(t[0]);
-    if (el.length) {
-      var ch = $('<div>', {
-        'class': 'image-tab',
-      }).css('background', 'url(resources/images/159-tm_large_default.jpg)');  
-      el.append(ch);
-    }
-   
-        
-    var el = $(t[1]);
-    if (el.length) {
-      var ch = $('<div>', {
-        'class': 'image-tab',
-      }).css('background', 'url(resources/images/160-tm_thickbox_default.jpg)');  
-      el.append(ch);
-    }
-});
-});
-</script>
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
+</div>
 <div class="wrapper it_ZGMGQDGNWEAS container home-preset1">
 <div class="row it_OMEMJXWGTWWQ ">
 <div class="it_BMLRHIIHSZDK col-lg-12 ">
@@ -588,11 +500,30 @@ products.controller("productsController",function($scope)
 	}
 		});
 </script>
-<<script type="text/javascript">
-$(".clearfix li").on("click", "a", function(){
-	  event.preventDefault();
-	  $(this).parent().removeClass("active");
-	  $(this).addClass("active");
-	});
+<script>
+function decrease()
+{
+	if(document.getElementById("quantity_wanted").value != 1)
+		{
+		var data = parseInt(document.getElementById("quantity_wanted").value) - 1;
+		document.getElementById("quantity_wanted").value = data;
+		}
+}
+</script>
+<script type="text/javascript">
+function increase()
+{
+	var data = parseInt(document.getElementById("quantity_wanted").value) + 1;
+	document.getElementById("quantity_wanted").value = data;
+}
+</script>
+<script type="text/javascript">
+function disable()
+{
+	if(document.getElementById("disable").style.display == "block")
+	{
+		document.getElementById("disable").style.display = "none";
+	}
+}
 </script>
 <%@include file="footer.jsp" %>

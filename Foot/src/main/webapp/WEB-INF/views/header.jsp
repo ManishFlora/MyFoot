@@ -9,6 +9,24 @@
 <title>FOOT</title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=1.0"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
+<script>
+  $(document).ready(function() {
+	$('.w-input-search').autocomplete({
+		serviceUrl: '${pageContext.request.contextPath}/getTags',
+		paramName: "subCategoryName=New",
+		delimiter: ",",
+	   transformResult: function(response) {
+		return {
+		  //must convert json to javascript object before process
+		  suggestions: $.map($.parseJSON(response), function(item) {
+		      return { value: item.subCategoryName};
+		      //return { value: item.productName, data: item.id };
+		   })
+		 };
+            }
+	 });	
+  });
+</script>
 <script type="text/javascript">
 try
 {
@@ -22,10 +40,8 @@ catch(e)
 {
 };
 </script>
-<link rel="stylesheet" type="text/css" media="all" href="resources/fonts/material-design.ttf">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,700italic,700,400italic,300&amp;subset=latin,greek-ext,greek,vietnamese,cyrillic-ext,latin-ext,cyrillic" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/css/customfileinput.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.fancybox.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/global.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/contact-form.css" type="text/css" media="all"/>
@@ -43,7 +59,6 @@ catch(e)
 <link rel="stylesheet" href="resources/css/tmrelatedproducts.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blockcart.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/scenes.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/css/jquery.bxslider1.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blockcategories.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blockcurrencies.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blocklanguages.css" type="text/css" media="all"/>
@@ -68,20 +83,13 @@ catch(e)
 <link rel="stylesheet" href="resources/css/tmmegamenu.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/cms.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/tmmediaparallax.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/css/hooks1.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/tmmanufacturerblock.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/tmmosaicproducts.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/tmmegalayout.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/live_configurator.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/css/themeconfiglink.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/css/tmolarkchat.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/css/video-js.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/css/tmproductvideos.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.autocomplete.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/css/rd-parallax.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/stores.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/socialsharing.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="resources/css/video-js1.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.jqzoom.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/product.css" type="text/css" media="all"/>
 
@@ -96,7 +104,7 @@ catch(e)
 <script src="resources/js/jquery.easing.js"></script>
 <script src="resources/js/tools.js"></script>
 <script src="resources/js/cms.js"></script>
-<script src="resources/js/jquery.idTabs.js.js"></script>
+<script src="resources/js/jquery.idTabs.js"></script>
 <script src="resources/js/jquery.scrollTo.js"></script>
 <script src="resources/js/jquery.serialScroll.js"></script>
 <script src="resources/js/jquery.bxslider.js"></script>
@@ -122,13 +130,11 @@ catch(e)
 <script src="resources/js/jquery.mCustomScrollbar.js"></script>
 <script src="resources/js/slick.js"></script>
 <script src="resources/js/products-comparison.js"></script>
-<script src="resources/js/ajax-cart.js"></script>
 <script src="resources/js/treeManagement.js"></script>
 <script src="resources/js/blocknewsletter.js"></script>
 <script src="resources/js/homeslider.js"></script>
 <script src="resources/js/tmnewsletter.js"></script>
 <script src="resources/js/front2.js"></script>
-<script src="resources/js/ajax-wishlist.js"></script>
 <script src="resources/js/tmmegamenu.js"></script>
 <script src="resources/js/product.js"></script>
 <script src="resources/js/index.js"></script>
@@ -146,7 +152,6 @@ catch(e)
 <script src="resources/js/front3.js"></script>
 <script src="resources/js/tmrelatedproducts.js"></script>
 <script src="resources/js/front.js"></script>
-<script src="resources/js/video.js"></script>
 
 <script type="text/javascript">
 var CUSTOMIZE_TEXTFIELD = 1;
@@ -155,8 +160,8 @@ var FancyboxI18nNext = 'Next';
 var FancyboxI18nPrev = 'Previous';
 var PS_CATALOG_MODE = false;
 var added_to_wishlist = 'The product was successfully added to your wishlist.';
-var ajax_allowed = true;
-var ajaxsearch = true;
+var ajax_allowed = false;
+var ajaxsearch = false;
 var allowBuyWhenOutOfStock = false;
 var availableLaterValue = '';
 var availableNowValue = '';
@@ -209,20 +214,11 @@ var priceDisplayPrecision = 2;
 var quickView = true;
 var removingLinkText = 'remove this product from my cart';
 var roundMode = 2;
-var search_url = '';
-var search_url_local = '';
+var search_url = '${pageContext.request.contextPath}/getTags';
+var search_url_local = '${pageContext.request.contextPath}/getTags';
 var static_token = '0a9f6300ab69c9db1344dae91e1ba312';
 var tmnewsletter_status = '2';
 var tmolarkchat_status = '2';
-var tmsearch_description = false;
-var tmsearch_height = 180;
-var tmsearch_image = true;
-var tmsearch_limit = true;
-var tmsearch_limit_num = 3;
-var tmsearch_manufacturer = true;
-var tmsearch_price = true;
-var tmsearch_reference = true;
-var tmsearch_scroll = false;
 var toBeDetermined = 'To be determined';
 var token = 'd5af4605833a6822aa2884ab1916c972';
 var user_newsletter_status = 0;
@@ -571,7 +567,7 @@ Product successfully added to your shopping cart
 <span class="ajax_cart_product_txt unvisible">
 <strong><span>1</span>item</strong>
 <em><i class="material-design-shopping231"></i> You Have In your cart</em>
-</span>
+</span>	
 </span>
 </div>
 </div>
@@ -629,18 +625,16 @@ Proceed to checkout
 </div>
 </div>
 </div>
+
+
 <div class="layer_cart_overlay"></div>
- 
 <div id="tmsearch" class="clearfix">
-<form id="tmsearchbox" method="get" action="allproducts?search={{searchkeyword}}">
-<input type="hidden" name="controller" value="search"/>
-<input type="hidden" name="orderby" value="position"/>
-<input type="hidden" name="orderway" value="desc"/>
+<form id="tmsearchbox" action="#">
 <div class="tm_search_query_wrapper">
-<input class="form-control" type="text" id="tm_search_query" placeholder="Search" value="" ng-model="searchkeyword" onkeypress="enterfunction(event)"/>
+<input class="form-control w-input-search" type="text" id="tm_search_query" placeholder="Search"/>
 </div>
 <div class="visible_btn" style="display: block;"></div>
-<button type="submit" name="tm_submit_search" class="btn btn-default button-search fa fa-search">
+<button type="submit" class="btn btn-default button-search fa fa-search">
 <span>Search</span>
 </button>
 </form>
@@ -741,40 +735,3 @@ Proceed to checkout
 </div>
 </header>
 </div>
-<script>
-	function filterredirect()
-	{
-		window.location.href = "allproducts?search="+document.getElementById('tm_search_query').value;
-	};  
-	function enterfunction(e)
-	{
-	if(e.keyCode==13)
-	{
-		window.location.href = "allproducts?search="+document.getElementById('tm_search_query').value;
-	}
-};
-$(document).ready(function() 
-		{
-	$('.tm_search_query').autocomplete(
-			{
-				serviceUrl: '${pageContext.request.contextPath}/getSearchTag',
-				paramName: "subCategoryName",
-				delimiter: ",",
-				transformResult: function(response)
-				{
-					return 
-					{
-						suggestions: $.map($.parseJSON(response), function(item) 
-								{
-							return 
-							{ 
-								value: item.subCategoryName,
-								data: item.subCategoryId 
-							};
-								}
-						})
-					};
-				}
-			});
-	});
-</script>

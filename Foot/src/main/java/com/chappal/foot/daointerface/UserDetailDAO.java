@@ -12,6 +12,6 @@ public interface UserDetailDAO
 	public int checkEmail(String emailId);
 	public void addUserRegDetail(UserDetail userDetail);
 	public UserDetail retriveUserByName(String userName);
-	public ShippingAddress retriveSAddressById(int userId);
-	public BillingAddress retriveBAddressById(int userId);
+	public ShippingAddress retriveSAddressById(String userId);
+	public BillingAddress retriveBAddressById(String userId);
 }

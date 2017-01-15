@@ -23,9 +23,8 @@ public class BillingAddress implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
-	private int billingAddressId;
+	private String billingAddressId;
 	@Expose
 	private String flatNumber;
 	@Expose
@@ -42,11 +41,11 @@ public class BillingAddress implements Serializable
 	@OneToOne
 	private UserDetail userDetail;
 
-	public int getBillingAddressId() {
+	public String getBillingAddressId() {
 		return billingAddressId;
 	}
 
-	public void setBillingAddressId(int billingAddressId) {
+	public void setBillingAddressId(String billingAddressId) {
 		this.billingAddressId = billingAddressId;
 	}
 

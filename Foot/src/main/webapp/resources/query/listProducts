@@ -4,6 +4,6 @@ SELECT P.productsId, P.brandId , P.categoryId , P.productsDescription , P.produc
 FROM PRODUCTS P, PRODUCTSPECIFICATION PS, BRAND B , CATEGORY C, SUBCATEGORY SC, SUPPLIER S
 WHERE P.productsId = PS.productsId
 AND P.brandId = B.brandId 
-AND P.categoryId = C.categoryId 
+AND P.categoryId = C.categoryId
 AND P.subCategoryId = SC.subCategoryID
 AND P.supplierId = S.supplierId;

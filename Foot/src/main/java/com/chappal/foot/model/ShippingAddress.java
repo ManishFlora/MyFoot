@@ -23,8 +23,7 @@ public class ShippingAddress implements Serializable
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Expose
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int shippingAddressId;
+	private String shippingAddressId;
 	@Expose
 	private String flatNumber;
 	@Expose
@@ -41,11 +40,11 @@ public class ShippingAddress implements Serializable
 	@OneToOne
 	private UserDetail userDetail;
 
-	public int getShippingAddressId() {
+	public String getShippingAddressId() {
 		return shippingAddressId;
 	}
 
-	public void setShippingAddressId(int shippingAddressId) {
+	public void setShippingAddressId(String shippingAddressId) {
 		this.shippingAddressId = shippingAddressId;
 	}
 

@@ -23,11 +23,11 @@ public class CartItems implements Serializable
 	@Expose
 	private String cartItemsId;
 	@Expose
-	private int cartId;
+	private String cartId;
 	@Expose
 	private String productsId;
 	@Expose
-	private int userId;
+	private String userId;
 	@Expose
 	private int quantity;
 	@Expose
@@ -55,11 +55,11 @@ public class CartItems implements Serializable
 		this.cartItemsId = cartItemsId;
 	}
 
-	public int getCartId() {
+	public String getCartId() {
 		return cartId;
 	}
 
-	public void setCartId(int cartId) {
+	public void setCartId(String cartId) {
 		this.cartId = cartId;
 	}
 
@@ -71,11 +71,11 @@ public class CartItems implements Serializable
 		this.productsId = productsId;
 	}
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

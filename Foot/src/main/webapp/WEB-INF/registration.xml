@@ -104,13 +104,8 @@
 
 <action-state id="addUserData">
 <evaluate expression="registrationHandler.addUserData(userDetail,shippingAddress,billingAddress)"/>
-<transition on="success" to="actionUser"/>
+<transition on="success" to="toHome"/>
 <transition on="failure" to="shippingAddress"/>
-</action-state>
-
-<action-state id="actionUser">
-<evaluate expression="userDetailServices.addUserRegDetail(userDetail)" result="flowScope.userDetail"></evaluate>
-<transition on="success" to="toHome" />
 </action-state>
 
 <end-state id="index" view="index"/>

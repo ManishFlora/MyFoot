@@ -15,26 +15,26 @@ public class Cart implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	private int cartId;
-	private int userId;
+	private String cartId;
+	private String userId;
 	
 	@OneToOne
 	@JoinColumn(name="userId",insertable=false,updatable=false,nullable=false)
 	private User user;
 
-	public int getCartId() {
+	public String getCartId() {
 		return cartId;
 	}
 
-	public void setCartId(int cartId) {
+	public void setCartId(String cartId) {
 		this.cartId = cartId;
 	}
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

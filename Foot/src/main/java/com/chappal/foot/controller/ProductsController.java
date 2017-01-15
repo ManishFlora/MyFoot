@@ -112,7 +112,7 @@ public class ProductsController
 			
 			if(!files.isEmpty())
 			{
-				for(int i = 0;i<=files.size();i++)
+				for(int i = 0;i<files.size();i++)
 				{
 					try 
 					{
@@ -250,7 +250,7 @@ public class ProductsController
 		{
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 			String userName = authentication.getName();
-			int userId = userDetailServices.retriveUserByName(userName).getUserId();
+			String userId = userDetailServices.retriveUserByName(userName).getUserId();
 			Category category = categoryServices.retriveCategoryName(products.getCategory().getCategoryName());
 			Supplier supplier = supplierServices.retriveSupplierByUserId(userId);
 			SubCategory subcategory = subCategoryServices.retriveSubCategoryName(products.getSubcategory().getSubCategoryName());

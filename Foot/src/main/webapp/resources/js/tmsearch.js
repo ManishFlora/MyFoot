@@ -19,3 +19,4 @@ tryToCloseInstantSearch();});}});function tryToCloseInstantSearch()
 function stopInstantSearchQueries()
 {for(var i=0;i<instantSearchQueries.length;i++)
 instantSearchQueries[i].abort();instantSearchQueries=[];}
+

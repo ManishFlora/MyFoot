@@ -35,7 +35,7 @@ public class CartItemsController
 	ProductsServices productsServices;
 	
 	@RequestMapping("/buyNow-{productsId}")
-	public String buyNow(@PathVariable("productsId") String productsId,CartItems cartItems,@RequestParam("userId") int userId, HttpSession session)
+	public String buyNow(@PathVariable("productsId") String productsId,CartItems cartItems,@RequestParam("userId") String userId, HttpSession session)
 	{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
@@ -66,7 +66,7 @@ public class CartItemsController
 	{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
-		int userId = userDetailServices.retriveUserByName(userName).getUserId();
+		String userId = userDetailServices.retriveUserByName(userName).getUserId();
 		session.setAttribute("userId", userId);
 		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String cartItemsList = gson.toJson(cartItemsServices.cartItemsList(userId));
@@ -75,7 +75,7 @@ public class CartItemsController
 	}
 	
 	@RequestMapping("/checkout")
-	public String checkOut(@RequestParam("userId") int userId,HttpSession session)
+	public String checkOut(@RequestParam("userId") String userId,HttpSession session)
 	{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();

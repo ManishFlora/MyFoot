@@ -48,6 +48,7 @@ public class UserDetailController
 		}
 		else
 		{
+			userDetail.setUserId(userDetailServices.generatedId());
 			userDetailServices.addUserDetail(userDetail);
 			return "redirect:/registrationform";
 		}

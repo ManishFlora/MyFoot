@@ -18,6 +18,7 @@ public class SupplierServices
 	SupplierDAOImplementation supplierDAOImplementation;
 	public void addSupplier(Supplier supplier) 
 	{
+		supplier.setFlag(false);
 		supplierDAOImplementation.addSupplier(supplier);
 	}
 	public void updateSupplier(Supplier supplier)
@@ -59,7 +60,7 @@ public class SupplierServices
 	{
 		return supplierDAOImplementation.retriveCount(supplierId);
 	}
-	public Supplier retriveSupplierByUserId(int userId)
+	public Supplier retriveSupplierByUserId(String userId)
 	{
 		return supplierDAOImplementation.retriveSupplierByUserId(userId);
 	}

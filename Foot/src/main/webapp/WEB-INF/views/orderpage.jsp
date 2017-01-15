@@ -184,6 +184,4 @@ Proceed to checkout
 <div class="module "></div>
 <div class="module "></div></div></div></div>
 </div>
-<script>
-</script>
 <%@include file="footer.jsp" %>

@@ -26,7 +26,7 @@ public class UserDetail implements Serializable
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Expose
-	private int userId;
+	private String userId;
 	@Expose
 	private String userName;
 	@Expose
@@ -40,7 +40,7 @@ public class UserDetail implements Serializable
 	@Expose
 	private String contactNumber;
 	@Expose
-	private int cartId;
+	private String cartId;
 
 	@OneToOne
 	@JoinColumn(name="userId", nullable=false, insertable=false,updatable=false)
@@ -70,11 +70,11 @@ public class UserDetail implements Serializable
 		this.supplier = supplier;
 	}
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
@@ -126,11 +126,11 @@ public class UserDetail implements Serializable
 		this.contactNumber = contactNumber;
 	}
 
-	public int getCartId() {
+	public String getCartId() {
 		return cartId;
 	}
 
-	public void setCartId(int cartId) {
+	public void setCartId(String cartId) {
 		this.cartId = cartId;
 	}
 

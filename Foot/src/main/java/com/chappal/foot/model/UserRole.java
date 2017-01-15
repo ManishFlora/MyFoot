@@ -19,7 +19,7 @@ public class UserRole implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	private int userId;
+	private String userId;
 	@Expose
 	private int roleId;
 	
@@ -32,11 +32,11 @@ public class UserRole implements Serializable
 	@JoinColumn(name="roleId",nullable=false,insertable=false,updatable=false)
 	private Role role;
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

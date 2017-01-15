@@ -67,8 +67,8 @@ Search&nbsp;
 <div class="left-block col-xs-6">
 <div class="product-image-container">
 <a class="product_img_link" href="#" title="Reebok Aspire Green" itemprop="url">
-<img class="replace-2x img-responsive" src="http://ld-prestashop.template-help.com/prestashop_61157/img/p/1/4/7/147-tm_home_default.jpg" alt="Reebok Aspire Green" title="Reebok Aspire Green" itemprop="image">
-<img class="img-responsive hover-image" src="http://ld-prestashop.template-help.com/prestashop_61157/img/p/1/4/8/148-home_default.jpg" alt="Reebok Aspire Green" title="Reebok Aspire Green">
+<img class="replace-2x img-responsive" src="resources/images/products/PR00002(1).jpg" alt="Reebok Aspire Green" title="Reebok Aspire Green" itemprop="image">
+<img class="img-responsive hover-image" src="resources/images/products/PR00002(2).jpg" alt="Reebok Aspire Green" title="Reebok Aspire Green">
 </a>
 <div class="labels">
 <a class="sale-box" href="#">
@@ -157,11 +157,9 @@ Search&nbsp;
 </div>
 </div>
 </div>
-                      
 <div class="wrapper it_ZGMGQDGNWEAS container home-preset1">
 <div class="row it_OMEMJXWGTWWQ ">
 <div class="it_BMLRHIIHSZDK    col-lg-12 ">
 <div class="module "></div>
 <div class="module "></div></div></div></div>
-</div>
 <%@include file="footer.jsp" %>

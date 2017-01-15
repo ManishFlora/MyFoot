@@ -171,7 +171,7 @@ public class RegistrationHandler
 		
 		userDetail.setBillingAddress(billingAddress);
 		userDetail.setShippingAddress(shippingAddress);
-		
+		userDetail.setUserId(userDetailServices.generatedId());
 		userDetailServices.addUserRegDetail(userDetail);
 	}
 	

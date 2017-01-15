@@ -6,8 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.annotations.Expose;
 
@@ -20,15 +22,25 @@ public class User implements Serializable
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Expose
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int userId;
+	private String userId;
 	private String userName;
 	private String userPassword;
 	private boolean status;
-	public int getUserId() {
+	
+	@Transient
+	private MultipartFile userImage;
+	
+	
+	public MultipartFile getUserImage() {
+		return userImage;
+	}
+	public void setUserImage(MultipartFile userImage) {
+		this.userImage = userImage;
+	}
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getUserName() {

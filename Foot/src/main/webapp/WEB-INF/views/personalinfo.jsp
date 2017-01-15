@@ -28,6 +28,9 @@ Home
 <form method="post" id="login_form" class="box">
 <h3 class="page-subheading">Profile</h3>
 <div class="clearfix">
+
+</div>
+<div class="clearfix">
 <div class="form-group">
 <label for="email">First Name</label>
 <input class="form-control" type="text" id="email" name="email" value="{{userList.firstName}}">

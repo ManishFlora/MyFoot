@@ -26,7 +26,7 @@ public class CartItemsServices
 		return cartItemsDAOImplementation.generateId();
 	}
 	
-	public List<CartItems> cartItemsList(int userId)
+	public List<CartItems> cartItemsList(String userId)
 	{
 		return cartItemsDAOImplementation.cartItemsList(userId);
 	}

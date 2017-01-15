@@ -262,14 +262,6 @@ In Stock
 <a itemprop="url" class="lnk_view btn btn-sm btn-default" href="/Foot/viewproduct-{{viewList.productsId}}" title="View">
 <span>More</span>
 </a>
-<div class="functional-buttons clearfix">
-<div class="wishlist">
-<a class="addToWishlist" href="#" title='Add to Wishlist'></a>
-</div>
-<div class="compare">
-<a class="add_to_compare" href="#"></a>
-</div>
-</div>
 </div>
 <div class="product-flags">
 </div>
@@ -360,22 +352,9 @@ In Stock
 <a class="ajax_add_to_cart_button btn btn-sm btn-default" href="#">
 <span>Add to cart</span>
 </a>
-</div>
-<a class="lnk_view btn btn-sm btn-default" href="/Foot/viewproduct-{{viewLatestList.productsId}}" title="View">
-<span>More</span>
-</a>
-<div ng-if="viewLatestList.productsQuantity !=0">
-<a class="btn btn-sm btn-default" href="/Foot/buyNow-{{viewLatestList.productsId}}?userId=1" title="Buy Now">
+<a class="btn btn-md btn-default" href="/Foot/buyNow-{{viewLatestList.productsId}}?userId=1" title="Buy Now">
 <span class="fa fa-shopping-cart"></span>
 </a>
-</div>
-<div class="functional-buttons clearfix">
-<div class="wishlist">
-<a class="addToWishlist" href="#" title='Add to Wishlist'></a>
-</div>
-<div class="compare">
-<a class="add_to_compare" href="#"></a>
-</div>
 </div>
 </div>
 <div class="product-flags">

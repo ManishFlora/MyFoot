@@ -33,10 +33,17 @@ public class Supplier implements Serializable
 	private String supplierEmailId;
 	@Expose
 	private String supplierPhoneNumber;
-	
+	@Expose
+	private boolean flag;
 	@ManyToOne
 	public UserDetail userDetail;
 	
+	public boolean isFlag() {
+		return flag;
+	}
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
 	public String getSupplierId() {
 		return supplierId;
 	}
