@@ -4,29 +4,11 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE HTML>
 <html lang="en-us">
-<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<meta http-equiv="content-type" content="text/html"/>
 <head>
 <title>FOOT</title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=1.0"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
-<script>
-  $(document).ready(function() {
-	$('.w-input-search').autocomplete({
-		serviceUrl: '${pageContext.request.contextPath}/getTags',
-		paramName: "subCategoryName=New",
-		delimiter: ",",
-	   transformResult: function(response) {
-		return {
-		  //must convert json to javascript object before process
-		  suggestions: $.map($.parseJSON(response), function(item) {
-		      return { value: item.subCategoryName};
-		      //return { value: item.productName, data: item.id };
-		   })
-		 };
-            }
-	 });	
-  });
-</script>
 <script type="text/javascript">
 try
 {
@@ -47,6 +29,7 @@ catch(e)
 <link rel="stylesheet" href="resources/css/contact-form.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/highdpi.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/jquery.bxslider.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/css/animate.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/addresses.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/blocklayered.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="resources/css/authentication.css" type="text/css" media="all"/>
@@ -98,6 +81,7 @@ catch(e)
 <script src="resources/js/sendtoafriend.js"></script>
 <script src="resources/js/productscategory.js"></script>
 <script src="resources/js/jquery-1.11.0.min.js"></script>
+<script src="resources/js/jquery.autocomplete.js"></script>
 <script src="resources/js/crossselling.js"></script>
 <script src="resources/js/jquery.jqzoom.js"></script>
 <script src="resources/js/jquery-migrate-1.2.1.min.js"></script>
@@ -110,7 +94,6 @@ catch(e)
 <script src="resources/js/jquery.bxslider.js"></script>
 <script src="resources/js/jquery.fancybox.js"></script>
 <script src="resources/js/validate.js"></script>
-<script src="resources/js/jquery.autocomplete.js"></script>
 <script src="resources/js/global.js"></script>
 <script src="resources/js/productcomments.js"></script>
 <script src="resources/js/10-bootstrap.min.js"></script>
@@ -160,8 +143,8 @@ var FancyboxI18nNext = 'Next';
 var FancyboxI18nPrev = 'Previous';
 var PS_CATALOG_MODE = false;
 var added_to_wishlist = 'The product was successfully added to your wishlist.';
-var ajax_allowed = false;
-var ajaxsearch = false;
+var ajax_allowed = true;
+var ajaxsearch = true;
 var allowBuyWhenOutOfStock = false;
 var availableLaterValue = '';
 var availableNowValue = '';
@@ -336,15 +319,15 @@ var wishlistProductsIds = false;
 <ul id="header-login-content" class="toogle_content_box">
 <li>
 <div class="icon-close material-design-close47"></div>
-<h4>login</h4>
+<h4>LOGIN</h4>
 <form id="header_login_form" method="post" action="perform_login">
 <div id="create_header_account_error" class="alert alert-danger" style="display:none;"></div>
 <div class="form_content clearfix">
 <div class="form-group">
-<input class="form-control" placeholder="Username" name="username" type="text" value=""/>
+<input class="form-control" placeholder="USERNAME" name="username" type="text" value=""/>
 </div>
 <div class="form-group">
-<span><input class="form-control" type="password" placeholder="Password" name="password" value=""/></span>
+<span><input class="form-control" type="password" placeholder="PASSWORD" name="password" value=""/></span>
 </div>
 <p class="submit">
 <input type="submit" class="btn btn-default" value="Sign in">
@@ -366,13 +349,13 @@ var wishlistProductsIds = false;
 <div class="current_toogle header_user_info"><a href="#" onclick="return false;"><span class="fa fa-user"></span>  ${pageContext.request.userPrincipal.name}</a></div>
 <ul id="header-login-content" class="toogle_content_box" style="display: none;">
 <sec:authorize access="hasRole('ROLE_USER')">
+<li>
+<img style="padding:5%;" height="150" width="auto" class="replace-2x img-responsive img-circle" src="resources/images/user/${pageContext.request.userPrincipal.name}.jpg">
+</li>
 <li class="login">
 <ul>
 <li>
 <a href="#" title="My orders" rel="nofollow"><span class="fa fa-shopping-cart">	My orders</span></a>
-</li>
-<li>
-<a href="#" title="My addresses" rel="nofollow"><span class="fa fa-home">	My addresses</span></a>
 </li>
 <li>
 <a href="/Foot/profile" title="Manage my personal information" rel="nofollow"><span class="fa fa-user">	My personal info</span></a>
@@ -386,6 +369,9 @@ var wishlistProductsIds = false;
 </li>
 </sec:authorize>
 <sec:authorize access="hasRole('ROLE_SUPPLIER')">
+<li>
+<img style="padding:5%;" height="150" width="auto" class="replace-2x img-responsive img-circle" src="resources/images/user/${pageContext.request.userPrincipal.name}.jpg">
+</li>
 <li class="login">
 <ul>
 <li>
@@ -405,6 +391,35 @@ var wishlistProductsIds = false;
 <li class="lnk_wishlist">
 <a href="/Foot/productssupplierform" title="My wishlists">
 <span class="fa fa-plus">	Add Products</span>
+</a>
+</li>
+</ul>
+</li>
+</sec:authorize>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+<li>
+<img style="padding:5%;" height="150" width="auto" class="replace-2x img-responsive img-circle" src="resources/images/admin.jpg">
+</li>
+<li class="login">
+<ul>
+<li class="lnk_wishlist">
+<a href="/Foot/addSupplier" title="My wishlists">
+<span class="fa fa-plus">	New Supplier</span>
+</a>
+</li>
+<li class="lnk_wishlist">
+<a href="#">
+<span class="fa fa-plus">	View Supplier</span>
+</a>
+</li>
+<li class="lnk_wishlist">
+<a href="#">
+<span class="fa fa-ban">	Block User</span>
+</a>
+</li>
+<li class="lnk_wishlist">
+<a href="#">
+<span class="fa fa-ban">	Block Supplier</span>
 </a>
 </li>
 </ul>
@@ -629,15 +644,15 @@ Proceed to checkout
 
 <div class="layer_cart_overlay"></div>
 <div id="tmsearch" class="clearfix">
-<form id="tmsearchbox" action="#">
+<form:form method="get" id="tmsearchbox" action="#">
 <div class="tm_search_query_wrapper">
-<input class="form-control w-input-search" type="text" id="tm_search_query" placeholder="Search"/>
+<input class="form-control searchClass" type="text" id="tm_search_query" placeholder="Search"/>
 </div>
 <div class="visible_btn" style="display: block;"></div>
 <button type="submit" class="btn btn-default button-search fa fa-search">
 <span>Search</span>
 </button>
-</form>
+</form:form>
 </div>
 
 <div class="top_menu top-level tmmegamenu_item">
@@ -735,3 +750,21 @@ Proceed to checkout
 </div>
 </header>
 </div>
+<script type="text/javascript">
+  $(document).ready(function() {
+	$('.searchClass').autocomplete({
+		serviceUrl: '/getTags?',
+		paramName: "subCategoryName",
+		delimiter: ",",
+	   transformResult: function(response) {
+		return {
+		  //must convert json to javascript object before process
+		  suggestions: $.map($.parseJSON(response), function(item) {
+		      return { value: item.subCategoryName, 
+						data: item.subCategoryId };
+		   })
+		 };
+            }
+	 });
+  });
+</script>

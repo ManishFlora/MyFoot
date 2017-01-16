@@ -64,6 +64,10 @@ public class BrandController
 			String path = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\brand\\";
 			path = path + String.valueOf(brand.getBrandId()) + ".jpg";
 			File file = new File(path);
+			if(file.exists())
+			{
+				file.delete();
+			}
 			MultipartFile multipartFile = brand.getBrandImage();
 			if(!multipartFile.isEmpty())
 			{

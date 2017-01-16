@@ -27,16 +27,6 @@ public class User implements Serializable
 	private String userPassword;
 	private boolean status;
 	
-	@Transient
-	private MultipartFile userImage;
-	
-	
-	public MultipartFile getUserImage() {
-		return userImage;
-	}
-	public void setUserImage(MultipartFile userImage) {
-		this.userImage = userImage;
-	}
 	public String getUserId() {
 		return userId;
 	}

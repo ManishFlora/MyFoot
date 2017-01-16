@@ -1,4 +1,5 @@
 <%@include file="header.jsp" %>
+<div ng-app="cartList" ng-controller="cartListController">
 <div class="columns-container">
 <div class="wrapper it_MSYCVDAWVRSQ topcolumn-preset1">
 <div class="row it_BPFSWOXAMUFW ">
@@ -26,26 +27,6 @@ Home
 </span>
 </h1>
 <p id="emptyCartWarning" class="alert alert-warning unvisible">Your shopping cart is empty.</p>
-<div class="cart_last_product">
-<div class="cart_last_product_header">
-<div class="left">Last product added</div>
-</div>
-<a class="cart_last_product_img" href="#">
-<img src="#" alt="">
-</a>
-<div class="cart_last_product_content">
-<p class="product-name">
-<a href="#">
-Reebok Graphic Pop
-</a>
-</p>
-<small>
-<a href="#">
-Color : White, Size : 4 US, Material : Suede
-</a>
-</small>
-</div>
-</div>
 <div id="order-detail-content" class="table_block table-responsive">
 <table id="cart_summary" class="table table-bordered stock-management-on">
 <thead>
@@ -59,55 +40,15 @@ Color : White, Size : 4 US, Material : Suede
 <th class="cart_delete last_item">&nbsp;</th>
 </tr>
 </thead>
-<tfoot>
-<tr class="cart_total_price">
-<td rowspan="4" colspan="3" id="cart_voucher" class="cart_voucher">
-</td>
-<td colspan="3" class="text-right">Total products</td>
-<td colspan="2" class="price" id="total_product">1234</td>
-</tr>
-<tr style="display: none;">
-<td colspan="3" class="text-right">
-Total gift-wrapping cost                      </td>
-<td colspan="2" class="price-discount price" id="total_wrapping">
-0.00
-</td>
-</tr>
-<tr class="cart_total_delivery unvisible">
-<td colspan="3" class="text-right">Total shipping</td>
-<td colspan="2" class="price" id="total_shipping">Free shipping!</td>
-</tr>
-<tr class="cart_total_voucher unvisible">
-<td colspan="3" class="text-right">
-Total vouchers
-</td>
-<td colspan="2" class="price-discount price" id="total_discount">
-0.00
-</td>
-</tr>
-<tr class="cart_total_price">
-<td colspan="3" class="total_price_container text-right">
-<span>Total</span>
-<div class="hookDisplayProductPriceBlock-price">
-
-</div>
-</td>
-<td colspan="2" class="price" id="total_price_container">
-<span id="total_price">1234</span>
-</td>
-</tr>
-</tfoot>
 <tbody>
-
 <tr id="product_11_768_0_0" class="cart_item last_item first_item address_0 odd">
 <td class="cart_product">
-<a href="#" alt=""></a>
+<img height="100" width="auto" class="img-responsive" src="resources/images/products/{{cartList.productsId}}(1).jpg"/>
 </td>
 <td class="cart_description" data-title="Description">
-<p class="product-name"><a href="#"></a></p>
-<small class="cart_ref">
-SKU : 00104
-</small>
+<p class="product-name">
+<a href="#">{{cartList.productsName}}</a>
+</p>
 <small>
 <a href="#">
 Color : White, Size : 4 US, Material : Suede
@@ -156,6 +97,43 @@ In Stock
 </td>
 </tr>
 </tbody>
+<tfoot>
+<tr class="cart_total_price">
+<td rowspan="4" colspan="3" id="cart_voucher" class="cart_voucher">
+</td>
+<td colspan="3" class="text-right">Total products</td>
+<td colspan="2" class="price" id="total_product">1234</td>
+</tr>
+<tr style="display: none;">
+<td colspan="3" class="text-right">
+Total gift-wrapping cost                      </td>
+<td colspan="2" class="price-discount price" id="total_wrapping">
+0.00
+</td>
+</tr>
+<tr class="cart_total_delivery unvisible">
+<td colspan="3" class="text-right">Total shipping</td>
+<td colspan="2" class="price" id="total_shipping">Free shipping!</td>
+</tr>
+<tr class="cart_total_voucher unvisible">
+<td colspan="3" class="text-right">
+Total vouchers
+</td>
+<td colspan="2" class="price-discount price" id="total_discount">
+0.00
+</td>
+</tr>
+<tr class="cart_total_price">
+<td colspan="3" class="total_price_container text-right">
+<span>Total</span>
+<div class="hookDisplayProductPriceBlock-price">
+</div>
+</td>
+<td colspan="2" class="price" id="total_price_container">
+<span id="total_price">1234</span>
+</td>
+</tr>
+</tfoot>
 </table>
 </div>
 <div id="HOOK_SHOPPING_CART"></div>
@@ -178,10 +156,19 @@ Proceed to checkout
 </div>
 </div>
 </div>
+</div>
+</div>
+
 <div class="wrapper it_ZGMGQDGNWEAS container home-preset1">
 <div class="row it_OMEMJXWGTWWQ ">
 <div class="it_BMLRHIIHSZDK    col-lg-12 ">
 <div class="module "></div>
 <div class="module "></div></div></div></div>
-</div>
+<script>
+var cartList = angular.module("cartList",[]);
+cartList.controller("cartListController",function($scope)
+		{
+	$scope.cartItem = ${cartItem};
+		});
+</script>
 <%@include file="footer.jsp" %>

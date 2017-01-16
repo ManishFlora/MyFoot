@@ -16,20 +16,33 @@ Home
 </li>
 <li class="last">{{userList.firstName}}	{{userList.lastName}}</li>
 </ul>
-</div>
- 
+</div> 
 <div id="columns" class="container">
-<div class="row">
 <div class="large-left col-sm-12">
 <div class="row">
+<div class="col-xs-12 col-md-6">
+<ul>
+<li style="height:150; width:auto;">
+<img id="userImage" height="50" width="auto" class="img-responsive img-circle animated fadeInUp" src="resources/images/user/${pageContext.request.userPrincipal.name}.jpg">
+</li>
+</ul>
+</div>
 <h1 class="page-heading">{{userList.firstName}}	{{userList.lastName}}</h1>
 <div class="row">
-<div class="col-xs-12 col-sm-4 col-md-4">
+<div class="col-xs-12 col-md-6">
 <form method="post" id="login_form" class="box">
 <h3 class="page-subheading">Profile</h3>
-<div class="clearfix">
-
+<h3 class="page-subheading">Delivery Address</h3>
+<h3 class="page-subheading">Shipping Address</h3>
+</form>
 </div>
+</div>
+</div> 
+</div> 
+</div> 
+</div>
+</div>
+<div style="display:none;">
 <div class="clearfix">
 <div class="form-group">
 <label for="email">First Name</label>
@@ -48,8 +61,7 @@ Home
 <input class="form-control" type="text" id="email" name="email" value="{{userList.contactNumber}}">
 </div>
 </div>
-</form>
-</div>
+
 <div ng-controller="billingAddressController">
 <div class="col-xs-12 col-sm-4 col-md-4">
 <form method="post" id="login_form" class="box">
@@ -116,18 +128,36 @@ Home
 </form>
 </div>
 </div>
+
+
+<div id="columns" class="container">
+<div class="row">
+<div id="center_column" class="center_column col-xs-12 col-sm-12">
+<h1 class="page-heading bottom-indent">Upload Photo</h1>
+<div class="contact-form-box" style="padding:23px 0 0 0;margin:0 0 30px 0;background:url('resources/images/contact-form.png') repeat-x white;-moz-box-shadow:rgba(0,0,0,0.17) 0 5px 13px;-webkit-box-shadow:rgba(0,0,0,0.17) 0 5px 13px;box-shadow:rgba(0,0,0,0.17) 0 5px 13px;">
+<div class="clearfix">
+<form:form enctype="multipart/form-data" modelAttribute="userDetail" action="addImage">
+<fieldset style="padding:0 19px 21px 19px;background:url(resources/images/form-contact-shadow.png">
+<div class="uploader" id="uniform-fileUpload">
+<label>Photos</label>
+<form:input type="file" path="userImage"/>
 </div>
-</div> 
-</div> 
-</div> 
+<button type="submit" class="btn btn-link">
+<span>
+Add Photo
+</span>
+</button>
+</fieldset>
+</form:form>
+</div>
+</div>
+</div>
 </div>
 <div class="wrapper it_ZGMGQDGNWEAS container home-preset1">
 <div class="row it_OMEMJXWGTWWQ ">
 <div class="it_BMLRHIIHSZDK    col-lg-12 ">
 <div class="module "></div>
 <div class="module "></div></div></div></div>
-</div>
-</div>
 <script type="text/javascript">
 angular.module('user',[]).controller('userController',function($scope)
 {

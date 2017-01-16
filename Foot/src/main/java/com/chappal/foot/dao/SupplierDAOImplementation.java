@@ -13,6 +13,7 @@ import com.chappal.foot.model.Supplier;
 import com.chappal.foot.model.User;
 import com.chappal.foot.model.UserDetail;
 import com.chappal.foot.model.UserRole;
+import com.chappal.foot.service.UserDetailServices;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,7 +22,9 @@ public class SupplierDAOImplementation implements SupplierDAO
 {
 	@Autowired
 	SessionFactory sessionFactory;
-
+	@Autowired
+	UserDetailServices userDetailServices;
+	
 	public void addSupplier(Supplier supplier) 
 	{
 		sessionFactory.getCurrentSession().saveOrUpdate(supplier);
@@ -39,7 +42,7 @@ public class SupplierDAOImplementation implements SupplierDAO
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Supplier> supplierList = session.createQuery("from Supplier where supplierId = '" + supplierId + "'").getResultList();
+		List<Supplier> supplierList = session.createQuery("from Supplier where supplierId = '" + supplierId + "' and flag = true").getResultList();
 		if(supplierList != null && !supplierList.isEmpty())
 		{
 			return supplierList.get(0);
@@ -139,7 +142,7 @@ public class SupplierDAOImplementation implements SupplierDAO
 		session.saveOrUpdate(user);
 		
 		Cart cart = new Cart();
-		cart.setCartId(user.getUserId());
+		cart.setCartId(userDetailServices.generatedCId());
 		cart.setUserId(user.getUserId());
 		
 		session.saveOrUpdate(cart);

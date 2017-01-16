@@ -69,6 +69,16 @@ public class ProductsDAOImplementation implements ProductsDAO
 		return json;
 	}
 	
+	public String retriveJsonProducts(String productsId) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Products> productsList = session.createQuery("from Products where productsId = '" + productsId + "'").getResultList();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String json = gson.toJson(productsList);
+		return json;
+	}
+	
 	public int retriveCount() 
 	{
 		Session session = sessionFactory.getCurrentSession();
@@ -152,5 +162,13 @@ public class ProductsDAOImplementation implements ProductsDAO
 	public void updateProductsQuantity(String productsId)
 	{
 		sessionFactory.getCurrentSession().createQuery("Update Products set productsQuantity = productsQuantity - 1 where productsId = '" + productsId + "'").executeUpdate();
+	}
+	
+	public List<ListProducts> retriveList()
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<ListProducts> listProducts = session.createQuery("from ListProducts").getResultList();
+		return listProducts;
 	}
 }

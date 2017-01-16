@@ -169,6 +169,7 @@ public class ProductsController
 		productsServices.retriveProducts(productsId);
 		productSpecification.setProductsId(productsId);
 		model.addAttribute("productsInfo", productSpecification);
+		model.addAttribute("productsJsonList", productsServices.retriveJsonProducts(productsId));
 		return "/productsspecificationform";
 	}
 	

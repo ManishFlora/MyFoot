@@ -1,4 +1,6 @@
 <%@include file="header.jsp" %>
+<div ng-app="productSpecification" ng-controller="productSpecificationController">
+<div ng-repeat = "list in productsJsonList">
 <div class="breadcrumb clearfix">
 <ul class="container">
 <li class="home">
@@ -6,10 +8,27 @@
 Home
 </a>
 </li>
-<li class="last">Products Page</li>
+<li class="last">{{list.productsName}}</li>
 </ul>
 </div>
-<div ng-app="products" ng-controller="productsController">
+
+<div class="wlp_bought">
+<ul class="row wlp_bought_list">
+<div id="columns" class="container">
+<div class="col-xs-6 col-sm-12">
+<div class="product_image">
+<img height="200" width="200" class="replace-2x img-responsive" src="resources/images/products/{{list.productsId}}(1).jpg" alt="{{list.productsName}}">
+</div>
+</div>
+<div class="col-xs-6 col-sm-12">
+<div class="product_infos">
+<p id="s_title" class="product-name">{{list.productsName}}</p>
+</div>
+</div>
+</div>
+</ul>
+</div>
+
 <div id="columns" class="container">
 <div class="row">
 <div class="large-left col-sm-12">
@@ -121,4 +140,12 @@ Add Info
 </div>
 </div>
 </div>
+</div>
+<script>
+var products = angular.module("productSpecification",[]);
+products.controller("productSpecificationController",function($scope)
+		{
+	$scope.productsJsonList = ${productsJsonList};
+		});
+</script>
 <%@include file="footer.jsp"%>

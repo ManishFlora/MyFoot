@@ -187,6 +187,10 @@ var m_display_caroucel = 0;
 <img class="replace-2x img-responsive" src="resources/images/products/{{viewList.productsId}}(1).jpg" alt="{{viewList.productsName}}" title="Reebok Aspire Green" itemprop="image"/>
 <img class="img-responsive hover-image" src="resources/images/products/{{viewList.productsId}}(2).jpg" alt="{{viewList.productsName}}" title="Reebok Aspire Green"/>
 </a>
+<p class="buttons_bottom_block wishlist-prodict no-print">
+<a id="wishlist_button_nopop" href="/Foot/wishList-{{viewList.productsId}}?userId=1" rel="nofollow" title="Add to my wishlist">
+</a>
+</p>
 <div class="labels">
 <a class="sale-box" href="#">
 <span class="sale-label">Sale!</span>
@@ -255,13 +259,13 @@ In Stock
 </div>
 <div class="button-container clearfix">
 <div ng-if="viewList.productsQuantity !=0">
+<a class="btn btn-md btn-default" href="/Foot/buyNow-{{viewList.productsId}}?userId=1" title="Buy Now">
+<span class="fa fa-shopping-cart"></span>
+</a>
 <a class="ajax_add_to_cart_button btn btn-sm btn-default" href="/Foot/buyNow-{{viewList.productsId}}?userId=1">
 <span>Add to cart</span>
 </a>
 </div>
-<a itemprop="url" class="lnk_view btn btn-sm btn-default" href="/Foot/viewproduct-{{viewList.productsId}}" title="View">
-<span>More</span>
-</a>
 </div>
 <div class="product-flags">
 </div>
@@ -281,6 +285,10 @@ In Stock
 <img class="replace-2x img-responsive" src="resources/images/products/{{viewLatestList.productsId}}(1).jpg" alt="{{viewLatestlist.productsName}}" title="{{viewLatestlist.productsName}}" itemprop="image"/>
 <img class="img-responsive hover-image" src="resources/images/products/{{viewLatestList.productsId}}(2).jpg" alt="{{viewLatestlist.productsName}}" title="{{viewLatestlist.productsName}}"/>
 </a>
+<p class="buttons_bottom_block wishlist-prodict no-print">
+<a id="wishlist_button_nopop" href="/Foot/wishList-{{viewLatestList.productsId}}?userId=1" rel="nofollow" title="Add to my wishlist">
+</a>
+</p>
 <div class="labels">
 <a class="sale-box" href="#">
 <span class="sale-label">Sale!</span>
@@ -378,5 +386,5 @@ productList.controller("productListController",function($scope)
 		{
 	$scope.listLatest = ${listLatest};
 		});
-</script>
+</script>	
 <%@include file="footer.jsp" %>

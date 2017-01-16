@@ -210,7 +210,7 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<UserDetail> userList = session.createQuery("from ShippingAddress").getResultList();
+		List<ShippingAddress> userList = session.createQuery("from ShippingAddress").getResultList();
 		int count = userList.size();
 		return count;
 	}
@@ -219,7 +219,7 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<UserDetail> userList = session.createQuery("from BillingAddress").getResultList();
+		List<BillingAddress> userList = session.createQuery("from BillingAddress").getResultList();
 		int count = userList.size();
 		return count;
 	}
@@ -228,7 +228,7 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<UserDetail> userList = session.createQuery("from Cart").getResultList();
+		List<Cart> userList = session.createQuery("from Cart").getResultList();
 		int count = userList.size();
 		return count;
 	}

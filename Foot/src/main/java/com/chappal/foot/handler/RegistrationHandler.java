@@ -231,6 +231,7 @@ public class RegistrationHandler
 	
 	public void saveSupplier(Supplier supplier,UserDetail userDetail)
 	{
+		userDetail.setUserId(userDetailServices.generatedId());
 		this.supplierServices.addRegSupplier(userDetail);
 		supplier.setUserDetail(userDetail);
 		userDetail.setSupplier(supplier);

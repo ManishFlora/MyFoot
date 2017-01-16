@@ -108,7 +108,7 @@ Cancel
 </li>
 </ul>
 <p class="buttons_bottom_block wishlist-prodict no-print">
-<a id="wishlist_button_nopop" href="#" rel="nofollow" title="Add to my wishlist">
+<a id="wishlist_button_nopop" href="/Foot/wishList-{{listView.productsId}}?userId=1" rel="nofollow" title="Add to my wishlist">
 </a>
 </p>
 <span class="image_loader" style="opacity: 0; display: none;"></span>

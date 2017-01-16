@@ -75,7 +75,7 @@ Products Form</h1>
 <div class="col-xs-12 col-md-3">
 <div class="form-group selector1">
 <label>Sub-Category</label>
-<form:select id="id_contact" class="form-control" name="id_contact" path="subcategory.subCategoryName" itemValue="subCategoryName">
+<form:select id="id_contact" class="form-control select" name="id_contact" path="subcategory.subCategoryName" itemValue="subCategoryName">
 <form:option value="Choose Sub-Category"></form:option>
 <form:options items="${subCategoryList}" itemLabel="subCategoryName" itemValue="subCategoryName"/>
 </form:select>

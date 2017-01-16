@@ -43,6 +43,11 @@ public class ProductsServices
 		return productsDAOImplementation.retriveJsonProducts();
 	}
 	
+	public String retriveJsonProducts(String productsId) 
+	{
+		return productsDAOImplementation.retriveJsonProducts(productsId);
+	}
+	
 	public String generateId()
 	{
 		return productsDAOImplementation.generateId();
@@ -66,5 +71,9 @@ public class ProductsServices
 	public void updateProductsQuantity(String productsId)
 	{
 		productsDAOImplementation.updateProductsQuantity(productsId);
+	}
+	public List<ListProducts> retriveList()
+	{
+		return productsDAOImplementation.retriveList();
 	}
 }

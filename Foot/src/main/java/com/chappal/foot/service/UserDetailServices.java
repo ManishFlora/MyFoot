@@ -69,4 +69,9 @@ public class UserDetailServices
 	{
 		return userDetailDAOImplementation.generatedId();
 	}
+	
+	public String generatedCId()
+	{
+		return userDetailDAOImplementation.generatedCId();
+	}
 }

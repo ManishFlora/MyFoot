@@ -40,7 +40,7 @@ public class CartItemsController
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
 		userId = userDetailServices.retriveUserByName(userName).getUserId();
-		cartItems.setCartId(userId);
+		String cartId = userDetailServices.retriveUserByName(userName).getCartId();
 		cartItems.setUserId(userId);
 		cartItems.setProductsId(productsId);
 		cartItems.setQuantity(1);
@@ -53,7 +53,9 @@ public class CartItemsController
 		cartItems.setAmount(amount);
 		Date date = new Date();
 		cartItems.setOrderDate(date);
+		cartItems.setCartId(cartId);
 		cartItems.setCartItemsId(cartItemsServices.generateId());
+		System.out.println(cartId);
 		cartItemsServices.addCartItems(cartItems);
 		productsServices.updateProductsQuantity(productsId);
 		session.setAttribute("cartItemsId", cartItems.getCartItemsId());
@@ -69,8 +71,8 @@ public class CartItemsController
 		String userId = userDetailServices.retriveUserByName(userName).getUserId();
 		session.setAttribute("userId", userId);
 		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-		String cartItemsList = gson.toJson(cartItemsServices.cartItemsList(userId));
-		model.addAttribute("cartItemsList", cartItemsList);
+		String cartItem = gson.toJson(cartItemsServices.cartItemsList(userId));
+		model.addAttribute("cartItem", cartItem);
 		return "/orderpage";
 	}
 	

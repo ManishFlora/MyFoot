@@ -9,11 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.Pattern;
 
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.annotations.Expose;
 
@@ -41,7 +43,18 @@ public class UserDetail implements Serializable
 	private String contactNumber;
 	@Expose
 	private String cartId;
-
+	
+	@Transient
+	private MultipartFile userImage;
+	
+	
+	public MultipartFile getUserImage() {
+		return userImage;
+	}
+	public void setUserImage(MultipartFile userImage) {
+		this.userImage = userImage;
+	}
+	
 	@OneToOne
 	@JoinColumn(name="userId", nullable=false, insertable=false,updatable=false)
 	private User user;
