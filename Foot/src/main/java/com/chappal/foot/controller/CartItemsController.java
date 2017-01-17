@@ -59,6 +59,7 @@ public class CartItemsController
 		cartItemsServices.addCartItems(cartItems);
 		productsServices.updateProductsQuantity(productsId);
 		session.setAttribute("cartItemsId", cartItems.getCartItemsId());
+		session.setAttribute("productsId", productsId);
 		String cartItemsId=(String) session.getAttribute("cartItemsId");
 		return "redirect:/cartList-"+cartItemsId;
 	}
@@ -70,9 +71,9 @@ public class CartItemsController
 		String userName = authentication.getName();
 		String userId = userDetailServices.retriveUserByName(userName).getUserId();
 		session.setAttribute("userId", userId);
+		String productsId = cartItemsServices.cartItemsListById(cartItemsId).getProductsId();
 		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-		String cartItem = gson.toJson(cartItemsServices.cartItemsList(userId));
-		model.addAttribute("cartItem", cartItem);
+		model.addAttribute("listProducts", gson.toJson(productsServices.retriveListProducts(productsId)));
 		return "/orderpage";
 	}
 	
@@ -88,5 +89,44 @@ public class CartItemsController
 		session.setAttribute("lastName", lastName);
 		session.setAttribute("userId", userId);
 		return "redirect:/cart?userId=" + userId;
+	}
+	
+	@RequestMapping("/addToCart-{productsId}")
+	public String addToCart(@ModelAttribute("cartItems") CartItems cartItems,@PathVariable("productsId") String productsId, HttpSession session,@RequestParam("userId") String userId)
+	{
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String userName = authentication.getName();
+		userId = userDetailServices.retriveUserByName(userName).getUserId();
+		String cartId = userDetailServices.retriveUserByName(userName).getCartId();
+		cartItems.setUserId(userId);
+		cartItems.setProductsId(productsId);
+		cartItems.setFlag(false);
+		System.out.println(cartItems.getQuantity());
+		String productsName = productsServices.retriveProducts(productsId).getProductsName();
+		cartItems.setProductName(productsName);
+		int price = productsServices.retriveProducts(productsId).getProductsPrice();
+		int discount = (int)productsServices.retriveProducts(productsId).getDiscountedPrice();
+		int amount = price - discount;
+		cartItems.setAmount(amount);
+		Date date = new Date();
+		cartItems.setOrderDate(date);
+		cartItems.setCartId(cartId);
+		cartItems.setCartItemsId(cartItemsServices.generateId());
+		session.setAttribute("cartItemsId", cartItems.getCartItemsId());
+		session.setAttribute("productsId", productsId);
+		String cartItemsId=(String)session.getAttribute("cartItemsId");
+		return "redirect:cartItems-" + cartItemsId;
+	}
+	
+	@RequestMapping("/cartItems-{cartItemsId}")
+	public String cartItems(@PathVariable("cartItemsId") String cartItemsId, HttpSession session, Model model)
+	{
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String userName = authentication.getName();
+		String userId = userDetailServices.retriveUserByName(userName).getUserId();
+		session.setAttribute("userId", userId);
+		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		model.addAttribute("cartList", gson.toJson(cartItemsServices.listProducts(userId)));
+		return "/orderpage-2";
 	}
 }

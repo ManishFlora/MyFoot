@@ -24,7 +24,7 @@ Home
 <div id="center_column" class="center_column col-xs-12 col-sm-12 accordionBox">
 <h1 id="cart_title" class="page-heading">Shopping-cart summary
 <span class="heading-counter">Your shopping cart contains:
-<span id="summary_products_quantity">1 product</span>
+<span id="summary_products_quantity">{{cartList}}.size product</span>
 </span>
 </h1>
 <p id="emptyCartWarning" class="alert alert-warning unvisible">Your shopping cart is empty.</p>
@@ -41,17 +41,17 @@ Home
 <th class="cart_delete last_item">&nbsp;</th>
 </tr>
 </thead>
-<tbody>
+<tbody ng-repeat = "cartList in cartList">
 <tr id="product_11_768_0_0" class="cart_item last_item first_item address_0 odd">
 <td class="cart_product">
 <img height="100" width="auto" class="img-responsive" src="resources/images/products/{{listProducts.productsId}}(1).jpg"/>
 </td>
 <td class="cart_description" data-title="Description">
 <p class="product-name">
-<a>{{listProducts.productsName}}</a>
+<a>{{cartList.productsName}}</a>
 </p>
 <small>
-<a>{{listProducts.productsDescription}}</a>
+<a>{{cartList.productsDescription}}</a>
 </small>
 </td>
 <td class="cart_avail">
@@ -61,7 +61,7 @@ In Stock
 </td>
 <td class="cart_unit" data-title="Unit price">
 <span class="price" id="product_price_11_768_0">
-<span class="price special-price">{{listProducts.productsPrice - listProducts.discountedPrice}}</span>
+<span class="price special-price">{{cartList.productsPrice - cartList.discountedPrice}}</span>
 <span class="price-percent-reduction small">
 &nbsp;-{{listProducts.productsDiscount}}%&nbsp;
 </span>
@@ -155,7 +155,7 @@ Proceed to checkout
 <script>
 angular.module("listproducts",[]).controller("listController",function($scope)
 		{
-	$scope.listProducts = ${listProducts};
+	$scope.cartList = ${cartList};
 		});
 </script>
 <%@include file="footer.jsp" %>

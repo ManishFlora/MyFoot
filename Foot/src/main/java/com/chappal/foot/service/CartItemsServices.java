@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.chappal.foot.dao.CartItemsDAOImplementation;
 import com.chappal.foot.model.CartItems;
+import com.chappal.foot.model.ListProducts;
 
 @Transactional
 @Service
@@ -29,5 +30,15 @@ public class CartItemsServices
 	public List<CartItems> cartItemsList(String userId)
 	{
 		return cartItemsDAOImplementation.cartItemsList(userId);
+	}
+	
+	public CartItems cartItemsListById(String cartItemsId)
+	{
+		return cartItemsDAOImplementation.cartItemsListById(cartItemsId);
+	}
+	
+	public List<ListProducts> listProducts(String userId)
+	{
+		return cartItemsDAOImplementation.listProducts(userId);
 	}
 }

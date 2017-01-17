@@ -398,7 +398,7 @@ var wishlistProductsIds = false;
 </sec:authorize>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 <li>
-<img style="padding:5%;" height="150" width="auto" class="replace-2x img-responsive img-circle" src="resources/images/admin.jpg">
+<img style="padding:5%;" height="400" width="200" class="replace-2x img-responsive img-circle" src="resources/images/user/Manish121.jpg">
 </li>
 <li class="login">
 <ul>
@@ -753,7 +753,7 @@ Proceed to checkout
 <script type="text/javascript">
   $(document).ready(function() {
 	$('.searchClass').autocomplete({
-		serviceUrl: '/getTags?',
+		serviceUrl: '${pageContext.request.contextPath}/getTags?',
 		paramName: "subCategoryName",
 		delimiter: ",",
 	   transformResult: function(response) {

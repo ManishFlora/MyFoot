@@ -195,7 +195,7 @@ Display all pictures
 <div class="product-manufacture">{{listView.brandName}}</div>
 </div>
  
-<form id="buy_block" method="post">
+<form:form modelAttribute="cartItems" action="/Foot/addToCart-${sessionScope.productsId}?userId=1">
 <p class="hidden">
 <input type="hidden" name="token" value="0a9f6300ab69c9db1344dae91e1ba312">
 <input type="hidden" name="id_product" value="13" id="product_page_product_id">
@@ -309,13 +309,14 @@ $(window).load(function()
 </script>
 <p id="quantity_wanted_p">
 <label for="quantity_wanted">Quantity</label>
-<input type="text" min="1" name="qty" id="quantity_wanted" class="text" value="1">
-<button onclick="decrease()" class="btn btn-default button-minus product_quantity_down">
+<form:input hidden="true" type="text" id="qtyDetail" path="Quantity" value="1"/>
+<input type="text" min="1" name="qty" id="quantity_wanted" class="text" value="1"/>
+<button type="button" onclick="decrease()" class="btn btn-default button-minus product_quantity_down">
 <span>
 <i class="material-design-horizontal39"></i>
 </span>
 </button>
-<button onclick="increase()" class="btn btn-default button-plus product_quantity_up">
+<button type="button" onclick="increase()" class="btn btn-default button-plus product_quantity_up">
 <span>
 <i class="material-design-add186"></i>
 </span>
@@ -325,9 +326,7 @@ $(window).load(function()
 <div class="box-btn-cosial clearfix">
 <div id="add_to_cart_product_page_button">
 <p id="add_to_cart" class="buttons_bottom_block no-print">
-<button type="submit" name="Submit" class="btn btn-sm btn-default ajax_add_to_cart_product_button">
-<span>Add to cart</span>
-</button>
+<input type="submit" value="Add to cart" name="Submit" class="btn btn-sm btn-default ajax_add_to_cart_product_button">
 </p>
 </div>
 </div>
@@ -354,7 +353,7 @@ The minimum purchase order quantity for the product is
 <div class="box-cart-bottom">
  </div>  
 </div>  
-</form>
+</form:form>
 <div class="extra-right"> 
 </div>  
 </div>
@@ -500,6 +499,15 @@ products.controller("productsController",function($scope)
 	}
 		});
 </script>
+<script type="text/javascript">
+function disable()
+{
+	if(document.getElementById("disable").style.display == "block")
+	{
+		document.getElementById("disable").style.display = "none";
+	}
+}
+</script>
 <script>
 function decrease()
 {
@@ -507,6 +515,7 @@ function decrease()
 		{
 		var data = parseInt(document.getElementById("quantity_wanted").value) - 1;
 		document.getElementById("quantity_wanted").value = data;
+		document.getElementById("qtyDetail").value = data;
 		}
 }
 </script>
@@ -515,15 +524,7 @@ function increase()
 {
 	var data = parseInt(document.getElementById("quantity_wanted").value) + 1;
 	document.getElementById("quantity_wanted").value = data;
-}
-</script>
-<script type="text/javascript">
-function disable()
-{
-	if(document.getElementById("disable").style.display == "block")
-	{
-		document.getElementById("disable").style.display = "none";
-	}
+	document.getElementById("qtyDetail").value = data;
 }
 </script>
 <%@include file="footer.jsp" %>

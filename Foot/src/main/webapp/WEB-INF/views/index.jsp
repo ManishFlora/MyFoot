@@ -262,7 +262,7 @@ In Stock
 <a class="btn btn-md btn-default" href="/Foot/buyNow-{{viewList.productsId}}?userId=1" title="Buy Now">
 <span class="fa fa-shopping-cart"></span>
 </a>
-<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="/Foot/buyNow-{{viewList.productsId}}?userId=1">
+<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="/Foot/addToCart-{{viewList.productsId}}?userId=1">
 <span>Add to cart</span>
 </a>
 </div>
@@ -357,10 +357,10 @@ In Stock
 </div>
 <div class="button-container clearfix">
 <div ng-if="viewLatestList.productsQuantity !=0">
-<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="#">
+<a class="ajax_add_to_cart_button btn btn-sm btn-default" href="/Foot/addToCart-{{viewLatestList.productsId}}?userId=1?productsQuantity=1">
 <span>Add to cart</span>
 </a>
-<a class="btn btn-md btn-default" href="/Foot/buyNow-{{viewLatestList.productsId}}?userId=1" title="Buy Now">
+<a class="btn btn-sm btn-default" href="/Foot/buyNow-{{viewLatestList.productsId}}?userId=1" title="Buy Now">
 <span class="fa fa-shopping-cart"></span>
 </a>
 </div>

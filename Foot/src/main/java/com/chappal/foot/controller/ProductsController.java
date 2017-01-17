@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.chappal.foot.model.Brand;
+import com.chappal.foot.model.CartItems;
 import com.chappal.foot.model.Category;
 import com.chappal.foot.model.ListProducts;
 import com.chappal.foot.model.ProductSpecification;
@@ -214,11 +216,12 @@ public class ProductsController
 	}
 	
 	@RequestMapping("/viewproduct-{productsId}")
-	public String viewProduct(Model model,@PathVariable("productsId") String productsId)
+	public String viewProduct(Model model,@PathVariable("productsId") String productsId,@ModelAttribute("cartItems") CartItems cartItems,HttpSession session)
 	{
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String json = gson.toJson(productsServices.retriveListProducts(productsId));
 		model.addAttribute("listView", json);
+		session.setAttribute("productsId", productsId);
 		return "/viewproduct";
 	}
 	@RequestMapping("/productssupplierform")

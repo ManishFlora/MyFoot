@@ -17,10 +17,11 @@ Home
 </div>
 <div id="columns" class="container">
 <div class="row">
-<div id="center_column" class="center_column col-xs-12 col-sm-12 col-md-6">
-<div class="col-xs-12 col-md-6">
-<img class="animated pulse" src="resources/images/access.png"/>
-</div>
+<h1 class="page-heading bottom-indent">Access Denied</h1>
+<h3 class="page-subheading">The page you are trying to reach needs Specialized Request</h3>
+<h4 class="page-subheading">Redirect Back To <a href="/Foot/">Home</a></h4>
+<div id="center_column" class="center_column">
+<img class="animated pulse" align="right" src="resources/images/access.png"/>
 <div class="col-xs-12 col-md-6">
 </div>
 </div>
