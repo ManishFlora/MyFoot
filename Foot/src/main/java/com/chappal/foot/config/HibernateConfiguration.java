@@ -16,6 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.chappal.foot.model.Brand;
 import com.chappal.foot.model.Category;
+import com.chappal.foot.model.ListOrderProducts;
 import com.chappal.foot.model.ListProducts;
 import com.chappal.foot.model.ProductSpecification;
 import com.chappal.foot.model.Products;
@@ -91,6 +92,7 @@ public class HibernateConfiguration extends WebMvcConfigurerAdapter
         sessionBuilder.addAnnotatedClass(Role.class);
         sessionBuilder.addAnnotatedClass(ProductSpecification.class);
         sessionBuilder.addAnnotatedClass(ListProducts.class);
+        sessionBuilder.addAnnotatedClass(ListOrderProducts.class);
         sessionBuilder.addAnnotatedClass(CartItems.class);
         sessionBuilder.addAnnotatedClass(WishList.class);
         return sessionBuilder.buildSessionFactory();

@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.chappal.foot.model.CartItems;
+import com.chappal.foot.model.ProductSpecification;
 import com.chappal.foot.service.CartItemsServices;
 import com.chappal.foot.service.ProductsServices;
+import com.chappal.foot.service.ProductsSpecificationServices;
 import com.chappal.foot.service.UserDetailServices;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -41,6 +43,13 @@ public class CartItemsController
 		String userName = authentication.getName();
 		userId = userDetailServices.retriveUserByName(userName).getUserId();
 		String cartId = userDetailServices.retriveUserByName(userName).getCartId();
+		String color = productsServices.retriveProductSpecification(productsId).getColor();
+		String[] colorData = color.split(",");
+		String material = productsServices.retriveProductSpecification(productsId).getMaterial();
+		String[] materialData = material.split(",");
+		String size = productsServices.retriveProductSpecification(productsId).getSize();
+		String[] sizeData = size.split(",");
+		cartItems.setOrderDetail("Color: " + colorData[0] + " , Material: " + materialData[0] + ", Size: " + sizeData[3]);
 		cartItems.setUserId(userId);
 		cartItems.setProductsId(productsId);
 		cartItems.setQuantity(1);
@@ -73,7 +82,7 @@ public class CartItemsController
 		session.setAttribute("userId", userId);
 		String productsId = cartItemsServices.cartItemsListById(cartItemsId).getProductsId();
 		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-		model.addAttribute("listProducts", gson.toJson(productsServices.retriveListProducts(productsId)));
+		model.addAttribute("listProducts", gson.toJson(productsServices.retriveListOrderProducts(productsId)));
 		return "/orderpage";
 	}
 	
@@ -92,7 +101,7 @@ public class CartItemsController
 	}
 	
 	@RequestMapping("/addToCart-{productsId}")
-	public String addToCart(@ModelAttribute("cartItems") CartItems cartItems,@PathVariable("productsId") String productsId, HttpSession session,@RequestParam("userId") String userId)
+	public String addToCart(@ModelAttribute("productSpecification") ProductSpecification productSpecification,@ModelAttribute("cartItems") CartItems cartItems,@PathVariable("productsId") String productsId, HttpSession session,@RequestParam("userId") String userId)
 	{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
@@ -101,7 +110,7 @@ public class CartItemsController
 		cartItems.setUserId(userId);
 		cartItems.setProductsId(productsId);
 		cartItems.setFlag(false);
-		System.out.println(cartItems.getQuantity());
+		cartItems.setOrderDetail("Color: " + productSpecification.getColor() + " ,Material: " + productSpecification.getMaterial() + " ,Size: " + productSpecification.getSize());
 		String productsName = productsServices.retriveProducts(productsId).getProductsName();
 		cartItems.setProductName(productsName);
 		int price = productsServices.retriveProducts(productsId).getProductsPrice();
@@ -114,6 +123,8 @@ public class CartItemsController
 		cartItems.setCartItemsId(cartItemsServices.generateId());
 		session.setAttribute("cartItemsId", cartItems.getCartItemsId());
 		session.setAttribute("productsId", productsId);
+		cartItemsServices.addCartItems(cartItems);
+		productsServices.updateProductsQuantity(productsId,cartItems.getQuantity());
 		String cartItemsId=(String)session.getAttribute("cartItemsId");
 		return "redirect:cartItems-" + cartItemsId;
 	}
@@ -126,7 +137,7 @@ public class CartItemsController
 		String userId = userDetailServices.retriveUserByName(userName).getUserId();
 		session.setAttribute("userId", userId);
 		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-		model.addAttribute("cartList", gson.toJson(cartItemsServices.listProducts(userId)));
+		model.addAttribute("cartList", gson.toJson(cartItemsServices.listOrderProducts(userId)));
 		return "/orderpage-2";
 	}
 }

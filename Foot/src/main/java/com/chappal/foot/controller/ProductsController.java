@@ -216,12 +216,13 @@ public class ProductsController
 	}
 	
 	@RequestMapping("/viewproduct-{productsId}")
-	public String viewProduct(Model model,@PathVariable("productsId") String productsId,@ModelAttribute("cartItems") CartItems cartItems,HttpSession session)
+	public String viewProduct(Model model,@PathVariable("productsId") String productsId,@ModelAttribute("productSpecification") ProductSpecification productSpecification,HttpSession session)
 	{
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String json = gson.toJson(productsServices.retriveListProducts(productsId));
 		model.addAttribute("listView", json);
 		session.setAttribute("productsId", productsId);
+		model.addAttribute("cartItems", new CartItems());
 		return "/viewproduct";
 	}
 	@RequestMapping("/productssupplierform")

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.chappal.foot.daointerface.CartItemsDAO;
 import com.chappal.foot.model.CartItems;
+import com.chappal.foot.model.ListOrderProducts;
 import com.chappal.foot.model.ListProducts;
 import com.chappal.foot.service.ProductsServices;
 
@@ -79,19 +80,19 @@ public class CartItemsDAOImplementation implements CartItemsDAO
 		return cartList;
 	}
 	
-	public List<ListProducts> listProducts(String userId)
+	public List<ListOrderProducts> listOrderProducts(String userId)
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<CartItems> cartList = session.createQuery("from CartItems where userId = '" + userId + "' and flag=false").getResultList();
-		List<ListProducts> listProducts = new ArrayList<ListProducts>();
+		List<ListOrderProducts> listOrderProducts = new ArrayList<ListOrderProducts>();
 		int count = cartList.size();
 		for(int i = 0;i < count;i++)
 		{
 			String productsId = cartList.get(i).getProductsId();
-			listProducts.add(productsServices.retriveListProducts(productsId));
+			listOrderProducts.add(productsServices.retriveOrderList(productsId));
 		}
-		return listProducts;
+		return listOrderProducts;
 	}
 	
 }

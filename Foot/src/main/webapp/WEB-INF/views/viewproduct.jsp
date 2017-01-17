@@ -68,40 +68,6 @@ Send to a friend
 </p>
 <p>Keds and sneakers became an inevitable part of our life. Either you have a quick pace of your life or a slow relaxed rhythm, there is nothing better than stepping in your favorite sneakers and heading off to... to wherever.</p>
 </div>
-</div> 
-<div class="send_friend_form_content col-xs-12 col-sm-6" id="send_friend_form_content">
-<div id="send_friend_form_error" class="unvisible error alert alert-danger"></div>
-<div id="send_friend_form_success"></div>
-<div class="form_container box">
-<p class="intro_form">
-Recipient :
-</p>
-<p class="text">
-<label for="friend_name">
-Name of your friend <sup class="required">*</sup> :
-</label>
-<input id="friend_name" class="form-control" name="friend_name" type="text" value="">
-</p>
-<p class="text">
-<label for="friend_email">
-E-mail address of your friend <sup class="required">*</sup> :
-</label>
-<input id="friend_email" class="form-control" name="friend_email" type="text" value="">
-</p>
-<p class="txt_required">
-<sup class="required">*</sup> Required fields
-</p>
-</div>
-<p class="submit">
-<button id="sendEmail" class="btn btn-sm btn-default" name="sendEmail" type="submit">
-<span>Send</span>
-</button>&nbsp;
-or&nbsp;
-<a class="closefb" href="#" title="Cancel">
-Cancel
-</a>
-</p>
-</div>  
 </div>
 </div>
 </div>
@@ -195,7 +161,7 @@ Display all pictures
 <div class="product-manufacture">{{listView.brandName}}</div>
 </div>
  
-<form:form modelAttribute="cartItems" action="/Foot/addToCart-${sessionScope.productsId}?userId=1">
+<form:form modelAttribute="productSpecification" action="/Foot/addToCart-${sessionScope.productsId}?userId=1">
 <p class="hidden">
 <input type="hidden" name="token" value="0a9f6300ab69c9db1344dae91e1ba312">
 <input type="hidden" name="id_product" value="13" id="product_page_product_id">
@@ -252,16 +218,28 @@ Read reviews (<span itemprop="reviewCount">1</span>)
 <div class="attribute_list">
 <ul>
 <li>
-<input type="radio" class="attribute_radio" name="group_4" value="31" checked="checked">
+<form:radiobutton path="color" class="attribute_radio" name="group_4" value="{{split(listView.color,0)}}" checked="checked"/>
 <label>{{split(listView.color,0)}}</label>
 </li>
 <li>
-<input type="radio" class="attribute_radio" name="group_4" value="32">
+<form:radiobutton path="color" class="attribute_radio" name="group_4" value="{{split(listView.color,1)}}"/>
 <label>{{split(listView.color,1)}}</label>
 </li>
 <li ng-if="split(listView.color,2) != null">
-<input type="radio" class="attribute_radio" name="group_4" value="33">
+<form:radiobutton path="color" class="attribute_radio" name="group_4" value="{{split(listView.color,2)}}"/>
 <label>{{split(listView.color,2)}}</label>
+</li>
+<li ng-if="split(listView.color,3) != null">
+<form:radiobutton path="color" class="attribute_radio" name="group_4" value="{{split(listView.color,3)}}"/>
+<label>{{split(listView.color,3)}}</label>
+</li>
+<li ng-if="split(listView.color,4) != null">
+<form:radiobutton path="color" class="attribute_radio" name="group_4" value="{{split(listView.color,4)}}"/>
+<label>{{split(listView.color,4)}}</label>
+</li>
+<li ng-if="split(listView.color,5) != null">
+<form:radiobutton path="color" class="attribute_radio" name="group_4" value="{{split(listView.color,5)}}"/>
+<label>{{split(listView.color,5)}}</label>
 </li>
 </ul>
 </div> 
@@ -270,14 +248,16 @@ Read reviews (<span itemprop="reviewCount">1</span>)
 <label class="attribute_label" for="group_4">Size&nbsp;</label>
 <div class="attribute_list">
 <div class="selector" id="uniform-group_4" style="width: 87px;">
-<select name="group_4" id="group_4" class="form-control attribute_select no-print">
-<option value="27" selected="selected" title="6">{{split(listView.size,0)}}</option>
-<option value="28" title="7">{{split(listView.size,1)}}</option>
-<option value="29" title="8">{{split(listView.size,2)}}</option>
-<option value="29" title="9">{{split(listView.size,3)}}</option>
-<option value="29" title="9.5">{{split(listView.size,4)}}</option>
-<option value="29" title="10">{{split(listView.size,5)}}</option>
-</select>
+<form:select path="size" name="group_4" id="group_4" class="form-control attribute_select no-print">
+<form:option value="{{split(listView.size,0)}}" selected="selected">{{split(listView.size,0)}}</form:option>
+<form:option value="{{split(listView.size,1)}}">{{split(listView.size,1)}}</form:option>
+<form:option value="{{split(listView.size,2)}}">{{split(listView.size,2)}}</form:option>
+<form:option value="{{split(listView.size,3)}}">{{split(listView.size,3)}}</form:option>
+<form:option value="{{split(listView.size,4)}}">{{split(listView.size,4)}}</form:option>
+<form:option value="{{split(listView.size,5)}}">{{split(listView.size,5)}}</form:option>
+<form:option value="{{split(listView.size,6)}}">{{split(listView.size,6)}}</form:option>
+<form:option value="{{split(listView.size,7)}}">{{split(listView.size,7)}}</form:option>
+</form:select>
 </div>
 </div>  
 </fieldset>
@@ -286,27 +266,22 @@ Read reviews (<span itemprop="reviewCount">1</span>)
 <div class="attribute_list">
 <ul>
 <li>
-<input type="radio" class="attribute_radio" name="group_5" value="31" checked="checked">
+<form:radiobutton path="material" class="attribute_radio" name="group_5" value="{{split(listView.material,0)}}" checked="checked"/>
 <label>{{split(listView.material,0)}}</label>
 </li>
 <li>
-<input type="radio" class="attribute_radio" name="group_5" value="32">
+<form:radiobutton path="material" class="attribute_radio" name="group_5" value="{{split(listView.material,1)}}" checked="checked"/>
 <label>{{split(listView.material,1)}}</label>
 </li>
 <li>
-<input type="radio" class="attribute_radio" name="group_5" value="33">
+<form:radiobutton path="material" class="attribute_radio" name="group_5" value="{{split(listView.material,2)}}" checked="checked"/>
 <label>{{split(listView.material,2)}}</label>
 </li>
 </ul>
 </div>  
 </fieldset>
 </div>  
-<script type="text/javascript">   
-$(window).load(function()
-{
-	$('#attributes .selector').parent().parent().addClass('select-label');
-})
-</script>
+<form:form modelAttribute="cartItems">
 <p id="quantity_wanted_p">
 <label for="quantity_wanted">Quantity</label>
 <form:input hidden="true" type="text" id="qtyDetail" path="Quantity" value="1"/>
@@ -323,10 +298,12 @@ $(window).load(function()
 </button>
 <span class="clearfix"></span>
 </p>
+</form:form>
 <div class="box-btn-cosial clearfix">
 <div id="add_to_cart_product_page_button">
 <p id="add_to_cart" class="buttons_bottom_block no-print">
 <input type="submit" value="Add to cart" name="Submit" class="btn btn-sm btn-default ajax_add_to_cart_product_button">
+<a type="button" href="/Foot/buyNow-${sessionScope.productsId}?userId=1" class="btn btn-sm btn-default ajax_add_to_cart_product_button">Buy Now</a>
 </p>
 </div>
 </div>

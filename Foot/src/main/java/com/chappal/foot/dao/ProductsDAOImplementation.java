@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.chappal.foot.daointerface.ProductsDAO;
+import com.chappal.foot.model.ListOrderProducts;
 import com.chappal.foot.model.ListProducts;
+import com.chappal.foot.model.ProductSpecification;
 import com.chappal.foot.model.Products;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;;
@@ -164,11 +166,54 @@ public class ProductsDAOImplementation implements ProductsDAO
 		sessionFactory.getCurrentSession().createQuery("Update Products set productsQuantity = productsQuantity - 1 where productsId = '" + productsId + "'").executeUpdate();
 	}
 	
+	public void updateProductsQuantity(String productsId,int productsQuantity)
+	{
+		sessionFactory.getCurrentSession().createQuery("Update Products set productsQuantity = productsQuantity - " + productsQuantity + " where productsId = '" + productsId + "'").executeUpdate();
+	}
+	
 	public List<ListProducts> retriveList()
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<ListProducts> listProducts = session.createQuery("from ListProducts").getResultList();
 		return listProducts;
+	}
+	
+	public ListOrderProducts retriveOrderList(String productsId)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<ListOrderProducts> listProducts = session.createQuery("from ListOrderProducts where productsId = '" + productsId + "'").getResultList();
+		return listProducts.get(0);
+	}
+	
+	public ListOrderProducts retriveListOrderProducts(String productsId) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<ListOrderProducts> listProducts = session.createQuery("from ListOrderProducts where productsId = '" + productsId + "'").getResultList();
+		if(listProducts != null && !listProducts.isEmpty())
+		{
+			return listProducts.get(0);
+		}
+		else
+		{
+			return null;
+		}
+	}
+	
+	public ProductSpecification retriveProductSpecification(String productsId) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<ProductSpecification> productsList = session.createQuery("from ProductSpecification where productsId = '" + productsId + "'").getResultList();
+		if(productsList != null && !productsList.isEmpty())
+		{
+			return productsList.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 }

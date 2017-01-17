@@ -48,10 +48,10 @@ Home
 </td>
 <td class="cart_description" data-title="Description">
 <p class="product-name">
-<a>{{listProducts.productsName}}</a>
+<a href="/Foot/viewproduct-{{listProducts.productsId}}">{{listProducts.productsName}}</a>
 </p>
 <small>
-<a>{{listProducts.productsDescription}}</a>
+<a>{{listProducts.orderDetail}}</a>
 </small>
 </td>
 <td class="cart_avail">

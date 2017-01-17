@@ -28,14 +28,14 @@ public class AutoComplete
 		return simulateSearchResult(subCategoryName);
 	}
 	
-	private String simulateSearchResult(String subCategoryName) 
+	private String simulateSearchResult(String display) 
 	{
 		List<ListProducts> result = new ArrayList<ListProducts>();
 		List<ListProducts> search = productsServices.retriveList();
 		String json = null;
 		for (ListProducts listProducts : search) 
 		{
-			if (listProducts.getSubCategoryName().contains(subCategoryName)) 
+			if (listProducts.getSubCategoryName().contains(display)) 
 			{
 				result.add(listProducts);
 			}

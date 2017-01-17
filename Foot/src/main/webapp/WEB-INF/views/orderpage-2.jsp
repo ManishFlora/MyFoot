@@ -24,7 +24,7 @@ Home
 <div id="center_column" class="center_column col-xs-12 col-sm-12 accordionBox">
 <h1 id="cart_title" class="page-heading">Shopping-cart summary
 <span class="heading-counter">Your shopping cart contains:
-<span id="summary_products_quantity">{{cartList}}.size product</span>
+<span id="summary_products_quantity">{{cartList.length}} product</span>
 </span>
 </h1>
 <p id="emptyCartWarning" class="alert alert-warning unvisible">Your shopping cart is empty.</p>
@@ -63,9 +63,9 @@ In Stock
 <span class="price" id="product_price_11_768_0">
 <span class="price special-price">{{cartList.productsPrice - cartList.discountedPrice}}</span>
 <span class="price-percent-reduction small">
-&nbsp;-{{listProducts.productsDiscount}}%&nbsp;
+&nbsp;-{{cartList.productsDiscount}}%&nbsp;
 </span>
-<span class="old-price">{{listProducts.productsPrice}}</span>
+<span class="old-price">{{cartList.productsPrice}}</span>
 </span>
 </td>
 <td class="cart_quantity text-center" data-title="Quantity">
@@ -74,7 +74,7 @@ In Stock
 </td>
 <td class="cart_total" data-title="Total">
 <span class="price" id="total_product_price_11_768_0">
-{{listProducts.productsPrice - listProducts.discountedPrice}}
+{{cartList.productsPrice - cartList.discountedPrice}}
 </span>
 </td>
 <td class="cart_delete text-center" data-title="Delete">
@@ -117,7 +117,7 @@ Total vouchers
 </div>
 </td>
 <td colspan="2" class="price" id="total_price_container">
-<span id="total_price">{{listProducts.productsPrice - listProducts.discountedPrice}}</span>
+<span id="total_price">{{cartList.productsPrice - cartList.discountedPrice}}</span>
 </td>
 </tr>
 </tfoot>

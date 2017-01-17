@@ -38,7 +38,17 @@ public class CartItems implements Serializable
 	private boolean flag;
 	@Expose
 	private Date orderDate;
+	@Expose
+	private String orderDetail;
 	
+	public String getOrderDetail() {
+		return orderDetail;
+	}
+
+	public void setOrderDetail(String orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="cartId",nullable=false,insertable=false, updatable=false)
 	private Cart cart;

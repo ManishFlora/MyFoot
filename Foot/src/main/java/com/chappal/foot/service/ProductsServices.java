@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.chappal.foot.dao.ProductsDAOImplementation;
+import com.chappal.foot.model.ListOrderProducts;
 import com.chappal.foot.model.ListProducts;
+import com.chappal.foot.model.ProductSpecification;
 import com.chappal.foot.model.Products;
 
 @Service
@@ -72,8 +74,24 @@ public class ProductsServices
 	{
 		productsDAOImplementation.updateProductsQuantity(productsId);
 	}
+	public void updateProductsQuantity(String productsId,int productsQuantity)
+	{
+		productsDAOImplementation.updateProductsQuantity(productsId,productsQuantity);
+	}
 	public List<ListProducts> retriveList()
 	{
 		return productsDAOImplementation.retriveList();
+	}
+	public ListOrderProducts retriveOrderList(String productsId)
+	{
+		return productsDAOImplementation.retriveOrderList(productsId);
+	}
+	public ListOrderProducts retriveListOrderProducts(String productsId)
+	{
+		return productsDAOImplementation.retriveListOrderProducts(productsId);
+	}
+	public ProductSpecification retriveProductSpecification(String productsId) 
+	{
+		return productsDAOImplementation.retriveProductSpecification(productsId);
 	}
 }
