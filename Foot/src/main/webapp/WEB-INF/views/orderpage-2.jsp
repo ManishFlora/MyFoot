@@ -27,7 +27,7 @@ Home
 <span id="summary_products_quantity">{{cartList.length}} product</span>
 </span>
 </h1>
-<p id="emptyCartWarning" class="alert alert-warning unvisible">Your shopping cart is empty.</p>
+<p ng-if="{{cartList.length}} == 0" id="emptyCartWarning" class="alert alert-warning unvisible">Your shopping cart is empty.</p>
 <div id="order-detail-content" class="table_block table-responsive">
 <table id="cart_summary" class="table table-bordered stock-management-on">
 <thead>
@@ -44,14 +44,14 @@ Home
 <tbody ng-repeat = "cartList in cartList">
 <tr id="product_11_768_0_0" class="cart_item last_item first_item address_0 odd">
 <td class="cart_product">
-<img height="100" width="auto" class="img-responsive" src="resources/images/products/{{listProducts.productsId}}(1).jpg"/>
+<img height="100" width="auto" class="img-responsive" src="resources/images/products/{{cartList.productsId}}(1).jpg"/>
 </td>
 <td class="cart_description" data-title="Description">
 <p class="product-name">
 <a>{{cartList.productsName}}</a>
 </p>
 <small>
-<a>{{cartList.productsDescription}}</a>
+<a>{{cartList.orderDetail}}</a>
 </small>
 </td>
 <td class="cart_avail">
@@ -65,21 +65,21 @@ In Stock
 <span class="price-percent-reduction small">
 &nbsp;-{{cartList.productsDiscount}}%&nbsp;
 </span>
-<span class="old-price">{{cartList.productsPrice}}</span>
+<span class="old-price">&#x20b9;{{cartList.productsPrice}}</span>
 </span>
 </td>
 <td class="cart_quantity text-center" data-title="Quantity">
 <input type="hidden" value="1" name="quantity_11_768_0_0_hidden">
-<input size="2" type="text" autocomplete="off" class="cart_quantity_input form-control grey" value="1">
+<input size="2" type="text" autocomplete="off" class="cart_quantity_input form-control grey" value="{{cartList.quantity}}">
 </td>
 <td class="cart_total" data-title="Total">
 <span class="price" id="total_product_price_11_768_0">
-{{cartList.productsPrice - cartList.discountedPrice}}
+&#x20b9;{{cartList.productsPrice - cartList.discountedPrice}}
 </span>
 </td>
 <td class="cart_delete text-center" data-title="Delete">
 <div>
-<a rel="nofollow" title="Delete" class="cart_quantity_delete" id="11_768_0_0" href="#"><i class="fa fa-trash-o"></i></a>
+<a rel="nofollow" title="Delete" class="cart_quantity_delete" id="11_768_0_0" href="/Foot/deleteCartItems-{{cartList.cartId}}"><i class="fa fa-trash-o"></i></a>
 </div>
 </td>
 </tr>
@@ -89,13 +89,13 @@ In Stock
 <td rowspan="4" colspan="3" id="cart_voucher" class="cart_voucher">
 </td>
 <td colspan="3" class="text-right">Total products</td>
-<td colspan="2" class="price" id="total_product">1</td>
+<td colspan="2" class="price" id="total_product">{{cartList.length}}</td>
 </tr>
 <tr style="display: none;">
 <td colspan="3" class="text-right">
 Total gift-wrapping cost                      </td>
 <td colspan="2" class="price-discount price" id="total_wrapping">
-0.00
+&#x20b9;0.00
 </td>
 </tr>
 <tr class="cart_total_delivery unvisible">
@@ -107,7 +107,7 @@ Total gift-wrapping cost                      </td>
 Total vouchers
 </td>
 <td colspan="2" class="price-discount price" id="total_discount">
-0.00
+&#x20b9;0.00
 </td>
 </tr>
 <tr class="cart_total_price">
@@ -117,7 +117,7 @@ Total vouchers
 </div>
 </td>
 <td colspan="2" class="price" id="total_price_container">
-<span id="total_price">{{cartList.productsPrice - cartList.discountedPrice}}</span>
+<span id="total_price">&#x20b9;{{getTotal()}}</span>
 </td>
 </tr>
 </tfoot>
@@ -125,12 +125,12 @@ Total vouchers
 </div>
 <div id="HOOK_SHOPPING_CART"></div>
 <p class="cart_navigation clearfix">
-<a href="/Foot/checkout?userId=${sessionScope.userId}" class="btn btn-default standard-checkout btn-md icon-right" title="Proceed to checkout" style="">
+<a href="/Foot/checkoutCart?userId=${sessionScope.userId}" class="btn btn-default standard-checkout btn-md icon-right" title="Proceed to checkout" style="">
 <span>
 Proceed to checkout
 </span>
 </a>
-<a href="#" class="btn btn-default btn-md icon-left" title="Continue shopping">
+<a href="/Foot/" class="btn btn-default btn-md icon-left" title="Continue shopping">
 <span>Continue shopping</span>
 </a>
 </p>
@@ -156,6 +156,14 @@ Proceed to checkout
 angular.module("listproducts",[]).controller("listController",function($scope)
 		{
 	$scope.cartList = ${cartList};
+	$scope.getTotal = function(){
+	    var total = 0;
+	    for(var i = 0; i < $scope.cartList.length; i++){
+	        var product = $scope.cartList[i];
+	        total += (product.productsPrice - product.discountedPrice);
+	    }
+	    return total;
+	}
 		});
 </script>
 <%@include file="footer.jsp" %>

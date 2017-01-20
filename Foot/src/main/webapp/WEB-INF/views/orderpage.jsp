@@ -79,7 +79,7 @@ In Stock
 </td>
 <td class="cart_delete text-center" data-title="Delete">
 <div>
-<a rel="nofollow" title="Delete" class="cart_quantity_delete" id="11_768_0_0" href="#"><i class="fa fa-trash-o"></i></a>
+<a rel="nofollow" title="Delete" class="cart_quantity_delete" id="11_768_0_0" href="/Foot/deleteCartItems-{{listProducts.cartId}}"><i class="fa fa-trash-o"></i></a>
 </div>
 </td>
 </tr>

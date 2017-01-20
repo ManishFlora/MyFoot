@@ -99,9 +99,10 @@ Products Form</h1>
 </form:select>
 </div>
 </div>
+<label for="fileUpload">Attach File</label>
+<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
 <div class="uploader" id="uniform-fileUpload">
-<label>Photos</label>
-<input name="fileUpload" type="file" multiple="multiple" class="form-control"/>
+<input name="fileUpload" id="fileUpload" type="file" multiple="multiple"/>
 </div>
 </div>
 <c:if test="${!empty products.productsName}">

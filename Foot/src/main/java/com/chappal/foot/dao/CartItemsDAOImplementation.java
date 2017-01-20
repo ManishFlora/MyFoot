@@ -12,6 +12,7 @@ import com.chappal.foot.daointerface.CartItemsDAO;
 import com.chappal.foot.model.CartItems;
 import com.chappal.foot.model.ListOrderProducts;
 import com.chappal.foot.model.ListProducts;
+import com.chappal.foot.model.WishList;
 import com.chappal.foot.service.ProductsServices;
 
 @Repository
@@ -69,7 +70,14 @@ public class CartItemsDAOImplementation implements CartItemsDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<CartItems> cartList = session.createQuery("from CartItems where cartItemsId = '" + cartItemsId + "'").getResultList();
-		return cartList.get(0);
+		if(cartList.isEmpty() && cartList.size() == 0)
+		{
+			return null;
+		}
+		else
+		{
+			return cartList.get(0);
+		}
 	}
 	
 	public List<CartItems> cartItemsList(String userId)
@@ -80,19 +88,78 @@ public class CartItemsDAOImplementation implements CartItemsDAO
 		return cartList;
 	}
 	
-	public List<ListOrderProducts> listOrderProducts(String userId)
+	public List<ListOrderProducts> listOrderProducts(String userId,String cartId)
+	{
+		if(cartId == null)
+		{
+			return null;
+		}
+		else
+		{	
+			Session session = sessionFactory.getCurrentSession();
+			@SuppressWarnings("unchecked")
+			List<CartItems> cartList = session.createQuery("from CartItems where userId = '" + userId + "' and flag=false").getResultList();
+			List<ListOrderProducts> listOrderProducts = new ArrayList<ListOrderProducts>();
+			int count = cartList.size();
+			for(int i = 0;i < count;i++)
+			{
+				String productsId = cartList.get(i).getProductsId();
+				listOrderProducts.add(productsServices.retriveOrderList(productsId,cartId));
+			}
+			return listOrderProducts;
+		}
+	}
+	
+	public int retriveListByNameCount(String productsName,String userId,String orderDetail)
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<CartItems> cartList = session.createQuery("from CartItems where userId = '" + userId + "' and flag=false").getResultList();
-		List<ListOrderProducts> listOrderProducts = new ArrayList<ListOrderProducts>();
-		int count = cartList.size();
-		for(int i = 0;i < count;i++)
-		{
-			String productsId = cartList.get(i).getProductsId();
-			listOrderProducts.add(productsServices.retriveOrderList(productsId));
-		}
-		return listOrderProducts;
+		List<WishList> wishList = session.createQuery("from CartItems where productName = '" + productsName + "' and userId = '" + userId + "' and orderDetail = '" + orderDetail + "'").getResultList();
+		return wishList.size();
 	}
 	
+	public void updateFlag(String cartItemsId)
+	{
+		sessionFactory.getCurrentSession().createQuery("Update CartItems set flag = true where cartItemsId = '" + cartItemsId + "'").executeUpdate();
+	}
+	
+	public void updateAllFlag(String cartId)
+	{
+		sessionFactory.getCurrentSession().createQuery("Update CartItems set flag = true where cartId = '" + cartId + "'").executeUpdate();
+	}
+	
+	public CartItems retriveListByName(String productsName,String userId)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<CartItems> wishList = session.createQuery("from CartItems where productName = '" + productsName + "' and userId = '" + userId + "'").getResultList();
+		if(wishList.isEmpty() && wishList.size() == 0)
+		{
+			return null;
+		}
+		else
+		{
+			return wishList.get(0);
+		}
+	}
+	
+	public void updateQuantity(String cartItemsId,int quantity)
+	{
+		sessionFactory.getCurrentSession().createQuery("Update CartItems set quantity = quantity + " + quantity + " where cartItemsId = '" + cartItemsId + "'").executeUpdate();
+	}
+	
+	public void cartItemsDelete(String cartItemsId)
+	{
+		CartItems cartItemsDelete = new CartItems();
+		cartItemsDelete.setCartItemsId(cartItemsId);
+		sessionFactory.getCurrentSession().delete(cartItemsDelete);
+	}
+	
+	public CartItems retriveByCartId(String cartId)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<CartItems> cartList = session.createQuery("from CartItems where cartId = '" + cartId + "'").getResultList();
+		return cartList.get(0);
+	}
 }

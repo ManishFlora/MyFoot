@@ -42,7 +42,7 @@ public class RegistrationHandler
 		if(userDetail.getUserName().isEmpty())
 		{
 			message.addMessage(new MessageBuilder().error().source("userName").defaultText("Field cant be Empty").build());
-			status = "failure";
+			return "failure";
 		}
 		else
 		{
@@ -52,7 +52,7 @@ public class RegistrationHandler
 		if(userDetail.getUserPassword().isEmpty())
 		{
 			message.addMessage(new MessageBuilder().error().source("userPassword").defaultText("Field cant be Empty").build());
-			status = "failure";
+			return "failure";
 		}
 		else if(userDetail.getUserPassword().matches("(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$"))
 		{
@@ -61,13 +61,13 @@ public class RegistrationHandler
 		else
 		{
 			message.addMessage(new MessageBuilder().error().source("userPassword").defaultText("Invalid Pattern").build());
-			status = "failure";
+			return "failure";
 		}
 		
 		if(userDetail.getFirstName().isEmpty())
 		{
 			message.addMessage(new MessageBuilder().error().source("firstName").defaultText("Field cant be Empty").build());
-			status= "failure";
+			return  "failure";
 		}
 		else
 		{
@@ -77,7 +77,7 @@ public class RegistrationHandler
 		if(userDetail.getLastName().isEmpty())
 		{
 			message.addMessage(new MessageBuilder().error().source("lastName").defaultText("Field cant be Empty").build());
-			status= "failure";
+			return  "failure";
 		}
 		else
 		{
@@ -87,7 +87,7 @@ public class RegistrationHandler
 		if(userDetail.getEmailId().isEmpty())
 		{
 			message.addMessage(new MessageBuilder().error().source("emailId").defaultText("Field cant be Empty").build());
-			status= "failure";
+			return  "failure";
 		}
 		else
 		{
@@ -97,7 +97,7 @@ public class RegistrationHandler
 		if(userDetail.getContactNumber().isEmpty())
 		{
 			message.addMessage(new MessageBuilder().error().source("contactNumber").defaultText("Field cant be Empty").build());
-			status= "failure";
+			return  "failure";
 		}
 		else
 		{
@@ -114,31 +114,27 @@ public class RegistrationHandler
 		if(count == 1)
 		{
 			message.addMessage(new MessageBuilder().error().source("userName").defaultText("User already exsist.").build());
-			status = "failure";
+			return "failure";
 		}
 		else
 		{
 			status = "success";
 		}
-		return status;
-	}
-	
-	public String checkEmail(UserDetail userDetail,MessageContext message)
-	{
-		String status = "success";
-		int count = userDetailServices.checkEmail(userDetail.getEmailId());
+		
+		count = userDetailServices.checkEmail(userDetail.getEmailId());
 		if(count == 1)
 		{
 			message.addMessage(new MessageBuilder().error().source("emailId").defaultText("Email already exsist.").build());
-			status = "failure";
+			return "failure";
 		}
 		else
 		{
 			status = "success";
 		}
+		
 		return status;
 	}
-	
+
 	public void addBillingAddress(BillingAddress billingAddress)
 	{
 			this.billingAddress.setCity(billingAddress.getCity());

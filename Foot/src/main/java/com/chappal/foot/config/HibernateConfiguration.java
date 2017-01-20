@@ -33,6 +33,7 @@ import com.chappal.foot.model.CartItems;
 import com.chappal.foot.model.UserDetail;
 import com.chappal.foot.model.UserRole;
 import com.chappal.foot.model.WishList;
+import com.chappal.foot.model.WishListProducts;
 
 @Configuration
 @EnableTransactionManagement
@@ -95,6 +96,7 @@ public class HibernateConfiguration extends WebMvcConfigurerAdapter
         sessionBuilder.addAnnotatedClass(ListOrderProducts.class);
         sessionBuilder.addAnnotatedClass(CartItems.class);
         sessionBuilder.addAnnotatedClass(WishList.class);
+        sessionBuilder.addAnnotatedClass(WishListProducts.class);
         return sessionBuilder.buildSessionFactory();
     }
     

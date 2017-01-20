@@ -99,7 +99,6 @@ catch(e)
 <script src="resources/js/10-bootstrap.min.js"></script>
 <script src="resources/js/14-device.min.js"></script>
 <script src="resources/js/15-jquery.total-storage.min.js"></script>
-<script src="resources/js/custom-file-input.js"></script>
 <script src="resources/js/16-jquery.scrollmagic.min.js"></script>
 <script src="resources/js/17-jquery.scrollmagic.debug.js"></script>
 <script src="resources/js/18-TimelineMax.min.js"></script>
@@ -350,7 +349,7 @@ var wishlistProductsIds = false;
 <ul id="header-login-content" class="toogle_content_box" style="display: none;">
 <sec:authorize access="hasRole('ROLE_USER')">
 <li>
-<img style="padding:5%;" height="150" width="auto" class="replace-2x img-responsive img-circle" src="resources/images/user/${pageContext.request.userPrincipal.name}.jpg">
+<img style="padding:5%;overflow:hidden;" height="150" width="auto" class="replace-2x img-responsive img-circle" src="resources/images/user/${pageContext.request.userPrincipal.name}.jpg">
 </li>
 <li class="login">
 <ul>
@@ -368,9 +367,10 @@ var wishlistProductsIds = false;
 </ul>
 </li>
 </sec:authorize>
+</button>
 <sec:authorize access="hasRole('ROLE_SUPPLIER')">
 <li>
-<img style="padding:5%;" height="150" width="auto" class="replace-2x img-responsive img-circle" src="resources/images/user/${pageContext.request.userPrincipal.name}.jpg">
+<img style="padding:5%;overflow:hidden;" height="150" width="auto" class="replace-2x img-responsive img-circle" src="resources/images/user/${pageContext.request.userPrincipal.name}.jpg">
 </li>
 <li class="login">
 <ul>
@@ -398,31 +398,7 @@ var wishlistProductsIds = false;
 </sec:authorize>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 <li>
-<img style="padding:5%;" height="400" width="200" class="replace-2x img-responsive img-circle" src="resources/images/user/Manish121.jpg">
-</li>
-<li class="login">
-<ul>
-<li class="lnk_wishlist">
-<a href="/Foot/addSupplier" title="My wishlists">
-<span class="fa fa-plus">	New Supplier</span>
-</a>
-</li>
-<li class="lnk_wishlist">
-<a href="#">
-<span class="fa fa-plus">	View Supplier</span>
-</a>
-</li>
-<li class="lnk_wishlist">
-<a href="#">
-<span class="fa fa-ban">	Block User</span>
-</a>
-</li>
-<li class="lnk_wishlist">
-<a href="#">
-<span class="fa fa-ban">	Block Supplier</span>
-</a>
-</li>
-</ul>
+<img style="padding:5%;overflow:hidden;" height="400" width="200" class="replace-2x img-responsive img-circle" src="resources/images/user/Manish121.jpg">
 </li>
 </sec:authorize>
 <p class="logout">
@@ -644,9 +620,9 @@ Proceed to checkout
 
 <div class="layer_cart_overlay"></div>
 <div id="tmsearch" class="clearfix">
-<form:form method="get" id="tmsearchbox" action="#">
+<form:form id="tmsearchbox" action="allproducts?search=">
 <div class="tm_search_query_wrapper">
-<input class="form-control searchClass" type="text" id="tm_search_query" placeholder="Search"/>
+<input class="form-control searchControl" type="text" id="tm_search_query" formmethod="get" placeholder="Search"/>
 </div>
 <div class="visible_btn" style="display: block;"></div>
 <button type="submit" class="btn btn-default button-search fa fa-search">
@@ -725,7 +701,7 @@ Proceed to checkout
 <c:if test="${!empty pageContext.request.userPrincipal}">
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 <li class=" simple top-level-menu-li tmmegamenu_item it_58887333">
-<a class="it_58887333 top-level-menu-li-a tmmegamenu_item" href="#">Forms</a>
+<a class="it_58887333 top-level-menu-li-a tmmegamenu_item" href="#">Panel</a>
 <ul class="is-simplemenu tmmegamenu_item first-level-menu it_58887333">
 <li class="category">
 <a href="categoryform">CategoryForm</a>
@@ -742,6 +718,9 @@ Proceed to checkout
 <li>
 <a href="productsform">ProductsForm</a>
 </li>
+<li>
+<a href="adminPanel">AdminPanel</a>
+</li>
 </ul>
 </sec:authorize>
 </c:if>
@@ -750,21 +729,3 @@ Proceed to checkout
 </div>
 </header>
 </div>
-<script type="text/javascript">
-  $(document).ready(function() {
-	$('.searchClass').autocomplete({
-		serviceUrl: '${pageContext.request.contextPath}/getTags?',
-		paramName: "subCategoryName",
-		delimiter: ",",
-	   transformResult: function(response) {
-		return {
-		  //must convert json to javascript object before process
-		  suggestions: $.map($.parseJSON(response), function(item) {
-		      return { value: item.subCategoryName, 
-						data: item.subCategoryId };
-		   })
-		 };
-            }
-	 });
-  });
-</script>

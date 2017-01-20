@@ -11,6 +11,7 @@ import com.chappal.foot.model.ListOrderProducts;
 import com.chappal.foot.model.ListProducts;
 import com.chappal.foot.model.ProductSpecification;
 import com.chappal.foot.model.Products;
+import com.chappal.foot.model.WishListProducts;
 
 @Service
 @Transactional
@@ -82,9 +83,9 @@ public class ProductsServices
 	{
 		return productsDAOImplementation.retriveList();
 	}
-	public ListOrderProducts retriveOrderList(String productsId)
+	public ListOrderProducts retriveOrderList(String productsId, String cartId)
 	{
-		return productsDAOImplementation.retriveOrderList(productsId);
+		return productsDAOImplementation.retriveOrderList(productsId,cartId);
 	}
 	public ListOrderProducts retriveListOrderProducts(String productsId)
 	{
@@ -93,5 +94,13 @@ public class ProductsServices
 	public ProductSpecification retriveProductSpecification(String productsId) 
 	{
 		return productsDAOImplementation.retriveProductSpecification(productsId);
+	}
+	public WishListProducts retriveWishOrderList(String productsId, String cartId)
+	{
+		return productsDAOImplementation.retriveWishOrderList(productsId, cartId);
+	}
+	public String retriveJsonList()
+	{
+		return productsDAOImplementation.retriveJsonList();
 	}
 }

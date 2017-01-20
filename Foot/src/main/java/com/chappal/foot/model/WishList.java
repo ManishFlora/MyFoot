@@ -34,6 +34,8 @@ public class WishList implements Serializable
 	private String productsName;
 	@Expose
 	private boolean flag;
+	@Expose
+	private String orderDetail;
 	
 	@ManyToOne
 	@JoinColumn(name="cartId",nullable=false,insertable=false, updatable=false)
@@ -133,6 +135,14 @@ public class WishList implements Serializable
 
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
+	}
+
+	public String getOrderDetail() {
+		return orderDetail;
+	}
+
+	public void setOrderDetail(String orderDetail) {
+		this.orderDetail = orderDetail;
 	}
 	
 	

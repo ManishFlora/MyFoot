@@ -386,5 +386,5 @@ productList.controller("productListController",function($scope)
 		{
 	$scope.listLatest = ${listLatest};
 		});
-</script>	
+</script>
 <%@include file="footer.jsp" %>

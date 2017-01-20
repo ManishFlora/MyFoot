@@ -82,6 +82,9 @@ Send to a friend
 <span class="sale-box no-print">
 <span class="sale-label">Sale!</span>
 </span>
+<a class="price-percent" href="#">
+<span class="price-percent-reduction">-{{listView.productsDiscount}}%</span>
+</a>
 </div>
 <span id="view_full_size">
 <a class="jqzoom" title="Reebok ONE Cushion" rel="gal1" href="#" style="outline-style: none; text-decoration: none;">

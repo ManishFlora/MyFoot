@@ -38,8 +38,38 @@ public class CartItemsServices
 		return cartItemsDAOImplementation.cartItemsListById(cartItemsId);
 	}
 	
-	public List<ListOrderProducts> listOrderProducts(String userId)
+	public List<ListOrderProducts> listOrderProducts(String userId,String cartId)
 	{
-		return cartItemsDAOImplementation.listOrderProducts(userId);
+		return cartItemsDAOImplementation.listOrderProducts(userId,cartId);
+	}
+	
+	public void updateFlag(String cartItemsId)
+	{
+		cartItemsDAOImplementation.updateFlag(cartItemsId);
+	}
+	
+	public void updateAllFlag(String cartId)
+	{
+		cartItemsDAOImplementation.updateAllFlag(cartId);
+	}
+	public int retriveListByNameCount(String productsName,String userId,String orderDetail)
+	{
+		return cartItemsDAOImplementation.retriveListByNameCount(productsName,userId,orderDetail);
+	}
+	public CartItems retriveListByName(String productsName,String userId)
+	{
+		return cartItemsDAOImplementation.retriveListByName(productsName,userId);
+	}
+	public void updateQuantity(String cartItemsId,int quantity)
+	{
+		cartItemsDAOImplementation.updateQuantity(cartItemsId, quantity);
+	}
+	public void cartItemsDelete(String cartItemsId)
+	{
+		cartItemsDAOImplementation.cartItemsDelete(cartItemsId);
+	}
+	public CartItems retriveByCartId(String cartId)
+	{
+		return cartItemsDAOImplementation.retriveByCartId(cartId);
 	}
 }

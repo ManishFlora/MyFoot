@@ -55,7 +55,7 @@
 </view-state>
 
 <action-state id="updateFlagData">
-<evaluate expression="cartItemsServices.updateFlag(externalContext.sessionMap.cartItemsId)"/>
+<evaluate expression="cartItemsServices.updateAllFlag(externalContext.sessionMap.cartId)"/>
 <transition to="toHome"/>
 </action-state>
 

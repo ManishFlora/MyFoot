@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import com.google.gson.annotations.Expose;
 
 @Entity
-public class ListOrderProducts 
+public class WishListProducts 
 {
 	@Id
 	@Expose
@@ -72,28 +72,7 @@ public class ListOrderProducts
 	@Expose
 	private String orderDetail;
 	@Expose
-	private int quantity;
-	@Expose
 	private String cartId;
-	
-	public String getCartId() {
-		return cartId;
-	}
-	public void setCartId(String cartId) {
-		this.cartId = cartId;
-	}
-	public String getOrderDetail() {
-		return orderDetail;
-	}
-	public void setOrderDetail(String orderDetail) {
-		this.orderDetail = orderDetail;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
 	public String getProductsId() {
 		return productsId;
 	}
@@ -249,5 +228,19 @@ public class ListOrderProducts
 	}
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
-	}	
+	}
+	public String getOrderDetail() {
+		return orderDetail;
+	}
+	public void setOrderDetail(String orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+	public String getCartId() {
+		return cartId;
+	}
+	public void setCartId(String cartId) {
+		this.cartId = cartId;
+	}
+	
+	
 }

@@ -12,6 +12,7 @@ import com.chappal.foot.model.ListOrderProducts;
 import com.chappal.foot.model.ListProducts;
 import com.chappal.foot.model.ProductSpecification;
 import com.chappal.foot.model.Products;
+import com.chappal.foot.model.WishListProducts;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;;
 
@@ -28,6 +29,7 @@ public class ProductsDAOImplementation implements ProductsDAO
 	
 	public void updateProducts(Products products) 
 	{	
+		products.setDiscountedPrice((products.getProductsPrice() * products.getProductsDiscount())/100);
 		sessionFactory.getCurrentSession().update(products);
 	}
 	
@@ -179,11 +181,29 @@ public class ProductsDAOImplementation implements ProductsDAO
 		return listProducts;
 	}
 	
-	public ListOrderProducts retriveOrderList(String productsId)
+	public String retriveJsonList()
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<ListOrderProducts> listProducts = session.createQuery("from ListOrderProducts where productsId = '" + productsId + "'").getResultList();
+		List<ListProducts> listProducts = session.createQuery("from ListProducts").getResultList();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String json = gson.toJson(listProducts);
+		return json;
+	}
+	
+	public ListOrderProducts retriveOrderList(String productsId, String cartId)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<ListOrderProducts> listProducts = session.createQuery("from ListOrderProducts where productsId = '" + productsId + "' and cartId = '" + cartId + "'").getResultList();
+		return listProducts.get(0);
+	}
+	
+	public WishListProducts retriveWishOrderList(String productsId, String cartId)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<WishListProducts> listProducts = session.createQuery("from WishListProducts where productsId = '" + productsId + "' and cartId = '" + cartId + "'").getResultList();
 		return listProducts.get(0);
 	}
 	

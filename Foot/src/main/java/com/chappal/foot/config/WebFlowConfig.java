@@ -35,6 +35,7 @@ public class WebFlowConfig extends AbstractFlowConfiguration
 				.addFlowLocation("/registration.xml","reg")
 				.addFlowLocation("/forgetpassword.xml", "forget")
 				.addFlowLocation("/cart-flow.xml", "cart")
+				.addFlowLocation("/cartflow.xml","cartProcess")
 				.build();
 	}
 

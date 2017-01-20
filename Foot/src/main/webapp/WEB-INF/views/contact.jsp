@@ -90,4 +90,5 @@ Send
 </div>
 </div>
 </div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6263.171456740331!2d72.8502468!3d19.1215519!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1484725471065" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen=""></iframe>
 <%@include file="footer.jsp" %>
