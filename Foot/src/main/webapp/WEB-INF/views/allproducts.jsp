@@ -23,10 +23,10 @@ Home
 <h1 class="page-heading  product-listing">
 Search&nbsp;
 <span class="lighter">
-" {{searchkeyword}} "
+{{data}}
 </span>
 <span class="heading-counter">
-{{nextFilter().count}} results have been found.    </span>
+{{nextFilter().length}} results have been found.    </span>
 </h1>
 <div class="content_sortPagiBar">
 <div class="sortPagiBar clearfix ">
@@ -78,7 +78,7 @@ Search&nbsp;
 </div>
 <div class="functional-buttons clearfix">
 <div class="wishlist">
-<a class="addToWishlist wishlistProd_9" href="/Foot/wishList-{{listProducts.productsId}}?userId=1"></a>
+<a class="addToWishlist" href="/Foot/wishList-{{listProducts.productsId}}?userId=1"></a>
 </div>
 </div>
 <a itemprop="url" class="lnk_view btn btn-sm btn-default" href="/Foot/viewproduct-{{listProducts.productsId}}" title="View">
@@ -113,7 +113,6 @@ Search&nbsp;
 <span class="price product-price product-price-new">&#x20b9;{{listProducts.productsPrice - listProducts.discountedPrice}}</span>
 <span class="old-price product-price">&#x20b9;{{listProducts.productsPrice}}</span>
 </div>
-<div class="color-list-container"></div>
 <div ng-if="listProducts.productsQuantity ==0">
 <span class="availability">
 <span class="label-danger">Out of stock</span>
@@ -132,14 +131,14 @@ Search&nbsp;
 <span>Buy Now</span>
 </a>
 <div>
-<a itemprop="url" class="lnk_view btn btn-sm btn-default" href="#" title="View">
+<a itemprop="url" class="lnk_view btn btn-sm btn-default" href="/Foot/viewproduct-{{listProducts.productsId}}" title="View">
 <span>More</span>
 </a>
 </div>
 <div>
 <div class="functional-buttons clearfix">
 <div class="wishlist">
-<a class="addToWishlist wishlistProd_9" href="#" data-id-product="9" title="Add to Wishlist" onclick="WishlistCart('wishlist_block_list', 'add', '9', false, 1); return false;"></a>
+<a class="addToWishlist" href="/Foot/wishList-{{listProducts.productsId}}?userId=1"></a>
 </div>
 </div>
 </div>
@@ -163,52 +162,25 @@ Search&nbsp;
 <span class="layered_subtitle">Categories</span>
 </div>
 <ul id="ul_layered_category_0" class="col-lg-12 layered_filter_ul">
+<c:forEach items = "${categoryList}" var="category">
 <li class="nomargin hiddable col-lg-12">
 <input type="checkbox" class="checkbox" name="layered_category_41" id="layered_category_41" value="41">
 <label for="layered_category_41">
-<a href="index9378.html?id_category=20&amp;controller=category&amp;id_lang=1#categories-neutral_cushioning" data-rel="nofollow">
-<strong>Neutral Cushioning</strong>
+<a href="/Foot/allproducts?search=${category.categoryName}">
+<strong style="color: black;"><b>${category.categoryName}</b></strong>
 </a>
 </label>
-</li>
-</ul>
-</div>
-<div class="layered_filter">
-<div class="layered_subtitle_heading">
-<span class="layered_subtitle">Availability</span>
-</div>
-<ul id="ul_layered_quantity_0" class="col-lg-12 layered_filter_ul">
+<c:forEach items = "${category.subCategory}" var="subCategory">
 <li class="nomargin hiddable col-lg-12">
-<input type="checkbox" class="checkbox" name="layered_quantity_0" id="layered_quantity_0" value="0">
-<label for="layered_quantity_0">
-<a href="index9378.html?id_category=20&amp;controller=category&amp;id_lang=1#availability-not_available" data-rel="nofollow">
-<strong>Not available</strong>
+<input type="checkbox" class="checkbox" name="layered_category_41" id="layered_category_41" value="41">
+<label for="layered_category_41">
+<a href="/Foot/allproducts?search=${subCategory.subCategoryName}">
+<strong style="padding-left:5%;">${subCategory.subCategoryName}</strong>
 </a>
 </label>
+</c:forEach>
 </li>
-<li class="nomargin hiddable col-lg-12">
-<input type="checkbox" class="checkbox" name="layered_quantity_1" id="layered_quantity_1" value="1">
-<label for="layered_quantity_1">
-<a href="index9378.html?id_category=20&amp;controller=category&amp;id_lang=1#availability-in_stock" data-rel="nofollow">
-<strong>In stock</strong>
-</a>
-</label>
-</li>
-</ul>
-</div>
-<div class="layered_filter">
-<div class="layered_subtitle_heading">
-<span class="layered_subtitle">Condition</span>
-</div>
-<ul id="ul_layered_condition_0" class="col-lg-12 layered_filter_ul">
-<li class="nomargin hiddable col-lg-12">
-<input type="checkbox" class="checkbox" name="layered_condition_new" id="layered_condition_new" value="new">
-<label for="layered_condition_new">
-<a href="index9378.html?id_category=20&amp;controller=category&amp;id_lang=1#condition-new" data-rel="nofollow">
-<strong>New</strong>
-</a>
-</label>
-</li>
+</c:forEach>
 </ul>
 </div>
 <div class="layered_filter">
@@ -216,14 +188,16 @@ Search&nbsp;
 <span class="layered_subtitle">Manufacturer</span>
 </div>
 <ul id="ul_layered_manufacturer_0" class="col-lg-12 layered_filter_ul">
+<c:forEach items = "${brandList}" var="brand">
 <li class="nomargin hiddable col-lg-12">
 <input type="checkbox" class="checkbox" name="layered_manufacturer_4" id="layered_manufacturer_4" value="4">
 <label for="layered_manufacturer_4">
-<a href="index9378.html?id_category=20&amp;controller=category&amp;id_lang=1#manufacturer-adidas" data-rel="nofollow">
-<strong>Adidas</strong>
+<a href="/Foot/allproducts?search=${brand.brandName}" data-rel="nofollow">
+<strong>${brand.brandName}</strong>
 </a>
 </label>
 </li>
+</c:forEach>
 </ul>
 </div>
 </div>
@@ -251,14 +225,14 @@ Search&nbsp;
 <script type="text/javascript">
 angular.module("listproducts",[]).controller("listController",function($scope,$http,$location)
 		{
-	$scope.searchkeyword = location.search.substr(8);
+	$scope.data = location.search.replace("%20"," ").substr(8);
+	$scope.searchkeyword = location.search.substr(8).replace("%20"," ");
 	$scope.letterlimit = 3;
 	$scope.listProducts = ${listProducts};
-	$scope.subCategoryList = ${subCategoryList};
 	$scope.sort = function(keyname) 
 	{
-		$scope.sortkey=keyname;
-		$scope.reverse=!$scope.reverse;
+		$scope.sortkey = keyname;
+		$scope.reverse = !$scope.reverse;
 	}
 	$scope.myFilter = [];
 	$scope.myNewFilter = function(searchword) 
@@ -279,10 +253,16 @@ angular.module("listproducts",[]).controller("listController",function($scope,$h
         {
             if ($.inArray(listProducts.subCategoryName, $scope.myFilter) < 0)
                 return;
+            else if ($.inArray(listProducts.brandName, $scope.myFilter) < 0)
+                return;
+            else if ($.inArray(listProducts.categoryName, $scope.myFilter) < 0)
+                return;
+            else if ($.inArray(listProducts.productsName, $scope.myFilter) < 0)
+                return;
             return listProducts;
 	    }
-        }
-		});
+    }
+});
 </script>
 
 <%@include file="footer.jsp" %>

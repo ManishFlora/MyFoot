@@ -85,20 +85,13 @@ public class WishListController
 	@RequestMapping("/wishListItems")
 	public String wishList(String wishListId, HttpSession session, Model model)
 	{
-		wishListId = (String)session.getAttribute("wishListId");
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
 		String userId = userDetailServices.retriveUserByName(userName).getUserId();
+		String cartId = userDetailServices.retriveUserByName(userName).getCartId();
 		session.setAttribute("userId", userId);
 		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-		if(wishListId != null)
-		{
-			model.addAttribute("wishList", gson.toJson(wishListServices.listOrderProducts(userId,wishListServices.retriveListById(wishListId).getCartId())));
-		}
-		else
-		{
-			model.addAttribute("wishList",gson.toJson(null));
-		}
+		model.addAttribute("wishList", gson.toJson(wishListServices.listOrderProducts(userId,cartId)));
 		return "/wishListPage";
 	}
 	

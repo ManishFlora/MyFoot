@@ -1,6 +1,6 @@
 <%@include file="header.jsp" %>
 <div ng-app="products" ng-controller="productsController">
-<div id="product">
+<div id="product" class="product product-11 product-reebok-graphic-pop category-2 category-home hide-left-column hide-right-column lang_en  one-column">
 <div class="columns-container">
 <div class="wrapper it_MSYCVDAWVRSQ topcolumn-preset1">
 <div class="row it_BPFSWOXAMUFW ">
@@ -19,17 +19,17 @@ Home
 </a>
 </li>
 <li class="crumb-1">
-<a href="#" title="Return to Home" rel="nofollow">
+<a href="/Foot/allproducts?search={{listView.categoryName}}" title="Return to Home" rel="nofollow">
 {{listView.categoryName}}
 </a>
 </li>
 <li class="crumb-1">
-<a href="#" title="Return to Home" rel="nofollow">
+<a href="/Foot/allproducts?search={{listView.subCategoryName}}" title="Return to Home" rel="nofollow">
 {{listView.subCategoryName}}
 </a>
 </li>
 <li class="crumb-1">
-<a href="#" title="Return to Home" rel="nofollow">
+<a href="/Foot/allproducts?search={{listView.brandName}}" title="Return to Home" rel="nofollow">
 {{listView.brandName}}
 </a>
 </li>
@@ -61,7 +61,7 @@ Home
 <h2 class="page-subheading">
 Send to a friend
 </h2>
-<img src="resources/images/view/{{listView.productsId}}(0).jpg" alt="Reebok ONE Cushion">
+<img src="resources/images/view/{{listView.productsId}}(0).jpg" alt="{{listView.productsName}}">
 <div class="product_desc">
 <p class="product_name">
 <strong>{{listView.productsId}}</strong>

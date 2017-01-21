@@ -61,4 +61,10 @@ public class FootController
 		model.addAttribute("subCategoryList",subCategoryServices.retriveJsonSubCategory());
 		return "/allproducts";
 	}
+	
+	@RequestMapping("/secure-payment")
+	public String secure()
+	{
+		return "/secure";
+	}
 }

@@ -96,6 +96,7 @@ public class CartItemsController
 		String productsId = cartItemsServices.cartItemsListById(cartItemsId).getProductsId();
 		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		model.addAttribute("listProducts", gson.toJson(productsServices.retriveListOrderProducts(productsId)));
+		model.addAttribute("cartItems", new CartItems());
 		return "/orderpage";
 	}
 	
@@ -184,20 +185,14 @@ public class CartItemsController
 	@RequestMapping("/cartItems")
 	public String cartItems(String cartItemsId, HttpSession session, Model model)
 	{
-		cartItemsId=(String)session.getAttribute("cartItemsId");
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
 		String userId = userDetailServices.retriveUserByName(userName).getUserId();
+		String cartId = userDetailServices.retriveUserByName(userName).getCartId();
 		session.setAttribute("userId", userId);		
 		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-		if(cartItemsId != null)
-		{
-			model.addAttribute("cartList", gson.toJson(cartItemsServices.listOrderProducts(userId,cartItemsServices.cartItemsListById(cartItemsId).getCartId())));
-		}
-		else
-		{
-			model.addAttribute("cartList",gson.toJson(null));
-		}
+		model.addAttribute("cartList", gson.toJson(cartItemsServices.listOrderProducts(userId,cartId)));
+		model.addAttribute("cartItems", new CartItems());
 		return "/orderpage-2";
 	}
 	

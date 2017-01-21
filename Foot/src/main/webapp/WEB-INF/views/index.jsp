@@ -197,9 +197,6 @@ var m_display_caroucel = 0;
 </a>
 <a class="price-percent" href="#"><span class="price-percent-reduction">-{{viewList.productsDiscount}}%</span></a>
 </div>
-<a class="quick-view" href="#">
-<span>Quick view</span>
-</a>
 </div>
 </div>
 <div class="right-block">
@@ -295,9 +292,6 @@ In Stock
 </a>
 <a class="price-percent" href="#"><span class="price-percent-reduction">-{{viewLatestList.productsDiscount}}%</span></a>
 </div>
-<a class="quick-view" href="#">
-<span>Quick view</span>
-</a>
 </div>
 </div>
 <div class="right-block">

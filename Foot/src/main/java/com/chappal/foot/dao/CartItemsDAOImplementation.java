@@ -90,24 +90,17 @@ public class CartItemsDAOImplementation implements CartItemsDAO
 	
 	public List<ListOrderProducts> listOrderProducts(String userId,String cartId)
 	{
-		if(cartId == null)
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<CartItems> cartList = session.createQuery("from CartItems where userId = '" + userId + "' and flag=false").getResultList();
+		List<ListOrderProducts> listOrderProducts = new ArrayList<ListOrderProducts>();
+		int count = cartList.size();
+		for(int i = 0;i < count;i++)
 		{
-			return null;
+			String productsId = cartList.get(i).getProductsId();
+			listOrderProducts.add(productsServices.retriveOrderList(productsId,cartId));
 		}
-		else
-		{	
-			Session session = sessionFactory.getCurrentSession();
-			@SuppressWarnings("unchecked")
-			List<CartItems> cartList = session.createQuery("from CartItems where userId = '" + userId + "' and flag=false").getResultList();
-			List<ListOrderProducts> listOrderProducts = new ArrayList<ListOrderProducts>();
-			int count = cartList.size();
-			for(int i = 0;i < count;i++)
-			{
-				String productsId = cartList.get(i).getProductsId();
-				listOrderProducts.add(productsServices.retriveOrderList(productsId,cartId));
-			}
-			return listOrderProducts;
-		}
+		return listOrderProducts;
 	}
 	
 	public int retriveListByNameCount(String productsName,String userId,String orderDetail)

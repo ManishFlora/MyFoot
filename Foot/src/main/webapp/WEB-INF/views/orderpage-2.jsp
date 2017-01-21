@@ -27,7 +27,6 @@ Home
 <span id="summary_products_quantity">{{cartList.length}} product</span>
 </span>
 </h1>
-<p ng-if="{{cartList.length}} == 0" id="emptyCartWarning" class="alert alert-warning unvisible">Your shopping cart is empty.</p>
 <div id="order-detail-content" class="table_block table-responsive">
 <table id="cart_summary" class="table table-bordered stock-management-on">
 <thead>
@@ -69,12 +68,27 @@ In Stock
 </span>
 </td>
 <td class="cart_quantity text-center" data-title="Quantity">
-<input type="hidden" value="1" name="quantity_11_768_0_0_hidden">
-<input size="2" type="text" autocomplete="off" class="cart_quantity_input form-control grey" value="{{cartList.quantity}}">
+<form:form modelAttribute="cartItems">
+<p id="quantity_wanted_p">
+<form:input hidden="true" type="text" id="qtyDetail" path="Quantity" value="1"/>
+<input type="text" min="1" name="qty" id="quantity_wanted" class="text" value="1"/>
+<a onclick="decrease()" class="cart_quantity_down btn btn-default button-minus" title="Subtract">
+<span>
+<i class="material-design-horizontal39"></i>
+</span>
+</a>
+<a onclick="increase()" class="cart_quantity_up btn btn-default button-plus" title="Add">
+<span>
+<i class="material-design-add186"></i>
+</span>
+</a>
+<span class="clearfix"></span>
+</p>
+</form:form>
 </td>
 <td class="cart_total" data-title="Total">
 <span class="price" id="total_product_price_11_768_0">
-&#x20b9;{{cartList.productsPrice - cartList.discountedPrice}}
+&#x20b9;{{(cartList.productsPrice - cartList.discountedPrice) * cartList.quantity}}
 </span>
 </td>
 <td class="cart_delete text-center" data-title="Delete">
@@ -160,10 +174,29 @@ angular.module("listproducts",[]).controller("listController",function($scope)
 	    var total = 0;
 	    for(var i = 0; i < $scope.cartList.length; i++){
 	        var product = $scope.cartList[i];
-	        total += (product.productsPrice - product.discountedPrice);
+	        total += ((product.productsPrice - product.discountedPrice) * product.quantity);
 	    }
 	    return total;
 	}
 		});
+</script>
+<script>
+function decrease()
+{
+	if(document.getElementById("quantity_wanted").value != 1)
+		{
+		var data = parseInt(document.getElementById("quantity_wanted").value) - 1;
+		document.getElementById("quantity_wanted").value = data;
+		document.getElementById("qtyDetail").value = data;
+		}
+}
+</script>
+<script type="text/javascript">
+function increase()
+{
+	var data = parseInt(document.getElementById("quantity_wanted").value) + 1;
+	document.getElementById("quantity_wanted").value = data;
+	document.getElementById("qtyDetail").value = data;
+}
 </script>
 <%@include file="footer.jsp" %>

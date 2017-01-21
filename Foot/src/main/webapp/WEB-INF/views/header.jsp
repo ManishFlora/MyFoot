@@ -143,7 +143,7 @@ var FancyboxI18nPrev = 'Previous';
 var PS_CATALOG_MODE = false;
 var added_to_wishlist = 'The product was successfully added to your wishlist.';
 var ajax_allowed = true;
-var ajaxsearch = true;
+var ajaxsearch = false;
 var allowBuyWhenOutOfStock = false;
 var availableLaterValue = '';
 var availableNowValue = '';
@@ -695,9 +695,6 @@ Proceed to checkout
 </div>
 </div>
 </c:forEach>
-<li class=" top-level-menu-li tmmegamenu_item it_40327756">
-<a class="it_40327756 top-level-menu-li-a tmmegamenu_item" href="#">Sale</a>
-</li>
 <c:if test="${!empty pageContext.request.userPrincipal}">
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 <li class=" simple top-level-menu-li tmmegamenu_item it_58887333">

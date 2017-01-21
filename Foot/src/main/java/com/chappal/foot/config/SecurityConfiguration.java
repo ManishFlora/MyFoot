@@ -27,7 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 	{
 		httpSecurity.authorizeRequests()
 		.antMatchers("/categoryform","/subcategoryform","/brandform","/productsform","/supplierform").access("hasRole('ROLE_ADMIN')")
-		.antMatchers("/buyNow-{productsId}","/profile","/addToCart-{productsId}","/wishListItems-{wishListId}").access("hasRole('ROLE_USER')")
+		.antMatchers("/buyNow-{productsId}","/profile","/addToCart-{productsId}","/wishList-{productsId}").access("hasRole('ROLE_USER')")
 		.antMatchers("/productssupplierform-{userId}","/profile").access("hasRole('ROLE_SUPPLIER')")
 		.anyRequest().permitAll()
 		.and()
