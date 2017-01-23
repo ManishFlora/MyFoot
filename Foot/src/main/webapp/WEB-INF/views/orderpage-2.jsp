@@ -71,17 +71,19 @@ In Stock
 <form:form modelAttribute="cartItems">
 <p id="quantity_wanted_p">
 <form:input hidden="true" type="text" id="qtyDetail" path="Quantity" value="1"/>
-<input type="text" min="1" name="qty" id="quantity_wanted" class="text" value="1"/>
-<a onclick="decrease()" class="cart_quantity_down btn btn-default button-minus" title="Subtract">
+<input type="text" min="1" name="qty" id="quantity_wanted" class="text" value="{{cartList.quantity}}"/>
+<div class="cart_quantity_button clearfix">
+<button type="button" onclick="decrease()" class="cart_quantity_down btn btn-default button-minus" title="Subtract">
 <span>
 <i class="material-design-horizontal39"></i>
 </span>
-</a>
-<a onclick="increase()" class="cart_quantity_up btn btn-default button-plus" title="Add">
+</button>
+<button type="button" onclick="increase()" class="cart_quantity_up btn btn-default button-plus" title="Add">
 <span>
 <i class="material-design-add186"></i>
 </span>
-</a>
+</button>
+</div>
 <span class="clearfix"></span>
 </p>
 </form:form>
@@ -174,7 +176,8 @@ angular.module("listproducts",[]).controller("listController",function($scope)
 	    var total = 0;
 	    for(var i = 0; i < $scope.cartList.length; i++){
 	        var product = $scope.cartList[i];
-	        total += ((product.productsPrice - product.discountedPrice) * product.quantity);
+	        var quantity = document.getElementById("quantity_wanted").value;
+	        total += ((product.productsPrice - product.discountedPrice) * quantity);
 	    }
 	    return total;
 	}

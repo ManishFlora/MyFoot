@@ -7,7 +7,7 @@
 <div id="homepage-slider">
 <ul id="homeslider" style="max-height:932px;">
 <li class="homeslider-container">
-<a href="#">
+<a href="/Foot/allproducts?search=Nike">
 <img src="resources/images/slider5.jpg" width="2050" height="932" alt="sample-1"/>
 <div class='container'><div class="homeslider-description row"><div class="col-xs-12 col-sm-7">
 <h2>Nike <span>Air Force</span></h2>
@@ -21,7 +21,7 @@
 </a>
 </li>
 <li class="homeslider-container">
-<a href="#">
+<a href="/Foot/allproducts?search=New Balance">
 <img src="resources/images/slider3.jpg" width="2050" height="932" alt="sample-2"/>
 <div class='container'><div class="homeslider-description row"><div class="col-xs-12 col-sm-7">
 <h2>New Balance <span>Running Classics</span></h2>
@@ -35,7 +35,7 @@
 </a>
 </li>
 <li class="homeslider-container">
-<a href="#">
+<a href="/Foot/allproducts?search=Asics">
 <img src="resources/images/slider4.jpg" width="2050" height="932" alt="sample-3"/>
 <div class='container'><div class="homeslider-description row"><div class="col-xs-12 col-sm-7">
 <h2>ASICS <span>Running Shoes</span></h2>
@@ -49,7 +49,7 @@
 </a>
 </li>
 <li class="homeslider-container">
-<a href="#">
+<a href="/Foot/allproducts?search=Adidas">
 <img src="resources/images/slider2.jpg" width="2050" height="932" alt="sample-4"/>
 <div class='container'><div class="homeslider-description row"><div class="col-xs-12 col-sm-7">
 <h2>Adidas <span>MEN'S RUNNING</span></h2>
@@ -63,7 +63,7 @@
 </a>
 </li>
 <li class="homeslider-container">
-<a href="#">
+<a href="/Foot/allproducts?search=Saucony">
 <img src="resources/images/slider1.jpg" width="2050" height="932" alt="sample-5"/>
 <div class='container'>
 <div class="homeslider-description row"><div class="col-xs-12 col-sm-7">
@@ -86,37 +86,37 @@
 <div id="tm_manufacturers_block" class="clearfix">
 <ul class="manufacturers_items row">
 <li class="manufacturer_item col-xs-6 col-sm-3">
-<a href="#" title="More about Nike">
+<a href="/Foot/allproducts?search=Nike" title="More about Nike">
 <img class="img-responsive" src="resources/images/2-brand.jpg" alt="2"/>
 </a>
 </li>
 <li class="manufacturer_item col-xs-6 col-sm-3">
-<a href="#" title="More about New Balance">
+<a href="/Foot/allproducts?search=New Balance" title="More about New Balance">
 <img class="img-responsive" src="resources/images/3-brand.jpg" alt="3"/>
 </a>
 </li>
 <li class="manufacturer_item col-xs-6 col-sm-3">
-<a href="#" title="More about Adidas">
+<a href="/Foot/allproducts?search=Adidas" title="More about Adidas">
 <img class="img-responsive" src="resources/images/4-brand.jpg" alt="4"/>
 </a>
 </li>
 <li class="manufacturer_item col-xs-6 col-sm-3">
-<a href="#" title="More about Converse">
+<a href="/Foot/allproducts?search=Converse" title="More about Converse">
 <img class="img-responsive" src="resources/images/5-brand.jpg" alt="5"/>
 </a>
 </li>
 <li class="manufacturer_item col-xs-6 col-sm-3">
-<a href="#" title="More about Asics">
+<a href="/Foot/allproducts?search=Asics" title="More about Asics">
 <img class="img-responsive" src="resources/images/6-brand.jpg" alt="6"/>
 </a>
 </li>
 <li class="manufacturer_item col-xs-6 col-sm-3">
-<a href="#" title="More about Saucony">
+<a href="/Foot/allproducts?search=Saucony" title="More about Saucony">
 <img class="img-responsive" src="resources/images/11-brand.jpg" alt="11"/>
 </a>
 </li>
 </ul>
-<a class="btn btn-default" href="#">
+<a class="btn btn-default" href="/Foot/allproducts">
 <span>
 View All Brands
 </span>
@@ -148,28 +148,28 @@ var m_display_caroucel = 0;
 <img src="resources/images/f7840baae2c4343ae7043a7cf95fb7889207f6b2_banner-1.jpg" class="item-img" title="" alt="" width="386" height="394"/>
 <div class="item-html">
 <h3>Men's Collection</h3>
-<a href="#" class="btn btn-default">View All</a>
+<a href="/Foot/allproducts?search=Men" class="btn btn-default">View All</a>
 </div>
 </li>
 <li class="htmlcontent-item-2 col-xs-4">
 <img src="resources/images/7c90e112dafa0e7b8fbb5b3558b39011d2439869_banner-2.jpg" class="item-img" title="" alt="" width="784" height="394"/>
 <div class="item-html">
 <h3>Unisex Collection</h3>
-<a href="#" class="btn btn-default">View All</a>
+<a href="/Foot/allproducts" class="btn btn-default">View All</a>
 </div>
 </li>
 <li class="htmlcontent-item-3 col-xs-4">
 <img src="resources/images/ca7532a98b7b94b9188366fd7075ddd40c0fc083_banner-3.jpg" class="item-img" title="" alt="" width="784" height="394"/>
 <div class="item-html">
 <h3>Womens Collection</h3>
-<a href="#" class="btn btn-default">View All</a>
+<a href="/Foot/allproducts?search=Women" class="btn btn-default">View All</a>
 </div>
 </li>
 <li class="htmlcontent-item-4 col-xs-4">
 <img src="resources/images/42957dbe6a9efc967069a637e8a5d7a4eb724f7e_banner-4.jpg" class="item-img" width="386" height="394"/>
 <div class="item-html">
 <h3>Lifestyle Collection</h3>
-<a href="#" class="btn btn-default">View All</a>
+<a href="/Foot/allproducts" class="btn btn-default">View All</a>
 </div>
 </li>
 </ul>

@@ -37,19 +37,7 @@ public class AutoComplete
 		String json = display;
 		for (ListProducts listProducts : search) 
 		{
-			if (listProducts.getSubCategoryName().toLowerCase().contains(display.toLowerCase())) 
-			{
-				result.add(listProducts);
-			}
-			else if(listProducts.getBrandName().toLowerCase().contains(display.toLowerCase()))
-			{
-				result.add(listProducts);
-			}
-			else if(listProducts.getProductsName().toLowerCase().contains(display.toLowerCase()))
-			{
-				result.add(listProducts);
-			}
-			else if(listProducts.getCategoryName().toLowerCase().contains(display.toLowerCase()))
+			if(listProducts.getProductsName().toLowerCase().contains(display.toLowerCase()))
 			{
 				result.add(listProducts);
 			}

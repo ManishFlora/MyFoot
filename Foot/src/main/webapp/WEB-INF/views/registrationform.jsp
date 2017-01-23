@@ -69,9 +69,6 @@ Register
 </div>
 </div>
 </fieldset>
-</form:form>
-</div>
-<form:form modelAttribute="userDetail" action="addUser">
 <div class="contact-form-box" style="padding:23px 0 0 0;margin:0 0 30px 0;background:url('resources/images/contact-form.png') repeat-x white;-moz-box-shadow:rgba(0,0,0,0.17) 0 5px 13px;-webkit-box-shadow:rgba(0,0,0,0.17) 0 5px 13px;box-shadow:rgba(0,0,0,0.17) 0 5px 13px;">
 <div id="billingAddressForm">
 <fieldset style="padding:0 19px 21px 19px; background:url('resources/images/form-contact-shadow.png') repeat-x white;">
@@ -135,9 +132,6 @@ Add Detail
 </div>
 </fieldset>
 </div>
-</div>
-</form:form>
-<form:form modelAttribute="userDetail" action="addUser">
 <div class="contact-form-box" style="padding:23px 0 0 0;margin:0 0 30px 0;background:url('resources/images/contact-form.png') repeat-x white;-moz-box-shadow:rgba(0,0,0,0.17) 0 5px 13px;-webkit-box-shadow:rgba(0,0,0,0.17) 0 5px 13px;box-shadow:rgba(0,0,0,0.17) 0 5px 13px;">
 <div id="shippingAddressForm">
 <fieldset style="padding:0 19px 21px 19px; background:url('resources/images/form-contact-shadow.png') repeat-x white;">
@@ -203,6 +197,8 @@ Add Detail
 </div>
 </div>
 </form:form>
+</div>
+</div>
 </div>
 </div>
 </div>

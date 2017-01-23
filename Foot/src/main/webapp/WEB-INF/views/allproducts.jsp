@@ -167,7 +167,7 @@ Search&nbsp;
 <input type="checkbox" class="checkbox" name="layered_category_41" id="layered_category_41" value="41">
 <label for="layered_category_41">
 <a href="/Foot/allproducts?search=${category.categoryName}">
-<strong style="color: black;"><b>${category.categoryName}</b></strong>
+<strong class="layered_subtitle" style="font-size:115%;"><b>${category.categoryName}</b></strong>
 </a>
 </label>
 <c:forEach items = "${category.subCategory}" var="subCategory">
@@ -225,7 +225,7 @@ Search&nbsp;
 <script type="text/javascript">
 angular.module("listproducts",[]).controller("listController",function($scope,$http,$location)
 		{
-	$scope.data = location.search.replace("%20"," ").substr(8);
+	$scope.data = location.search.replace("%20"," ").replace("%20"," ").replace("%20"," ").substr(8);
 	$scope.searchkeyword = location.search.substr(8).replace("%20"," ");
 	$scope.letterlimit = 3;
 	$scope.listProducts = ${listProducts};

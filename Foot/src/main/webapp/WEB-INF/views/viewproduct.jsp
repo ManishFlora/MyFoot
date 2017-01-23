@@ -51,28 +51,12 @@ Home
 <div id="image-block" class="clearfix is_caroucel">
 <ul id="usefull_link_block" class="clearfix no-print">
 <li class="sendtofriend">
-<a id="send_friend_button" href="#" title="Send to a friend">
+<a id="send_friend_button" title="Send to a friend">
 <span>Send to a friend</span>
 </a>
-<div style="display: none;">
-<div id="send_friend_form">
-<div class="row">
-<div class="product clearfix col-xs-12 col-sm-6">
-<h2 class="page-subheading">
-Send to a friend
-</h2>
-<img src="resources/images/view/{{listView.productsId}}(0).jpg" alt="{{listView.productsName}}">
-<div class="product_desc">
-<p class="product_name">
-<strong>{{listView.productsId}}</strong>
-</p>
-<p>Keds and sneakers became an inevitable part of our life. Either you have a quick pace of your life or a slow relaxed rhythm, there is nothing better than stepping in your favorite sneakers and heading off to... to wherever.</p>
-</div>
-</div>
-</div>
-</div>
 </li>
 </ul>
+
 <p class="buttons_bottom_block wishlist-prodict no-print">
 <a id="wishlist_button_nopop" href="/Foot/wishList-{{listView.productsId}}?userId=1" rel="nofollow" title="Add to my wishlist">
 </a>
@@ -82,12 +66,12 @@ Send to a friend
 <span class="sale-box no-print">
 <span class="sale-label">Sale!</span>
 </span>
-<a class="price-percent" href="#">
+<a class="price-percent">
 <span class="price-percent-reduction">-{{listView.productsDiscount}}%</span>
 </a>
 </div>
 <span id="view_full_size">
-<a class="jqzoom" title="Reebok ONE Cushion" rel="gal1" href="#" style="outline-style: none; text-decoration: none;">
+<a class="jqzoom" title="Reebok ONE Cushion" rel="gal1" style="outline-style: none; text-decoration: none;">
 <img src="resources/images/view/{{listView.productsId}}(1).jpg" title="Reebok ONE Cushion" alt="Reebok ONE Cushion">
 </a>
 </span>

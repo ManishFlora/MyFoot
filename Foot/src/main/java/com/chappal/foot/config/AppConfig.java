@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.chappal.foot.controller")
+@ComponentScan(basePackages = "com.chappal.foot")
 public class AppConfig extends WebMvcConfigurerAdapter
 {
 	@Bean
@@ -34,6 +34,7 @@ public class AppConfig extends WebMvcConfigurerAdapter
 	{
 		configurer.enable();
 	}
+	
 	@Bean
     public MultipartResolver multipartResolver() {
         org.springframework.web.multipart.commons.CommonsMultipartResolver multipartResolver = new org.springframework.web.multipart.commons.CommonsMultipartResolver();
@@ -47,5 +48,4 @@ public class AppConfig extends WebMvcConfigurerAdapter
         multipartFilter.setMultipartResolverBeanName("multipartResolver");
         return multipartFilter;
     }
-
 }

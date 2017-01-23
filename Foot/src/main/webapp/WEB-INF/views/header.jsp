@@ -345,32 +345,32 @@ var wishlistProductsIds = false;
 </c:if>
 <c:if test="${!empty pageContext.request.userPrincipal}">
 <div id="header-login">
-<div class="current_toogle header_user_info"><a href="#" onclick="return false;"><span class="fa fa-user"></span>  ${pageContext.request.userPrincipal.name}</a></div>
+<div class="current_toogle header_user_info">
+<a href="#" onclick="return false;"><span class="fa fa-user"></span>  ${pageContext.request.userPrincipal.name}</a></div>
 <ul id="header-login-content" class="toogle_content_box" style="display: none;">
 <sec:authorize access="hasRole('ROLE_USER')">
 <li>
-<img style="padding:5%;overflow:hidden;" height="150" width="auto" class="replace-2x img-responsive img-circle" src="resources/images/user/${pageContext.request.userPrincipal.name}.jpg">
+<img style="padding:5%;overflow:hidden;" height="150" width="auto" class="replace-2x img-responsive img-circle" alt="resources/images/user/user.jpg" src="resources/images/user/${pageContext.request.userPrincipal.name}.jpg">
 </li>
 <li class="login">
 <ul>
 <li>
-<a href="#" title="My orders" rel="nofollow"><span class="fa fa-shopping-cart">	My orders</span></a>
+<a href="/Foot/orderdetail" title="My orders" rel="nofollow"><span class="fa fa-shopping-cart">	My orders</span></a>
 </li>
 <li>
 <a href="/Foot/profile" title="Manage my personal information" rel="nofollow"><span class="fa fa-user">	My personal info</span></a>
 </li>
 <li class="lnk_wishlist">
-<a href="#" title="My wishlists">
+<a href="/Foot/wishListItems" title="My wishlists">
 <span class="fa fa-heart">	My wishlists</span>
 </a>
 </li>
 </ul>
 </li>
 </sec:authorize>
-</button>
 <sec:authorize access="hasRole('ROLE_SUPPLIER')">
 <li>
-<img style="padding:5%;overflow:hidden;" height="150" width="auto" class="replace-2x img-responsive img-circle" src="resources/images/user/${pageContext.request.userPrincipal.name}.jpg">
+<img style="padding:5%;overflow:hidden;" height="150" width="auto" class="replace-2x img-responsive img-circle" src="resources/images/user/${pageContext.request.userPrincipal.name}.png">
 </li>
 <li class="login">
 <ul>
@@ -378,15 +378,7 @@ var wishlistProductsIds = false;
 <a href="#" title="My orders" rel="nofollow"><span class="fa fa-shopping-cart">	My orders</span></a>
 </li>
 <li>
-<a href="#" title="My addresses" rel="nofollow"><span class="fa fa-home">	My addresses</span></a>
-</li>
-<li>
 <a href="/Foot/profile" title="Manage my personal information" rel="nofollow"><span class="fa fa-user">	My personal info</span></a>
-</li>
-<li class="lnk_wishlist">
-<a href="#" title="My wishlists">
-<span class="fa fa-heart">	My wishlists</span>
-</a>
 </li>
 <li class="lnk_wishlist">
 <a href="/Foot/productssupplierform" title="My wishlists">
@@ -479,12 +471,8 @@ $
 <li>
 <a href="/Foot/aboutus" >about us</a>
 </li>
-<li id="header_link_blog">
-<a href="#" title="blog">blog</a>
-</li>
 </ul>
-</div>
- 
+</div> 
 </nav>
 </div>
 <div class="row-top clearfix">
@@ -620,15 +608,15 @@ Proceed to checkout
 
 <div class="layer_cart_overlay"></div>
 <div id="tmsearch" class="clearfix">
-<form:form id="tmsearchbox" action="allproducts?search=">
+<form id="tmsearchbox" action="allproducts?search=${search}">
 <div class="tm_search_query_wrapper">
-<input class="form-control searchControl" type="text" id="tm_search_query" formmethod="get" placeholder="Search"/>
+<input class="form-control searchControl" name="search" type="text" id="tm_search_query" placeholder="Search"/>
 </div>
 <div class="visible_btn" style="display: block;"></div>
 <button type="submit" class="btn btn-default button-search fa fa-search">
 <span>Search</span>
 </button>
-</form:form>
+</form>
 </div>
 
 <div class="top_menu top-level tmmegamenu_item">
@@ -701,22 +689,22 @@ Proceed to checkout
 <a class="it_58887333 top-level-menu-li-a tmmegamenu_item" href="#">Panel</a>
 <ul class="is-simplemenu tmmegamenu_item first-level-menu it_58887333">
 <li class="category">
-<a href="categoryform">CategoryForm</a>
+<a href="categoryform">Manage Category</a>
 </li>
 <li>
-<a href="subcategoryform">SubCategoryForm</a>
+<a href="subcategoryform">Manage SubCategory</a>
 </li>
 <li>
-<a href="supplierform">SupplierForm</a>
+<a href="supplierform">Manage Supplier</a>
 </li>
 <li>
-<a href="brandform">BrandForm</a>
+<a href="brandform">Manage Brand</a>
 </li>
 <li>
-<a href="productsform">ProductsForm</a>
+<a href="productsform">Manage Products</a>
 </li>
 <li>
-<a href="adminPanel">AdminPanel</a>
+<a href="adminPanel">Admin-Panel</a>
 </li>
 </ul>
 </sec:authorize>
@@ -726,3 +714,21 @@ Proceed to checkout
 </div>
 </header>
 </div>
+<script type="text/javascript">
+  $(document).ready(function() {
+	$('.searchControl').autocomplete({
+		serviceUrl: '${pageContext.request.contextPath}/getTags',
+		paramName: "searchkeyword",
+		delimiter: ",",
+	   transformResult: function(response) {
+		return {
+		  //must convert json to javascript object before process
+		  suggestions: $.map($.parseJSON(response), function(item) {
+		      return { value: item.productsName, 
+						data: item.productsId };
+		   })
+		 };
+            }
+	 });
+  });
+</script>

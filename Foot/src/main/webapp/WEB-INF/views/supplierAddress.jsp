@@ -12,32 +12,6 @@ Supplier Form</h1>
 <fieldset style="padding:0 19px 21px 19px;background:url('resources/images/form-contact-shadow.png')">
 <h3 class="page-subheading">Add New Supplier</h3>
 <div class="clearfix">
-<div style="display:none;" class="col-xs-12 col-md-3">
-<p class="form-group">
-<form:input path="supplierId" class="form-control" type="hidden" name="from" value=""/>
-</p>
-</div>
-<div class="col-xs-12 col-md-3">
-<p class="form-group">
-<label for="email">Name</label>
-<form:input path="supplierName" class="form-control" type="text" value=""/>
-<form:errors path="supplierName" cssStyle="color: red;"/>
-</p>
-</div>
-<div class="col-xs-12 col-md-3">
-<p class="form-group">
-<label for="email">Email ID</label>
-<form:input path="supplierEmailId" class="form-control" type="text" value=""/>
-<form:errors path="supplierEmailId" cssStyle="color: red;"/>
-</p>
-</div>
-<div class="col-xs-12 col-md-3">
-<p class="form-group">
-<label for="email">Phone Number</label>
-<form:input path="supplierPhoneNumber" class="form-control" type="text" value=""/>
-<form:errors path="supplierPhoneNumber" cssStyle="color: red;"/>
-</p>
-</div>
 <div class="col-xs-12 col-md-3">
 <div class="form-group">
 <label for="message">Address</label>
@@ -49,7 +23,7 @@ Supplier Form</h1>
 <div class="submit">
 <button type="submit" class="btn btn-default btn-sm" name="_eventId_submit">
 <span>
-Add Supplier
+Add Address
 </span>
 </button>
 </div>

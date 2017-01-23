@@ -1,5 +1,11 @@
 package com.chappal.foot.handler;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
@@ -169,22 +175,27 @@ public class RegistrationHandler
 		userDetail.setShippingAddress(shippingAddress);
 		userDetail.setUserId(userDetailServices.generatedId());
 		userDetailServices.addUserRegDetail(userDetail);
+		try 
+		{
+			String p = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\user\\user.jpg";
+			File file = new File(p);
+			String userName = userDetail.getUserName();
+			BufferedImage image = new BufferedImage(200, 200, BufferedImage.TYPE_INT_ARGB);
+			image = ImageIO.read(file);
+			p = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\user\\"+ userName + ".jpg";
+			file = new File(p);
+			BufferedImage bufferedImage = image;
+			ImageIO.write(bufferedImage, "jpg", file);
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public String validateSupplier(Supplier supplier, MessageContext message)
 	{
 		String status = "success";
-		
-		if(supplier.getSupplierName().isEmpty())
-		{
-			message.addMessage(new MessageBuilder().error().source("supplierName").defaultText("Field cant be Empty").build());
-			status = "failure";
-		}
-		else
-		{
-			status = "success";
-		}
-		
 		if(supplier.getSupplierAddress().isEmpty())
 		{
 			message.addMessage(new MessageBuilder().error().source("supplierAddress").defaultText("Field cant be Empty").build());
@@ -194,26 +205,6 @@ public class RegistrationHandler
 		{
 			status = "success";
 		}
-		
-		if(supplier.getSupplierEmailId().isEmpty())
-		{
-			message.addMessage(new MessageBuilder().error().source("supplierEmailId").defaultText("Field cant be Empty").build());
-			status= "failure";
-		}
-		else
-		{
-			status= "success";
-		}
-		
-		if(supplier.getSupplierPhoneNumber().isEmpty())
-		{
-			message.addMessage(new MessageBuilder().error().source("supplierPhoneNumber").defaultText("Field cant be Empty").build());
-			status= "failure";
-		}
-		else
-		{
-			status= "success";
-		}		
 		return status;
 	}
 	
@@ -234,6 +225,25 @@ public class RegistrationHandler
 		this.supplier.setUserDetail(userDetail);
 		supplier.setSupplierId(supplierServices.generateId());
 		supplier.setUserDetail(userDetail);
+		supplier.setSupplierEmailId(userDetail.getEmailId());
+		supplier.setSupplierName(userDetail.getFirstName()+ " " + userDetail.getLastName());
+		supplier.setSupplierPhoneNumber(userDetail.getContactNumber());
 		supplierServices.addSupplier(supplier);
+		try 
+		{
+			String p = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\user\\supplier.png";
+			File file = new File(p);
+			String userName = userDetail.getUserName();
+			BufferedImage image = new BufferedImage(200, 200, BufferedImage.TYPE_INT_ARGB);
+			image = ImageIO.read(file);
+			p = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\user\\"+ userName + ".png";
+			file = new File(p);
+			BufferedImage bufferedImage = image;
+			ImageIO.write(bufferedImage, "png", file);
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 }

@@ -1,5 +1,15 @@
 package com.chappal.foot.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.FileAttribute;
+
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -50,6 +60,22 @@ public class UserDetailController
 		{
 			userDetail.setUserId(userDetailServices.generatedId());
 			userDetailServices.addUserDetail(userDetail);
+			try 
+			{
+				String p = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\user\\user.jpg";
+				File file = new File(p);
+				String userName = userDetail.getUserName();
+				BufferedImage image = new BufferedImage(200, 200, BufferedImage.TYPE_INT_ARGB);
+				image = ImageIO.read(file);
+				p = "D:\\WorkSpace\\Projects\\Foot\\src\\main\\webapp\\resources\\images\\user\\"+ userName + ".jpg";
+				file = new File(p);
+				BufferedImage bufferedImage = image;
+				ImageIO.write(bufferedImage, "jpg", file);
+			}
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
 			return "redirect:/registrationform";
 		}
 	}
