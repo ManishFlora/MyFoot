@@ -23,8 +23,11 @@ public class User implements Serializable
 	@Id
 	@Expose
 	private String userId;
+	@Expose
 	private String userName;
+	@Expose
 	private String userPassword;
+	@Expose
 	private boolean status;
 	
 	public String getUserId() {

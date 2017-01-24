@@ -189,11 +189,11 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 		sessionFactory.getCurrentSession().saveOrUpdate(billingAddress);
 	}
 	
-	public UserDetail retriveUserDeatilsById(int userId)
+	public UserDetail retriveUserDeatilsById(String userId)
 	{
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<UserDetail> userList = session.createQuery("from UserDetail where userId = " + userId).getResultList();
+		List<UserDetail> userList = session.createQuery("from UserDetail where userId = '" + userId +"'").getResultList();
 		return userList.get(0);
 	}
 	
@@ -339,5 +339,23 @@ public class UserDetailDAOImplementation implements UserDetailDAO
 			id = "C" + count;
 		}
 		return id;
+	}
+	
+	public List<User> retriveList()
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<User> userList = session.createQuery("FROM User where status = true").getResultList();
+		return userList;
+	}
+	
+	public void blockUser(String userName)
+	{
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		String query = "Update User set status = false where userName = '" + userName + "'";
+		int updatedEntities = session.createQuery(query).executeUpdate();
+		transaction.commit();
+		session.close();
 	}
 }

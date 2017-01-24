@@ -1,5 +1,7 @@
 package com.chappal.foot.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.chappal.foot.dao.UserDetailDAOImplementation;
 import com.chappal.foot.model.BillingAddress;
 import com.chappal.foot.model.ShippingAddress;
+import com.chappal.foot.model.User;
 import com.chappal.foot.model.UserDetail;
 
 @Transactional
@@ -61,7 +64,7 @@ public class UserDetailServices
 	{
 		userDetailDAOImplementation.addBillingAddress(billingAddress);
 	}
-	public UserDetail retriveUserDeatilsById(int userId)
+	public UserDetail retriveUserDeatilsById(String userId)
 	{
 		return userDetailDAOImplementation.retriveUserDeatilsById(userId);
 	}
@@ -73,5 +76,15 @@ public class UserDetailServices
 	public String generatedCId()
 	{
 		return userDetailDAOImplementation.generatedCId();
+	}
+	
+	public List<User> retriveList()
+	{
+		return userDetailDAOImplementation.retriveList();
+	}
+	
+	public void blockUser(String userName)
+	{
+		userDetailDAOImplementation.blockUser(userName);
 	}
 }
