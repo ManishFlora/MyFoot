@@ -167,8 +167,10 @@ Display all pictures
 <span class="price">&#8377;{{listView.productsPrice}}</span></span>
 </p>
 <p id="reduction_percent"  ng-if="listView.productsDiscount !=0">-{{listView.productsDiscount}}%<span id="reduction_percent_display"></span></p>
-<p id="reduction_amount" style="display:none">-{{listView.productsDiscount}}%<span id="reduction_amount_display"></span></p>
+<p id="reduction_amount" style="display:none">-{{listView.productsDiscount}}%<span id="reduction_amount_display"></span>
+</p>
 </div>
+<span ng-if="listView.productsDiscount !=0" class="discount">Reduced price!</span>
 <div class="clear"></div>
 <div id="product_comments_block_extra" class="no-print">
 <div class="comments_note clearfix">

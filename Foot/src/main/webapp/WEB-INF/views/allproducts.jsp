@@ -26,7 +26,7 @@ Search&nbsp;
 {{data}}
 </span>
 <span class="heading-counter">
-{{nextFilter().length}} results have been found.    </span>
+{{(listProducts | filter:searchkeyword).length}} results have been found.    </span>
 </h1>
 <div class="content_sortPagiBar">
 <div class="sortPagiBar clearfix ">
@@ -54,15 +54,15 @@ Search&nbsp;
 </form>
 </div>
 </div>
-<ul class="product_list row list" ng-model="searchkeyword">
+<ul class="product_list row list" id="myUl" ng-model="searchkeyword">
 <li class="ajax_block_product col-xs-12" style="opacity: 1;" ng-repeat="listProducts in listProducts | filter:searchkeyword ">
 <div class="product-container">
 <div class="row">
 <div class="left-block col-xs-6">
 <div class="product-image-container">
-<a class="product_img_link" href="/Foot/viewproduct-{{listProducts.productsId}}" title="Reebok Aspire Green" itemprop="url">
-<img class="replace-2x img-responsive" src="resources/images/products/{{listProducts.productsId}}(1).jpg" alt="Reebok Aspire Green" title="Reebok Aspire Green" itemprop="image">
-<img class="img-responsive hover-image" src="resources/images/products/{{listProducts.productsId}}(2).jpg" alt="Reebok Aspire Green" title="Reebok Aspire Green">
+<a class="product_img_link" href="/Foot/viewproduct-{{listProducts.productsId}}" title="{{listProducts.productsName}}" itemprop="url">
+<img class="replace-2x img-responsive" src="resources/images/products/{{listProducts.productsId}}(1).jpg" alt="{{listProducts.productsName}}" title="{{listProducts.productsName}}" itemprop="image">
+<img class="img-responsive hover-image" src="resources/images/products/{{listProducts.productsId}}(2).jpg" alt="{{listProducts.productsName}}" title="{{listProducts.productsName}}">
 </a>
 <div class="labels">
 <a class="sale-box" href="#">
@@ -150,6 +150,63 @@ Search&nbsp;
 </div>
 </li>
 </ul>
+<div class="content_sortPagiBar">
+<div class="bottom-pagination-content clearfix">
+<div id="pagination_bottom" class="pagination clearfix">
+<form class="showall" action="http://ld-prestashop.template-help.com/prestashop_61157/index.php?controller=category" method="get">
+<input type="hidden" name="id_category_layered" value="24">
+<input type="hidden" name="layered_price_slider" value="33_125">
+<input type="hidden" name="orderby" value="position">
+<input type="hidden" name="orderway" value="asc">
+<input type="hidden" name="selected_filters" value="/page-2">
+<input type="hidden" name="_" value="1485365546280">                                                                                  <input type="hidden" name="controller" value="">
+<input name="n" id="nb_items" class="hidden" value="35">
+</form>
+<ul class="pagination">
+<li id="pagination_previous_bottom" class="pagination_previous">
+<a rel="nofollow" href="#/page-1" title="Previous">
+<i class="material-design-keyboard54 "></i> 
+</a>
+</li>
+<li>
+<a rel="nofollow" href="#/page-1">
+<span>1</span>
+</a>
+</li>
+<li class="active current">
+<span>
+<span>2</span>
+</span>
+</li>
+<li>
+<a rel="nofollow" href="#/page-3">
+<span>3</span>
+</a>
+</li>
+<li>
+<a rel="nofollow" href="#/page-4">
+<span>4</span>
+</a>
+</li>
+<li>
+<a href="#/page-5">
+<span>5</span>
+</a>
+</li>
+<li>
+<a href="#/page-6">
+<span>6</span>
+</a>
+</li>
+<li id="pagination_next_bottom" class="pagination_next">
+<a rel="nofollow" href="#/page-3">
+<i class="material-design-keyboard53"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div id="left_column" class="column col-xs-12 col-sm-3"> <div class="vicevle_box"></div>
 <section id="layered_block_left" class="block">
@@ -264,5 +321,4 @@ angular.module("listproducts",[]).controller("listController",function($scope,$h
     }
 });
 </script>
-
 <%@include file="footer.jsp" %>
