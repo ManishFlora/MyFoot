@@ -33,21 +33,34 @@ Search&nbsp;
 <form id="productsSortForm" action="#" class="productsSortForm">
 <div class="select selector1">
 <label for="selectProductSort">Sort by</label>
-<div class="selector" id="uniform-selectProductSort" style="width: 159px;">
-<select id="selectProductSort" class="selectProductSort form-control">
-<option value="position:asc" selected="selected">Select</option>
-<option value="price:asc">Price: Lowest first</option>
-<option value="price:desc">Price: Highest first</option>
-<option value="name:asc">Product Name: A to Z</option>
-<option value="name:desc">Product Name: Z to A</option>
-<option value="quantity:desc">In stock</option>
-<option value="reference:asc">Reference: Lowest first</option>
-<option value="reference:desc">Reference: Highest first</option>
-</select>
+<ul class="container selectProductSort">
+<li class="home">
+<a class="home" ng-click="sortType = '(productsPrice - discountedPrice)' ; sortReverse = ''">
+Price: Lowest first
+</a>
+<a class="last">
+|
+</a>
+<a class="home" ng-click="sortType = sortReverse = '(productsPrice - discountedPrice)'">
+Price: Highest first
+</a>
+<a class="last">
+|
+</a>
+<a class="home" ng-click="sortType = 'productsName' ; sortReverse = ''">
+Product: A to Z
+</a>
+<a class="last">
+|
+</a>
+<a class="home" ng-click="sortType = sortReverse = 'productsName'">
+Product: Z to A
+</a>
+</li>
+</ul>
 <div class="block-filter_btn">
 <div class="filter_btn">
 <span>filter</span>
-</div>
 </div>
 </div>
 </div>
@@ -55,7 +68,7 @@ Search&nbsp;
 </div>
 </div>
 <ul class="product_list row list" id="myUl" ng-model="searchkeyword">
-<li class="ajax_block_product col-xs-12" style="opacity: 1;" ng-repeat="listProducts in listProducts | filter:searchkeyword ">
+<li class="ajax_block_product col-xs-12" style="opacity: 1;" ng-repeat="listProducts in listProducts | filter:searchkeyword | orderBy : sortType : sortReverse">
 <div class="product-container">
 <div class="row">
 <div class="left-block col-xs-6">
@@ -153,7 +166,7 @@ Search&nbsp;
 <div class="content_sortPagiBar">
 <div class="bottom-pagination-content clearfix">
 <div id="pagination_bottom" class="pagination clearfix">
-<form class="showall" action="http://ld-prestashop.template-help.com/prestashop_61157/index.php?controller=category" method="get">
+<form class="showall" action="#" method="get">
 <input type="hidden" name="id_category_layered" value="24">
 <input type="hidden" name="layered_price_slider" value="33_125">
 <input type="hidden" name="orderby" value="position">
@@ -286,11 +299,8 @@ angular.module("listproducts",[]).controller("listController",function($scope,$h
 	$scope.searchkeyword = location.search.substr(8).replace("%20"," ");
 	$scope.letterlimit = 3;
 	$scope.listProducts = ${listProducts};
-	$scope.sort = function(keyname) 
-	{
-		$scope.sortkey = keyname;
-		$scope.reverse = !$scope.reverse;
-	}
+	$scope.sortType     = 'productsId';
+	$scope.sortReverse  = true;
 	$scope.myFilter = [];
 	$scope.myNewFilter = function(searchword) 
 	{
@@ -320,5 +330,22 @@ angular.module("listproducts",[]).controller("listController",function($scope,$h
 	    }
     }
 });
+</script>
+<script type="text/javascript">
+function showPage(id)
+{
+	var totalNumberOfPages = 2;
+	for(i = 1;i <= totalNumberOfPages; i++)
+	{
+		if(document.getElementById("page" + i))
+		{
+			document.getElementById("page" + i).style.display = "none";
+		}
+	}
+	if(document.getElementById("page" + id))
+	{
+		document.getElementById("page" + id).style.display = "none";
+	}
+}
 </script>
 <%@include file="footer.jsp" %>

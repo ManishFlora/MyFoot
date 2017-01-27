@@ -380,11 +380,13 @@ var wishlistProductsIds = false;
 <li>
 <a href="/Foot/profile" title="Manage my personal information" rel="nofollow"><span class="fa fa-user">	My personal info</span></a>
 </li>
+<c:if test="${flag == true}">
 <li class="lnk_wishlist">
 <a href="/Foot/productssupplierform" title="My wishlists">
 <span class="fa fa-plus">	Add Products</span>
 </a>
 </li>
+</c:if>
 </ul>
 </li>
 </sec:authorize>
@@ -633,11 +635,11 @@ Proceed to checkout
 <li class="html">
 <h3>list-menu</h3>
 <ul class="list-menu">
-<li><a href="#">NEW RELEASES</a></li>
-<li><a href="#">LAUNCH CALENDAR</a></li>
-<li><a href="#">SUMMER ESSENTIALS</a></li>
-<li><a href="#">NATIONAL SPORTS TEAMS</a></li>
-<li><a href="#">SALE</a></li>
+<li><a href="allproducts">NEW RELEASES</a></li>
+<li><a href="allproducts">LAUNCH CALENDAR</a></li>
+<li><a href="allproducts">SUMMER ESSENTIALS</a></li>
+<li><a href="allproducts">NATIONAL SPORTS TEAMS</a></li>
+<li><a href="allproducts">SALE</a></li>
 </ul>
 </li>
 </ul>
@@ -649,7 +651,7 @@ Proceed to checkout
 </li>
 <c:forEach items = "${category.subCategory}" var="subCategory">
 <li class="category">
-<a href="#">${subCategory.subCategoryName}</a>
+<a href="allproducts?search=${subCategory.subCategoryName}">${subCategory.subCategoryName}</a>
 </li>
 </c:forEach>
 </ul>
@@ -661,14 +663,14 @@ Proceed to checkout
 </li>
 <c:forEach items = "${brandList}" var="brand">
 <li>
-<a href="#">${brand.brandName}</a>
+<a href="allproducts?search=${brand.brandName}">${brand.brandName}</a>
 </li>
 </c:forEach>
 </ul>
 </div>
 <div id="column-1-1-4" class="megamenu-col megamenu-col-1-4 col-sm-3  colbanner col_custom4">
 <ul class="content">
-<a href="#">
+<a href="allproducts">
 <li class="megamenu_banner">
 <img class="img-responsive" src="resources/images/18b2b9c689be30f26d15a310b1b3832fa3a9393e_banner-menu.jpg" alt="menu-banner"/>
 <div class="description">

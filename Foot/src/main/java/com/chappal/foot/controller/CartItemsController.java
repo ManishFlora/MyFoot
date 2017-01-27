@@ -94,6 +94,8 @@ public class CartItemsController
 		session.setAttribute("userId", userId);
 		session.setAttribute("cartItemsId", cartItemsId);
 		String productsId = cartItemsServices.cartItemsListById(cartItemsId).getProductsId();
+		int price = (int) (productsServices.retriveListOrderProducts(productsId).getProductsPrice() - productsServices.retriveListOrderProducts(productsId).getDiscountedPrice());
+		session.setAttribute("price", price);
 		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		model.addAttribute("listProducts", gson.toJson(productsServices.retriveListOrderProducts(productsId)));
 		model.addAttribute("cartItems", new CartItems());

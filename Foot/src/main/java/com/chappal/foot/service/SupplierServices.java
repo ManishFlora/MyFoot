@@ -64,4 +64,12 @@ public class SupplierServices
 	{
 		return supplierDAOImplementation.retriveSupplierByUserId(userId);
 	}
+	public List<Supplier> retriveList() 
+	{
+		return supplierDAOImplementation.retriveList();
+	}
+	public void updateFlag(String supplierId)
+	{
+		supplierDAOImplementation.updateFlag(supplierId);
+	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -178,5 +179,23 @@ public class SupplierDAOImplementation implements SupplierDAO
 		{
 			return null;
 		}
+	}
+	
+	public List<Supplier> retriveList() 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Supplier> supplierList = session.createQuery("from Supplier where flag = false").getResultList();
+		return supplierList;
+	}
+	
+	public void updateFlag(String supplierId)
+	{
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		String query = "Update Supplier set flag = true where supplierId = '" + supplierId + "'";
+		int updatedEntities = session.createQuery(query).executeUpdate();
+		transaction.commit();
+		session.close();
 	}
 }

@@ -67,4 +67,10 @@ public class FootController
 	{
 		return "/secure";
 	}
+	
+	@RequestMapping("/delivery")
+	public String delivery()
+	{
+		return "/delivery";
+	}
 }

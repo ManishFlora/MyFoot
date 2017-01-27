@@ -35,6 +35,7 @@ public class Supplier implements Serializable
 	private String supplierPhoneNumber;
 	@Expose
 	private boolean flag;
+	@Expose
 	@ManyToOne
 	public UserDetail userDetail;
 	

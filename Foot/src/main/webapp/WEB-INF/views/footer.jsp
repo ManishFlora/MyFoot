@@ -35,53 +35,38 @@
 <h4>Information</h4>
 <ul class="toggle-footer">
 <li class="item">
-<a href="#">
+<a href="allproducts">
 Specials
 </a>
 </li>
 <li class="item">
-<a href="#">
+<a href="allproducts">
 New products
 </a>
 </li>
 <li class="item">
-<a href="#">
+<a href="allproducts">
 Top sellers
 </a>
 </li>
 <li class="item">
-<a href="#">
-Our stores
-</a>
-</li>
-<li class="item">
-<a href="#">
+<a href="contact">
 Contact us
 </a>
 </li>
 <li class="item">
-<a href="#">
+<a href="delivery">
 Delivery
 </a>
 </li>
 <li class="item">
-<a href="#">
+<a href="aboutus">
 About us
 </a>
 </li>
 <li class="item">
-<a href="#">
+<a href="secure-payment">
 Secure payment
-</a>
-</li>
-<li class="item">
-<a href="#">
-Pages configuration
-</a>
-</li>
-<li>
-<a href="#">
-Sitemap
 </a>
 </li>
 </ul>
