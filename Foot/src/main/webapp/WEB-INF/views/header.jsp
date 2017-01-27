@@ -486,7 +486,7 @@ $
  
 <div class="cartBox ">
 <div class="shopping_cart">
-<a href="#" title="View my shopping cart" rel="nofollow">
+<a href="cartItems" title="View my shopping cart" rel="nofollow">
 <b>Cart</b>
 <span class="ajax_cart_quantity unvisible">0</span>
 <span class="ajax_cart_product_txt unvisible">Product</span>
@@ -627,7 +627,7 @@ Proceed to checkout
 <ul class="menu clearfix top-level-menu tmmegamenu_item">
 <c:forEach items = "${categoryList}" var="category">
 <li class=" top-level-menu-li tmmegamenu_item it_83622113">
-<a class="it_83622113 top-level-menu-li-a tmmegamenu_item" href="#">${category.categoryName}</a>
+<a class="it_83622113 top-level-menu-li-a tmmegamenu_item" href="allproducts?search=${category.categoryName}">${category.categoryName}</a>
 <div class="is-megamenu tmmegamenu_item first-level-menu it_83622113">
 <div id="megamenu-row-1-1" class="megamenu-row row megamenu-row-1">
 <div id="column-1-1-1" class="megamenu-col megamenu-col-1-1 col-sm-3  menulist1 col_custom1">

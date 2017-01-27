@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.Model;
 
+import com.chappal.foot.model.Supplier;
 import com.chappal.foot.service.BrandServices;
 import com.chappal.foot.service.CategoryServices;
 import com.chappal.foot.service.SupplierServices;
@@ -34,8 +35,12 @@ public class DynamicController
 		if(userName != "anonymousUser")
 		{
 			String userId = userDetailServices.retriveUserByName(userName).getUserId();
-			boolean flag = supplierServices.retriveSupplierByUserId(userId).isFlag();
-			model.addAttribute("flag", flag);
+			Supplier supplier = supplierServices.retriveSupplierByUserId(userId);
+			if(supplier != null)
+			{
+				boolean flag = supplier.isFlag();
+				model.addAttribute("flag", flag);
+			}
 		}
 	}
 }

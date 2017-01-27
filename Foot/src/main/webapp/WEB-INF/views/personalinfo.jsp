@@ -29,20 +29,9 @@ Home
 </div>
 <h1 class="page-heading">{{userList.firstName}}	{{userList.lastName}}</h1>
 <div class="row">
-<div class="col-xs-12 col-md-6">
-<form method="post" id="login_form" class="box">
+<div class="col-xs-12 col-md-3">
+<form method="post" id="login_form">
 <h3 class="page-subheading">Profile</h3>
-<h3 class="page-subheading">Delivery Address</h3>
-<h3 class="page-subheading">Shipping Address</h3>
-</form>
-</div>
-</div>
-</div> 
-</div> 
-</div> 
-</div>
-</div>
-<div style="display:none;">
 <div class="clearfix">
 <div class="form-group">
 <label for="email">First Name</label>
@@ -61,11 +50,11 @@ Home
 <input class="form-control" type="text" id="email" name="email" value="{{userList.contactNumber}}">
 </div>
 </div>
-
-<div ng-controller="billingAddressController">
-<div class="col-xs-12 col-sm-4 col-md-4">
-<form method="post" id="login_form" class="box">
-<h3 class="page-subheading">Billing Address</h3>
+</form>
+</div>
+<div class="col-xs-12 col-md-3">
+<form method="post" id="login_form">
+<h3 class="page-subheading">Delivery Address</h3>
 <div class="clearfix">
 <div class="form-group">
 <label for="email">Flat Number</label>
@@ -95,40 +84,11 @@ Home
 </form>
 </div>
 </div>
-<div ng-controller="shippingAddressController">
-<div class="col-xs-12 col-sm-4 col-md-4">
-<form method="post" id="login_form" class="box">
-<h3 class="page-subheading">Shipping Address</h3>
-<div class="clearfix">
-<div class="form-group">
-<label for="email">Flat Number</label>
-<input class="form-control" type="text" id="email" name="email" value="{{shippingAddressList.flatNumber}}">
-</div>
-<div class="form-group">
-<label for="email">Street Address</label>
-<input class="form-control" type="text" id="email" name="email" value="{{shippingAddressList.streetAddress}}">
-</div>
-<div class="form-group">
-<label for="email">City</label>
-<input class="form-control" type="text" id="email" name="email" value="{{shippingAddressList.city}}">
-</div>
-<div class="form-group">
-<label for="email">State</label>
-<input class="form-control" type="text" id="email" name="email" value="{{shippingAddressList.state}}">
-</div>
-<div class="form-group">
-<label for="email">Country</label>
-<input class="form-control" type="text" id="email" name="email" value="{{shippingAddressList.country}}">
-</div>
-<div class="form-group">
-<label for="email">Zip Code</label>
-<input class="form-control" type="text" id="email" name="email" value="{{shippingAddressList.zipCode}}">
+</div> 
+</div> 
+</div> 
 </div>
 </div>
-</form>
-</div>
-</div>
-
 
 <div id="columns" class="container">
 <div class="row">
@@ -158,18 +118,12 @@ Add Photo
 <div class="it_BMLRHIIHSZDK    col-lg-12 ">
 <div class="module "></div>
 <div class="module "></div></div></div></div>
+</div>
 <script type="text/javascript">
 angular.module('user',[]).controller('userController',function($scope)
 {
 $scope.userList=${userList};
-})
-.controller('billingAddressController',function($scope)
-{
 $scope.billingAddressList=${billingAddressList};
-})
-.controller('shippingAddressController',function($scope)
-{
-$scope.shippingAddressList=${shippingAddressList};
 });
 </script>
 <%@include file="footer.jsp" %>

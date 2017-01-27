@@ -82,19 +82,13 @@ Secure payment
 <div class="block_content toggle-footer">
 <ul class="bullet">
 <li>
-<a href="#" rel="nofollow">My orders</a>
+<a href="orderdetail" rel="nofollow">My orders</a>
 </li>
 <li>
-<a href="#" rel="nofollow">My merchandise returns</a>
+<a href="profile" rel="nofollow">My personal info</a>
 </li>
 <li>
-<a href="#" rel="nofollow">My credit slips</a>
-</li>
-<li>
-<a href="#" rel="nofollow">My addresses</a>
-</li>
-<li>
-<a href="#" rel="nofollow">My personal info</a>
+<a href="wishListItems" rel="nofollow">My wishlist</a>
 </li>
 </ul>
 </div>
@@ -109,220 +103,23 @@ Secure payment
 <div class="list">
 <ul class="tree dhtml">
 <li>
-<a href="#">
+<a href="allproducts?search=Men">
 Men
 </a>
-<ul>
-<li>
-<a href="#">
-Fitness &amp; Cross-Training
-</a>
-<ul>
-<li>
-<a href="#">
-High-Intensity Trainers
-</a>
 </li>
 <li>
-<a href="#">
-Gym Trainers
-</a>
-</li>
-<li>
-<a href="#">
-Trail Walking
-</a>
-</li>
-<li>
-<a href="#">
-Everyday Trainers
-</a>
-</li>
-<li>
-<a href="#">
-Women&#039;s Cross Training Shoes
-</a>
-</li>
-<li>
-<a href="#">
-Men&#039;s Cross Training Shoes
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#">
-Tennis
-</a>
-<ul>
-<li>
-<a href="#">
-Women&#039;s Cushioning
-</a>
-</li>
-<li>
-<a href="#">
-Men&#039;s Cushioning
-</a>
-</li>
-<li>
-<a href="#">
-Women&#039;s Motion Control
-</a>
-</li>
-<li>
-<a href="#">
-Men&#039;s Motion Control
-</a>
-</li>
-<li>
-<a href="#">
-Women&#039;s Stability
-</a>
-</li>
-<li>
-<a href="#">
-Men&#039;s Stability
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#">
-Basketball
-</a>
-<ul>
-<li>
-<a href="#">
-Size 7
-</a>
-</li>
-<li>
-<a href="#">
-Size 8
-</a>
-</li>
-<li>
-<a href="#">
-Size 9
-</a>
-</li>
-<li>
-<a href="#">
-Size 9.5
-</a>
-</li>
-<li>
-<a href="#">
-Size 10
-</a>
-</li>
-<li>
-<a href="#">
-Size 11
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#">
-Running
-</a>
-<ul>
-<li>
-<a href="#">
-Neutral Cushioning
-</a>
-</li>
-<li>
-<a href="#">
-Stability and Motion Control
-</a>
-</li>
-<li>
-<a href="#">
-Trail Running
-</a>
-</li>
-<li>
-<a href="#">
-Spikes and Competition
-</a>
-</li>
-<li>
-<a href="#">
-Minimal
-</a>
-</li>
-<li>
-<a href="#">
-Fitness Walking
-</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#">
-Cycling
-</a>
-<ul>
-<li>
-<a href="#">
-Road Shoes
-</a>
-</li>
-<li>
-<a href="#">
-Mountain Shoes
-</a>
-</li>
-<li>
-<a href="#">
-Indoor Cycling Shoes
-</a>
-</li>
-<li>
-<a href="#">
-Offroad Shoes
-</a>
-</li>
-<li>
-<a href="#">
-Pedal Cleats
-</a>
-</li>
-<li>
-<a href="#">
-Tri Shoes
-</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<a href="#">
-Athletic
-</a>
-</li>
-<li>
-<a href="#">
+<a href="allproducts?search=Women">
 Women
 </a>
 </li>
 <li>
-<a href="#">
+<a href="allproducts?search=Boys">
 Boys
 </a>
 </li>
 <li>
-<a href="#">
+<a href="allproducts?search=Girls">
 Girls
-</a>
-</li>
-<li>
-<a href="#">
-Sale
 </a>
 </li>
 </ul>
