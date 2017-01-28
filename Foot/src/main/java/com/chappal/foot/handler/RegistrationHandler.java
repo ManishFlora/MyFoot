@@ -3,6 +3,7 @@ package com.chappal.foot.handler;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -10,17 +11,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.chappal.foot.model.BillingAddress;
+import com.chappal.foot.model.Category;
 import com.chappal.foot.model.ShippingAddress;
 import com.chappal.foot.model.Supplier;
 import com.chappal.foot.model.UserDetail;
+import com.chappal.foot.service.BrandServices;
+import com.chappal.foot.service.CategoryServices;
 import com.chappal.foot.service.SupplierServices;
 import com.chappal.foot.service.UserDetailServices;
 
 @Component
 public class RegistrationHandler 
 {
+	@Autowired
+	CategoryServices categoryServices;
+	
+	@Autowired
+	BrandServices brandServices;
+	
 	@Autowired
 	UserDetailServices userDetailServices;
 	
@@ -39,6 +51,15 @@ public class RegistrationHandler
 	public UserDetail initFlow() 
 	{
 		return new UserDetail();
+	}
+	
+	public ModelAndView dataBinding()
+	{
+		ModelAndView model = new ModelAndView();
+		model.addObject("categoryList", categoryServices.retriveCategory());
+		model.addObject("brandList", brandServices.retriveBrand());
+		model.setViewName("reg");
+		return model;
 	}
 	
 	public String validateUser(UserDetail userDetail, MessageContext message)

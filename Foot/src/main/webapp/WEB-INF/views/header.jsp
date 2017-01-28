@@ -298,7 +298,7 @@ var wishlistProductsIds = false;
 <div id="page">
 <div id="page_preloader" class="loader">
 <div class="preloader_img">
-<img class="logo img-responsive" src="" width="200" height="40"/>
+<img class="logo img-responsive" src="resources/images/logo.png" width="200" height="40"/>
 <div class="img_end"></div>
 </div>
 </div>
@@ -332,7 +332,7 @@ var wishlistProductsIds = false;
 <input type="submit" class="btn btn-default" value="Sign in">
 </p>
 <p>
-<a href="/Foot/registrationform" class="create btn btn-default">Create an account</a>
+<a href="/Foot/reg" class="create btn btn-default">Create an account</a>
 </p>
 <p>
 <a href="/Foot/forget" class="forgot-password">Forgot your password?</a>
@@ -405,64 +405,6 @@ Sign out
 </c:if>
 </div>
 
-<div id="languages-block-top" class="languages-block">
-<div>
-<span>English</span>
-</div>
-<ul id="first-languages" class="languages-block_ul">
-<li class="selected">
-<span>en</span>
-</li>
-<li>
-<a href="#" title="Deutsch (German)" rel="alternate" hreflang="de">
-<span>de</span>
-</a>
-</li>
-<li>
-<a href="#" title="Русский (Russian)" rel="alternate" hreflang="ru">
-<span>ru</span>
-</a>
-</li>
-<li>
-<a href="#" title="Español (Spanish)" rel="alternate" hreflang="es">
-<span>es</span>
-</a>
-</li>
-<li>
-<a href="#" title="Français (French)" rel="alternate" hreflang="fr">
-<span>fr</span>
-</a>
-</li>
-</ul>
-</div>
-<div id="currencies-block-top">
-<form id="setCurrency" action="#" method="post">
-<div>
-<input type="hidden" name="id_currency" id="id_currency" value=""/>
-<input type="hidden" name="SubmitCurrency" value=""/>
-<span class="cur-label">Currency :</span>
-<strong>INR</strong>
-</div>
-<ul id="first-currencies" class="currencies_ul">
-<li class="selected">
-<a href="#" rel="nofollow" title="Rupees (INR)">
-&#x20b9;
-</a>
-</li>
-<li>
-<a href="#" rel="nofollow" title="Dollar (USD)">
-$
-</a>
-</li>
-<li>
-<a href="#" rel="nofollow" title="Euro (EUR)">
-&euro;
-</a>
-</li>
-</ul>
-</form>
-</div>
- 
  
 <div class="header_links">
 <ul id="header_links">
@@ -478,141 +420,24 @@ $
 </nav>
 </div>
 <div class="row-top clearfix">
-<!-- <div id="header_logo"> -->
-<!-- <a href="/Foot/" title="FOOT"> -->
-<!-- <img class="logo img-responsive" src="" width="200" height="30"/> -->
-<!-- </a> -->
-<!-- </div> -->
+<div id="header_logo">
+<a href="/Foot/" title="FOOT">
+<img class="logo img-responsive" src="resources/images/logo.png" style="height:75px;"/>
+</a>
+</div>
  
 <div class="cartBox ">
 <div class="shopping_cart">
 <a href="cartItems" title="View my shopping cart" rel="nofollow">
 <b>Cart</b>
-<span class="ajax_cart_quantity unvisible">0</span>
-<span class="ajax_cart_product_txt unvisible">Product</span>
-<span class="ajax_cart_product_txt_s unvisible">Products</span>
-<span class="ajax_cart_total unvisible">
-</span>
-<span class="ajax_cart_no_product">(empty)</span>
 </a>
-<div class="cart_block block">
-<div class="block_content">
- 
-<div class="cart_block_list">
-<p class="cart_block_no_products">
-No products
-</p>
-<div class="cart-prices">
-<div class="cart-prices-line first-line  unvisible">
-<span class="cart_block_shipping_cost ajax_cart_shipping_cost">
-To be determined </span>
-<span>
-Shipping
-</span>
-</div>
-<div class="cart-prices-line last-line">
-<span class="price cart_block_total ajax_block_cart_total">$0.00</span>
-<span class="cart-total-price">Total</span>
-</div>
-</div>
-<p class="cart-buttons">
-<a id="button_order_cart" class="btn btn-default" href="#" title="Check out" rel="nofollow">
-<span>
-Check out
-</span>
-</a>
-</p>
-</div>
-</div>
-</div> 
-</div>
-</div>
-<div id="layer_cart">
-<div class="box-cart-popup">
-<span class="cross" title="Close window"></span>
-<div class="layer_cart_product">
-<span class="title">
-<i class="material-design-check52"></i>
-Product successfully added to your shopping cart
-</span>
-<div class="product-image-container layer_cart_img">
-</div>
-<div class="cart-info-right">
-<span class="title">
- 
-<span class="ajax_cart_product_txt_s  unvisible">
-<strong><span class="ajax_cart_quantity">0</span> items</strong>
-<em><i class="material-design-shopping231"></i>You Have In your cart</em>
-</span>
- 
-<span class="ajax_cart_product_txt unvisible">
-<strong><span>1</span>item</strong>
-<em><i class="material-design-shopping231"></i> You Have In your cart</em>
-</span>	
-</span>
-</div>
-</div>
-<div class="layer_cart_center clearfix">
-<div class="title-cart_center">
-<span id="layer_cart_product_title" class="product-name"></span>
-</div>
-<div class="layer_cart_row-info">
-<div class="layer_cart_row">
-<strong class="dark">
-Total products
-</strong>
-<span class="ajax_block_products_total">
-</span>
-</div>
-<div class="layer_cart_row">
-<strong class="dark unvisible">
-Total shipping&nbsp; </strong>
-<span class="ajax_cart_shipping_cost unvisible">
-To be determined </span>
-</div>
-<div class="layer_cart_row">
-<strong class="dark">
-Total
-</strong>
-<span class="ajax_block_cart_total">
-</span>
-</div>
-</div>
-</div>
-<div class="crossseling"></div>
-<div class="layer_cart_cart clearfix">
-<div class="layer_cart_product_info">
-<div>
-<strong class="dark">Quantity</strong>
-<span id="layer_cart_product_quantity"></span>
-</div>
-<div>
-<strong class="dark">Total</strong>
-<span id="layer_cart_product_price"></span>
-</div>
-</div>
-<div class="button-container">
-<span class="continue btn btn-default" title="Continue shopping">
-<span>
-Continue shopping
-</span>
-</span>
-<a class="btn btn-default" href="#" title="Proceed to checkout" rel="nofollow">
-<span>
-Proceed to checkout
-</span>
-</a>
-</div>
-</div>
 </div>
 </div>
 
-
-<div class="layer_cart_overlay"></div>
-<div id="tmsearch" class="clearfix">
+<div id="tmsearch">
 <form id="tmsearchbox" action="allproducts?search=${search}">
 <div class="tm_search_query_wrapper">
-<input class="form-control searchControl" name="search" type="text" id="tm_search_query" placeholder="Search"/>
+<input class="form-control" name="search" type="text" id="tm_search_query" placeholder="Search" autocomplete="on"/>
 </div>
 <div class="visible_btn" style="display: block;"></div>
 <button type="submit" class="btn btn-default button-search fa fa-search">
@@ -716,21 +541,3 @@ Proceed to checkout
 </div>
 </header>
 </div>
-<script type="text/javascript">
-  $(document).ready(function() {
-	$('.searchControl').autocomplete({
-		serviceUrl: '${pageContext.request.contextPath}/getTags',
-		paramName: "searchkeyword",
-		delimiter: ",",
-	   transformResult: function(response) {
-		return {
-		  //must convert json to javascript object before process
-		  suggestions: $.map($.parseJSON(response), function(item) {
-		      return { value: item.productsName, 
-						data: item.productsId };
-		   })
-		 };
-            }
-	 });
-  });
-</script>

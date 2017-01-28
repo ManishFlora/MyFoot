@@ -28,7 +28,14 @@ public class CategoryDAOImplementation implements CategoryDAO
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Category> categoryList = session.createQuery("from Category").getResultList();
-		return categoryList;
+		if(categoryList != null && !categoryList.isEmpty())
+		{
+			return categoryList;
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	public Category retriveCategory(String categoryId) 
