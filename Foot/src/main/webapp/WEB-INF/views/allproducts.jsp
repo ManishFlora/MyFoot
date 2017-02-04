@@ -20,10 +20,10 @@ Home
 <div class="large-left col-sm-12">
 <div class="row">
 <div id="center_column" class="center_column col-xs-12 col-sm-9 accordionBox">
-<h1 class="page-heading  product-listing">
+<h1 class="page-heading  product-listing" ng-if="data1!= ''">
 Search&nbsp;
 <span class="lighter">
-{{data}}
+{{data1}}
 </span>
 <span class="heading-counter">
 {{(listProducts | filter:searchkeyword).length}} results have been found.    </span>
@@ -65,10 +65,29 @@ Product: Z to A
 </div>
 </div>
 </form>
+<div class="content_sortPagiBar">
+<div class="bottom-pagination-content clearfix">
+<div id="pagination_bottom" class="pagination clearfix">
+<ul class="pagination">
+<li id="pagination_previous_bottom" class="pagination_previous">
+<a rel="nofollow" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" title="Previous">
+<i class="material-design-keyboard54 "></i> 
+</a>
+</li>
+<li>
+<li id="pagination_next_bottom" class="pagination_next">
+<a rel="nofollow" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+<i class="material-design-keyboard53"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <ul class="product_list row list" id="myUl" ng-model="searchkeyword">
-<li class="ajax_block_product col-xs-12" style="opacity: 1;" ng-repeat="listProducts in listProducts | filter:searchkeyword | orderBy : sortType : sortReverse">
+<li class="ajax_block_product col-xs-12" style="opacity: 1;" ng-repeat="listProducts in listProducts | startFrom:currentPage*pageSize | limitTo:pageSize | filter:searchkeyword | orderBy : sortType : sortReverse">
 <div class="product-container">
 <div class="row">
 <div class="left-block col-xs-6">
@@ -113,7 +132,8 @@ Product: Z to A
 </div>
 <span class="nb-comments">
 </div>
-</div><h5 itemprop="name">
+</div>
+<h5 itemprop="name">
 <a class="product-name" href="#" title="Reebok Aspire Green" itemprop="url">
 <span class="list-name">{{listProducts.productsName}}</span>
 <span class="grid-name">{{listProducts.productsName}}</span>
@@ -163,63 +183,6 @@ Product: Z to A
 </div>
 </li>
 </ul>
-<div class="content_sortPagiBar">
-<div class="bottom-pagination-content clearfix">
-<div id="pagination_bottom" class="pagination clearfix">
-<form class="showall" action="#" method="get">
-<input type="hidden" name="id_category_layered" value="24">
-<input type="hidden" name="layered_price_slider" value="33_125">
-<input type="hidden" name="orderby" value="position">
-<input type="hidden" name="orderway" value="asc">
-<input type="hidden" name="selected_filters" value="/page-2">
-<input type="hidden" name="_" value="1485365546280">                                                                                  <input type="hidden" name="controller" value="">
-<input name="n" id="nb_items" class="hidden" value="35">
-</form>
-<ul class="pagination">
-<li id="pagination_previous_bottom" class="pagination_previous">
-<a rel="nofollow" href="#/page-1" title="Previous">
-<i class="material-design-keyboard54 "></i> 
-</a>
-</li>
-<li>
-<a rel="nofollow" href="#/page-1">
-<span>1</span>
-</a>
-</li>
-<li class="active current">
-<span>
-<span>2</span>
-</span>
-</li>
-<li>
-<a rel="nofollow" href="#/page-3">
-<span>3</span>
-</a>
-</li>
-<li>
-<a rel="nofollow" href="#/page-4">
-<span>4</span>
-</a>
-</li>
-<li>
-<a href="#/page-5">
-<span>5</span>
-</a>
-</li>
-<li>
-<a href="#/page-6">
-<span>6</span>
-</a>
-</li>
-<li id="pagination_next_bottom" class="pagination_next">
-<a rel="nofollow" href="#/page-3">
-<i class="material-design-keyboard53"></i>
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
 </div>
 <div id="left_column" class="column col-xs-12 col-sm-3"> <div class="vicevle_box"></div>
 <section id="layered_block_left" class="block">
@@ -232,6 +195,11 @@ Product: Z to A
 <span class="layered_subtitle">Categories</span>
 </div>
 <ul id="ul_layered_category_0" class="col-lg-12 layered_filter_ul">
+<label for="layered_category_41">
+<a href="/Foot/allproducts">
+<strong class="layered_subtitle" style="font-size:115%;"><b>All Products</b></strong>
+</a>
+</label>
 <c:forEach items = "${categoryList}" var="category">
 <li class="nomargin hiddable col-lg-12">
 <input type="checkbox" class="checkbox" name="layered_category_41" id="layered_category_41" value="41">
@@ -295,7 +263,14 @@ Product: Z to A
 <script type="text/javascript">
 angular.module("listproducts",[]).controller("listController",function($scope,$http,$location)
 		{
-	$scope.data = location.search.replace("%20"," ").replace("%20"," ").replace("%20"," ").substr(8);
+	$scope.currentPage = 0;
+	$scope.pageSize = 5;
+	$scope.data = [];
+	for (var i=1; i<=25; i++) 
+	{
+		$scope.data.push("Item "+i);
+	}
+	$scope.data1 = location.search.replace("%20"," ").replace("%20"," ").replace("%20"," ").substr(8);
 	$scope.searchkeyword = location.search.substr(8).replace("%20"," ");
 	$scope.letterlimit = 3;
 	$scope.listProducts = ${listProducts};
@@ -329,23 +304,11 @@ angular.module("listproducts",[]).controller("listController",function($scope,$h
             return listProducts;
 	    }
     }
+}).filter('startFrom', function() {
+    return function(input, start) {
+        start = +start; //parse to int
+        return input.slice(start);
+    }
 });
-</script>
-<script type="text/javascript">
-function showPage(id)
-{
-	var totalNumberOfPages = 2;
-	for(i = 1;i <= totalNumberOfPages; i++)
-	{
-		if(document.getElementById("page" + i))
-		{
-			document.getElementById("page" + i).style.display = "none";
-		}
-	}
-	if(document.getElementById("page" + id))
-	{
-		document.getElementById("page" + id).style.display = "none";
-	}
-}
 </script>
 <%@include file="footer.jsp" %>

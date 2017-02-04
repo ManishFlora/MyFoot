@@ -143,7 +143,7 @@ var FancyboxI18nPrev = 'Previous';
 var PS_CATALOG_MODE = false;
 var added_to_wishlist = 'The product was successfully added to your wishlist.';
 var ajax_allowed = true;
-var ajaxsearch = false;
+var ajaxsearch = true;
 var allowBuyWhenOutOfStock = false;
 var availableLaterValue = '';
 var availableNowValue = '';
@@ -196,8 +196,8 @@ var priceDisplayPrecision = 2;
 var quickView = true;
 var removingLinkText = 'remove this product from my cart';
 var roundMode = 2;
-var search_url = '${pageContext.request.contextPath}/getTags';
-var search_url_local = '${pageContext.request.contextPath}/getTags';
+var search_url = '${pageContext.request.contextPath}/getTags?searchkeyword='${search};
+var search_url_local = '${pageContext.request.contextPath}/getTags?searchkeyword='${search};
 var static_token = '0a9f6300ab69c9db1344dae91e1ba312';
 var tmnewsletter_status = '2';
 var tmolarkchat_status = '2';
@@ -294,11 +294,12 @@ var wishlistProductsIds = false;
   </script>
 </head>
 
-<body id="index" class="index hide-left-column hide-right-column lang_en  one-column">
+<body>
+<div id="index" class="index hide-left-column hide-right-column lang_en  one-column">
 <div id="page">
 <div id="page_preloader" class="loader">
 <div class="preloader_img">
-<img class="logo img-responsive" src="resources/images/logo.png" width="200" height="40"/>
+<img class="logo img-responsive" src="resources/images/logo.png" width="200" height="20"/>
 <div class="img_end"></div>
 </div>
 </div>
@@ -422,7 +423,7 @@ Sign out
 <div class="row-top clearfix">
 <div id="header_logo">
 <a href="/Foot/" title="FOOT">
-<img class="logo img-responsive" src="resources/images/logo.png" style="height:75px;"/>
+<img class="logo img-responsive" src="resources/images/logo.png" style="height:65px;"/>
 </a>
 </div>
  
@@ -541,3 +542,21 @@ Sign out
 </div>
 </header>
 </div>
+<script type="text/javascript">
+  $(document).ready(function() {
+	$('#tm_search_query').autocomplete({
+		serviceUrl: '${pageContext.request.contextPath}/getTags',
+		paramName: "searchkeyword",
+		delimiter: ",",
+	   transformResult: function(response) {
+		return {
+		  //must convert json to javascript object before process
+		  suggestions: $.map($.parseJSON(response), function(item) {
+		      return { value: item.productsName, 
+						data: item.productsName };
+		   })
+		 };
+            }
+	 });
+  });
+</script>
