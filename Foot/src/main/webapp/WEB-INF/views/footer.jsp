@@ -186,8 +186,19 @@ FOOT
 </div>
 </div>
 </div>
-<div class="module "></div>
+<div class="row it_YYRIKPLLDVGT logo-copyright">
+<div class="it_NJQWUJWBTDKA col-xs-12 col-sm-8   ">
 <div class="module ">
+<div id="htmlcontent_footer">
+<ul class="htmlcontent-home clearfix row">
+<li class="htmlcontent-item-1 col-xs-4">
+</li>
+</ul>
+</div>
+</div></div>
+<div class="it_DKLSFILRQPWW col-xs-12 col-sm-4   ">
+<div class="module "></div>
+<div class="module "></div></div></div> 
 </div>
 </div>
 </div>

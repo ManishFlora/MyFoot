@@ -70,13 +70,18 @@ Product: Z to A
 <div id="pagination_bottom" class="pagination clearfix">
 <ul class="pagination">
 <li id="pagination_previous_bottom" class="pagination_previous">
-<a rel="nofollow" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" title="Previous">
+<a rel="nofollow" href="" ng-disabled="currentPage == 0" ng-click="currentPage = currentPage - 1">
 <i class="material-design-keyboard54 "></i> 
+</a>
+</li>
+<li ng-repeat="n in [].constructor(5) track by $index">
+<a href="" ng-click="currentPage = ($index + 1)">
+<span>{{$index + 1}}</span>
 </a>
 </li>
 <li>
 <li id="pagination_next_bottom" class="pagination_next">
-<a rel="nofollow" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+<a rel="nofollow" href="" ng-disabled="currentPage >= 4" ng-click="currentPage = currentPage + 1">
 <i class="material-design-keyboard53"></i>
 </a>
 </li>
@@ -86,8 +91,8 @@ Product: Z to A
 </div>
 </div>
 </div>
-<ul class="product_list row list" id="myUl" ng-model="searchkeyword">
-<li class="ajax_block_product col-xs-12" style="opacity: 1;" ng-repeat="listProducts in listProducts | startFrom:currentPage*pageSize | limitTo:pageSize | filter:searchkeyword | orderBy : sortType : sortReverse">
+<ul class="product_list row list" id="myUl" ng-model="searchkeyword" ng-repeat="n in [currentPage] track by $index">
+<li class="ajax_block_product col-xs-12" style="opacity: 1;" ng-repeat="listProducts in listProducts | orderBy : sortType : sortReverse | filter:searchkeyword | startFrom: n * pageSize | limitTo: pageSize">
 <div class="product-container">
 <div class="row">
 <div class="left-block col-xs-6">
@@ -104,9 +109,6 @@ Product: Z to A
 <span class="price-percent-reduction">-{{listProducts.productsDiscount}}%</span>
 </a>
 </div>
-<a class="quick-view" href="#" title="Quick view">
-<span>Quick view</span>
-</a>
 </div>
 <div class="functional-buttons clearfix">
 <div class="wishlist">
@@ -264,16 +266,12 @@ Product: Z to A
 angular.module("listproducts",[]).controller("listController",function($scope,$http,$location)
 		{
 	$scope.currentPage = 0;
-	$scope.pageSize = 5;
-	$scope.data = [];
-	for (var i=1; i<=25; i++) 
-	{
-		$scope.data.push("Item "+i);
-	}
-	$scope.data1 = location.search.replace("%20"," ").replace("%20"," ").replace("%20"," ").substr(8);
-	$scope.searchkeyword = location.search.substr(8).replace("%20"," ");
-	$scope.letterlimit = 3;
+    $scope.pageSize = 5;
 	$scope.listProducts = ${listProducts};
+	$scope.pageList = Math.ceil($scope.listProducts.length/$scope.pageSize);
+	$scope.data1 = location.search.replace("%20"," ").replace("%20"," ").replace("%20"," ").substr(8);
+	$scope.searchkeyword = location.search.substr(8).replace("%20"," ").replace("%20"," ").replace("%20"," ");
+	$scope.letterlimit = 3;
 	$scope.sortType     = 'productsId';
 	$scope.sortReverse  = true;
 	$scope.myFilter = [];

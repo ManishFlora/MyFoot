@@ -60,13 +60,13 @@ About us
 <ul class="row list-4"><li class="col-xs-3"><img src="resources/images/photo.jpg" alt="" height="269" width="270"><h3>MANISH FLORA</h3>
 <p>Senior salesman with 15 years of experience. He knows everything about the products he offers.</p>
 </li>
-<li class="col-xs-3"><img src="resources/images/photo.jpg" alt="" height="269" width="270"><h3>KUMAR MANTHENA</h3>
+<li class="col-xs-3"><img src="resources/images/photo.jpg" alt="" height="269" width="270"><h3>MANISH FLORA</h3>
 <p>Mega positive shop assistant always ready to help you make the right choice and charm you with a smile.</p>
 </li>
-<li class="col-xs-3"><img src="resources/images/photo.jpg" alt="" height="269" width="270"><h3>TEJAS PAWAR</h3>
+<li class="col-xs-3"><img src="resources/images/photo.jpg" alt="" height="269" width="270"><h3>MANISH FLORA</h3>
 <p>Wholesale manager. Contact him if you want to buy a batch of the products offered at our store.</p>
 </li>
-<li class="col-xs-3"><img src="resources/images/photo.jpg" alt="" height="269" width="270"><h3>EJAZ SUNSARA</h3>
+<li class="col-xs-3"><img src="resources/images/photo.jpg" alt="" height="269" width="270"><h3>MANISH FLORA</h3>
 <p>Quality control manager. His mission is to check the products we ship and settle quality issues if any.</p>
 </li>
 </ul>
@@ -91,10 +91,9 @@ About us
 <p>Having the distressing experience with some online shops before decided to say ‘’THANK YOU” to all personnel of this store. You are not only friendly, but deliver really good products in the shortest possible terms. In a word, I am absolutely happy with my purchase and the service. Everything was perfect!</p>
 <h3>EDNA BARTON</h3>
 </li>
-<li class="material-design-ico icon material-design-google125 bx-clone" style="float: left; list-style: none; position: relative; width: 1170px;">
-<p>Guys, you rock! Made a purchase at your store recently. The order has been shipped and delivered on time. The quality is superb! The price is quite reasonable. Told all my friends about your excellent service and the variety of choice. I think I’ll be your loyal customer in future as well. I wish your store many more years of prosperity.</p>
-<h3>Mary Taba</h3>
-</li></ul></div><div class="bx-controls bx-has-controls-direction"><div class="bx-controls-direction"><a class="bx-prev" href=""></a><a class="bx-next" href=""></a></div></div></div>
+</ul>
+</div>
+</div>
 </div>
 <br>
 </div> 
