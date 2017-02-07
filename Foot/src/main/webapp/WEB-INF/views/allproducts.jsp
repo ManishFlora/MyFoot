@@ -75,7 +75,7 @@ Product: Z to A
 </a>
 </li>
 <li ng-repeat="n in [].constructor(5) track by $index">
-<a href="" ng-click="currentPage = ($index + 1)">
+<a href="" ng-click="$parent.currentPage = $index">
 <span>{{$index + 1}}</span>
 </a>
 </li>
